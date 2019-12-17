@@ -1,0 +1,81 @@
+{
+    "Length of beam": {
+        "elementType": "input",
+        "elementConfig": {
+            "type": "number",
+            "placeholder": "Enter Length of beam",
+            "pattern":"[^0-9]+"
+        },
+        "value": "",
+        "validation": {
+            "required": true
+        },
+        "valid": false,
+        "label": "Length of beam",
+        "touched": false,
+        "modal":false
+    },
+    "Material Choice":{
+        "elementType": "select",
+        "elementConfig": {
+            "type": "select",
+            "placeholder": "",
+            "options":[
+                {"value":"steel" ,"displayValue":"Steel"},
+                {"value":"Aluminium" ,"displayValue":"Aluminium"} 
+            ]
+        },
+        "value":"",
+        "label": "Material Choices",
+        "validation": {
+            "required": true
+        },
+        "valid": false,
+        "touched": false,
+        "modal":false   
+},
+ "Support Choice":{
+    "elementType": "select",
+    "elementConfig": {
+        "type": "select",
+        "placeholder": "",
+      
+        "options":[
+            {"value":"Simply Supported" ,"displayValue":"Simply Supported"},
+            {"value":"Cantilever" ,"displayValue":"Cantilever"}, 
+            {"value":"Fixed at both side","displayValue":"Fixed at both side"}
+        ]
+    },
+    "label":"Support Choice",
+    "validation": {
+        "required": true
+    },
+    "valid": false,
+    "touched": false ,
+    "modal":false  
+      
+},
+"Cross Section":{
+    "elementType": "select",
+    "elementConfig": {
+        "type": "select",
+        "placeholder": "",
+        "options":[
+            {"value":"Circular Solid" ,"displayValue":"Circular Solid"},
+            {"value":"Circular Hollow" ,"displayValue":"Circular Hollow"}, 
+            {"value":"Rectangular Solid","displayValue":"Rectangular Solid"},
+            {"value":"Rectangular Hollow","displayValue":"Rectangular Hollow"}
+          ]
+    },
+    "label":"Cross Section",
+    "validation": {
+        "required": true
+    },
+    "valid": false,
+    "touched": false ,
+    "modal":true  
+      
+}
+
+ }
+

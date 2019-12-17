@@ -1,0 +1,330 @@
+{
+    "Circular Solid": {
+        "Diameter": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Diameter"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Diameter"
+        },
+        "Image": {
+            "elementType": "image",
+            "elementConfig": {
+                "type": "image"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "Location": "pipinglogo.png"
+        }
+    },
+    "Circular Hollow": {
+        "Outside Diameter(d0)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Outside Diameter"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Outside Diameter"
+        },
+        "Thickness(t)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Thickness"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Thickness"
+        },
+        "Image": {
+            "elementType": "image",
+            "elementConfig": {
+                "type": "image"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "Location": "pipingdb.jpg"
+        }
+    },
+    "Rectangular Solid": {
+        "Breadth(b)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Breadth"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Breadth"
+        },
+        "Height(h)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Height"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Height"
+        },
+        "Image": {
+            "elementType": "image",
+            "elementConfig": {
+                "type": "image"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "Location": "pipingdb.jpg"
+        }
+    },
+    "Rectangular Hollow": {
+        "Breadth(b)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Breadth"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Breadth"
+        },
+        "Height(h)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Height"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Height"
+        },
+        "Thickness(t)": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Height"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Thickness"
+        },
+        "Image": {
+            "elementType": "image",
+            "elementConfig": {
+                "type": "image"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "Location": "pipingdb.jpg"
+        }
+    },
+    "Point Loading":{
+        "Point Load": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Point Load"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Point Load"
+        },
+        "Distance from A": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Distance from A"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Distance From A"
+        },
+        "Direction":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"
+                      },
+            "value": "",
+            "validation": {
+                "required": true
+                 }
+        }
+    },
+    "Moment Loading":{
+        "Point Moment": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Point Load"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Point Moment"
+        },
+        "Distance from A": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Distance from A"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Distance From A"
+        },
+        "Direction":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"
+                      },
+            "value": "",
+            "validation": {
+                "required": true
+                 }
+        }
+    },
+    "Uniform Distributed Load":{
+        "Starting point of UDL from A": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Point Load"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Starting point of UDL from A"
+        },
+        "Ending point of UDL from A": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Distance from A"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Ending point of UDL from A"
+        },
+        "Value of UDl":{
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the value of UDL"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Value of UDL"
+        },
+        "Direction":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"
+                      },
+            "value": "",
+            "validation": {
+                "required": true
+                 }
+        }
+    },
+    "Trapezoidal Loading":{
+        "Starting point of load from A": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Point Load"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "label": "Starting point of UDL from A"
+        },
+        "Ending point of load from A": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the Distance from A"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Ending point of UDL from A"
+        },
+        "Starting Load":{
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the starting load"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Starting Load"
+        },
+        "Ending Load":{
+            "elementType": "input",
+            "elementConfig": {
+                "type": "number",
+                "placeholder": "Enter the ending load"
+                            },
+            "value": "",
+            "validation": {
+                "required": true
+                          },
+            "label": "Ending Load"
+        },
+        "Direction":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"
+                      },
+            "value": "",
+            "validation": {
+                "required": true
+                 }
+        }  
+    }
+}
