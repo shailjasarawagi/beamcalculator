@@ -10,6 +10,7 @@
             "validation": {
                 "required": true
             },
+            "valid":false,
             "label": "Diameter"
         },
         "Image": {
@@ -21,7 +22,8 @@
             "validation": {
                 "required": true
             },
-            "Location": "pipinglogo.png"
+            "valid": false,
+            "Location": "Circular solid.JPG"
         }
     },
     "Circular Hollow": {
@@ -35,6 +37,7 @@
             "validation": {
                 "required": true
             },
+            "valid": false,
             "label": "Outside Diameter"
         },
         "Thickness(t)": {
@@ -47,6 +50,7 @@
             "validation": {
                 "required": true
             },
+            "valid": false,
             "label": "Thickness"
         },
         "Image": {
@@ -58,7 +62,8 @@
             "validation": {
                 "required": true
             },
-            "Location": "pipingdb.jpg"
+            "valid": false,
+            "Location": "Circular Hollow.JPG"
         }
     },
     "Rectangular Solid": {
@@ -72,6 +77,7 @@
             "validation": {
                 "required": true
             },
+            "valid": false,
             "label": "Breadth"
         },
         "Height(h)": {
@@ -84,6 +90,7 @@
             "validation": {
                 "required": true
             },
+            "valid": false,
             "label": "Height"
         },
         "Image": {
@@ -95,7 +102,7 @@
             "validation": {
                 "required": true
             },
-            "Location": "pipingdb.jpg"
+            "Location": "Rectangular Solid.JPG"
         }
     },
     "Rectangular Hollow": {
@@ -141,10 +148,8 @@
                 "type": "image"
             },
             "value": "",
-            "validation": {
-                "required": true
-            },
-            "Location": "pipingdb.jpg"
+           
+            "Location": "Rectangular Hollow.JPG"
         }
     },
     "Point Loading":{
@@ -158,6 +163,7 @@
             "validation": {
                 "required": true
             },
+            "valid": false,
             "label": "Point Load"
         },
         "Distance from A": {
@@ -170,6 +176,7 @@
             "validation": {
                 "required": true
                           },
+             "valid": false,
             "label": "Distance From A"
         },
         "Direction":{
@@ -180,7 +187,10 @@
             "value": "",
             "validation": {
                 "required": true
-                 }
+                 },
+                 "valid": false,
+                 "label":"Direction"
+
         }
     },
     "Moment Loading":{
@@ -194,6 +204,7 @@
             "validation": {
                 "required": true
             },
+            "valid": false,
             "label": "Point Moment"
         },
         "Distance from A": {
@@ -206,18 +217,37 @@
             "validation": {
                 "required": true
                           },
+            "valid": false,
             "label": "Distance From A"
         },
         "Direction":{
-            "elementType":"radio",
-            "elementConfig":{
-                "type":"radio"
-                      },
-            "value": "",
-            "validation": {
-                "required": true
-                 }
-        }
+            "Up":{
+
+                "elementType":"input",
+              "elementConfig":{
+                  "type":"radio"
+                        },
+              "value": "",
+              "validation": {
+                  "required": true
+                   },
+                   "valid": false,
+                   "label":"Up"
+          },
+          "Down":{
+              "elementType":"input",
+              "elementConfig":{
+                  "type":"radio"
+                        },
+              "value": "",
+              "validation": {
+                  "required": true
+                   },
+                   "label":"Down"  
+          },
+          "valid": false,
+          "label":"Direction"
+      }
     },
     "Uniform Distributed Load":{
         "Starting point of UDL from A": {
@@ -257,16 +287,31 @@
             "label": "Value of UDL"
         },
         "Direction":{
-            "elementType":"radio",
+            "Up":{
+
+              "elementType":"input",
             "elementConfig":{
                 "type":"radio"
                       },
             "value": "",
             "validation": {
                 "required": true
-                 }
+                 },
+                 "label":"Up"
+        },
+        "Down":{
+            "elementType":"input",
+            "elementConfig":{
+                "type":"radio"
+                      },
+            "value": "",
+            "validation": {
+                "required": true
+                 },
+                 "label":"Down"  
         }
-    },
+    }
+},
     "Trapezoidal Loading":{
         "Starting point of load from A": {
             "elementType": "input",
@@ -315,7 +360,7 @@
                 "required": true
                           },
             "label": "Ending Load"
-        },
+                     },
         "Direction":{
             "elementType":"radio",
             "elementConfig":{

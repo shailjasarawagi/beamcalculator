@@ -1,19 +1,19 @@
 import React from 'react';
 
 import classes from './input.css';
-import {Image ,Input } from 'semantic-ui-react';
+import {Image} from 'semantic-ui-react';
 const input = ( props ) => {
     // console.log(props);
     let inputElement = null;
     const inputClasses = [classes.InputElement];
-
-    if (props.invalid && props.shouldValidate && props.touched) {
+//    console.log(props.invalid)
+    if (props.invalid && props.shouldValidate) {
         inputClasses.push(classes.Invalid);
     }
 
     switch ( props.elementType ) {
         case ( 'input' ):
-            inputElement = <Input
+            inputElement = <input
             
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
@@ -50,7 +50,6 @@ const input = ( props ) => {
                 value={props.value}
                 onChange={props.changed} />;
                 break;
-
         default:
             inputElement = <input
                 style={{...props.style}}

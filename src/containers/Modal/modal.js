@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as data from "../../JSONfiles/modal.json";
-import { Modal, Image} from 'semantic-ui-react';
+import { Modal, Image, Grid } from 'semantic-ui-react';
 import Input from '../../components/Input/input';
 // import classes from "./module.css";
 
@@ -21,7 +21,6 @@ class modal extends Component {
 
   render() {
     const modalArray = [];
-
     for (let key in this.state.modalData) {
       modalArray.push({
         id: key,
@@ -31,18 +30,17 @@ class modal extends Component {
     console.log("Modal", modalArray);
     
     
-    const modal = modalArray.map(modalElement => (
- <Modal.Content key={modalElement.id} image>
-
-{modalElement.config.Location !== undefined?<Image wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)}/>:null}
-
- 
+    const modalInput = modalArray.map(modalElement => {
+      return modalElement.config.elementType !== "image" ?
   <Input elementType={modalElement.config.elementType}
-                  label={modalElement.config.label}   />
-
-    </Modal.Content>
-    ));
-
+         elementConfig={modalElement.config.elementConfig}
+                  label={modalElement.config.label}  
+                  value={modalElement.config.value}
+                  changed={(e)=>this.props.inputChangeHandler(e,modalElement.value)}
+                  /> :null
+    });
+    const modalImage = modalArray.map(modalElement => (
+    modalElement.config.Location !== undefined?<Image wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)}/>:null));
 
     return (
       <div>
@@ -50,11 +48,16 @@ class modal extends Component {
         style={{marginTop:"-240px"}}
         centered={false}
         open={this.props.modalopen} 
-        closeIcon onClose={this.props.modalclose} 
-        
-       >
-  <Modal.Header>{this.props.modalIdentity}</Modal.Header>
-          {modal}
+        closeIcon onClose={this.props.modalclose} >
+     <Modal.Header>{this.props.modalIdentity}</Modal.Header>
+     <Modal.Content  image>
+ <Grid>
+      <Grid.Row>
+        <Grid.Column width={8}>{modalInput}</Grid.Column>
+        <Grid.Column width={8}>{modalImage}</Grid.Column>          
+          </Grid.Row>
+          </Grid>
+          </Modal.Content>
         </Modal>
       </div>
     );

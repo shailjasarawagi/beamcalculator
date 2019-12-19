@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as elements from "../../JSONfiles/forminput.json";
 import * as data from "../../JSONfiles/selection.json";
+import * as modaldata from "../../JSONfiles/modal.json";
 import Input from '../Input/input';
 import Modal from '../../containers/Modal/modal';
 import {Image,Header,Grid} from "semantic-ui-react";
@@ -11,12 +12,13 @@ class form extends Component {
     formData:{},
     modalIdentity:"",
     modalopen:false,
-    imageData:[]
+    imageData:[],
+   
   }
   componentDidMount(){
     this.setState({formData:elements.default});
     this.setState({imageData:data.default.Loading_Selection},()=>{
-      console.log(this.state.imageData)
+      // console.log(this.state.imageData)
     });
   }
   // keypress=(evt)=>{
@@ -27,10 +29,23 @@ class form extends Component {
   //   return true;
   // }
   modalclose=()=>{
-    this.setState({modalopen:false});
+    this.setState({modalopen:false , modalIdentity:""});
   }
 
+//   checkValidity(value, rules) {
+//     let isValid = true;
+    
+//     if (rules.required) {
+//         isValid = value.trim() !== '' && isValid;
+//     }
+    
+    
+//     return isValid;
+// }
+ 
+
   inputChangeHandler = (event,inputIdentifier,modalrender)=>{
+    console.log(event,inputIdentifier);
     const updatedFormData = {
       ...this.state.formData
     };
@@ -40,39 +55,48 @@ class form extends Component {
     };
     updatedFormElement.value = event.target.value;
     updatedFormData[inputIdentifier] = updatedFormElement;
+    // updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    // console.log(updatedFormElement.valid);
+    
     this.setState({formData:updatedFormData},()=>{
-      console.log(this.state);
+      // console.log(this.state);
     });
     if(modalrender===true){
+      // console.log(modaldata.default[event.target.value]);
+      // this.setState({ modalData: data.default[this.props.modalIdentity] });
       this.setState({modalIdentity:event.target.value,modalopen:true});
     }
   }
 
   onclick=(event,inputIdentifier,modalrender)=>{
-    console.log(event,inputIdentifier,modalrender)
+    // console.log(event,inputIdentifier,modalrender)
     if(modalrender===true){
       this.setState({modalIdentity:inputIdentifier,modalopen:true});
     }
   }
     render(){
       const formElementsArray = [];
-      console.log(elements.default);
+      // console.log(elements.default);
         for (let key in this.state.formData) {
             formElementsArray.push({
                 id: key,
                 config: this.state.formData[key]
             });
+            // console.log(formElementsArray)
         }
-    const form =(
+    const exceptLoadingform =(
       <div>
     {formElementsArray.map(formElement => (
       <Input elementType={formElement.config.elementType}
              elementConfig={formElement.config.elementConfig}
              key={formElement.id} label={formElement.config.label}
              value={formElement.config.value}
-             keypress={(e)=>this.keypress(e)}
+            //  keypress={(e)=>this.keypress(e)}
+            isvalid={!formElement.config.valid}
+            shouldValidate={formElement.config.validation}
              changed={(e)=>this.inputChangeHandler(e,formElement.id,formElement.config.modal)}
              /> 
+             
     ))}
     </div>);   
    
@@ -80,7 +104,7 @@ class form extends Component {
        
         return(
          
-        <div>
+        <div key={imageElement.name}>
            <Grid.Column width={4}>
          {imageElement.name}
         <Image key={imageElement.name} onClick={(e)=>{this.onclick(e,imageElement.name,imageElement.modal)}} size="medium" src={require(`../../assets/${imageElement.Location}`)} alt={imageElement.name} />
@@ -91,7 +115,7 @@ class form extends Component {
        return(
           <div>
             <div className="form">
-              { form }         
+              { exceptLoadingform }         
             </div>
             <Header>Loading Selection</Header>
             <Grid>
@@ -99,7 +123,7 @@ class form extends Component {
             {image}
         </Grid.Row>
         </Grid>
-    {this.state.modalopen?<Modal modalIdentity={this.state.modalIdentity}  modalopen={this.state.modalopen} modalclose={this.modalclose}/>:null};
+    {this.state.modalopen?<Modal modalIdentity={this.state.modalIdentity} formData={this.state.formData}  modalopen={this.state.modalopen} inputChangeHandler={(e)=>this.inputChangeHandler(e)} modalclose={this.modalclose}/>:null};
             
           </div>
        );
