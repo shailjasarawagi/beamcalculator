@@ -1,55 +1,39 @@
-import React, { Component } from "react";
-import * as data from "../../JSONfiles/modal.json";
+import React from "react";
 import { Modal, Image, Grid } from 'semantic-ui-react';
 import Input from '../../components/Input/input';
-// import classes from "./module.css";
 
-class modal extends Component {
-  state = {
-    modalData: {}
-  }
-
-  componentDidMount() {
-    // console.log(data.default[this.props.modalIdentity], "id");
-    // console.log(data.default[this.props.modalIdentity], this.props.modalIdentity, data.default["Uniform Distributed Load"])
-    this.setState({ modalData: data.default[this.props.modalIdentity] }, () => {
-      console.log("modal in componentDidimount", this.state.modalData);
-    });
-
-  }
-  
-
-  render() {
+  const modal = ( props ) => {
+    const modalId = props.modalIdentity;
     const modalArray = [];
-    for (let key in this.state.modalData) {
+    for (let key in props.formData) {
       modalArray.push({
+        modalIdentity:props.modalIdentity,
         id: key,
-        config: this.state.modalData[key]
+        config: props.formData[key],  
       });
     }
-    console.log("Modal", modalArray);
-    
-    
     const modalInput = modalArray.map(modalElement => {
       return modalElement.config.elementType !== "image" ?
-  <Input elementType={modalElement.config.elementType}
+      <Input elementType={modalElement.config.elementType}
          elementConfig={modalElement.config.elementConfig}
                   label={modalElement.config.label}  
                   value={modalElement.config.value}
-                  changed={(e)=>this.props.inputChangeHandler(e,modalElement.value)}
+                key={modalElement.id}
+                  changed={(e,id,modalidentity)=>props.modalInputChangeHandler(e,modalElement.id,modalId)}
                   /> :null
     });
     const modalImage = modalArray.map(modalElement => (
-    modalElement.config.Location !== undefined?<Image wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)}/>:null));
+    modalElement.config.Location !== undefined?<Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)}/>:null));
 
     return (
       <div>
         <Modal 
         style={{marginTop:"-240px"}}
         centered={false}
-        open={this.props.modalopen} 
-        closeIcon onClose={this.props.modalclose} >
-     <Modal.Header>{this.props.modalIdentity}</Modal.Header>
+        open={props.modalopen} 
+        modalIdentity={props.modalIdentity}
+        closeIcon onClose={props.modalclose} >
+     <Modal.Header>{props.modalIdentity}</Modal.Header>
      <Modal.Content  image>
  <Grid>
       <Grid.Row>
@@ -62,5 +46,5 @@ class modal extends Component {
       </div>
     );
   }
-}
-export default modal;
+
+  export default modal;

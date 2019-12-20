@@ -27,7 +27,7 @@
         }
     },
     "Circular Hollow": {
-        "Outside Diameter(d0)": {
+        "Outside Diameter": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -40,7 +40,7 @@
             "valid": false,
             "label": "Outside Diameter"
         },
-        "Thickness(t)": {
+        "Thickness": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -67,7 +67,7 @@
         }
     },
     "Rectangular Solid": {
-        "Breadth(b)": {
+        "Breadth": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -80,7 +80,7 @@
             "valid": false,
             "label": "Breadth"
         },
-        "Height(h)": {
+        "Height": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -106,7 +106,7 @@
         }
     },
     "Rectangular Hollow": {
-        "Breadth(b)": {
+        "Breadth": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -118,7 +118,7 @@
             },
             "label": "Breadth"
         },
-        "Height(h)": {
+        "Height": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -130,7 +130,7 @@
             },
             "label": "Height"
         },
-        "Thickness(t)": {
+        "Thickness": {
             "elementType": "input",
             "elementConfig": {
                 "type": "number",
@@ -221,34 +221,27 @@
             "label": "Distance From A"
         },
         "Direction":{
-            "Up":{
-
-                "elementType":"input",
-              "elementConfig":{
-                  "type":"radio"
-                        },
-              "value": "",
-              "validation": {
-                  "required": true
-                   },
-                   "valid": false,
-                   "label":"Up"
-          },
-          "Down":{
-              "elementType":"input",
-              "elementConfig":{
-                  "type":"radio"
-                        },
-              "value": "",
-              "validation": {
-                  "required": true
-                   },
-                   "label":"Down"  
-          },
-          "valid": false,
-          "label":"Direction"
-      }
-    },
+            "elementType": "select",
+            "elementConfig": {
+                "type": "radio",
+                "placeholder": "",
+                "options":[
+                    {"value":"Up" ,"displayValue":"Up"},
+                    {"value":"Down" ,"displayValue":"Down"} 
+                ]
+            },
+            "value":"",
+            
+            "validation": {
+                "required": true
+            },
+            "valid": false,
+            "label":"Direction" 
+    }
+         
+          
+      },
+    
     "Uniform Distributed Load":{
         "Starting point of UDL from A": {
             "elementType": "input",

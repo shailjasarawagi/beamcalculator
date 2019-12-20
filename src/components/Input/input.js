@@ -43,6 +43,7 @@ const input = ( props ) => {
                 </select>
             );
             break;
+            
         case ('image'):
                 inputElement = <Image
                 className={inputClasses.join(' ')}
