@@ -1,13 +1,14 @@
 import React from 'react';
 
 import classes from './input.css';
-import {Image} from 'semantic-ui-react';
+import {Image,Radio} from 'semantic-ui-react';
 const input = ( props ) => {
     // console.log(props);
     let inputElement = null;
     const inputClasses = [classes.InputElement];
 //    console.log(props.invalid)
-    if (props.invalid && props.shouldValidate) {
+    
+    if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
 
@@ -35,9 +36,10 @@ const input = ( props ) => {
                     className={inputClasses.join(' ')}
                     value={props.value}
                     onChange={props.changed}>
+                      
                     {props.elementConfig.options.map(option => (
                         <option key={option.value} value={option.value}>
-                            {option.displayValue}
+                         {props.elementConfig.options.Location !== undefined ?  <Image src={require(`../../assets/${option.Location}`)} alt={option.value}/> : null}  {option.displayValue} 
                         </option>
                     ))}
                 </select>
@@ -51,6 +53,16 @@ const input = ( props ) => {
                 value={props.value}
                 onChange={props.changed} />;
                 break;
+
+        case ( 'radio' ):
+              inputElement = <Radio
+            className={inputClasses.join(' ')}
+            {...props.elementConfig}
+            value={props.value}
+            onChange={props.changed}/>;
+ 
+    
+    break;
         default:
             inputElement = <input
                 style={{...props.style}}

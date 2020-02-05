@@ -23,7 +23,7 @@
             "options":[
                 {"value":"steel" ,"displayValue":"Steel"},
                 {"value":"Aluminium" ,"displayValue":"Aluminium"} 
-            ]
+                      ]
         },
         "value":"",
         "label": "Material Choices",
@@ -41,9 +41,9 @@
         "placeholder": "",
       
         "options":[
-            {"value":"Simply Supported" ,"displayValue":"Simply Supported"},
-            {"value":"Cantilever" ,"displayValue":"Cantilever"}, 
-            {"value":"Fixed at both side","displayValue":"Fixed at both side"}
+            {"value":"Simply Supported" ,"displayValue":"Simply Supported","Location":"POINT LOADING1.png"},
+            {"value":"Cantilever" ,"displayValue":"Cantilever","Location":"POINT LOADING1.png"}, 
+            {"value":"Fixed at both side","displayValue":"Fixed at both side","Location":"POINT LOADING1.png"}
         ]
     },
     "label":"Support Choice",

@@ -11,7 +11,8 @@
                 "required": true
             },
             "valid":false,
-            "label": "Diameter"
+            "label": "Diameter",
+            "touched": false
         },
         "Image": {
             "elementType": "image",
@@ -38,7 +39,8 @@
                 "required": true
             },
             "valid": false,
-            "label": "Outside Diameter"
+            "label": "Outside Diameter",
+            "touched": false
         },
         "Thickness": {
             "elementType": "input",
@@ -51,7 +53,8 @@
                 "required": true
             },
             "valid": false,
-            "label": "Thickness"
+            "label": "Thickness",
+            "touched": false
         },
         "Image": {
             "elementType": "image",
@@ -78,7 +81,8 @@
                 "required": true
             },
             "valid": false,
-            "label": "Breadth"
+            "label": "Breadth",
+            "touched": false
         },
         "Height": {
             "elementType": "input",
@@ -91,7 +95,8 @@
                 "required": true
             },
             "valid": false,
-            "label": "Height"
+            "label": "Height",
+            "touched": false
         },
         "Image": {
             "elementType": "image",
@@ -116,7 +121,8 @@
             "validation": {
                 "required": true
             },
-            "label": "Breadth"
+            "label": "Breadth",
+            "touched": false
         },
         "Height": {
             "elementType": "input",
@@ -128,7 +134,8 @@
             "validation": {
                 "required": true
             },
-            "label": "Height"
+            "label": "Height",
+            "touched": false
         },
         "Thickness": {
             "elementType": "input",
@@ -140,7 +147,8 @@
             "validation": {
                 "required": true
             },
-            "label": "Thickness"
+            "label": "Thickness",
+            "touched": false
         },
         "Image": {
             "elementType": "image",
@@ -164,7 +172,8 @@
                 "required": true
             },
             "valid": false,
-            "label": "Point Load"
+            "label": "Point Load",
+            "touched": false
         },
         "Distance from A": {
             "elementType": "input",
@@ -177,20 +186,36 @@
                 "required": true
                           },
              "valid": false,
-            "label": "Distance From A"
+            "label": "Distance From A",
+            "touched": false
         },
-        "Direction":{
+        "UDirection":{
             "elementType":"radio",
             "elementConfig":{
                 "type":"radio"
-                      },
-            "value": "",
+                
+                        },
+            "value": "Up",
             "validation": {
                 "required": true
-                 },
-                 "valid": false,
-                 "label":"Direction"
-
+                    },
+            "valid": false,
+            "label":"Up",
+            "touched": false
+    
+        },
+        "DDirection":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"  },
+            "value": "Down",
+            "validation": {
+                "required": true
+                    },
+            "valid": false,
+            "label":"Down",
+            "touched": false
+    
         }
     },
     "Moment Loading":{
@@ -205,7 +230,8 @@
                 "required": true
             },
             "valid": false,
-            "label": "Point Moment"
+            "label": "Point Moment",
+            "touched": false
         },
         "Distance from A": {
             "elementType": "input",
@@ -218,26 +244,38 @@
                 "required": true
                           },
             "valid": false,
-            "label": "Distance From A"
+            "label": "Distance From A",
+            "touched": false
         },
-        "Direction":{
-            "elementType": "select",
-            "elementConfig": {
-                "type": "radio",
-                "placeholder": "",
-                "options":[
-                    {"value":"Up" ,"displayValue":"Up"},
-                    {"value":"Down" ,"displayValue":"Down"} 
-                ]
-            },
-            "value":"",
-            
+        "UDirection":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"
+                
+                        },
+    
+            "value": "Up",
             "validation": {
                 "required": true
-            },
+                    },
             "valid": false,
-            "label":"Direction" 
-    }
+            "label":"Up",
+            "touched": false
+    
+        },
+        "DDirection":{
+            "elementType":"radio",
+            "elementConfig":{
+                "type":"radio"  },
+            "value": "Down",
+            "validation": {
+                "required": true
+                    },
+            "valid": false,
+            "label":"Down",
+            "touched": false
+    
+        }
          
           
       },
@@ -265,7 +303,8 @@
             "validation": {
                 "required": true
                           },
-            "label": "Ending point of UDL from A"
+            "label": "Ending point of UDL from A",
+            "touched": false
         },
         "Value of UDl":{
             "elementType": "input",
@@ -277,33 +316,38 @@
             "validation": {
                 "required": true
                           },
-            "label": "Value of UDL"
+            "label": "Value of UDL",
+            "touched": false
         },
-        "Direction":{
-            "Up":{
-
-              "elementType":"input",
+        "UDirection":{
+            "elementType":"radio",
             "elementConfig":{
                 "type":"radio"
-                      },
-            "value": "",
+                
+                        },
+    
+            "value": "Up",
             "validation": {
                 "required": true
-                 },
-                 "label":"Up"
+                    },
+            "valid": false,
+            "label":"Up",
+            "touched": false
+    
         },
-        "Down":{
-            "elementType":"input",
+        "DDirection":{
+            "elementType":"radio",
             "elementConfig":{
-                "type":"radio"
-                      },
-            "value": "",
+                "type":"radio"  },
+            "value": "Down",
             "validation": {
                 "required": true
-                 },
-                 "label":"Down"  
+                    },
+            "valid": false,
+            "label":"Down",
+            "touched": false
+    
         }
-    }
 },
     "Trapezoidal Loading":{
         "Starting point of load from A": {
@@ -316,7 +360,8 @@
             "validation": {
                 "required": true
             },
-            "label": "Starting point of UDL from A"
+            "label": "Starting point of UDL from A",
+            "touched": false
         },
         "Ending point of load from A": {
             "elementType": "input",
@@ -328,7 +373,8 @@
             "validation": {
                 "required": true
                           },
-            "label": "Ending point of UDL from A"
+            "label": "Ending point of UDL from A",
+            "touched": false
         },
         "Starting Load":{
             "elementType": "input",
@@ -340,7 +386,8 @@
             "validation": {
                 "required": true
                           },
-            "label": "Starting Load"
+            "label": "Starting Load",
+            "touched": false
         },
         "Ending Load":{
             "elementType": "input",
@@ -349,20 +396,40 @@
                 "placeholder": "Enter the ending load"
                             },
             "value": "",
+            "touched": false,
             "validation": {
                 "required": true
                           },
             "label": "Ending Load"
                      },
-        "Direction":{
-            "elementType":"radio",
-            "elementConfig":{
-                "type":"radio"
-                      },
-            "value": "",
-            "validation": {
-                "required": true
-                 }
-        }  
+        "UDirection":{
+        "elementType":"radio",
+        "elementConfig":{
+            "type":"radio"
+            
+                    },
+
+        "value": "Up",
+        "validation": {
+            "required": true
+                },
+        "valid": false,
+        "label":"Up",
+        "touched": false
+
+    },
+    "DDirection":{
+        "elementType":"radio",
+        "elementConfig":{
+            "type":"radio"  },
+        "value": "Down",
+        "validation": {
+            "required": true
+                },
+        "valid": false,
+        "label":"Down",
+        "touched": false
+
+    }
     }
 }

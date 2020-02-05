@@ -19,7 +19,10 @@ const modal = (props) => {
         label={modalElement.config.label}
         value={modalElement.config.value}
         key={modalElement.id}
-        changed={(e, id, modalidentity) => props.modalInputChangeHandler(e, modalElement.id, modalId)}
+        isvalid={!modalElement.config.valid}
+        shouldValidate={modalElement.config.validation}
+        touched={modalElement.config.touched}
+        changed={(e,id,modalIdentity,isvalid,touched,shouldValidate) => props.modalInputChangeHandler(e, modalElement.id, modalId,isvalid,touched,shouldValidate)}
       /> : null
   });
   const modalImage = modalArray.map(modalElement => (
@@ -31,7 +34,7 @@ const modal = (props) => {
         style={{ marginTop: "-240px" }}
         centered={false}
         open={props.modalopen}
-        modalIdentity={props.modalIdentity}
+        // modalIdentity={props.modalIdentity}
         closeIcon onClose={props.modalclose} >
         <Modal.Header>{props.modalIdentity}</Modal.Header>
         <Modal.Content image>

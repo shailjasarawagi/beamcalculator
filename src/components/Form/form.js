@@ -24,49 +24,66 @@ class form extends Component {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
-  //   checkValidity(value, rules) {
-  //     let isValid = true;
-  //     if (rules.required) {
-  //         isValid = value.trim() !== '' && isValid;
-  //     }
-  //     return isValid;
-  // }
+    checkValidity(value, rules) {
+      console.log("hello")
+      let isValid = true;
+      if (rules.required) {
+          isValid = value.trim() !== '' && isValid;
+      }
+      
+      console.log(isValid);
+      return isValid;
+     
+  }
 
-  modalInputChangeHandler = (event, inputIdentifier, modalIdentity) => {
+
+  modalInputChangeHandler = (event, inputIdentifier, modalIdentity,isvalid,touched,shouldValidate) => {
+     
     let updatedmodalData = {
       ...this.state.modalData
     };
+
     const modalElement = {
       ...updatedmodalData[modalIdentity]
     }
+
     const updatedmodalElement = {
       ...modalElement[inputIdentifier]
     };
+
     updatedmodalElement.value = event.target.value;
     modalElement[inputIdentifier] = updatedmodalElement;
+    updatedmodalElement.touched = true;
+    updatedmodalElement.valid=this.checkValidity(updatedmodalElement.value,updatedmodalElement.validation)
+
     console.log(modalElement);
     updatedmodalData = {
       ...this.state.modalData,
       [modalIdentity] : modalElement
     }
-    console.log(updatedmodalData);
+    console.log(updatedmodalData,updatedmodalElement);
     this.setState({modalData:updatedmodalData},()=>{
       // console.log(this.state.modalData);
     });
+   
   }
+
   inputChangeHandler = (event, inputIdentifier, modalrender) => {
     const updatedFormData = {
       ...this.state.formData
     };
+
     const updatedFormElement = {
       ...updatedFormData[inputIdentifier]
     };
+
     updatedFormElement.value = event.target.value;
     updatedFormData[inputIdentifier] = updatedFormElement;
-    // updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-    // console.log(updatedFormElement.valid);
-
-    this.setState({ formData: updatedFormData });
+    updatedFormElement.touched = true;
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    console.log(updatedFormElement);
+   
+    this.setState({ formData: updatedFormData});
     if (modalrender === true) {
       this.setState({ modalIdentity: event.target.value, modalopen: true });
     }
@@ -88,12 +105,14 @@ class form extends Component {
     const exceptLoadingform = (
       <div>
         {formElementsArray.map(formElement => (
+           
           <Input elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
             key={formElement.id} label={formElement.config.label}
             value={formElement.config.value}
             isvalid={!formElement.config.valid}
             shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
             changed={(e) => this.inputChangeHandler(e, formElement.id, formElement.config.modal)}
           />
         ))}

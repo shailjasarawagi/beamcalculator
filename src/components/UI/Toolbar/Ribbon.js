@@ -87,7 +87,7 @@ const desktopoptions = [
                 placeholder='Search...' /></Menu.Item>
 
                 <Menu.Item href={calcgenurl + "myapps"}>My Apps</Menu.Item>
-              <Menu.Item href={calcgenurl + "forum/forum/pipingdb-2/"}>Forum</Menu.Item>
+              <Menu.Item href={calcgenurl + "forum/forum/beam calculator/"}>Forum</Menu.Item>
               <Menu.Item href={calcgenurl + "support"}>Support</Menu.Item>
                 <Menu.Item >
                 <Dropdown icon="user" selectOnBlur={false} selectOnNavigation={false}
