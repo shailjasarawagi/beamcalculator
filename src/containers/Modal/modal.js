@@ -22,9 +22,9 @@ const modal = (props) => {
         changed={(e, id, modalidentity) => props.modalInputChangeHandler(e, modalElement.id, modalId)}
       /> : null
   });
-  const modalImage = modalArray.map(modalElement => (
-    modalElement.config.Location !== undefined ? <Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)} /> : null));
-
+  const modalImage = modalArray.filter(item => item.config.Location).map(modalElement => (
+    <Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)} />));
+  console.log(modalImage);
   return (
     <div>
       <Modal
@@ -35,16 +35,16 @@ const modal = (props) => {
         closeIcon onClose={props.modalclose} >
         <Modal.Header>{props.modalIdentity}</Modal.Header>
         <Modal.Content image>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={8}>{modalInput}</Grid.Column>
-              <Grid.Column width={8}>{modalImage}</Grid.Column>
+          <Grid centered>
+            <Grid.Row stackable columns={2}>
+              <Grid.Column width={12}>{modalInput}</Grid.Column>
+              <Grid.Column width={4}>{modalImage}</Grid.Column>
             </Grid.Row>
           </Grid>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={props.modalclose}>Cancel</Button>
-          <Button primary onClick={props.modalInputChangeHandler}>
+          <Button primary onClick={props.modalInputSubmit}>
             Add
           </Button>
         </Modal.Actions>

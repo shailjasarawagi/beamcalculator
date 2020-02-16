@@ -7,3 +7,9 @@
     padding: 10px;
     box-sizing: border-box;
 }
+.loadingimage{
+    background-size: cover;
+  background-position: center center;
+  height: 400px;
+  width: 100%;
+}
