@@ -1,16 +1,19 @@
 import React from 'react';
-import Form from "./components/Form/form";
+// import Form from "./components/Form/form";
 import './App.css';
-import {Header} from 'semantic-ui-react';
-import Ribbon from '../src/components/UI/Toolbar/Ribbon';
-import Footer from '../src/components/UI/Footer/Footer';
+// import {Header} from 'semantic-ui-react';
+import Ribbon from '../src/components/navigation/Toolbar/Ribbon';
+import Footer from '../src/components/navigation/Footer/Footer';
+import BeamForm from '../src/containers/BeamForm/beamform';
 
 function App() {
   return (
     <div className="App">
        <Ribbon/>
-       <Header size="large" style={{ marginTop:"50px" }}>Beam Calculator</Header>
-     <Form />
+       <div style={{paddingTop:"100px"}}>
+        <BeamForm/>
+        
+       </div>
      <Footer/>
     </div>
   );

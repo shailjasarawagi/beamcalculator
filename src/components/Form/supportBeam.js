@@ -4,7 +4,7 @@ import * as data from "../../JSONfiles/selection.json";
 import * as modalData from "../../JSONfiles/modal.json";
 import Input from '../Input/input';
 import Modal from '../../containers/Modal/modal';
-import { Image, Header, Grid } from "semantic-ui-react";
+// import { Image, Header, Grid } from "semantic-ui-react";
 import "./form.css";
 
 class form extends Component {
@@ -116,27 +116,13 @@ class form extends Component {
           />
         ))}
       </div>);
-    const image = this.state.imageData.map(imageElement => {
-      return (
-        <div key={imageElement.name}>
-          <Grid.Column width={4}>
-            {imageElement.name}
-            <Image key={imageElement.name} onClick={(e) => { this.onclick(e, imageElement.name, imageElement.modal) }} size="medium" src={require(`../../assets/${imageElement.Location}`)} alt={imageElement.name} />
-          </Grid.Column>
-        </div>
-      )
-    })
+    
     return (
        <div>
-        <div className="form">
+        <div>
           {exceptLoadingform}
         </div>
-        <Header>Loading Selection</Header>
-        <Grid>
-          <Grid.Row>
-            {image}
-          </Grid.Row>
-        </Grid>
+        
         {this.state.modalopen ? <Modal modalIdentity={this.state.modalIdentity}
           formData={this.state.modalData[this.state.modalIdentity]}
           modalopen={this.state.modalopen}

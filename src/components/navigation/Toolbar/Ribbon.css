@@ -1,0 +1,80 @@
+i.icon, i.icons {
+    font-size: .833em;
+    height: 2em;
+  
+}
+.ui.icon.input input {
+    padding-right: 12.671em !important;
+}
+
+.ui.dropdown {
+    /* margin-top: 15px; */
+    color:white;
+    padding-right: 2rem;
+}
+.search{
+    margin-top: 4px;
+}
+
+.search1{
+    margin-top: 1px;
+}
+
+.imagess{
+    
+    width: 30px;
+}
+
+.ui.menu .item,a,a:hover{
+    color: white !important;
+    cursor: pointer;
+    
+}
+  
+.logo {
+height:170%;   
+}
+
+
+
+
+.toplevelmenu{
+    background-color: #1a3260 !important;
+    height: 40px;
+    width: 100%;
+    border-radius: 0px;
+    border: none !important;
+    
+}
+
+.bottomlevelmenu{
+    background-color: #4590b8 !important;
+    height:25px;  
+    border: none !important;
+    display: flex;
+    box-sizing: border-box;
+    z-index: 90;
+}
+
+
+@media (min-width: 926px) { 
+
+.mobilemenu{
+    display: none;
+}
+}
+
+@media (max-width: 925px){
+    .desktopmenu{
+        display: none;
+    }
+    .logo{
+        height: 80%;
+        width:50px;
+        margin-top:6px;
+    }
+    .DesktopOnly {
+        display: none;
+    }
+   
+}

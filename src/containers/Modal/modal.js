@@ -11,6 +11,7 @@ const modal = (props) => {
       id: key,
       config: props.formData[key],
     });
+    console.log(modalArray);
   }
   const modalInput = modalArray.map(modalElement => {
     return modalElement.config.elementType !== "image" ?
@@ -31,7 +32,6 @@ const modal = (props) => {
   return (
     <div>
       <Modal
-        style={{ marginTop: "-240px" }}
         centered={false}
         open={props.modalopen}
         // modalIdentity={props.modalIdentity}
