@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import * as data from '../../JSONfiles/form.json';
 import CrossSection from '../../Components/CrossSection/crosssection';
-// import LoadingSection from '../../Components/LoadingSection/loadingsection';
-import * as crosssectionelements from "../../JSONfiles/crosssection.json";
+import LoadingSection from '../../Components/LoadingSection/loadingsection';
+// import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 // import * as loadingsectionelement from "../../JSONfiles/loadingsection.json";
 import Input from '../../Components/UI/Input/input';
 // import Modal from '../Modal/modal';
@@ -13,12 +13,14 @@ import Input from '../../Components/UI/Input/input';
 class Beamform extends Component {
     state = {
         formData: {},
-        crossData:{},
         modalopen: false,
+        modalInput:{},
+        modalIdentity:''
+     
       }
 
+      
       componentDidMount() {
-        console.log("fff");
         this.setState({ formData: data.default});
       }
     
@@ -60,30 +62,31 @@ class Beamform extends Component {
       
      
      
-      inputChangeHandler = (event, inputIdentifier, modalrender) => {
+      inputChangeHandler = (event, inputIdentifier) => {
+        console.log(event,inputIdentifier);
         const updatedFormData = {
           ...this.state.formData
         };
+        console.log(updatedFormData)
         const updatedFormElement = {
           ...updatedFormData[inputIdentifier]
         };
+        console.log(updatedFormElement);
         updatedFormElement.value = event.target.value;
         updatedFormData[inputIdentifier] = updatedFormElement;
         updatedFormElement.touched = true;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         console.log(updatedFormElement);
         this.setState({ formData: updatedFormData});
-        if (modalrender === true) {
-          this.setState({ modalIdentity: event.target.value, modalopen: true });
-        }
+        console.log(this.state.formData);
+       
       }
     
     
-      onclick = (event, inputIdentifier, modalrender) => {
-        if (modalrender === true) {
-          this.setState({ modalIdentity: inputIdentifier, modalopen: true });
+      onclick = (event,modalContent,Identity) => {
+      //  console.log('fff',modalContent);
+          this.setState({modalopen: true ,modalInput: modalContent,modalIdentity:Identity});
         }
-      }
+      
     
 
     render(){
@@ -94,6 +97,7 @@ class Beamform extends Component {
         config: this.state.formData[key]
       });
     }
+  //  console.log(formElementsArray);
     const form = (
       <div>
         {formElementsArray.map(formElement => (
@@ -104,9 +108,10 @@ class Beamform extends Component {
             label={formElement.config.label}
             value={formElement.config.value}
             isvalid={!formElement.config.valid}
+            option={formElement.config.options}
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
-            changed={(e) => this.inputChangeHandler(e, formElement.id, formElement.config.modal)}
+            changed={(e) => this.inputChangeHandler(e, formElement.id)}
           />
         ))}
       </div>);
@@ -115,11 +120,15 @@ class Beamform extends Component {
         <div className="row container-fluid">
         <div className="col-lg-6 col-md-6 col-sm-12">
             {form}
-            <CrossSection  crossData={this.state.crossData} modalclose={this.modalclose}
-            modalopen={this.state.modalopen} />
+            <br></br>
+            <CrossSection modalclose={this.modalclose}
+            modalopen={this.state.modalopen} onclick={this.onclick}
+             modalInput={this.state.modalInput} Identity={this.state.modalIdentity}/>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
-         hello
+        <LoadingSection  modalclose={this.modalclose}
+        modalopen={this.state.modalopen} onclick={this.onclick}
+         modalInput={this.state.modalInput} Identity={this.state.modalIdentity} />
         </div>
     </div>
         

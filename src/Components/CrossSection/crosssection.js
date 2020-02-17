@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import Input from '../../Components/UI/Input/input';
 import Modal from '../../Container/Modal/modal';
 import { Image, Grid } from "semantic-ui-react";
 import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 
 class CrossSection extends Component {
     
-
-
-
     render(){
       const ElementsArray = [];
       const crossSection = crosssectionelements.default.Cross_Section;
@@ -21,17 +17,33 @@ class CrossSection extends Component {
      
 
       const cElements = (
-        <div>
+        <>
           {ElementsArray.map(cElement => (
-            <p>{cElement.config.name}</p>
+            
+            <Grid.Column width={4} key={cElement.config.name}>
+              {cElement.config.name}
+              <Image key={cElement.config.name} 
+              onClick={(e) => { this.props.onclick(e,cElement.config,cElement.config.name) }} 
+              size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
+            </Grid.Column>
+          
           ))}
-        </div>);
+        </>)
      
       
        return(
         <div >
-    {cElements}
-        hello
+      <Grid>
+          <Grid.Row>
+            {cElements}
+          </Grid.Row>
+        </Grid>
+        {this.props.modalopen ? <Modal 
+          modalInput={this.props.modalInput}
+          modalopen={this.props.modalopen}
+          modalclose={this.props.modalclose}
+          identity={this.props.Identity} />
+          : null}
       </div>
        );
     }

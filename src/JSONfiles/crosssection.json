@@ -5,8 +5,7 @@
         "Circular Solid":
             {
             "name": "Circular Solid",
-            "elementType": "image",
-            "Location": "Circular Solid.png",
+            "Location": "Circular solid.JPG",
             "modal":true,
 
                     "Diameter": {
@@ -39,8 +38,7 @@
         "Circular Hollow":
             {
             "name": "Circular Hollow",
-            "elementType": "image",
-            "Location":"Circular Hollow.png",
+            "Location":"Circular Hollow.JPG",
             "modal":true,
             
                         "Outside Diameter": {
@@ -87,8 +85,7 @@
         "Rectangular Solid":
             {
             "name": "Rectangular Solid",
-            "elementType": "image",
-            "Location": "Rectangular Solid.png",
+            "Location": "Rectangular Solid.JPG",
             "modal":true,
                         "Breadth": {
                             "elementType": "input",
@@ -133,8 +130,7 @@
         "Rectangular Hollow":
             {
             "name": "Rectangular Hollow",
-            "elementType": "image",
-            "Location": "Rectangular Hollow.png",
+            "Location": "Rectangular Hollow.JPG",
             "modal":true, 
                         "Breadth": {
                             "elementType": "input",
@@ -181,7 +177,6 @@
                                 "type": "image"
                             },
                             "value": "",
-                        
                             "Location": "Rectangular Hollow.JPG"
                         }
     }
