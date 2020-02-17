@@ -2,7 +2,7 @@
 import React from 'react';
 
 import calcgenLogo from '../../../assets/calcgen.png';
-import   './Logo.css';
+import   './logo.css';
 
 const logo = (props) => (
     <div className="Logo" style={{height: props.height}}>

@@ -1,6 +1,6 @@
 /**his component displays the footer component in page which is fixed  */
 import React from 'react';
-import classes from './Footer.module.css';
+import classes from './footer.css';
 
 const Footer = () => ( 
     <div className={classes.footer}> 
