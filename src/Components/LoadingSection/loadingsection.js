@@ -36,7 +36,7 @@ class LoadSection extends Component {
                         {lElements}
                     </Grid.Row>
                 </Grid>
-                {(this.props.modalopen && (this.props.modalId===null || this.props.modalId==="LoadingSection")) ? <Modal
+                {(this.props.modalopen && (this.props.modalId==="LoadingSection")) ? <Modal
                     modalInput={this.props.modalInput}
                     modalopen={this.props.modalopen}
                     modalclose={this.props.modalclose}
