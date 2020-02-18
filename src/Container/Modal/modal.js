@@ -28,8 +28,8 @@ class Modal1 extends Component {
 
 
   render() {
-    console.log(this.props.Add)
-    console.log(this.props.modalInput.fields)
+    console.log(this.props)
+    // console.log(this.props.modalInput.fields)
 
     const modalArray = [];
     for (let key in this.state.formData) {
@@ -77,10 +77,13 @@ class Modal1 extends Component {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={this.props.modalclose}>Cancel</Button>
-          <Button primary onClick={this.props.Add}>Add</Button>
+          <Button primary onClick={this.props.addFunction}>Add</Button>
         </Modal.Actions>
       </Modal>
     );
   }
+  // hello=()=>{
+  //   console.log("gejdn")
+  // }
 }
 export default Modal1;

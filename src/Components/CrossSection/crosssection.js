@@ -6,7 +6,7 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 class CrossSection extends Component {
 
   render() {
-    console.log(this.props.Add);
+    // console.log(this.props.Add);
     const ElementsArray = [];
     const crossSection = crosssectionelements.default.Cross_Section;
     for (let key in crossSection) {
@@ -20,7 +20,7 @@ class CrossSection extends Component {
       <Grid.Column width={4} key={cElement.config.name}>
         {cElement.config.name}
         <Image key={cElement.config.name}
-          onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name) }}
+          onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name,"CrossSection") }}
           size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
       </Grid.Column>
     ))
@@ -32,17 +32,18 @@ class CrossSection extends Component {
             {cElements}
           </Grid.Row>
         </Grid>
-        {this.props.modalopen ? <Modal
+        {(this.props.modalopen && (this.props.modalId===null || this.props.modalId==="CrossSection")) ? <Modal
           
           modalInput={this.props.modalInput}
           modalopen={this.props.modalopen}
           modalclose={this.props.modalclose}
-          Add={this.props.Add}
+          addFunction={this.props.addFunction}
           identity={this.props.Identity} />
           : null}
       </div>
     );
   }
+
 }
 
 export default CrossSection;

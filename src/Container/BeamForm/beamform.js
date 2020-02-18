@@ -10,7 +10,8 @@ class Beamform extends Component {
     formData: data.default,
     modalopen: false,
     modalInput: {},
-    modalIdentity: ''
+    modalIdentity: '',
+    modalId:null
   }
 
   
@@ -20,7 +21,7 @@ class Beamform extends Component {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
-  Add = () => {
+  addFunction = () => {
     console.log("shailja");
  this.setState({ modalopen: false});
   }
@@ -40,8 +41,8 @@ class Beamform extends Component {
     console.log(this.state.formData);
   }
 
-  onclick = (event, modalContent, Identity) => {
-    this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity });
+  onclick = (event, modalContent, Identity,id) => {
+    this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity ,modalId:id});
   }
 
   render() {
@@ -75,15 +76,16 @@ class Beamform extends Component {
           {form}
           <br></br>
           <CrossSection modalclose={this.modalclose}
-            Add={this.Add}
+            addFunction={this.addFunction}
             modalopen={this.state.modalopen} onclick={this.onclick}
-            modalInput={this.state.modalInput} Identity={this.state.modalIdentity} />
+            modalInput={this.state.modalInput} Identity={this.state.modalIdentity} 
+            modalId={this.state.modalId}/>
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
           <LoadingSection modalclose={this.modalclose}
-             Add={this.Add}
             modalopen={this.state.modalopen} onclick={this.onclick}
-            modalInput={this.state.modalInput} Identity={this.state.modalIdentity} />
+            modalInput={this.state.modalInput} Identity={this.state.modalIdentity} 
+            modalId={this.state.modalId}/>
         </div>
       </div>
     );
