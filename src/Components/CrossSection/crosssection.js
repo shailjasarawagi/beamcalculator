@@ -15,21 +15,14 @@ class CrossSection extends Component {
       });
     }
 
-
-    const cElements = (
-      <>
-        {ElementsArray.map(cElement => (
-
-          <Grid.Column width={4} key={cElement.config.name}>
-            {cElement.config.name}
-            <Image key={cElement.config.name}
-              onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name) }}
-              size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
-          </Grid.Column>
-
-        ))}
-      </>)
-
+    const cElements = ElementsArray.map(cElement => (
+      <Grid.Column width={4} key={cElement.config.name}>
+        {cElement.config.name}
+        <Image key={cElement.config.name}
+          onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name) }}
+          size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
+      </Grid.Column>
+    ))
 
     return (
       <div >
@@ -47,10 +40,6 @@ class CrossSection extends Component {
       </div>
     );
   }
-
 }
 
 export default CrossSection;
-
-
-

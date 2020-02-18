@@ -1,4 +1,4 @@
-{
+const imageSelect = {
     "Length of beam": {
         "elementType": "input",
         "elementConfig": {
@@ -21,12 +21,14 @@
             "placeholder": "",
             "options": [
                 {
-                    "value": "steel",
-                    "displayValue": "Steel"
+                    "text": "Steel",
+                    "value": "Steel"
+
                 },
                 {
-                    "value": "Aluminium",
-                    "displayValue": "Aluminium"
+                    "text": "Aluminium",
+                    "value": "Aluminium"
+
                 }
             ]
         },
@@ -45,19 +47,19 @@
             "placeholder": "",
             "options": [
                 {
+                    "text": "Simply Supported",
                     "value": "Simply Supported",
-                    "displayValue": "Simply Supported",
-                    "display": "Simply"
+                    "image": require(`../assets/Simply Supported.png`)
                 },
                 {
+                    "text": "Cantilever",
                     "value": "Cantilever",
-                    "displayValue": "Cantilever",
-                    "display": "Cantilever"
+                    "image":  require(`../assets/Cantilever.png`)
                 },
                 {
+                    "text": "Fixed at both side",
                     "value": "Fixed at both side",
-                    "displayValue": "Fixed at both side",
-                    "display": "Fixed"
+                    "image":  require(`../assets/Fixed at both side.png`)
                 }
             ]
         },
@@ -69,3 +71,4 @@
         "touched": false
     }
 }
+export default imageSelect;

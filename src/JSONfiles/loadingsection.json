@@ -4,6 +4,7 @@
             "name": "Point Loading",
             "Location": "POINT LOADING1.png",
             "modal": true,
+            "fields": {
             "Point Load": {
                 "elementType": "input",
                 "elementConfig": {
@@ -58,11 +59,13 @@
                 "label": "Down",
                 "touched": false
             }
-        },
+        }
+    },
         "Moment Loading": {
             "name": "Moment Loading",
             "Location": "MOMENT .png",
             "modal": true,
+            "fields": {
             "Point Moment": {
                 "elementType": "input",
                 "elementConfig": {
@@ -117,12 +120,14 @@
                 "label": "Down",
                 "touched": false
             }
-        },
+        }
+    },
         "Uniform Distributed Load": {
             "name": "Uniform Distributed Load",
             "elementType": "image",
             "Location": "Uniform Loading.png",
             "modal": true,
+            "fields": {
             "Starting point of UDL from A": {
                 "elementType": "input",
                 "elementConfig": {
@@ -187,11 +192,13 @@
                 "label": "Down",
                 "touched": false
             }
+        }
         },
         "Trapezoidal Loading": {
             "name": "Trapezoidal Loading",
             "Location": "TRAPEZOIDAL LOADING.png",
             "modal": true,
+            "fields": {
             "Starting point of load from A": {
                 "elementType": "input",
                 "elementConfig": {
@@ -271,5 +278,6 @@
                 "touched": false
             }
         }
+    }
     }
 }

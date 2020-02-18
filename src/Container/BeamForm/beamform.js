@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as data from '../../JSONfiles/form.json';
+import * as data from '../../JSONfiles/form.js';
 import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
@@ -20,28 +20,9 @@ class Beamform extends Component {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
-  modalInputChangeHandler = (event, inputIdentifier, modalIdentity, isvalid, touched, shouldValidate) => {
-    let updatedmodalData = {
-      ...this.state.modalData
-    };
-    const modalElement = {
-      ...updatedmodalData[modalIdentity]
-    }
-    const updatedmodalElement = {
-      ...modalElement[inputIdentifier]
-    };
-    updatedmodalElement.value = event.target.value;
-    modalElement[inputIdentifier] = updatedmodalElement;
-    updatedmodalElement.touched = true;
-    updatedmodalElement.valid = this.checkValidity(updatedmodalElement.value, updatedmodalElement.validation)
-    updatedmodalData = {
-      ...this.state.modalData,
-      [modalIdentity]: modalElement
-    }
-    this.setState({ modalData: updatedmodalData });
-  }
 
   inputChangeHandler = (event, inputIdentifier) => {
+
     const updatedFormData = {
       ...this.state.formData
     };

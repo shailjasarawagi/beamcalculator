@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './input.css';
-import { Image, Radio } from 'semantic-ui-react';
-import { Form } from 'react-bootstrap';
+import { Image, Radio ,Dropdown} from 'semantic-ui-react';
+import { Form} from 'react-bootstrap';
+
 // import Select from "react-select";
 
 
@@ -32,17 +33,13 @@ const input = (props) => {
             break;
         case ('select'):
             inputElement = (
-                <select
+                <Dropdown
                     className={inputClasses.join(' ')}
                     value={props.value}
-                    onChange={props.changed}>
-                    {props.elementConfig.options.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.display !== undefined ? <Image src={require(`../../../assets/${option.displayValue}.png`)} alt={option.displayValue} /> : null}
-                            {option.displayValue}
-                        </option>
-                    ))}
-                </select>
+                    onChange={props.changed}
+                    options={props.elementConfig.options}
+                    fluid
+                    selection />     
             );
             break;
 
