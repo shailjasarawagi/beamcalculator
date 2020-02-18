@@ -17,6 +17,7 @@ class Modal1 extends Component {
   }
 
   render() {
+    console.log(this.props.modalInput.fields)
     const modalArray = [];
     for (let key in this.props.modalInput) {
       modalArray.push({
