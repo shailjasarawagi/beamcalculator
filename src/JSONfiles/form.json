@@ -4,7 +4,7 @@
         "elementConfig": {
             "type": "number",
             "placeholder": "Enter Length of beam",
-            "pattern":"[^0-9]+"
+            "pattern": "[^0-9]+"
         },
         "value": "",
         "validation": {
@@ -12,49 +12,60 @@
         },
         "valid": false,
         "label": "Length of beam",
-        "touched": false,
-        "modal":false
+        "touched": false
     },
-    "Material Choice":{
+    "Material Choice": {
         "elementType": "select",
         "elementConfig": {
             "type": "select",
             "placeholder": "",
-            "options":[
-                {"value":"steel" ,"displayValue":"Steel"},
-                {"value":"Aluminium" ,"displayValue":"Aluminium"} 
-                      ]
+            "options": [
+                {
+                    "value": "steel",
+                    "displayValue": "Steel"
+                },
+                {
+                    "value": "Aluminium",
+                    "displayValue": "Aluminium"
+                }
+            ]
         },
-        "value":"",
+        "value": "",
         "label": "Material Choices",
         "validation": {
             "required": true
         },
         "valid": false,
-        "touched": false,
-        "modal":false   
-},
- "Support Choice":{
-    "elementType": "select",
-    "elementConfig": {
-        "type": "select",
-        "placeholder": "",
-      
-        "options":[
-            {"value":"Simply Supported" ,"displayValue":"Simply Supported","display":"Simply"},
-            {"value":"Cantilever" ,"displayValue":"Cantilever","display":"Cantilever"}, 
-            {"value":"Fixed at both side","displayValue":"Fixed at both side","display":"Fixed"}
-        ]
+        "touched": false
     },
-    "label":"Support Choice",
-    "validation": {
-        "required": true
-    },
-    "valid": false,
-    "touched": false ,
-    "modal":false  
-      
+    "Support Choice": {
+        "elementType": "select",
+        "elementConfig": {
+            "type": "select",
+            "placeholder": "",
+            "options": [
+                {
+                    "value": "Simply Supported",
+                    "displayValue": "Simply Supported",
+                    "display": "Simply"
+                },
+                {
+                    "value": "Cantilever",
+                    "displayValue": "Cantilever",
+                    "display": "Cantilever"
+                },
+                {
+                    "value": "Fixed at both side",
+                    "displayValue": "Fixed at both side",
+                    "display": "Fixed"
+                }
+            ]
+        },
+        "label": "Support Choice",
+        "validation": {
+            "required": true
+        },
+        "valid": false,
+        "touched": false
+    }
 }
-
-
- }

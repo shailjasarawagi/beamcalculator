@@ -8,10 +8,9 @@ function App() {
   return (
     <div className="App">
       <Ribbon />
-      <div style={{paddingTop:"100px"}}>
-        <BeamForm/>
-        
-       </div>
+      <div style={{ paddingTop: "100px" }}>
+        <BeamForm />
+      </div>
       <Footer />
     </div>
   );

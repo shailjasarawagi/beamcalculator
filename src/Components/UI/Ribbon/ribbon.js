@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import './ribbon.css';
 import Logo from '../Logo/logo';
 import Logo4 from '../Logo/logo4';
-import { Dropdown, Menu,Icon ,Search} from 'semantic-ui-react';
+import { Dropdown, Menu, Icon, Search } from 'semantic-ui-react';
 
 import image from '../../../assets/shifu1.jpeg';
 
@@ -57,7 +57,7 @@ class Ribbons extends Component {
 
     }
 
-/**Logout from website */
+    /**Logout from website */
     onLogOut = () => {
         // try {
         //     localStorage.removeItem("token");
@@ -82,11 +82,11 @@ class Ribbons extends Component {
 
         const image1 = (
             <img
-              style={{ borderRadius: "50%", height: "25px", width: "25px" }}
-              alt="user"
-              src={image}
+                style={{ borderRadius: "50%", height: "25px", width: "25px" }}
+                alt="user"
+                src={image}
             />
-          );
+        );
         const calcgenurl = process.env.REACT_APP_CALCGEN_URL;
         if (this.state.redirect && this.state.url !== null) {
             // console.log(this.state,"hello");
@@ -95,33 +95,33 @@ class Ribbons extends Component {
         return (
             <div style={{ position: "fixed", width: "100%", zIndex: "50" }}>
                 <div className="desktopmenu">
-                    <Menu attached='top'  borderless style={this.state.topmenudisplay ? show : hide} className="toplevelmenu">
-                      
+                    <Menu attached='top' borderless style={this.state.topmenudisplay ? show : hide} className="toplevelmenu">
+
                         <Menu.Menu position="left">
-                            <Menu.Item><div  className="logo" draggable="false"
-                                style={{  userSelect: "none" }}>
+                            <Menu.Item><div className="logo" draggable="false"
+                                style={{ userSelect: "none" }}>
                                 <a href={calcgenurl}><Logo /></a>
                             </div>
                             </Menu.Item>
                         </Menu.Menu>
                         <Menu.Menu position="right">
                             <Menu.Item>
-                            <Search size="mini" className="search1"
-                            />
+                                <Search size="mini" className="search1"
+                                />
                                 {/* <Form.Input icon='search'
                                 style={{ width: "30rem" }}
                                 placeholder='Search...' /> */}
-                                </Menu.Item>
+                            </Menu.Item>
                             <Menu.Item href={calcgenurl + "myapps"}>My Apps</Menu.Item>
                             <Menu.Item href={calcgenurl + "forum/forum/pipingdb-2"}>Forum</Menu.Item>
                             <Menu.Item href={calcgenurl + "support"}>Support</Menu.Item>
                             <Menu.Item>
-                                <Dropdown icon={image1} selectOnBlur={false} 
-                                style={{ zIndex: "51" }} selectOnNavigation={false}
+                                <Dropdown icon={image1} selectOnBlur={false}
+                                    style={{ zIndex: "51" }} selectOnNavigation={false}
                                     color="white" size="large"
-                                    onChange={this.redirector} 
+                                    onChange={this.redirector}
                                     options={desktopoptions} text=" " item
-                                    
+
                                 />
                             </Menu.Item>
                         </Menu.Menu>
@@ -132,7 +132,7 @@ class Ribbons extends Component {
                         <Menu.Menu position="left">
                             <div className="logo">
                                 <a href={calcgenurl} draggable="false"
-                                    style={{  userSelect: "none" }}><Logo4 /></a>
+                                    style={{ userSelect: "none" }}><Logo4 /></a>
                             </div>
                         </Menu.Menu>
 
@@ -141,16 +141,16 @@ class Ribbons extends Component {
                                 {/* <Form.Input icon='search' 
                                   
                                     placeholder='Search...' /> */}
-                              <Search size="mini" className="search"/>
-                                <Dropdown 
-                                // icon="user"
+                                <Search size="mini" className="search" />
+                                <Dropdown
+                                    // icon="user"
                                     color="white" size="large"
                                     onChange={this.redirector} selectOnBlur={false}
-                                  
+
                                     selectOnNavigation={false}
                                     options={mobileoptions} text=" " item
                                     icon={image1}
-            
+
                                 />
 
                             </Menu.Menu>
@@ -164,7 +164,7 @@ class Ribbons extends Component {
 
                             {/* <DrawerToggle clicked={this.props.drawerToggleClicked} /> */}
 
-                            <a href="/" draggable="false" style={{ padding: "6px" ,userSelect: "none"}}>
+                            <a href="/" draggable="false" style={{ padding: "6px", userSelect: "none" }}>
                                 {/* <img src={pipingdblogo} href="/" 
                                 alt="PipingDB Logo" className="imagess" /> */}
                             </a>
@@ -176,8 +176,8 @@ class Ribbons extends Component {
 
                         </Menu.Menu>
                         <Menu.Menu>
-                            <Menu.Item position="right"  onClick={this.collapse}  >
-                                {this.state.topmenudisplay ? <Icon style={{height:"inherit", display:"contents"}} name="angle double up" className="iicon" size="big" /> : <Icon style={{height:"inherit", display:"contents"}} name="angle double down" className="iicon" size="big" />}
+                            <Menu.Item position="right" onClick={this.collapse}  >
+                                {this.state.topmenudisplay ? <Icon style={{ height: "inherit", display: "contents" }} name="angle double up" className="iicon" size="big" /> : <Icon style={{ height: "inherit", display: "contents" }} name="angle double down" className="iicon" size="big" />}
                             </Menu.Item>
                         </Menu.Menu>
                     </Menu>

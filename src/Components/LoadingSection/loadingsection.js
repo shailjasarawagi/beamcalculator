@@ -37,7 +37,7 @@ class LoadSection extends Component {
                     </Grid.Row>
                 </Grid>
                 {this.props.modalopen ? <Modal
-                  modalInput={this.props.modalInput}
+                    modalInput={this.props.modalInput}
                     modalopen={this.props.modalopen}
                     modalclose={this.props.modalclose}
                     identity={this.props.Identity} />

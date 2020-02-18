@@ -1,185 +1,176 @@
-
 {
-    "Cross_Section":{
-      
-        "Circular Solid":
-            {
+    "Cross_Section": {
+        "Circular Solid": {
             "name": "Circular Solid",
             "Location": "Circular solid.JPG",
-            "modal":true,
-
-                    "Diameter": {
-                        "elementType": "input",
-                        "elementConfig": {
-                            "type": "number",
-                            "placeholder": "Enter the Diameter"
-                        },
-                        "value": "",
-                        "validation": {
-                            "required": true
-                        },
-                        "valid":false,
-                        "label": "Diameter",
-                        "touched": false
-                    },
-                    "Image": {
-                        "elementType": "image",
-                        "elementConfig": {
-                            "type": "image"
-                        },
-                        "value": "",
-                        "validation": {
-                            "required": true
-                        },
-                        "valid": false,
-                        "Location": "Circular solid.JPG"
-                    }
+            "modal": true,
+            "Diameter": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Diameter"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Diameter",
+                "touched": false
+            },
+            "Image": {
+                "elementType": "image",
+                "elementConfig": {
+                    "type": "image"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "Location": "Circular solid.JPG"
+            }
         },
-        "Circular Hollow":
-            {
+        "Circular Hollow": {
             "name": "Circular Hollow",
-            "Location":"Circular Hollow.JPG",
-            "modal":true,
-            
-                        "Outside Diameter": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Outside Diameter"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "valid": false,
-                            "label": "Outside Diameter",
-                            "touched": false
-                        },
-                        "Thickness": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Thickness"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "valid": false,
-                            "label": "Thickness",
-                            "touched": false
-                        },
-                        "Image": {
-                            "elementType": "image",
-                            "elementConfig": {
-                                "type": "image"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "valid": false,
-                            "Location": "Circular Hollow.JPG"
-                        }
-          },
-        "Rectangular Solid":
-            {
+            "Location": "Circular Hollow.JPG",
+            "modal": true,
+            "Outside Diameter": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Outside Diameter"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Outside Diameter",
+                "touched": false
+            },
+            "Thickness": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Thickness"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Thickness",
+                "touched": false
+            },
+            "Image": {
+                "elementType": "image",
+                "elementConfig": {
+                    "type": "image"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "Location": "Circular Hollow.JPG"
+            }
+        },
+        "Rectangular Solid": {
             "name": "Rectangular Solid",
             "Location": "Rectangular Solid.JPG",
-            "modal":true,
-                        "Breadth": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Breadth"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "valid": false,
-                            "label": "Breadth",
-                            "touched": false
-                        },
-                        "Height": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Height"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "valid": false,
-                            "label": "Height",
-                            "touched": false
-                        },
-                        "Image": {
-                            "elementType": "image",
-                            "elementConfig": {
-                                "type": "image"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "Location": "Rectangular Solid.JPG"
-                        }
+            "modal": true,
+            "Breadth": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Breadth"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Breadth",
+                "touched": false
+            },
+            "Height": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Height"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Height",
+                "touched": false
+            },
+            "Image": {
+                "elementType": "image",
+                "elementConfig": {
+                    "type": "image"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "Location": "Rectangular Solid.JPG"
+            }
         },
-        "Rectangular Hollow":
-            {
+        "Rectangular Hollow": {
             "name": "Rectangular Hollow",
             "Location": "Rectangular Hollow.JPG",
-            "modal":true, 
-                        "Breadth": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Breadth"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "label": "Breadth",
-                            "touched": false
-                        },
-                        "Height": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Height"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "label": "Height",
-                            "touched": false
-                        },
-                        "Thickness": {
-                            "elementType": "input",
-                            "elementConfig": {
-                                "type": "number",
-                                "placeholder": "Enter the Height"
-                            },
-                            "value": "",
-                            "validation": {
-                                "required": true
-                            },
-                            "label": "Thickness",
-                            "touched": false
-                        },
-                        "Image": {
-                            "elementType": "image",
-                            "elementConfig": {
-                                "type": "image"
-                            },
-                            "value": "",
-                            "Location": "Rectangular Hollow.JPG"
-                        }
+            "modal": true,
+            "Breadth": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Breadth"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "label": "Breadth",
+                "touched": false
+            },
+            "Height": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Height"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "label": "Height",
+                "touched": false
+            },
+            "Thickness": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Height"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "label": "Thickness",
+                "touched": false
+            },
+            "Image": {
+                "elementType": "image",
+                "elementConfig": {
+                    "type": "image"
+                },
+                "value": "",
+                "Location": "Rectangular Hollow.JPG"
+            }
+        }
     }
-
-}
 }

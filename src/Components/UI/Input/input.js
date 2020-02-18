@@ -35,13 +35,13 @@ const input = (props) => {
                 <select
                     className={inputClasses.join(' ')}
                     value={props.value}
-                    onChange={props.changed}>  
+                    onChange={props.changed}>
                     {props.elementConfig.options.map(option => (
                         <option key={option.value} value={option.value}>
-                        {option.display !== undefined ?  <Image src={require(`../../../assets/${option.displayValue}.png`)} alt={option.displayValue}/> : null}
-                        {option.displayValue} 
+                            {option.display !== undefined ? <Image src={require(`../../../assets/${option.displayValue}.png`)} alt={option.displayValue} /> : null}
+                            {option.displayValue}
                         </option>
-                    ))}          
+                    ))}
                 </select>
             );
             break;
