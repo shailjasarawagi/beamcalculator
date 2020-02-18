@@ -8,7 +8,8 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Diameter"
+                        "placeholder": "Enter the Diameter",
+                         "pattern": "[^0-9]+"
                     },
                     "value": "",
                     "validation": {
@@ -17,6 +18,7 @@
                     "valid": false,
                     "label": "Diameter",
                     "touched": false
+                     
                 }
             },
             "Image": {
@@ -35,7 +37,8 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Outside Diameter"
+                        "placeholder": "Enter the Outside Diameter",
+                         "pattern": "[^0-9]+"
                     },
                     "value": "",
                     "validation": {
@@ -49,7 +52,8 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Thickness"
+                        "placeholder": "Enter the Thickness",
+                         "pattern": "[^0-9]+"
                     },
                     "value": "",
                     "validation": {
@@ -81,7 +85,8 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Breadth"
+                        "placeholder": "Enter the Breadth",
+                         "pattern": "[^0-9]+"
                     },
                     "value": "",
                     "validation": {
@@ -95,7 +100,8 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Height"
+                        "placeholder": "Enter the Height",
+                         "pattern": "[^0-9]+"
                     },
                     "value": "",
                     "validation": {

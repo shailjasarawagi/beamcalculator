@@ -10,6 +10,7 @@
                 "elementConfig": {
                     "type": "number",
                     "placeholder": "Enter the Point Load"
+                    
                 },
                 "value": "",
                 "validation": {

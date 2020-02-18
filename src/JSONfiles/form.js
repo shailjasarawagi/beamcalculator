@@ -18,33 +18,34 @@ const imageSelect = {
         "elementType": "select",
         "elementConfig": {
             "type": "select",
-            "placeholder": "",
+            "placeholder": "Please Select...",
+              
             "options": [
-                {
+                {   "key": "Steel",
                     "text": "Steel",
                     "value": "Steel"
 
                 },
-                {
+                {    "key":"Aluminium",
                     "text": "Aluminium",
                     "value": "Aluminium"
 
                 }
             ]
         },
-        "value": "",
-        "label": "Material Choices",
+         "value":"",
         "validation": {
             "required": true
         },
         "valid": false,
+        "label": "Material Choices",
         "touched": false
     },
     "Support Choice": {
         "elementType": "select",
         "elementConfig": {
             "type": "select",
-            "placeholder": "",
+            "placeholder": "Please select....",
             "options": [
                 {
                     "text": "Simply Supported",
@@ -63,6 +64,7 @@ const imageSelect = {
                 }
             ]
         },
+           "value":"",
         "label": "Support Choice",
         "validation": {
             "required": true

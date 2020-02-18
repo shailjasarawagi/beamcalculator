@@ -35,6 +35,7 @@ const input = (props) => {
             inputElement = (
                 <Dropdown
                     className={inputClasses.join(' ')}
+                       {...props.elementConfig}
                     value={props.value}
                     onChange={props.changed}
                     options={props.elementConfig.options}

@@ -5,24 +5,28 @@ import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
 
 class Beamform extends Component {
+
   state = {
-    formData: {},
+    formData: data.default,
     modalopen: false,
     modalInput: {},
     modalIdentity: ''
   }
 
-  componentDidMount() {
-    this.setState({ formData: data.default });
-  }
+  
 
   modalclose = () => {
+      console.log("shailja");
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
+  Add = () => {
+    console.log("shailja");
+ this.setState({ modalopen: false});
+  }
 
   inputChangeHandler = (event, inputIdentifier) => {
-
+    console.log(event);
     const updatedFormData = {
       ...this.state.formData
     };
@@ -33,6 +37,7 @@ class Beamform extends Component {
     updatedFormData[inputIdentifier] = updatedFormElement;
     updatedFormElement.touched = true;
     this.setState({ formData: updatedFormData });
+    console.log(this.state.formData);
   }
 
   onclick = (event, modalContent, Identity) => {
@@ -70,11 +75,13 @@ class Beamform extends Component {
           {form}
           <br></br>
           <CrossSection modalclose={this.modalclose}
+            Add={this.Add}
             modalopen={this.state.modalopen} onclick={this.onclick}
             modalInput={this.state.modalInput} Identity={this.state.modalIdentity} />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
           <LoadingSection modalclose={this.modalclose}
+             Add={this.Add}
             modalopen={this.state.modalopen} onclick={this.onclick}
             modalInput={this.state.modalInput} Identity={this.state.modalIdentity} />
         </div>

@@ -5,12 +5,10 @@ import Input from '../../Components/UI/Input/input';
 class Modal1 extends Component {
 
   state = {
-      formData:{}
+    formData: this.props.modalInput.fields 
   }
 
-  componentDidMount() {
-    this.setState({formData:this.props.modalInput.fields})
-  }
+ 
 
   modalInputChangeHandler = (event, inputIdentifier) => {
     const updatedFormData = {
@@ -23,35 +21,44 @@ class Modal1 extends Component {
     updatedFormData[inputIdentifier] = updatedFormElement;
     updatedFormElement.touched = true;
     console.log(updatedFormData)
-    this.setState({ formData: updatedFormData },()=>{
+    this.setState({ formData: updatedFormData }, () => {
       console.log(this.state.formData)
     });
   }
-  
+
 
   render() {
+    console.log(this.props.Add)
     console.log(this.props.modalInput.fields)
-  
+
     const modalArray = [];
-    for (let key in this.props.modalInput.fields) {
+    for (let key in this.state.formData) {
       modalArray.push({
         id: key,
-        config: this.props.modalInput.fields[key],
+        config: this.state.formData[key],
       });
 
     }
     // console.log(modalArray);
 
-    const modalInput = modalArray.map(modalElement => {
-      return modalElement.config.elementType === "input" ?
+    const modalInput = (
+    <div>
+      {modalArray.map(modalElement => (
+    
         <Input elementType={modalElement.config.elementType}
           elementConfig={modalElement.config.elementConfig}
+           key={modalElement.id}
           label={modalElement.config.label}
           value={modalElement.config.value}
-          key={modalElement.id}
-          changed={(e)=>this.modalInputChangeHandler(e,modalElement.id)}
-        /> : null
-    });
+         
+          isvalid={!modalElement.config.valid}
+          shouldValidate={modalElement.config.validation}
+          touched={modalElement.config.touched}
+          changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
+        /> 
+    ))}
+    </div>);
+
 
     // const modalImage = modalArray.map(modalElement => (
     //   modalElement.config.Location !== undefined ? <Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)} /> : null));
@@ -65,15 +72,12 @@ class Modal1 extends Component {
           <Grid>
             <Grid.Row>
               <Grid.Column width={8}>{modalInput}</Grid.Column>
-            
             </Grid.Row>
           </Grid>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={this.props.modalclose}>Cancel</Button>
-          <Button primary onClick={this.props.modalInputChangeHandler}>
-            Add
-          </Button>
+          <Button primary onClick={this.props.Add}>Add</Button>
         </Modal.Actions>
       </Modal>
     );

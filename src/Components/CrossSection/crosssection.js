@@ -6,6 +6,7 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 class CrossSection extends Component {
 
   render() {
+    console.log(this.props.Add);
     const ElementsArray = [];
     const crossSection = crosssectionelements.default.Cross_Section;
     for (let key in crossSection) {
@@ -32,9 +33,11 @@ class CrossSection extends Component {
           </Grid.Row>
         </Grid>
         {this.props.modalopen ? <Modal
+          
           modalInput={this.props.modalInput}
           modalopen={this.props.modalopen}
           modalclose={this.props.modalclose}
+          Add={this.props.Add}
           identity={this.props.Identity} />
           : null}
       </div>
