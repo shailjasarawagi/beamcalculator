@@ -123,78 +123,7 @@
             }
         }
     },
-        "Uniform Distributed Load": {
-            "name": "Uniform Distributed Load",
-            "elementType": "image",
-            "Location": "Uniform Loading.png",
-            "modal": true,
-            "fields": {
-            "Starting point of UDL from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Point Load"
-                },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "label": "Starting point of UDL from A"
-            },
-            "Ending point of UDL from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Distance from A"
-                },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "label": "Ending point of UDL from A",
-                "touched": false
-            },
-            "Value of UDl": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the value of UDL"
-                },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "label": "Value of UDL",
-                "touched": false
-            },
-            "UDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Up",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Up",
-                "touched": false
-            },
-            "DDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Down",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Down",
-                "touched": false
-            }
-        }
-        },
+      
         "Trapezoidal Loading": {
             "name": "Trapezoidal Loading",
             "Location": "TRAPEZOIDAL LOADING.png",
@@ -279,6 +208,78 @@
                 "touched": false
             }
         }
-    }
+    },
+      "Uniform Distributed Load": {
+            "name": "Uniform Distributed Load",
+            "elementType": "image",
+            "Location": "Uniform Loading.png",
+            "modal": true,
+            "fields": {
+            "Starting point of UDL from A": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Point Load"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "label": "Starting point of UDL from A"
+            },
+            "Ending point of UDL from A": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the Distance from A"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "label": "Ending point of UDL from A",
+                "touched": false
+            },
+            "Value of UDl": {
+                "elementType": "input",
+                "elementConfig": {
+                    "type": "number",
+                    "placeholder": "Enter the value of UDL"
+                },
+                "value": "",
+                "validation": {
+                    "required": true
+                },
+                "label": "Value of UDL",
+                "touched": false
+            },
+            "UDirection": {
+                "elementType": "radio",
+                "elementConfig": {
+                    "type": "radio"
+                },
+                "value": "Up",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Up",
+                "touched": false
+            },
+            "DDirection": {
+                "elementType": "radio",
+                "elementConfig": {
+                    "type": "radio"
+                },
+                "value": "Down",
+                "validation": {
+                    "required": true
+                },
+                "valid": false,
+                "label": "Down",
+                "touched": false
+            }
+        }
+        }
     }
 }

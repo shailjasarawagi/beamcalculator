@@ -21,6 +21,7 @@ class Modal1 extends Component {
     console.log(updatedFormData)
     this.setState({ formData: updatedFormData }, () => {
       console.log(this.state.formData)
+      
     });
   }
 
@@ -68,7 +69,7 @@ class Modal1 extends Component {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={this.props.modalclose}>Cancel</Button>
-          <Button primary onClick={this.props.addFunction}>Add</Button>
+          <Button primary onClick={(e)=>{this.props.addFunction(e,this.state.formData,this.props.identity)}}>Add</Button>
         </Modal.Actions>
       </Modal>
     );

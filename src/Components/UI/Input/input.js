@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './input.css';
+import classes from './input.module.css';
 import { Image, Radio, Dropdown } from 'semantic-ui-react';
 import { Form } from 'react-bootstrap';
 
@@ -14,10 +14,11 @@ const input = (props) => {
     }
     // console.log(props.elementConfig.options)
 
+
     switch (props.elementType) {
         case ('input'):
             inputElement = <Form.Control
-                className={inputClasses.join(' ')}
+             className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
                 onChange={props.changed}
@@ -80,3 +81,8 @@ const input = (props) => {
 };
 
 export default input;
+
+
+
+
+

@@ -14,7 +14,8 @@
     font-weight: bold;
     display: block;
     /* margin-bottom: 8px; */
-    font-size: small
+    /* font-size: small; */
+   /* float: left; */
 }
 
 .InputElement {
@@ -37,5 +38,5 @@
 
 .Invalid {
     border: 1px solid red;
-    background-color: #FDA49A;
+    background-color: #FDA49A !important;
 }

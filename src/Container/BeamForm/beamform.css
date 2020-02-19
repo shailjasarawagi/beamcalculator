@@ -1,0 +1,7 @@
+.messageheader{
+    color:black !important;
+}
+.message{
+    color:black !important;
+    white-space: nowrap;
+}

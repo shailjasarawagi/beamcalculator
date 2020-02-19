@@ -40,6 +40,7 @@ class LoadSection extends Component {
                     modalInput={this.props.modalInput}
                     modalopen={this.props.modalopen}
                     modalclose={this.props.modalclose}
+                       addFunction={this.props.addFunction}
                     identity={this.props.Identity} />
                     : null}
             </div>
