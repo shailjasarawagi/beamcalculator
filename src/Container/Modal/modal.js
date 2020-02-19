@@ -33,7 +33,8 @@ class Modal1 extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.val["Length of beam"])
+    const beamLength = this.props.val["Length of beam"];
     const modalArray = [];
     for (let key in this.state.formData) {
       modalArray.push({
@@ -67,17 +68,23 @@ class Modal1 extends Component {
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header onClick={this.props.modalAdd}>{this.props.identity}</Modal.Header>
-        <Modal.Content>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={8}>{modalInput}</Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button onClick={this.props.modalclose}>Cancel</Button>
-          <Button primary onClick={(e)=>{this.props.addFunction(e,this.state.formData,this.props.identity)}}>Add</Button>
-        </Modal.Actions>
+        {beamLength.valid ? <>
+          <Modal.Content>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column width={8}>{modalInput}</Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={this.props.modalclose}>Cancel</Button>
+            <Button primary onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity) }}>Add</Button>
+          </Modal.Actions></> :
+          <Modal.Content>
+            Enter length of beam
+          </Modal.Content>
+        }
+
       </Modal>
     );
   }

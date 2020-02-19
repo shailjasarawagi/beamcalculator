@@ -33,6 +33,7 @@ class CrossSection extends Component {
           </Grid.Row>
         </Grid>
         {(this.props.modalopen && (this.props.modalId === "CrossSection")) ? <Modal
+          val={this.props.val}
           modalInput={this.props.modalInput}
           modalopen={this.props.modalopen}
           modalclose={this.props.modalclose}

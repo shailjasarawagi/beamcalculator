@@ -3,7 +3,7 @@ import * as data from '../../JSONfiles/form.js';
 import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
-import {Message} from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 import './beamform.css';
 
 class Beamform extends Component {
@@ -15,7 +15,7 @@ class Beamform extends Component {
     modalIdentity: '',
     modalId: null,
     crossmodalData: {},
-    addedmodalName:''
+    addedmodalName: ''
   }
 
   modalclose = () => {
@@ -23,16 +23,14 @@ class Beamform extends Component {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
-  addFunction = (event,modaldata,name) => {
-     console.log(name);
-     this.setState({crossmodalData:modaldata,addedmodalName:name,modalopen:false},()=>{
-       console.log("ss",this.state.crossmodalData,this.state.addedmodalName)
-     })
-   
-     const updatedmodalData = {
-       ...modaldata
-     };
-     console.log(updatedmodalData);
+  addFunction = (event, modaldata, name) => {
+    const updatedmodalData = {
+      [name]: {
+        ...modaldata
+      }
+    };
+    console.log(updatedmodalData)
+    this.setState({ crossmodalData: updatedmodalData, addedmodalName: name, modalopen: false });
   }
 
   checkValidity = (value, rules) => {
@@ -69,56 +67,69 @@ class Beamform extends Component {
         config: this.state.formData[key]
       });
     }
-    const form = (
-      <div>
-        {formElementsArray.map(formElement => {
- 
-          return<div key={formElement.id}>
-             <Input elementType={formElement.config.elementType}
-            elementConfig={formElement.config.elementConfig}
-            key={formElement.id}
-           label={formElement.config.label}
-            value={formElement.config.value}
-            invalid={!formElement.config.valid}
-            shouldValidate={formElement.config.validation}
-            touched={formElement.config.touched}
-            changed={(e) => this.inputChangeHandler(e, formElement.id)}
-            selectChanger={this.selectChanger}
-          />
-       
-        <br/>
-        </div>
-        })}
-      </div>);
+    const form = formElementsArray.map(formElement => {
+      return <div key={formElement.id}>
+        <Input elementType={formElement.config.elementType}
+          elementConfig={formElement.config.elementConfig}
+          key={formElement.id}
+          label={formElement.config.label}
+          value={formElement.config.value}
+          invalid={!formElement.config.valid}
+          shouldValidate={formElement.config.validation}
+          touched={formElement.config.touched}
+          changed={(e) => this.inputChangeHandler(e, formElement.id)}
+          selectChanger={this.selectChanger}
+        />
+        <br />
+      </div>
+    });
 
+
+    const crossArray = [];
+    for (let key in this.state.crossmodalData) {
+      crossArray.push({
+        id: key,
+        config: this.state.crossmodalData[key]
+      });
+    }
+    console.log(crossArray)
+    const arr = crossArray.map(ele => {
+      return <div key={ele.id}>
+        {ele.id}
+      </div>
+    });
 
     return (
       <div className="row container-fluid">
         <div className="col-lg-6 col-md-6 col-sm-12">
-         
+
           {form}
-          
+
           <Message info color="blue" className="message">
-             <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
-           <hr style={{border:'1px solid '}}/>
-            
-          <CrossSection modalclose={this.modalclose}
-            addFunction={this.addFunction}
-            modalopen={this.state.modalopen} onclick={this.onclick}
-            modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-            modalId={this.state.modalId} /></Message>
-         
+            <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
+            <hr style={{ border: '1px solid ' }} />
+
+            <CrossSection modalclose={this.modalclose}
+              addFunction={this.addFunction} val={this.state.formData}
+              modalopen={this.state.modalopen} onclick={this.onclick}
+              modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
+              modalId={this.state.modalId} />
+
+            {Object.keys(this.state.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
+
+          </Message>
+
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
-         
-            <Message info color="blue" className="message">
-             <Message.Header className="messageheader">Setting Loading Data</Message.Header>
-           <hr/>
-          <LoadingSection modalclose={this.modalclose}    addFunction={this.addFunction}
-            modalopen={this.state.modalopen} onclick={this.onclick}
-            modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-            modalId={this.state.modalId} />
-            </Message>
+
+          <Message info color="blue" className="message">
+            <Message.Header className="messageheader">Setting Loading Data</Message.Header>
+            <hr />
+            <LoadingSection modalclose={this.modalclose} addFunction={this.addFunction}
+              modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
+              modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
+              modalId={this.state.modalId} />
+          </Message>
         </div>
       </div>
     );
