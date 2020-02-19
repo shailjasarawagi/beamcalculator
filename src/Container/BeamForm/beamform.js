@@ -20,8 +20,14 @@ class Beamform extends Component {
   }
 
   addFunction = () => {
-    console.log("shailja");
-    //  this.setState({ modalopen: false});
+  }
+
+  checkValidity = (value, rules) => {
+    let isvalid = true;
+    if (rules.required) {
+      isvalid = value.trim() !== "" && isvalid;
+    }
+    return isvalid;
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
@@ -32,11 +38,10 @@ class Beamform extends Component {
       ...updatedFormData[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
-    updatedFormData[inputIdentifier] = updatedFormElement;
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
-    this.setState({ formData: updatedFormData }, () => {
-      console.log(this.state.formData)
-    });
+    updatedFormData[inputIdentifier] = updatedFormElement;
+    this.setState({ formData: updatedFormData });
   }
 
   onclick = (event, modalContent, Identity, id) => {
@@ -44,7 +49,6 @@ class Beamform extends Component {
   }
 
   render() {
-    console.log("abc")
     const formElementsArray = [];
     for (let key in this.state.formData) {
       formElementsArray.push({
@@ -60,8 +64,7 @@ class Beamform extends Component {
             key={formElement.id}
             label={formElement.config.label}
             value={formElement.config.value}
-            isvalid={!formElement.config.valid}
-            option={formElement.config.options}
+            invalid={!formElement.config.valid}
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={(e) => this.inputChangeHandler(e, formElement.id)}

@@ -1,20 +1,13 @@
 .Input {
     width: 100%;
+    padding: 10px;
     box-sizing: border-box;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-      
-      
 }
 
 .Label {
     font-weight: bold;
     display: block;
-    /* margin-bottom: 8px; */
-    font-size: small
+    margin-bottom: 8px;
 }
 
 .InputElement {
@@ -22,9 +15,7 @@
     border: 1px solid #ccc;
     background-color: white;
     font: inherit;
-    font-size: small;
-    /* padding: 6px 10px; */
-    padding-left: 5px;
+    padding: 6px 10px;
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -39,3 +30,8 @@
     border: 1px solid red;
     background-color: #FDA49A;
 }
+
+.ValidationError {
+    color: red;
+    margin: 5px 0;
+} 

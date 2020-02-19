@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './input.css';
+import classes from './input.module.css';
 import { Image, Radio, Dropdown } from 'semantic-ui-react';
 import { Form } from 'react-bootstrap';
 
@@ -12,7 +12,11 @@ const input = (props) => {
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
-    // console.log(props.elementConfig.options)
+
+    let validationError = null;
+    if (props.invalid && props.touched) {
+        validationError = <p className={classes.ValidationError}>{props.errorMessage}</p>;
+    }
 
     switch (props.elementType) {
         case ('input'):
@@ -35,7 +39,7 @@ const input = (props) => {
             inputElement = (
                 <Dropdown
                     className={inputClasses.join(' ')}
-                       {...props.elementConfig}
+                    {...props.elementConfig}
                     value={props.value}
                     onChange={props.selectChanger}
                     options={props.elementConfig.options}
@@ -74,9 +78,9 @@ const input = (props) => {
         <div>
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
+            {validationError}
         </div>
     );
-
 };
 
 export default input;
