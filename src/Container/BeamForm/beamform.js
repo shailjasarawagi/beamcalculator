@@ -11,23 +11,20 @@ class Beamform extends Component {
     modalopen: false,
     modalInput: {},
     modalIdentity: '',
-    modalId:null
+    modalId: null
   }
 
-  
-
   modalclose = () => {
-      console.log("shailja");
+    console.log("shailja");
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
   addFunction = () => {
     console.log("shailja");
- this.setState({ modalopen: false});
+    //  this.setState({ modalopen: false});
   }
 
   inputChangeHandler = (event, inputIdentifier) => {
-    console.log(event);
     const updatedFormData = {
       ...this.state.formData
     };
@@ -38,11 +35,10 @@ class Beamform extends Component {
     updatedFormData[inputIdentifier] = updatedFormElement;
     updatedFormElement.touched = true;
     this.setState({ formData: updatedFormData });
-    console.log(this.state.formData);
   }
 
-  onclick = (event, modalContent, Identity,id) => {
-    this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity ,modalId:id});
+  onclick = (event, modalContent, Identity, id) => {
+    this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity, modalId: id });
   }
 
   render() {
@@ -78,18 +74,17 @@ class Beamform extends Component {
           <CrossSection modalclose={this.modalclose}
             addFunction={this.addFunction}
             modalopen={this.state.modalopen} onclick={this.onclick}
-            modalInput={this.state.modalInput} Identity={this.state.modalIdentity} 
-            modalId={this.state.modalId}/>
+            modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
+            modalId={this.state.modalId} />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
           <LoadingSection modalclose={this.modalclose}
             modalopen={this.state.modalopen} onclick={this.onclick}
-            modalInput={this.state.modalInput} Identity={this.state.modalIdentity} 
-            modalId={this.state.modalId}/>
+            modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
+            modalId={this.state.modalId} />
         </div>
       </div>
     );
   }
 }
-
-export default Beamform
+export default Beamform;
