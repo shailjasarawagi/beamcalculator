@@ -34,7 +34,9 @@ class Beamform extends Component {
     updatedFormElement.value = event.target.value;
     updatedFormData[inputIdentifier] = updatedFormElement;
     updatedFormElement.touched = true;
-    this.setState({ formData: updatedFormData });
+    this.setState({ formData: updatedFormData }, () => {
+      console.log(this.state.formData)
+    });
   }
 
   onclick = (event, modalContent, Identity, id) => {
@@ -42,6 +44,7 @@ class Beamform extends Component {
   }
 
   render() {
+    console.log("abc")
     const formElementsArray = [];
     for (let key in this.state.formData) {
       formElementsArray.push({
@@ -51,8 +54,8 @@ class Beamform extends Component {
     }
     const form = (
       <div>
-        {formElementsArray.map(formElement => (
-          <Input elementType={formElement.config.elementType}
+        {formElementsArray.map(formElement => {
+          return <Input elementType={formElement.config.elementType}
             elementConfig={formElement.config.elementConfig}
             key={formElement.id}
             label={formElement.config.label}
@@ -62,8 +65,9 @@ class Beamform extends Component {
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             changed={(e) => this.inputChangeHandler(e, formElement.id)}
+            selectChanger={this.selectChanger}
           />
-        ))}
+        })}
       </div>);
 
     return (
@@ -78,7 +82,7 @@ class Beamform extends Component {
             modalId={this.state.modalId} />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12">
-          <LoadingSection modalclose={this.modalclose}
+          <LoadingSection modalclose={this.modalclose} modaladd={this.modaladd}
             modalopen={this.state.modalopen} onclick={this.onclick}
             modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
             modalId={this.state.modalId} />

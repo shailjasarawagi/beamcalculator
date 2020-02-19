@@ -19,21 +19,21 @@ const imageSelect = {
         "elementConfig": {
             "type": "select",
             "placeholder": "Please Select...",
-              
+
             "options": [
-                {   "key": "Steel",
+                {
+                    "key": "Steel",
                     "text": "Steel",
-                    "value": "Steel"
-
+                    "value": "Steel",
                 },
-                {    "key":"Aluminium",
+                {
+                    "key": "Aluminium",
                     "text": "Aluminium",
-                    "value": "Aluminium"
-
+                    "value": "Aluminium",
                 }
             ]
         },
-         "value":"",
+        "value": "",
         "validation": {
             "required": true
         },
@@ -50,21 +50,24 @@ const imageSelect = {
                 {
                     "text": "Simply Supported",
                     "value": "Simply Supported",
+                    "key": 1,
                     "image": require(`../assets/Simply Supported.png`)
                 },
                 {
                     "text": "Cantilever",
                     "value": "Cantilever",
-                    "image":  require(`../assets/Cantilever.png`)
+                    "key": 2,
+                    "image": require(`../assets/Cantilever.png`)
                 },
                 {
                     "text": "Fixed at both side",
                     "value": "Fixed at both side",
-                    "image":  require(`../assets/Fixed at both side.png`)
+                    "key": 3,
+                    "image": require(`../assets/Fixed at both side.png`)
                 }
             ]
         },
-           "value":"",
+        "value": "",
         "label": "Support Choice",
         "validation": {
             "required": true

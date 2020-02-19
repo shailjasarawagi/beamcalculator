@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './input.css';
-import { Image, Radio ,Dropdown} from 'semantic-ui-react';
-import { Form} from 'react-bootstrap';
+import { Image, Radio, Dropdown } from 'semantic-ui-react';
+import { Form } from 'react-bootstrap';
 
 // import Select from "react-select";
 
@@ -37,10 +37,10 @@ const input = (props) => {
                     className={inputClasses.join(' ')}
                        {...props.elementConfig}
                     value={props.value}
-                    onChange={props.changed}
+                    onChange={props.selectChanger}
                     options={props.elementConfig.options}
                     fluid
-                    selection />     
+                    selection />
             );
             break;
 

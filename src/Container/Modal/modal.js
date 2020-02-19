@@ -58,7 +58,7 @@ class Modal1 extends Component {
         centered={false}
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
-        <Modal.Header>{this.props.identity}</Modal.Header>
+        <Modal.Header onClick={this.props.modalAdd}>{this.props.identity}</Modal.Header>
         <Modal.Content>
           <Grid>
             <Grid.Row>
