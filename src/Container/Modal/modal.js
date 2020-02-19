@@ -80,9 +80,14 @@ class Modal1 extends Component {
             <Button onClick={this.props.modalclose}>Cancel</Button>
             <Button primary onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity) }}>Add</Button>
           </Modal.Actions></> :
-          <Modal.Content>
-            Enter length of beam
+          <>
+            <Modal.Content>
+              Enter length of beam
           </Modal.Content>
+            <Modal.Actions>
+              <Button onClick={this.props.modalclose}>Cancel</Button>
+            </Modal.Actions>
+          </>
         }
 
       </Modal>

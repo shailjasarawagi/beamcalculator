@@ -3,7 +3,7 @@ import * as data from '../../JSONfiles/form.js';
 import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
-import { Message } from 'semantic-ui-react';
+import { Message, Segment, Icon } from 'semantic-ui-react';
 import './beamform.css';
 
 class Beamform extends Component {
@@ -94,9 +94,11 @@ class Beamform extends Component {
     }
     console.log(crossArray)
     const arr = crossArray.map(ele => {
-      return <div key={ele.id}>
-        {ele.id}
-      </div>
+
+      return <Segment key={ele.id} raised>{ele.id}
+        <span className="float-right">
+          <Icon name='edit' size='large' /><Icon name='delete' size='large' />
+        </span></Segment>
     });
 
     return (

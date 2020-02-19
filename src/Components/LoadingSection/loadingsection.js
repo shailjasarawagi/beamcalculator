@@ -22,7 +22,7 @@ class LoadSection extends Component {
 
                     <Grid.Column width={4} key={lElement.config.name}>
                         {lElement.config.name}
-                        <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name,"LoadingSection") }} size="medium" src={require(`../../assets/${lElement.config.Location}`)} alt={lElement.config.name} />
+                        <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }} size="medium" src={require(`../../assets/${lElement.config.Location}`)} alt={lElement.config.name} />
                     </Grid.Column>
 
                 ))}
@@ -36,11 +36,12 @@ class LoadSection extends Component {
                         {lElements}
                     </Grid.Row>
                 </Grid>
-                {(this.props.modalopen && (this.props.modalId==="LoadingSection")) ? <Modal
+                {(this.props.modalopen && (this.props.modalId === "LoadingSection")) ? <Modal
                     modalInput={this.props.modalInput}
                     modalopen={this.props.modalopen}
                     modalclose={this.props.modalclose}
-                       addFunction={this.props.addFunction}
+                    val={this.props.val}
+                    addFunction={this.props.addFunction}
                     identity={this.props.Identity} />
                     : null}
             </div>
