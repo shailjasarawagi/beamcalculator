@@ -3,5 +3,5 @@
 }
 .message{
     color:black !important;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }

@@ -12,7 +12,11 @@ const input = (props) => {
     if (props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
-    // console.log(props.elementConfig.options)
+
+    let validationError = null;
+    if (props.invalid && props.touched) {
+        validationError = <p className={classes.ValidationError}>{props.errorMessage}</p>;
+    }
 
 
     switch (props.elementType) {
@@ -36,7 +40,7 @@ const input = (props) => {
             inputElement = (
                 <Dropdown
                     className={inputClasses.join(' ')}
-                       {...props.elementConfig}
+                    {...props.elementConfig}
                     value={props.value}
                     onChange={props.selectChanger}
                     options={props.elementConfig.options}
@@ -75,9 +79,9 @@ const input = (props) => {
         <div>
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
+            {validationError}
         </div>
     );
-
 };
 
 export default input;

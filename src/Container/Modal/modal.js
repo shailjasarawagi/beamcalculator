@@ -8,6 +8,15 @@ class Modal1 extends Component {
     formData: this.props.modalInput.fields
   }
 
+  checkValidity = (value, rules) => {
+    let isvalid = true;
+    if (rules.required) {
+      isvalid = value.trim() !== "" && isvalid;
+    }
+
+    return isvalid;
+  }
+
   modalInputChangeHandler = (event, inputIdentifier) => {
     const updatedFormData = {
       ...this.state.formData
@@ -16,13 +25,11 @@ class Modal1 extends Component {
       ...updatedFormData[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
-    updatedFormData[inputIdentifier] = updatedFormElement;
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
-    console.log(updatedFormData)
-    this.setState({ formData: updatedFormData }, () => {
-      console.log(this.state.formData)
-      
-    });
+    updatedFormData[inputIdentifier] = updatedFormElement;
+    console.log(updatedFormElement.valid);
+    this.setState({ formData: updatedFormData });
   }
 
   render() {
@@ -44,7 +51,7 @@ class Modal1 extends Component {
             key={modalElement.id}
             label={modalElement.config.label}
             value={modalElement.config.value}
-            isvalid={!modalElement.config.valid}
+            invalid={!modalElement.config.valid}
             shouldValidate={modalElement.config.validation}
             touched={modalElement.config.touched}
             changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
