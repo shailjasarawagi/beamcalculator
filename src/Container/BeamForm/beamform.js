@@ -3,7 +3,7 @@ import * as data from '../../JSONfiles/form.js';
 import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
-import { Message, Segment, Icon ,Grid} from 'semantic-ui-react';
+import { Message, Segment, Icon, Grid, Container } from 'semantic-ui-react';
 import './beamform.css';
 
 class Beamform extends Component {
@@ -16,13 +16,13 @@ class Beamform extends Component {
     modalId: null,
     crossmodalData: {},
     loadmodalData: {},
-    addedmodalName: ''
   }
 
   modalclose = () => {
     console.log("shailja");
     this.setState({ modalopen: false, modalIdentity: "" });
   }
+
 
   crossAdd = (event, modaldata, name) => {
     const updatedmodalData = {
@@ -33,20 +33,37 @@ class Beamform extends Component {
     this.setState({ crossmodalData: updatedmodalData, modalopen: false });
   }
 
+
   loadAdd = (event, modaldata, name) => {
+
     const updatedmodalData = {
       ...this.state.loadmodalData,
       [name]: {
+
         ...modaldata
-      }
+      },
+
     };
+
     console.log(updatedmodalData)
     this.setState({ loadmodalData: updatedmodalData, modalopen: false });
   }
 
-  deleteModalData=(e,selectedData)=>{
-   console.log(e,selectedData);
+
+  deleteCrossModalData = (e, selectedData) => {
+    console.log(e, selectedData);
+    console.log("ssa", this.state.crossmodalData);
+    this.setState({ crossmodalData: [] }, () => {
+      console.log("cross", this.state.crossmodalData)
+    })
+
   }
+
+  deleteLoadModalData = (e, selectedData, i) => {
+
+    console.log(e, selectedData, i);
+  }
+
 
   checkValidity = (value, rules) => {
     let isvalid = true;
@@ -100,81 +117,110 @@ class Beamform extends Component {
     });
 
     const crossArray = [];
+    const crossArray1=[];
     for (let key in this.state.crossmodalData) {
       crossArray.push({
         id: key,
         config: this.state.crossmodalData[key]
       });
     }
+    const arr = crossArray.map(ele => {
+       for (let key in ele.config){
+        crossArray1.push({
+          id: key,
+          config: ele.config[key]
+        });
+      }
+ 
+      const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
+
+      return <Segment key={ele.id} raised><b>{ele.id}</b>{crossArrayEle}
+        <span className="floatright1">
+          <Icon name='edit' size='large' /><Icon name='delete' size='large'
+            onClick={(e) => { this.deleteCrossModalData(e, ele.id) }} />
+        </span></Segment>
+    });
+
+
+
     const loadArray = [];
+    const loadArray1 = [];
+
     for (let key in this.state.loadmodalData) {
       loadArray.push({
         id: key,
         config: this.state.loadmodalData[key]
       });
     }
-    const arr = crossArray.map(ele => {
-      return <Segment key={ele.id} raised>{ele.id}
-        <span className="float-right">
-          <Icon name='edit' size='large' /><Icon name='delete' size='large' />
-        </span></Segment>
+  
+    const loadArr = loadArray.map((ele, index) => {
+
+      for (let key in ele.config){
+        loadArray1.push({
+          id: key,
+          config: ele.config[key]
+        });
+      }
+ 
+      console.log(loadArray,loadArray1);
+      const loadArrEle = loadArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
+
+      return <Segment key={ele.id} raised><b>{ele.id}</b>{loadArrEle}
+
+        <span className="floatright">
+          <Icon name='edit' size='large' /><Icon name='delete' size='large'
+            onClick={(e) => { this.deleteLoadModalData(e, ele.id) }} />
+        </span>
+      </Segment>
+
     });
 
-    const loadArr = loadArray.map(ele => {
-      return <Segment key={ele.id} raised>{ele.id}
-            <span className="float-right">
-            <Icon name='edit' size='large' /><Icon name='delete' size='large'
-                      onClick={(e)=>{this.deleteModalData(e,ele.id)}}/>
-            </span>
-            </Segment>
-              
-    });
 
     return (
-        
+      <Container>
         <Grid stackable>
           <Grid.Row>
-           
+
             <Grid.Column width={8}>
-             
-               {form}
 
-          <Message info color="blue" className="message">
-            <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
-            <hr style={{ border: '1px solid ' }} />
+              {form}
 
-            <CrossSection modalclose={this.modalclose}
-              addFunction={this.crossAdd} val={this.state.formData}
-              modalopen={this.state.modalopen} onclick={this.onclick}
-              modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-              modalId={this.state.modalId} />
+              <Message info color="blue" className="message">
+                <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
+                <hr style={{ border: '1px solid ' }} />
 
-            {Object.keys(this.state.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
+                <CrossSection modalclose={this.modalclose}
+                  addFunction={this.crossAdd} val={this.state.formData}
+                  modalopen={this.state.modalopen} onclick={this.onclick}
+                  modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
+                  modalId={this.state.modalId} />
 
-          </Message>
-        
+                {Object.keys(this.state.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
+
+              </Message>
+
             </Grid.Column>
             <Grid.Column width={8}>
 
-          <Message info color="blue" className="message">
-            <Message.Header className="messageheader">Setting Loading Data</Message.Header>
-            <hr />
-            <LoadingSection modalclose={this.modalclose} addFunction={this.loadAdd}
-              modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
-              modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-              modalId={this.state.modalId} />
+              <Message info color="blue" className="message">
+                <Message.Header className="messageheader">Setting Loading Data</Message.Header>
+                <hr />
+                <LoadingSection modalclose={this.modalclose} addFunction={this.loadAdd}
+                  modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
+                  modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
+                  modalId={this.state.modalId} />
 
-            {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
-          </Message>
+                {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
+              </Message>
             </Grid.Column>
-             
+
           </Grid.Row>
         </Grid>
-      
-      
-       
 
-       
+
+      </Container>
+
+
     );
   }
 }

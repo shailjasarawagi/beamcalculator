@@ -5,3 +5,11 @@
     color:black !important;
     /* white-space: nowrap; */
 }
+.floatright{
+    margin-top: -95px;
+    float: right;
+}
+.floatright1{
+    margin-top: -35px;
+    float: right;
+}
