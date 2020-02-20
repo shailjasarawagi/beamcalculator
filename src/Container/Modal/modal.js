@@ -13,7 +13,6 @@ class Modal1 extends Component {
     if (rules.required) {
       isvalid = value.trim() !== "" && isvalid;
     }
-
     return isvalid;
   }
 
@@ -28,12 +27,10 @@ class Modal1 extends Component {
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedFormData[inputIdentifier] = updatedFormElement;
-    console.log(updatedFormElement.valid);
     this.setState({ formData: updatedFormData });
   }
 
   render() {
-    console.log(this.props.val["Length of beam"])
     const beamLength = this.props.val["Length of beam"];
     const modalArray = [];
     for (let key in this.state.formData) {
@@ -41,52 +38,41 @@ class Modal1 extends Component {
         id: key,
         config: this.state.formData[key],
       });
+    };
 
-    }
+    const modalInput = modalArray.map(modalElement => (
+      <Input elementType={modalElement.config.elementType}
+        elementConfig={modalElement.config.elementConfig}
+        key={modalElement.id}
+        label={modalElement.config.label}
+        value={modalElement.config.value}
+        invalid={!modalElement.config.valid}
+        shouldValidate={modalElement.config.validation}
+        touched={modalElement.config.touched}
+        changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
+      />
+    ));
 
-    const modalInput = (
-      <div>
-        {modalArray.map(modalElement => (
-          <Input elementType={modalElement.config.elementType}
-            elementConfig={modalElement.config.elementConfig}
-            key={modalElement.id}
-            label={modalElement.config.label}
-            value={modalElement.config.value}
-            invalid={!modalElement.config.valid}
-            shouldValidate={modalElement.config.validation}
-            touched={modalElement.config.touched}
-            changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
-          />
-        ))}
-      </div>);
-
-    // const modalImage = modalArray.map(modalElement => (
-    //   modalElement.config.Location !== undefined ? <Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)} /> : null));
     return (
       <Modal
-       style={{marginTop:'-200px'}}
+        style={{ marginTop: '-200px' }}
         centered={false}
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
-        <Modal.Header onClick={this.props.modalAdd}>{this.props.identity}</Modal.Header>
-        {beamLength.valid ? <>
-          <Modal.Content>
-            {modalInput}
-          </Modal.Content>
+        <Modal.Header>{this.props.identity}</Modal.Header>
+        {beamLength.valid ? <><Modal.Content>
+          {modalInput}
+        </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.modalclose}>Cancel</Button>
             <Button primary onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity) }}>Add</Button>
           </Modal.Actions></> :
-          <>
-            <Modal.Content>
-              Enter length of beam
+          <><Modal.Content>
+            Enter length of beam
           </Modal.Content>
             <Modal.Actions>
               <Button onClick={this.props.modalclose}>Cancel</Button>
-            </Modal.Actions>
-          </>
-        }
-
+            </Modal.Actions></>}
       </Modal>
     );
   }

@@ -6,7 +6,6 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 class CrossSection extends Component {
 
   render() {
-    // console.log(this.props.Add);
     const ElementsArray = [];
     const crossSection = crosssectionelements.default.Cross_Section;
     for (let key in crossSection) {
@@ -14,17 +13,17 @@ class CrossSection extends Component {
         id: key,
         config: crossSection[key]
       });
-    }
-   console.log(ElementsArray)
+    };
+
     const cElements = ElementsArray.map(cElement => (
       <Grid.Column width={4} key={cElement.config.name}>
-        <Popup content={cElement.config.name} trigger={
-          <Image key={cElement.config.name}
-            onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
-            size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
-        } />
+        <Popup content={cElement.config.name} position='top center'
+          size='tiny' inverted trigger={
+            <Image key={cElement.config.name} onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
+              size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
+          } />
       </Grid.Column>
-    ))
+    ));
 
     return (
       <div >

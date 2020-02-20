@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from '../../Container/Modal/modal';
-import { Image, Grid,Popup } from "semantic-ui-react";
+import { Image, Grid, Popup } from "semantic-ui-react";
 import * as loadingsectionelements from "../../JSONfiles/loadingsection.json";
 
 class LoadSection extends Component {
@@ -13,23 +13,17 @@ class LoadSection extends Component {
                 id: key,
                 config: loadSection[key]
             });
-        }
+        };
 
-
-        const lElements = (
-            <>
-                {ElementsArray.map(lElement => (
-
-                    <Grid.Column width={4} key={lElement.config.name}>
-                          <Popup content={lElement.config.name} trigger={
-                     
-                        <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }} size="medium" src={require(`../../assets/${lElement.config.Location}`)} alt={lElement.config.name} />
-                          }/>
-                    </Grid.Column>
-
-                ))}
-            </>)
-
+        const lElements = ElementsArray.map(lElement => (
+            <Grid.Column width={4} key={lElement.config.name}>
+                <Popup content={lElement.config.name} position='top center'
+                    size='tiny' inverted trigger={
+                        <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }}
+                            size="medium" src={require(`../../assets/${lElement.config.Location}`)} alt={lElement.config.name} />
+                    } />
+            </Grid.Column>
+        ));
 
         return (
             <div >
@@ -49,10 +43,5 @@ class LoadSection extends Component {
             </div>
         );
     }
-
 }
-
 export default LoadSection;
-
-
-
