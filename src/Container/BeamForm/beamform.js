@@ -3,7 +3,7 @@ import * as data from '../../JSONfiles/form.js';
 import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
-import { Message, Segment, Icon } from 'semantic-ui-react';
+import { Message, Segment, Icon ,Grid} from 'semantic-ui-react';
 import './beamform.css';
 
 class Beamform extends Component {
@@ -31,6 +31,10 @@ class Beamform extends Component {
     };
     console.log(updatedmodalData)
     this.setState({ crossmodalData: updatedmodalData, addedmodalName: name, modalopen: false });
+  }
+
+  deleteModalData=(e,selectedData)=>{
+   console.log(e,selectedData);
   }
 
   checkValidity = (value, rules) => {
@@ -94,18 +98,24 @@ class Beamform extends Component {
     }
     console.log(crossArray)
     const arr = crossArray.map(ele => {
-
+             
       return <Segment key={ele.id} raised>{ele.id}
-        <span className="float-right">
-          <Icon name='edit' size='large' /><Icon name='delete' size='large' />
-        </span></Segment>
+            <span className="float-right">
+            <Icon name='edit' size='large' /><Icon name='delete' size='large'
+                      onClick={(e)=>{this.deleteModalData(e,ele.id)}}/>
+            </span>
+            </Segment>
+              
     });
 
     return (
-      <div className="row container-fluid">
-        <div className="col-lg-6 col-md-6 col-sm-12">
-
-          {form}
+        
+        <Grid stackable>
+          <Grid.Row>
+           
+            <Grid.Column width={8}>
+             
+               {form}
 
           <Message info color="blue" className="message">
             <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
@@ -120,9 +130,9 @@ class Beamform extends Component {
             {Object.keys(this.state.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
 
           </Message>
-
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-12">
+        
+            </Grid.Column>
+            <Grid.Column width={8}>
 
           <Message info color="blue" className="message">
             <Message.Header className="messageheader">Setting Loading Data</Message.Header>
@@ -131,9 +141,18 @@ class Beamform extends Component {
               modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
               modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
               modalId={this.state.modalId} />
+              
+
           </Message>
-        </div>
-      </div>
+            </Grid.Column>
+             
+          </Grid.Row>
+        </Grid>
+      
+      
+       
+
+       
     );
   }
 }

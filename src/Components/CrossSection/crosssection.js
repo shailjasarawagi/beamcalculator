@@ -15,7 +15,7 @@ class CrossSection extends Component {
         config: crossSection[key]
       });
     }
-
+   console.log(ElementsArray)
     const cElements = ElementsArray.map(cElement => (
       <Grid.Column width={4} key={cElement.config.name}>
         <Popup content={cElement.config.name} trigger={

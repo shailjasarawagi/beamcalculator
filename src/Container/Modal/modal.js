@@ -64,6 +64,7 @@ class Modal1 extends Component {
     //   modalElement.config.Location !== undefined ? <Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)} /> : null));
     return (
       <Modal
+       style={{marginTop:'-200px'}}
         centered={false}
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
