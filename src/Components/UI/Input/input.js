@@ -21,7 +21,7 @@ const input = (props) => {
 
     switch (props.elementType) {
         case ('input'):
-            inputElement = <input transparent
+            inputElement = <input
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}

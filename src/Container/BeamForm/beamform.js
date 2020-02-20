@@ -15,6 +15,7 @@ class Beamform extends Component {
     modalIdentity: '',
     modalId: null,
     crossmodalData: {},
+    loadmodalData: {},
     addedmodalName: ''
   }
 
@@ -23,14 +24,24 @@ class Beamform extends Component {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
-  addFunction = (event, modaldata, name) => {
+  crossAdd = (event, modaldata, name) => {
     const updatedmodalData = {
       [name]: {
         ...modaldata
       }
     };
+    this.setState({ crossmodalData: updatedmodalData, modalopen: false });
+  }
+
+  loadAdd = (event, modaldata, name) => {
+    const updatedmodalData = {
+      ...this.state.loadmodalData,
+      [name]: {
+        ...modaldata
+      }
+    };
     console.log(updatedmodalData)
-    this.setState({ crossmodalData: updatedmodalData, addedmodalName: name, modalopen: false });
+    this.setState({ loadmodalData: updatedmodalData, modalopen: false });
   }
 
   deleteModalData=(e,selectedData)=>{
@@ -88,7 +99,6 @@ class Beamform extends Component {
       </div>
     });
 
-
     const crossArray = [];
     for (let key in this.state.crossmodalData) {
       crossArray.push({
@@ -96,9 +106,21 @@ class Beamform extends Component {
         config: this.state.crossmodalData[key]
       });
     }
-    console.log(crossArray)
+    const loadArray = [];
+    for (let key in this.state.loadmodalData) {
+      loadArray.push({
+        id: key,
+        config: this.state.loadmodalData[key]
+      });
+    }
     const arr = crossArray.map(ele => {
-             
+      return <Segment key={ele.id} raised>{ele.id}
+        <span className="float-right">
+          <Icon name='edit' size='large' /><Icon name='delete' size='large' />
+        </span></Segment>
+    });
+
+    const loadArr = loadArray.map(ele => {
       return <Segment key={ele.id} raised>{ele.id}
             <span className="float-right">
             <Icon name='edit' size='large' /><Icon name='delete' size='large'
@@ -122,7 +144,7 @@ class Beamform extends Component {
             <hr style={{ border: '1px solid ' }} />
 
             <CrossSection modalclose={this.modalclose}
-              addFunction={this.addFunction} val={this.state.formData}
+              addFunction={this.crossAdd} val={this.state.formData}
               modalopen={this.state.modalopen} onclick={this.onclick}
               modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
               modalId={this.state.modalId} />
@@ -137,12 +159,12 @@ class Beamform extends Component {
           <Message info color="blue" className="message">
             <Message.Header className="messageheader">Setting Loading Data</Message.Header>
             <hr />
-            <LoadingSection modalclose={this.modalclose} addFunction={this.addFunction}
+            <LoadingSection modalclose={this.modalclose} addFunction={this.loadAdd}
               modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
               modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
               modalId={this.state.modalId} />
-              
 
+            {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
           </Message>
             </Grid.Column>
              
