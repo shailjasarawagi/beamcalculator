@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from '../../Container/Modal/modal';
-import { Image, Grid } from "semantic-ui-react";
+import { Image, Grid, Popup } from "semantic-ui-react";
 import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 
 class CrossSection extends Component {
@@ -18,10 +18,11 @@ class CrossSection extends Component {
 
     const cElements = ElementsArray.map(cElement => (
       <Grid.Column width={4} key={cElement.config.name}>
-        {cElement.config.name}
-        <Image key={cElement.config.name}
-          onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
-          size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
+        <Popup content={cElement.config.name} trigger={
+          <Image key={cElement.config.name}
+            onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
+            size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name} />
+        } />
       </Grid.Column>
     ))
 

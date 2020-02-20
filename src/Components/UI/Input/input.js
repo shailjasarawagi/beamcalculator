@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './input.module.css';
 import { Image, Radio, Dropdown } from 'semantic-ui-react';
-import { Form } from 'react-bootstrap';
+
 
 // import Select from "react-select";
 
@@ -21,8 +21,8 @@ const input = (props) => {
 
     switch (props.elementType) {
         case ('input'):
-            inputElement = <Form.Control
-             className={inputClasses.join(' ')}
+            inputElement = <input transparent
+                className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
                 onChange={props.changed}
@@ -67,7 +67,7 @@ const input = (props) => {
 
             break;
         default:
-            inputElement = <Form.Control
+            inputElement = <input
                 style={{ ...props.style }}
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
