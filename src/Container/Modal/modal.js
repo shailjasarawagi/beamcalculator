@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Grid, Button } from 'semantic-ui-react';
+import { Modal, Button } from 'semantic-ui-react';
 import Input from '../../Components/UI/Input/input';
 
 class Modal1 extends Component {
@@ -63,18 +63,14 @@ class Modal1 extends Component {
     // const modalImage = modalArray.map(modalElement => (
     //   modalElement.config.Location !== undefined ? <Image key={modalElement.id} wrapped size='small' src={require(`../../assets/${modalElement.config.Location}`)} /> : null));
     return (
-      <Modal
+      <Modal className="modal" style={{ marginTop: "-200px" }}
         centered={false}
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header onClick={this.props.modalAdd}>{this.props.identity}</Modal.Header>
         {beamLength.valid ? <>
           <Modal.Content>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column width={8}>{modalInput}</Grid.Column>
-              </Grid.Row>
-            </Grid>
+            {modalInput}
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.modalclose}>Cancel</Button>
