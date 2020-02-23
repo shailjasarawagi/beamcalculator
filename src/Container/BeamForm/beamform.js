@@ -15,9 +15,12 @@ class Beamform extends Component {
     modalIdentity: '',
     modalId: null,
     crossmodalData: {},
-    loadmodalData: {},
+    loadmodalData: {}
   }
 
+  componentDidMount() {
+    this.modalId = 0;
+  }
   modalclose = () => {
     console.log("shailja");
     this.setState({ modalopen: false, modalIdentity: "" });
@@ -37,6 +40,7 @@ class Beamform extends Component {
     this.setState({ formData: updatedFormData });
   }
 
+
   crossAdd = (event, modaldata, name) => {
     const updatedmodalData = {
       [name]: {
@@ -51,12 +55,14 @@ class Beamform extends Component {
 
     const updatedmodalData = {
       ...this.state.loadmodalData,
-      [name]: {
-
+      [this.modalId]: {
+        name,
         ...modaldata
-      },
-
+      }
     };
+
+    this.modalId = this.modalId + 1;
+
 
     console.log(updatedmodalData)
     this.setState({ loadmodalData: updatedmodalData, modalopen: false });
@@ -72,6 +78,10 @@ class Beamform extends Component {
 
   }
 
+  editCrossModalData = () => {
+    console.log("shailja");
+  }
+
   deleteLoadModalData = (e, selectedData, i) => {
 
     console.log(e, selectedData, i);
@@ -83,10 +93,15 @@ class Beamform extends Component {
     if (rules.required) {
       isvalid = value.trim() !== "" && isvalid;
     }
+
     return isvalid;
   }
 
-  inputChangeHandler = (event, inputIdentifier) => {
+
+
+  inputChangeHandler = (event, inputIdentifier, val) => {
+    console.log(event.target.value, event.target.id, val);
+    // console.log(data.value);
     const updatedFormData = {
       ...this.state.formData
     };
@@ -97,8 +112,10 @@ class Beamform extends Component {
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedFormData[inputIdentifier] = updatedFormElement;
+    console.log(updatedFormData)
     this.setState({ formData: updatedFormData });
   }
+
 
   onclick = (event, modalContent, Identity, id) => {
     this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity, modalId: id });
@@ -146,11 +163,10 @@ class Beamform extends Component {
       }
 
       const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
-
       return <Segment key={ele.id} raised><b>{ele.id}</b>{crossArrayEle}
         <span className="floatright1">
-          <Icon name='edit' size='large' /><Icon name='delete' size='large'
-            onClick={(e) => { this.deleteCrossModalData(e, ele.id) }} />
+          <Icon name='edit' size='large' onClick={(e) => { this.editCrossModalData(e, ele.id) }} />
+          <Icon name='delete' size='large' onClick={(e) => { this.deleteCrossModalData(e, ele.id) }} />
         </span></Segment>
     });
 
@@ -158,27 +174,37 @@ class Beamform extends Component {
 
     const loadArray = [];
     const loadArray1 = [];
+    console.log("state loadmodal", this.state.loadmodalData);
 
     for (let key in this.state.loadmodalData) {
+      // let index = this.state.loadmodalData.length - 1;
+      // let length = 0;
+      // for (let key in this.state.loadmodalData) {
+      //   length = length + 1;
+
+      // }
+      // console.log("index state", index, this.state.loadmodalData[index])
       loadArray.push({
         id: key,
         config: this.state.loadmodalData[key]
       });
     }
+    console.log("load array state", loadArray, Object.keys(this.state.loadmodalData).length)
 
-    const loadArr = loadArray.map((ele, index) => {
-
+    const loadArr = loadArray.map((ele) => {
+      console.log("ele", ele)
+      // if (index === (loadArray.length - 1)) {
       for (let key in ele.config) {
         loadArray1.push({
           id: key,
           config: ele.config[key]
         });
       }
-
+      // }
       console.log(loadArray, loadArray1);
       const loadArrEle = loadArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
 
-      return <Segment key={ele.id} raised><b>{ele.id}</b>{loadArrEle}
+      return <Segment key={ele.id} raised>{loadArrEle}
 
         <span className="floatright">
           <Icon name='edit' size='large' /><Icon name='delete' size='large'
@@ -187,7 +213,6 @@ class Beamform extends Component {
       </Segment>
 
     });
-
 
     return (
       <Container>
@@ -206,7 +231,9 @@ class Beamform extends Component {
                   addFunction={this.crossAdd} val={this.state.formData}
                   modalopen={this.state.modalopen} onclick={this.onclick}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-                  modalId={this.state.modalId} />
+                  modalId={this.state.modalId}
+
+                />
 
                 {Object.keys(this.state.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
 

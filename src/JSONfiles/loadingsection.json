@@ -99,30 +99,27 @@
                     "label": "Distance From A",
                     "touched": false
                 },
-                "UDirection": {
+                 "Direction": {
                     "elementType": "radio",
                     "elementConfig": {
-                        "type": "radio"
+                        "type": "radio",
+                        "options": [
+                            {
+                                "label": "Down",
+                                "value": "Down"
+                            },
+                            {
+                                "label": "Up",
+                                "value": "Up"
+                            }
+                        ]
                     },
-                    "value": "Up",
+                    "value": "",
                     "validation": {
                         "required": true
                     },
                     "valid": false,
-                    "label": "Up",
-                    "touched": false
-                },
-                "DDirection": {
-                    "elementType": "radio",
-                    "elementConfig": {
-                        "type": "radio"
-                    },
-                    "value": "Down",
-                    "validation": {
-                        "required": true
-                    },
-                    "valid": false,
-                    "label": "Down",
+                    "label": "Direction",
                     "touched": false
                 }
             }
@@ -192,30 +189,27 @@
                     },
                     "label": "Ending Load"
                 },
-                "UDirection": {
+              "Direction": {
                     "elementType": "radio",
                     "elementConfig": {
-                        "type": "radio"
+                        "type": "radio",
+                        "options": [
+                            {
+                                "label": "Down",
+                                "value": "Down"
+                            },
+                            {
+                                "label": "Up",
+                                "value": "Up"
+                            }
+                        ]
                     },
-                    "value": "Up",
+                    "value": "",
                     "validation": {
                         "required": true
                     },
                     "valid": false,
-                    "label": "Up",
-                    "touched": false
-                },
-                "DDirection": {
-                    "elementType": "radio",
-                    "elementConfig": {
-                        "type": "radio"
-                    },
-                    "value": "Down",
-                    "validation": {
-                        "required": true
-                    },
-                    "valid": false,
-                    "label": "Down",
+                    "label": "Direction",
                     "touched": false
                 }
             }
@@ -270,30 +264,27 @@
                     "label": "Value of UDL",
                     "touched": false
                 },
-                "UDirection": {
+                "Direction": {
                     "elementType": "radio",
                     "elementConfig": {
-                        "type": "radio"
+                        "type": "radio",
+                        "options": [
+                            {
+                                "label": "Down",
+                                "value": "Down"
+                            },
+                            {
+                                "label": "Up",
+                                "value": "Up"
+                            }
+                        ]
                     },
-                    "value": "Up",
+                    "value": "",
                     "validation": {
                         "required": true
                     },
                     "valid": false,
-                    "label": "Up",
-                    "touched": false
-                },
-                "DDirection": {
-                    "elementType": "radio",
-                    "elementConfig": {
-                        "type": "radio"
-                    },
-                    "value": "Down",
-                    "validation": {
-                        "required": true
-                    },
-                    "valid": false,
-                    "label": "Down",
+                    "label": "Direction",
                     "touched": false
                 }
             }
