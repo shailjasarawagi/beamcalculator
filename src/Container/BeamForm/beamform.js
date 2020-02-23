@@ -191,7 +191,7 @@ class Beamform extends Component {
     }
     console.log("load array state", loadArray, Object.keys(this.state.loadmodalData).length)
 
-    const loadArr = loadArray.map((ele) => {
+    const loadArr = loadArray.map((ele,index) => {
       console.log("ele", ele)
       // if (index === (loadArray.length - 1)) {
       for (let key in ele.config) {
@@ -201,8 +201,10 @@ class Beamform extends Component {
         });
       }
       // }
-      console.log(loadArray, loadArray1);
-      const loadArrEle = loadArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
+    let number_of_elements= Object.keys(loadArray[index].config).length;
+    let element1= loadArray1.slice(loadArray1.length-number_of_elements,)
+    const loadArrEle = 
+       element1.map( (ele1)=>(<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
 
       return <Segment key={ele.id} raised>{loadArrEle}
 
@@ -213,6 +215,7 @@ class Beamform extends Component {
       </Segment>
 
     });
+    console.log("state load Arr ",loadArray, loadArray1, loadArr);
 
     return (
       <Container>
