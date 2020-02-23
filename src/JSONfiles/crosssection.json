@@ -9,7 +9,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Diameter",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -37,7 +38,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Outside Diameter",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -52,7 +54,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Thickness",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -85,7 +88,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Breadth",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -100,7 +104,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Height",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -132,7 +137,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Breadth",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -146,7 +152,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Height",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {
@@ -160,7 +167,8 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Height",
-                        "pattern": "[^0-9]+"
+                        "pattern": "[^0-9]+",
+                        "min": 0
                     },
                     "value": "",
                     "validation": {

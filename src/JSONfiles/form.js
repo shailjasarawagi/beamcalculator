@@ -4,7 +4,8 @@ const imageSelect = {
         "elementConfig": {
             "type": "number",
             "placeholder": "Enter Length of beam",
-            "pattern": "[^0-9]+"
+            "pattern": "[^0-9]+",
+            "min": 0
         },
         "value": "",
         "validation": {
@@ -35,10 +36,9 @@ const imageSelect = {
         },
         "value": "",
         "validation": {
-            "required": true
         },
         "valid": false,
-        "label": "Material Choices",
+        "label": "Material Choice",
         "touched": false
     },
     "Support Choice": {
@@ -70,7 +70,6 @@ const imageSelect = {
         "value": "",
         "label": "Support Choice",
         "validation": {
-            "required": true
         },
         "valid": false,
         "touched": false

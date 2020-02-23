@@ -1,10 +1,6 @@
 import React from 'react';
 import classes from './input.module.css';
-import { Image, Radio, Dropdown } from 'semantic-ui-react';
-
-
-// import Select from "react-select";
-
+import { Image, Dropdown } from 'semantic-ui-react';
 
 const input = (props) => {
     let inputElement = null;
@@ -45,6 +41,7 @@ const input = (props) => {
                     onChange={props.selectChanger}
                     options={props.elementConfig.options}
                     fluid
+                    label={props.label}
                     selection />
             );
             break;
@@ -58,11 +55,16 @@ const input = (props) => {
             break;
 
         case ('radio'):
-            inputElement = <Radio
-                className={inputClasses.join(' ')}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+            inputElement = props.elementConfig.options.map(ele => {
+                console.log(ele)
+                return <label key={ele.label}>{ele.label} <input type="radio"
+                    label={ele.label}
+                    value={ele.value}
+                    key={ele.label}
+                    checked={props.value === ele.value}
+                    onChange={props.changed}
+                /></label>
+            });
 
 
             break;

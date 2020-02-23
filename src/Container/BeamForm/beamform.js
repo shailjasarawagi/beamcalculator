@@ -23,6 +23,19 @@ class Beamform extends Component {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
+  selectChanger = (e, data) => {
+    const updatedFormData = {
+      ...this.state.formData
+    };
+    const updatedFormElement = {
+      ...updatedFormData[data.label]
+    };
+    updatedFormElement.value = data.value;
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    updatedFormElement.touched = true;
+    updatedFormData[data.label] = updatedFormElement;
+    this.setState({ formData: updatedFormData });
+  }
 
   crossAdd = (event, modaldata, name) => {
     const updatedmodalData = {
@@ -53,7 +66,7 @@ class Beamform extends Component {
   deleteCrossModalData = (e, selectedData) => {
     console.log(e, selectedData);
     console.log("ssa", this.state.crossmodalData);
-    this.setState({ crossmodalData: [] }, () => {
+    this.setState({ crossmodalData: {} }, () => {
       console.log("cross", this.state.crossmodalData)
     })
 
@@ -117,7 +130,7 @@ class Beamform extends Component {
     });
 
     const crossArray = [];
-    const crossArray1=[];
+    const crossArray1 = [];
     for (let key in this.state.crossmodalData) {
       crossArray.push({
         id: key,
@@ -125,13 +138,13 @@ class Beamform extends Component {
       });
     }
     const arr = crossArray.map(ele => {
-       for (let key in ele.config){
+      for (let key in ele.config) {
         crossArray1.push({
           id: key,
           config: ele.config[key]
         });
       }
- 
+
       const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
 
       return <Segment key={ele.id} raised><b>{ele.id}</b>{crossArrayEle}
@@ -152,17 +165,17 @@ class Beamform extends Component {
         config: this.state.loadmodalData[key]
       });
     }
-  
+
     const loadArr = loadArray.map((ele, index) => {
 
-      for (let key in ele.config){
+      for (let key in ele.config) {
         loadArray1.push({
           id: key,
           config: ele.config[key]
         });
       }
- 
-      console.log(loadArray,loadArray1);
+
+      console.log(loadArray, loadArray1);
       const loadArrEle = loadArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
 
       return <Segment key={ele.id} raised><b>{ele.id}</b>{loadArrEle}

@@ -1,0 +1,7 @@
+.ui.button:disabled, .ui.disabled.button:hover {
+    border: 1px solid #999999 !important;
+    background-color: #cccccc !important;
+    color: #666666 !important;
+    pointer-events: all !important;
+    cursor: not-allowed !important;
+}

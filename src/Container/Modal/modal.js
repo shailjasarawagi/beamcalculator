@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Modal, Button } from 'semantic-ui-react';
 import Input from '../../Components/UI/Input/input';
+import './modal.css';
 
 class Modal1 extends Component {
 
   state = {
-    formData: this.props.modalInput.fields
+    formData: this.props.modalInput.fields,
+    formIsValid: false
   }
 
   checkValidity = (value, rules) => {
@@ -17,6 +19,7 @@ class Modal1 extends Component {
   }
 
   modalInputChangeHandler = (event, inputIdentifier) => {
+    console.log(event.target.value)
     const updatedFormData = {
       ...this.state.formData
     };
@@ -24,10 +27,17 @@ class Modal1 extends Component {
       ...updatedFormData[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
+    console.log(updatedFormElement)
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedFormData[inputIdentifier] = updatedFormElement;
-    this.setState({ formData: updatedFormData });
+
+    let formIsValid = true;
+    for (let ele in updatedFormData) {
+      formIsValid = updatedFormData[ele].valid && formIsValid;
+    }
+    console.log(formIsValid)
+    this.setState({ formData: updatedFormData, formIsValid: formIsValid });
   }
 
   render() {
@@ -65,7 +75,7 @@ class Modal1 extends Component {
         </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.modalclose}>Cancel</Button>
-            <Button primary onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity) }}>Add</Button>
+            <Button style={{ border: "#324561 !important" }} primary disabled={!this.state.formIsValid} onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity) }}>Add</Button>
           </Modal.Actions></> :
           <><Modal.Content>
             Enter length of beam

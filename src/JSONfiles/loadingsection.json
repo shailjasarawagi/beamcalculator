@@ -5,281 +5,298 @@
             "Location": "POINT LOADING1.png",
             "modal": true,
             "fields": {
-            "Point Load": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Point Load"
-                    
+                "Point Load": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Point Load",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Point Load",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
+                "Distance from A": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Distance from A",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Distance From A",
+                    "touched": false
                 },
-                "valid": false,
-                "label": "Point Load",
-                "touched": false
-            },
-            "Distance from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Distance from A"
-                },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Distance From A",
-                "touched": false
-            },
-            "UDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Up",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Up",
-                "touched": false
-            },
-            "DDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Down",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Down",
-                "touched": false
+                "Direction": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio",
+                        "options": [
+                            {
+                                "label": "Down",
+                                "value": "Down"
+                            },
+                            {
+                                "label": "Up",
+                                "value": "Up"
+                            }
+                        ]
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Direction",
+                    "touched": false
+                }
             }
-        }
-    },
+        },
         "Moment Loading": {
             "name": "Moment Loading",
             "Location": "MOMENT .png",
             "modal": true,
             "fields": {
-            "Point Moment": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Point Load"
+                "Point Moment": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Point Load",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Point Moment",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
+                "Distance from A": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Distance from A",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Distance From A",
+                    "touched": false
                 },
-                "valid": false,
-                "label": "Point Moment",
-                "touched": false
-            },
-            "Distance from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Distance from A"
+                "UDirection": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio"
+                    },
+                    "value": "Up",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Up",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Distance From A",
-                "touched": false
-            },
-            "UDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Up",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Up",
-                "touched": false
-            },
-            "DDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Down",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Down",
-                "touched": false
+                "DDirection": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio"
+                    },
+                    "value": "Down",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Down",
+                    "touched": false
+                }
             }
-        }
-    },
-      
+        },
         "Trapezoidal Loading": {
             "name": "Trapezoidal Loading",
             "Location": "TRAPEZOIDAL LOADING.png",
             "modal": true,
             "fields": {
-            "Starting point of load from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Point Load"
+                "Starting point of load from A": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Point Load",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Starting point of UDL from A",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
+                "Ending point of load from A": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Distance from A",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Ending point of UDL from A",
+                    "touched": false
                 },
-                "label": "Starting point of UDL from A",
-                "touched": false
-            },
-            "Ending point of load from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Distance from A"
+                "Starting Load": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the starting load",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Starting Load",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
+                "Ending Load": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the ending load",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "touched": false,
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Ending Load"
                 },
-                "label": "Ending point of UDL from A",
-                "touched": false
-            },
-            "Starting Load": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the starting load"
+                "UDirection": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio"
+                    },
+                    "value": "Up",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Up",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "label": "Starting Load",
-                "touched": false
-            },
-            "Ending Load": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the ending load"
-                },
-                "value": "",
-                "touched": false,
-                "validation": {
-                    "required": true
-                },
-                "label": "Ending Load"
-            },
-            "UDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Up",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Up",
-                "touched": false
-            },
-            "DDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Down",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Down",
-                "touched": false
+                "DDirection": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio"
+                    },
+                    "value": "Down",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Down",
+                    "touched": false
+                }
             }
-        }
-    },
-      "Uniform Distributed Load": {
+        },
+        "Uniform Distributed Load": {
             "name": "Uniform Distributed Load",
             "elementType": "image",
             "Location": "Uniform Loading.png",
             "modal": true,
             "fields": {
-            "Starting point of UDL from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Point Load"
+                "Starting point of UDL from A": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Point Load",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Starting point of UDL from A"
                 },
-                "value": "",
-                "validation": {
-                    "required": true
+                "Ending point of UDL from A": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the Distance from A",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Ending point of UDL from A",
+                    "touched": false
                 },
-                "label": "Starting point of UDL from A"
-            },
-            "Ending point of UDL from A": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the Distance from A"
+                "Value of UDl": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "type": "number",
+                        "placeholder": "Enter the value of UDL",
+                        "pattern": "[^0-9]+",
+                        "min": 0
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "label": "Value of UDL",
+                    "touched": false
                 },
-                "value": "",
-                "validation": {
-                    "required": true
+                "UDirection": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio"
+                    },
+                    "value": "Up",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Up",
+                    "touched": false
                 },
-                "label": "Ending point of UDL from A",
-                "touched": false
-            },
-            "Value of UDl": {
-                "elementType": "input",
-                "elementConfig": {
-                    "type": "number",
-                    "placeholder": "Enter the value of UDL"
-                },
-                "value": "",
-                "validation": {
-                    "required": true
-                },
-                "label": "Value of UDL",
-                "touched": false
-            },
-            "UDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Up",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Up",
-                "touched": false
-            },
-            "DDirection": {
-                "elementType": "radio",
-                "elementConfig": {
-                    "type": "radio"
-                },
-                "value": "Down",
-                "validation": {
-                    "required": true
-                },
-                "valid": false,
-                "label": "Down",
-                "touched": false
+                "DDirection": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio"
+                    },
+                    "value": "Down",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Down",
+                    "touched": false
+                }
             }
-        }
         }
     }
 }
