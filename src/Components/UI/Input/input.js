@@ -56,13 +56,14 @@ const input = (props) => {
 
         case ('radio'):
             inputElement = props.elementConfig.options.map(ele => {
-                console.log(ele)
+                
                 return <label key={ele.label}>{ele.label} <input type="radio"
                     label={ele.label}
                     value={ele.value}
                     key={ele.label}
                     checked={props.value === ele.value}
                     onChange={props.changed}
+                   
                 /></label>
             });
 

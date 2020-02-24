@@ -3,7 +3,7 @@ import * as data from '../../JSONfiles/form.js';
 import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
-import { Message, Segment, Icon, Grid, Container } from 'semantic-ui-react';
+import { Message, Segment, Icon, Grid, Container, Button } from 'semantic-ui-react';
 import './beamform.css';
 
 class Beamform extends Component {
@@ -15,14 +15,14 @@ class Beamform extends Component {
     modalIdentity: '',
     modalId: null,
     crossmodalData: {},
-    loadmodalData: {}
+    loadmodalData: {},
+    modalData:{}
   }
 
   componentDidMount() {
     this.modalId = 0;
   }
   modalclose = () => {
-    console.log("shailja");
     this.setState({ modalopen: false, modalIdentity: "" });
   }
 
@@ -62,16 +62,12 @@ class Beamform extends Component {
     };
 
     this.modalId = this.modalId + 1;
-
-
-    console.log(updatedmodalData)
     this.setState({ loadmodalData: updatedmodalData, modalopen: false });
   }
 
 
   deleteCrossModalData = (e, selectedData) => {
-    console.log(e, selectedData);
-    console.log("ssa", this.state.crossmodalData);
+
     this.setState({ crossmodalData: {} }, () => {
       console.log("cross", this.state.crossmodalData)
     })
@@ -79,12 +75,25 @@ class Beamform extends Component {
   }
 
   editCrossModalData = () => {
-    console.log("shailja");
+    console.log("sls");
   }
 
-  deleteLoadModalData = (e, selectedData, i) => {
+  editLoadModalData = (e, data) => {
+    console.log("ssa", data);
+    let data1= Object.values(data);
+    console.log(data1[0]);
+    
+  }
 
-    console.log(e, selectedData, i);
+  deleteLoadModalData = (e, selectedDataid, selectedDatavalue) => {
+    const deletedmodaldata = {
+      ...this.state.loadmodalData
+    }
+    delete deletedmodaldata[selectedDataid];
+
+    this.setState({ loadmodalData: deletedmodaldata }, () => {
+      console.log("deleted", this.state.loadmodalData)
+    })
   }
 
 
@@ -100,8 +109,8 @@ class Beamform extends Component {
 
 
   inputChangeHandler = (event, inputIdentifier, val) => {
-    console.log(event.target.value, event.target.id, val);
-    // console.log(data.value);
+
+
     const updatedFormData = {
       ...this.state.formData
     };
@@ -112,7 +121,7 @@ class Beamform extends Component {
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedFormData[inputIdentifier] = updatedFormElement;
-    console.log(updatedFormData)
+
     this.setState({ formData: updatedFormData });
   }
 
@@ -165,7 +174,7 @@ class Beamform extends Component {
       const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
       return <Segment key={ele.id} raised><b>{ele.id}</b>{crossArrayEle}
         <span className="floatright1">
-          <Icon name='edit' size='large' onClick={(e) => { this.editCrossModalData(e, ele.id) }} />
+          <Icon name='edit' size='large' onClick={(e,id) => { this.editCrossModalData(e, ele.id) }} />
           <Icon name='delete' size='large' onClick={(e) => { this.deleteCrossModalData(e, ele.id) }} />
         </span></Segment>
     });
@@ -174,48 +183,43 @@ class Beamform extends Component {
 
     const loadArray = [];
     const loadArray1 = [];
-    console.log("state loadmodal", this.state.loadmodalData);
 
     for (let key in this.state.loadmodalData) {
-      // let index = this.state.loadmodalData.length - 1;
-      // let length = 0;
-      // for (let key in this.state.loadmodalData) {
-      //   length = length + 1;
 
-      // }
-      // console.log("index state", index, this.state.loadmodalData[index])
       loadArray.push({
         id: key,
         config: this.state.loadmodalData[key]
       });
     }
-    console.log("load array state", loadArray, Object.keys(this.state.loadmodalData).length)
 
-    const loadArr = loadArray.map((ele,index) => {
-      console.log("ele", ele)
-      // if (index === (loadArray.length - 1)) {
+    const loadArr = loadArray.map((ele, index) => {
+
       for (let key in ele.config) {
         loadArray1.push({
           id: key,
           config: ele.config[key]
         });
       }
-      // }
-    let number_of_elements= Object.keys(loadArray[index].config).length;
-    let element1= loadArray1.slice(loadArray1.length-number_of_elements,)
-    const loadArrEle = 
-       element1.map( (ele1)=>(<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
+
+      let number_of_elements = Object.keys(loadArray[index].config).length;
+
+      let element1 = loadArray1.slice(loadArray1.length - number_of_elements)
+      const loadArrEle =
+        element1.map((ele1) => (
+          (ele1.config.value !== undefined ?
+            <div key={ele1.id}>{ele1.id}={ele1.config.value}</div> :
+            <div key={ele1.id}>{ele1.id}={ele1.config}</div>)));
 
       return <Segment key={ele.id} raised>{loadArrEle}
 
         <span className="floatright">
-          <Icon name='edit' size='large' /><Icon name='delete' size='large'
-            onClick={(e) => { this.deleteLoadModalData(e, ele.id) }} />
+          <Icon name='edit' size='large' onClick={(e) => { this.editLoadModalData(e, ele.config) }} />
+          <Icon name='delete' size='large' onClick={(e) => { this.deleteLoadModalData(e, ele.id, ele.config) }} />
         </span>
       </Segment>
 
     });
-    console.log("state load Arr ",loadArray, loadArray1, loadArr);
+
 
     return (
       <Container>
@@ -244,7 +248,6 @@ class Beamform extends Component {
 
             </Grid.Column>
             <Grid.Column width={8}>
-
               <Message info color="blue" className="message">
                 <Message.Header className="messageheader">Setting Loading Data</Message.Header>
                 <hr />
@@ -252,9 +255,11 @@ class Beamform extends Component {
                   modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
                   modalId={this.state.modalId} />
-
-                {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
+                <div className="loaddata">
+                  {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
+                </div>
               </Message>
+              <Button primary>Solve</Button>
             </Grid.Column>
 
           </Grid.Row>

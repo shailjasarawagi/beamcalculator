@@ -1,4 +1,4 @@
-{
+{ 
     "Loading_Section": {
         "Point Loading": {
             "name": "Point Loading",
@@ -197,10 +197,12 @@
                             {
                                 "label": "Down",
                                 "value": "Down"
+                                 
                             },
                             {
                                 "label": "Up",
                                 "value": "Up"
+                                
                             }
                         ]
                     },
@@ -290,4 +292,7 @@
             }
         }
     }
+
 }
+
+

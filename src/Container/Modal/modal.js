@@ -11,8 +11,8 @@ class Modal1 extends Component {
   }
 
   checkValidity = (value, rules) => {
-     const beamLength = this.props.val["Length of beam"];
-     console.log(beamLength.value,value)
+    //  const beamLength = this.props.val["Length of beam"];
+    //  console.log(beamLength);
 
     let isvalid = true;
     
@@ -26,7 +26,7 @@ class Modal1 extends Component {
   }
 
   modalInputChangeHandler = (event, inputIdentifier) => {
-    console.log(event.target.value)
+   
     const updatedFormData = {
       ...this.state.formData
     };
@@ -35,7 +35,7 @@ class Modal1 extends Component {
       ...updatedFormData[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
-    console.log(updatedFormElement)
+ 
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
 
     updatedFormElement.touched = true;
@@ -45,7 +45,7 @@ class Modal1 extends Component {
     for (let ele in updatedFormData) {
       formIsValid = updatedFormData[ele].valid && formIsValid;
     }
-    console.log(formIsValid)
+
     this.setState({ formData: updatedFormData, formIsValid: formIsValid });
   }
 
