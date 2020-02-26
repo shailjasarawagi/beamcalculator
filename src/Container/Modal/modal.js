@@ -10,23 +10,35 @@ class Modal1 extends Component {
     formIsValid: false
   }
 
-  checkValidity = (value, rules) => {
-    //  const beamLength = this.props.val["Length of beam"];
-    //  console.log(beamLength);
 
+  checkValidity = (value, rules) => {
     let isvalid = true;
-    
+
     if (rules.required) {
       isvalid = value.trim() !== "" && isvalid;
+
     }
-    // if(rules.required){
-    //   isvalid= beamLength.value>= value && isvalid;
-    // }
+
+    if (rules.minLength) {
+      isvalid = value >= rules.minLength && isvalid;
+
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isvalid = pattern.test(value) && isvalid
+    }
+
+    if (rules.lessthanBeam) {
+      isvalid = value <= this.beamLength.value && isvalid;
+      console.log("hhh", isvalid)
+    }
     return isvalid;
   }
 
+
   modalInputChangeHandler = (event, inputIdentifier) => {
-   
+
     const updatedFormData = {
       ...this.state.formData
     };
@@ -35,7 +47,7 @@ class Modal1 extends Component {
       ...updatedFormData[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
- 
+
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
 
     updatedFormElement.touched = true;
@@ -49,8 +61,15 @@ class Modal1 extends Component {
     this.setState({ formData: updatedFormData, formIsValid: formIsValid });
   }
 
+  componentDidMount() {
+    console.log("modal rendered", this.props.modalInput, this.props.identity)
+  }
+
   render() {
-    const beamLength = this.props.val["Length of beam"];
+    //  const buttonsubmit= this.state.formIsValid || !this.props.editValid && this.props.editValid !== this.state.formIsValid; ;
+    //  console.log("button",buttonsubmit)
+    this.beamLength = this.props.val["Length of beam"];
+
     const modalArray = [];
     for (let key in this.state.formData) {
       modalArray.push({
@@ -71,6 +90,7 @@ class Modal1 extends Component {
         changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
       />
     ));
+console.log("before modalheader",this.props)
 
     return (
       <Modal
@@ -79,7 +99,7 @@ class Modal1 extends Component {
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header>{this.props.identity}</Modal.Header>
-        {beamLength.valid ? <><Modal.Content>
+        {this.beamLength.valid ? <><Modal.Content>
           {modalInput}
         </Modal.Content>
           <Modal.Actions>

@@ -5,6 +5,9 @@ import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
 import { Message, Segment, Icon, Grid, Container, Button } from 'semantic-ui-react';
 import './beamform.css';
+import * as loadingsectionelements from "../../JSONfiles/loadingsection.json";
+import * as crosssectionelements from "../../JSONfiles/crosssection.json";
+import Swal from "sweetalert2";
 
 class Beamform extends Component {
 
@@ -16,7 +19,11 @@ class Beamform extends Component {
     modalId: null,
     crossmodalData: {},
     loadmodalData: {},
-    modalData:{}
+    modalData: {},
+    loadData: loadingsectionelements.default.Loading_Section,
+    crossData: crosssectionelements.default.Cross_Section,
+    editValid:false
+
   }
 
   componentDidMount() {
@@ -53,6 +60,7 @@ class Beamform extends Component {
 
   loadAdd = (event, modaldata, name) => {
 
+    console.log("loadAdd", modaldata)
     const updatedmodalData = {
       ...this.state.loadmodalData,
       [this.modalId]: {
@@ -67,22 +75,77 @@ class Beamform extends Component {
 
 
   deleteCrossModalData = (e, selectedData) => {
-
-    this.setState({ crossmodalData: {} }, () => {
-      console.log("cross", this.state.crossmodalData)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.setState({ crossmodalData: {} }, () => {
+          console.log("cross", this.state.crossmodalData)
+        })
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
     })
 
+
   }
 
-  editCrossModalData = () => {
-    console.log("sls");
+  editCrossModalData = (e, data, identity, id) => {
+    console.log("sls", data, id, identity, this.state.modalInput, this.state.crossmodalData);
+
+    this.setState(
+      prevState => (
+        {
+          modalopen: true, modalId: id, modalIdentity: identity,
+          editValid:true,
+          modalInput:
+          {
+            ...prevState.modalInput,
+            fields: data,
+
+          },
+        }
+      ),
+      console.log("state modalinput", this.state.modalInput));
+
+
   }
 
-  editLoadModalData = (e, data) => {
-    console.log("ssa", data);
-    let data1= Object.values(data);
+  editLoadModalData = (e, data, id) => {
+    console.log("ssa load", data, id, this.state.loadmodalData);
+    let data1 = Object.values(data);
     console.log(data1[0]);
-    
+    // delete data.name;
+    let data2 = { ...data };
+    delete data2.name;
+    // console.log("deleted", data);
+    // this.setState({ modalopen: true, modalId: id, modalIdentity: data1[0], modalInput: data });
+    console.log("modal Input error", this.state.modalInput)
+    this.setState(
+      prevState => (
+        {
+          ...prevState,
+          modalopen: true,
+          modalId: id,
+          modalIdentity: data1[0],
+           editValid:true,
+          modalInput:
+          {
+            ...prevState.modalInput,
+            fields: data2,
+          },
+        }
+      ),
+      console.log("state modalinput after setstate", this.state.modalInput));
   }
 
   deleteLoadModalData = (e, selectedDataid, selectedDatavalue) => {
@@ -91,9 +154,28 @@ class Beamform extends Component {
     }
     delete deletedmodaldata[selectedDataid];
 
-    this.setState({ loadmodalData: deletedmodaldata }, () => {
-      console.log("deleted", this.state.loadmodalData)
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.setState({ loadmodalData: deletedmodaldata }, () => {
+          console.log("deleted", this.state.loadmodalData)
+        })
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
     })
+
   }
 
 
@@ -127,6 +209,7 @@ class Beamform extends Component {
 
 
   onclick = (event, modalContent, Identity, id) => {
+    console.log("click ", modalContent, Identity)
     this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity, modalId: id });
   }
 
@@ -174,7 +257,7 @@ class Beamform extends Component {
       const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
       return <Segment key={ele.id} raised><b>{ele.id}</b>{crossArrayEle}
         <span className="floatright1">
-          <Icon name='edit' size='large' onClick={(e,id) => { this.editCrossModalData(e, ele.id) }} />
+          <Icon name='edit' size='large' onClick={(e, id) => { this.editCrossModalData(e, ele.config, ele.id, "CrossSection") }} />
           <Icon name='delete' size='large' onClick={(e) => { this.deleteCrossModalData(e, ele.id) }} />
         </span></Segment>
     });
@@ -212,8 +295,10 @@ class Beamform extends Component {
 
       return <Segment key={ele.id} raised>{loadArrEle}
 
-        <span className="floatright">
-          <Icon name='edit' size='large' onClick={(e) => { this.editLoadModalData(e, ele.config) }} />
+        <span className="floatright1">
+          {console.log("cross ele", ele)}
+
+          <Icon name='edit' size='large' onClick={(e) => { this.editLoadModalData(e, ele.config, "LoadingSection") }} />
           <Icon name='delete' size='large' onClick={(e) => { this.deleteLoadModalData(e, ele.id, ele.config) }} />
         </span>
       </Segment>
@@ -239,7 +324,9 @@ class Beamform extends Component {
                   modalopen={this.state.modalopen} onclick={this.onclick}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
                   modalId={this.state.modalId}
+                  crossData={this.state.crossData}
 
+                  editValid={this.state.editValid}
                 />
 
                 {Object.keys(this.state.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
@@ -251,10 +338,14 @@ class Beamform extends Component {
               <Message info color="blue" className="message">
                 <Message.Header className="messageheader">Setting Loading Data</Message.Header>
                 <hr />
+                {console.log("Modal Identity", this.state.modalIdentity)}
                 <LoadingSection modalclose={this.modalclose} addFunction={this.loadAdd}
                   modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-                  modalId={this.state.modalId} />
+                  modalId={this.state.modalId}
+                  loadData={this.state.loadData}
+                  editValid={this.state.editValid}
+                />
                 <div className="loaddata">
                   {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
                 </div>

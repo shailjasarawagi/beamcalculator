@@ -8,13 +8,14 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Diameter",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Diameter"
+                       
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                         "isNumeric":true,
+                        "minLength":0
                     },
                     "valid": false,
                     "label": "Diameter",
@@ -43,7 +44,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                          "isNumeric":true,
+                        "minLength":0
                     },
                     "valid": false,
                     "label": "Outside Diameter",
@@ -73,7 +76,9 @@
                 },
                 "value": "",
                 "validation": {
-                    "required": true
+                    "required": true,
+                      "isNumeric":true,
+                        "minLength":0
                 },
                 "valid": false,
                 "Location": "Circular Hollow.JPG"
@@ -93,7 +98,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                         "isNumeric":true,
+                        "minLength":0
                     },
                     "valid": false,
                     "label": "Breadth",
@@ -142,7 +149,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                          "isNumeric":true,
+                        "minLength":0
                     },
                     "label": "Breadth",
                     "touched": false

@@ -15,7 +15,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric":true,
+                        "minLength":0,
+                        "lessthanBeam":true
                     },
                     "valid": false,
                     "label": "Point Load",
@@ -77,7 +80,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric":true,
+                        "minLength":0,
+                        "lessthanBeam":true
                     },
                     "valid": false,
                     "label": "Point Moment",
