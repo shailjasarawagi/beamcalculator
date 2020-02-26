@@ -8,6 +8,7 @@ import './beamform.css';
 import * as loadingsectionelements from "../../JSONfiles/loadingsection.json";
 import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 import Swal from "sweetalert2";
+import Axios from '../../hoc/Axios-orders';
 
 class Beamform extends Component {
 
@@ -22,8 +23,8 @@ class Beamform extends Component {
     modalData: {},
     loadData: loadingsectionelements.default.Loading_Section,
     crossData: crosssectionelements.default.Cross_Section,
-    editValid:false
-
+    editValid: false,
+    result: {}
   }
 
   componentDidMount() {
@@ -54,7 +55,9 @@ class Beamform extends Component {
         ...modaldata
       }
     };
-    this.setState({ crossmodalData: updatedmodalData, modalopen: false });
+    this.setState({ crossmodalData: updatedmodalData, modalopen: false }, () => {
+      console.log("cross", this.state.crossmodalData);
+    });
   }
 
 
@@ -70,7 +73,9 @@ class Beamform extends Component {
     };
 
     this.modalId = this.modalId + 1;
-    this.setState({ loadmodalData: updatedmodalData, modalopen: false });
+    this.setState({ loadmodalData: updatedmodalData, modalopen: false }, () => {
+      console.log("loaddata", this.state.loadmodalData);
+    });
   }
 
 
@@ -106,7 +111,7 @@ class Beamform extends Component {
       prevState => (
         {
           modalopen: true, modalId: id, modalIdentity: identity,
-          editValid:true,
+          editValid: true,
           modalInput:
           {
             ...prevState.modalInput,
@@ -115,9 +120,7 @@ class Beamform extends Component {
           },
         }
       ),
-      console.log("state modalinput", this.state.modalInput));
-
-
+      console.log("state modalinput", this.state.modalInput, this.state.crossmodalData));
   }
 
   editLoadModalData = (e, data, id) => {
@@ -129,7 +132,7 @@ class Beamform extends Component {
     delete data2.name;
     // console.log("deleted", data);
     // this.setState({ modalopen: true, modalId: id, modalIdentity: data1[0], modalInput: data });
-    console.log("modal Input error", this.state.modalInput)
+    console.log("modal Input error", this.state.modalInput, this.state.loadmodalData)
     this.setState(
       prevState => (
         {
@@ -137,7 +140,7 @@ class Beamform extends Component {
           modalopen: true,
           modalId: id,
           modalIdentity: data1[0],
-           editValid:true,
+          editValid: true,
           modalInput:
           {
             ...prevState.modalInput,
@@ -181,18 +184,27 @@ class Beamform extends Component {
 
   checkValidity = (value, rules) => {
     let isvalid = true;
+    let message = {}
     if (rules.required) {
       isvalid = value.trim() !== "" && isvalid;
+      message = " Please Enter the value of length"
+    }
+    if (rules.minLength) {
+      isvalid = value >= rules.minLength && isvalid;
+      message = "Please enter value greater than 0"
     }
 
-    return isvalid;
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isvalid = pattern.test(value) && isvalid;
+      message = "Please enter numeric value";
+    }
+    return [isvalid, message];
   }
 
 
 
   inputChangeHandler = (event, inputIdentifier, val) => {
-
-
     const updatedFormData = {
       ...this.state.formData
     };
@@ -200,17 +212,71 @@ class Beamform extends Component {
       ...updatedFormData[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
-    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    const formElement = {};
+    formElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    console.log("valid", formElement.valid)
+    updatedFormElement.valid = formElement.valid[0]
+    console.log("valid2", updatedFormElement.valid);
     updatedFormElement.touched = true;
+    updatedFormElement.message = formElement.valid[1];
     updatedFormData[inputIdentifier] = updatedFormElement;
-
-    this.setState({ formData: updatedFormData });
+    this.setState({ formData: updatedFormData }, () => {
+      console.log("form", this.state.formData)
+    });
   }
 
 
   onclick = (event, modalContent, Identity, id) => {
     console.log("click ", modalContent, Identity)
     this.setState({ modalopen: true, modalInput: modalContent, modalIdentity: Identity, modalId: id });
+  }
+
+  formReset = () => {
+    this.setState({ editValid: false})
+  }
+
+  solveHandler = () => {
+    // let cross=[];
+    // let cross1=[];
+    // for (let key in this.state.crossmodalData) {
+    //   cross.push({
+    //     id: key,
+    //     config: this.state.crossmodalData[key]
+    //   });
+    // }
+    //  for (let key in cross[0].config) {
+    //   cross1.push({
+    //     id: key,
+    //     config: (cross[0].config)[key]
+    //   });
+    // }
+    // console.log("solve", cross[0].id,cross1);
+    
+    Axios({
+      method: "post",
+      url: "/api/calculator/",
+      data: {
+        "userinput": {
+          "material_Choice": this.state.formData["Material Choice"].value,
+          "length_of_beam": this.state.formData["Length of beam"].value,
+          "support_type": this.state.formData["Support Choice"].value,
+        },
+        "Cross_Section": {
+            
+        }
+      }
+    })
+      .then(response => {
+
+        console.log(response.data);
+        this.setState({ result: response.data });
+      })
+      .catch(error => {
+        // try {
+        //   console.log("Error", error);
+        // } catch (Exception) {}
+        console.log("Error", error);
+      });
   }
 
   render() {
@@ -221,6 +287,7 @@ class Beamform extends Component {
         config: this.state.formData[key]
       });
     }
+    console.log("form", formElementsArray)
     const form = formElementsArray.map(formElement => {
       return <div key={formElement.id}>
         <Input elementType={formElement.config.elementType}
@@ -233,6 +300,7 @@ class Beamform extends Component {
           touched={formElement.config.touched}
           changed={(e) => this.inputChangeHandler(e, formElement.id)}
           selectChanger={this.selectChanger}
+          message={formElement.config.message}
         />
         <br />
       </div>
@@ -291,7 +359,7 @@ class Beamform extends Component {
         element1.map((ele1) => (
           (ele1.config.value !== undefined ?
             <div key={ele1.id}>{ele1.id}={ele1.config.value}</div> :
-            <div key={ele1.id}>{ele1.id}={ele1.config}</div>)));
+            <div key={ele1.id}>{ele1.id}:<b>{ele1.config}</b></div>)));
 
       return <Segment key={ele.id} raised>{loadArrEle}
 
@@ -324,8 +392,8 @@ class Beamform extends Component {
                   modalopen={this.state.modalopen} onclick={this.onclick}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
                   modalId={this.state.modalId}
+                  formReset={this.formReset}
                   crossData={this.state.crossData}
-
                   editValid={this.state.editValid}
                 />
 
@@ -345,12 +413,13 @@ class Beamform extends Component {
                   modalId={this.state.modalId}
                   loadData={this.state.loadData}
                   editValid={this.state.editValid}
+                  formReset={this.formReset}
                 />
                 <div className="loaddata">
                   {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
                 </div>
               </Message>
-              <Button primary>Solve</Button>
+              <Button primary onClick={this.solveHandler}>Solve</Button>
             </Grid.Column>
 
           </Grid.Row>

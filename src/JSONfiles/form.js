@@ -9,9 +9,12 @@ const imageSelect = {
         },
         "value": "",
         "validation": {
-            "required": true
+            "required": true,
+            "isNumeric":true,
+            "minLength":0
         },
         "valid": false,
+        "message":"",
         "label": "Length of beam in meter",
         "touched": false
     },

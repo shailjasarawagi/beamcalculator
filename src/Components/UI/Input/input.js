@@ -11,7 +11,7 @@ const input = (props) => {
 
     let validationError = null;
     if (props.invalid && props.touched) {
-        validationError = <p className={classes.ValidationError}>{props.errorMessage}</p>;
+        validationError = <p className={classes.ValidationError}>{props.message}</p>;
     }
 
 

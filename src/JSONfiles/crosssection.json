@@ -62,7 +62,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                         "isNumeric":true,
+                        "minLength":0
                     },
                     "valid": false,
                     "label": "Thickness",
@@ -116,7 +118,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                         "isNumeric":true,
+                        "minLength":0
                     },
                     "valid": false,
                     "label": "Height",
@@ -166,7 +170,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                         "isNumeric":true,
+                        "minLength":0
                     },
                     "label": "Height",
                     "touched": false
@@ -181,7 +187,9 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                         "isNumeric":true,
+                        "minLength":0
                     },
                     "label": "Thickness",
                     "touched": false

@@ -41,6 +41,7 @@ class LoadSection extends Component {
                     addFunction={this.props.addFunction}
                     identity={this.props.Identity}
                    editValid={this.props.editValid}
+                   formReset={this.props.formReset}
  />
                     : null}
             </div>
