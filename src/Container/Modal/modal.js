@@ -11,30 +11,35 @@ class Modal1 extends Component {
   }
 
   checkValidity = (value, rules) => {
-    let isValid = true;
+    let isvalid = true;
+    let message = {};
     if (rules.required) {
-      isValid = value.trim() !== "" && isValid;
+      isvalid = value.trim() !== "" && isvalid;
+      message = "Please enter the value";
     }
 
-    if (rules.minLength) {
-      isValid = value >= rules.minLength && isValid;
-    }
+    // if (rules.minLength) {
+    //   isvalid = value >= rules.minLength && isvalid;
+    //   message = "Please enter value greater than 0"
+    // }
 
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid;
-    }
+    // if (rules.isNumeric) {
+    //   const pattern = /^\d+$/;
+    //   isvalid = pattern.test(value) && isvalid;
+    //   message = "Please enter numeric value";
+    // }
 
-    if (rules.lessthanBeam) {
-      isValid = value <= this.beamLength.value && isValid;
-      console.log("hello", isValid)
-    }
-
-    return isValid;
+    // if (rules.lessthanBeam) {
+    //   isvalid = value <= this.beamLength.value && isvalid;
+    //   message = "Please enter value less than length of beam"
+    // }
+    return [isvalid, message];
   }
 
+
   modalInputChangeHandler = (event, inputIdentifier) => {
-    console.log(event.target.value)
+    this.props.formReset();
+
     const updatedFormData = {
       ...this.state.formData
     };
@@ -42,22 +47,41 @@ class Modal1 extends Component {
     const updatedFormElement = {
       ...updatedFormData[inputIdentifier]
     };
-    updatedFormElement.value = event.target.value;
-    console.log(updatedFormElement)
-    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
 
+    updatedFormElement.value = event.target.value;
+    const formElement = {};
+    formElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    console.log("valid", formElement.valid)
+    updatedFormElement.valid = formElement.valid[0]
+    console.log("valid2", updatedFormElement.valid);
     updatedFormElement.touched = true;
+    updatedFormElement.message = formElement.valid[1];
     updatedFormData[inputIdentifier] = updatedFormElement;
 
     let formIsValid = true;
     for (let ele in updatedFormData) {
       formIsValid = updatedFormData[ele].valid && formIsValid;
     }
-    console.log(formIsValid)
-    this.setState({ formData: updatedFormData, formIsValid: formIsValid });
+    this.setState({ formData: updatedFormData, formIsValid: formIsValid }, () => {
+      console.log("valid456", formIsValid)
+    });
   }
 
+  componentDidMount() {
+    console.log("modal rendered", this.props.modalInput, this.props.identity, this.props.modalId);
+    // this.setState({ id:this.props.modalId });
+  }
+
+  componentWillUnmount() {
+    this.props.formReset();
+  }
+
+
   render() {
+    const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
+      && (!this.state.formIsValid !== !this.props.editValid))
+    console.log("formisvalid", !this.state.formIsValid);
+    console.log("editvalid  compare two", !this.state.editValid);
     this.beamLength = this.props.val["Length of beam"];
     const modalArray = [];
     for (let key in this.state.formData) {
@@ -79,6 +103,7 @@ class Modal1 extends Component {
         changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
       />
     ));
+    console.log("before modalheader", this.props)
 
     return (
       <Modal
@@ -92,7 +117,7 @@ class Modal1 extends Component {
         </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.modalclose}>Cancel</Button>
-            <Button style={{ border: "#324561 !important" }} primary disabled={!this.state.formIsValid} onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity) }}>Add</Button>
+            <Button style={{ border: "#324561 !important" }} primary disabled={!buttonsubmit} onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity, this.state.formIsValid) }}>Add</Button>
           </Modal.Actions></> :
           <><Modal.Content>
             Enter length of beam
