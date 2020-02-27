@@ -191,7 +191,7 @@ class Beamform extends Component {
     }
     console.log("load array state", loadArray, Object.keys(this.state.loadmodalData).length)
 
-    const loadArr = loadArray.map((ele,index) => {
+    const loadArr = loadArray.map((ele, index) => {
       console.log("ele", ele)
       // if (index === (loadArray.length - 1)) {
       for (let key in ele.config) {
@@ -201,21 +201,26 @@ class Beamform extends Component {
         });
       }
       // }
-    let number_of_elements= Object.keys(loadArray[index].config).length;
-    let element1= loadArray1.slice(loadArray1.length-number_of_elements,)
-    const loadArrEle = 
-       element1.map( (ele1)=>(<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
+      let number_of_elements = Object.keys(loadArray[index].config).length;
+      let element1 = loadArray1.slice(loadArray1.length - number_of_elements)
+      const loadArrEle =
+        element1.map((ele1) => (
+          (ele1.config.value !== undefined ?
+            <div key={ele1.id}>
+              {ele1.id}={ele1.config.value}
+            </div> : <div key={ele1.id}>
+              {ele1.config}
+            </div>
+          )));
 
       return <Segment key={ele.id} raised>{loadArrEle}
-
         <span className="floatright">
           <Icon name='edit' size='large' /><Icon name='delete' size='large'
             onClick={(e) => { this.deleteLoadModalData(e, ele.id) }} />
         </span>
       </Segment>
-
     });
-    console.log("state load Arr ",loadArray, loadArray1, loadArr);
+    console.log("state load Arr ", loadArray, loadArray1, loadArr);
 
     return (
       <Container>

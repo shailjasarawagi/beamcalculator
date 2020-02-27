@@ -11,18 +11,26 @@ class Modal1 extends Component {
   }
 
   checkValidity = (value, rules) => {
-     const beamLength = this.props.val["Length of beam"];
-     console.log(beamLength.value,value)
-
-    let isvalid = true;
-    
+    let isValid = true;
     if (rules.required) {
-      isvalid = value.trim() !== "" && isvalid;
+      isValid = value.trim() !== "" && isValid;
     }
-    // if(rules.required){
-    //   isvalid= beamLength.value>= value && isvalid;
-    // }
-    return isvalid;
+
+    if (rules.minLength) {
+      isValid = value >= rules.minLength && isValid;
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid;
+    }
+
+    if (rules.lessthanBeam) {
+      isValid = value <= this.beamLength.value && isValid;
+      console.log("hello", isValid)
+    }
+
+    return isValid;
   }
 
   modalInputChangeHandler = (event, inputIdentifier) => {
@@ -50,7 +58,7 @@ class Modal1 extends Component {
   }
 
   render() {
-    const beamLength = this.props.val["Length of beam"];
+    this.beamLength = this.props.val["Length of beam"];
     const modalArray = [];
     for (let key in this.state.formData) {
       modalArray.push({
@@ -79,7 +87,7 @@ class Modal1 extends Component {
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header>{this.props.identity}</Modal.Header>
-        {beamLength.valid ? <><Modal.Content>
+        {this.beamLength.valid ? <><Modal.Content>
           {modalInput}
         </Modal.Content>
           <Modal.Actions>

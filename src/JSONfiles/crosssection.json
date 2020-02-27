@@ -7,14 +7,13 @@
                 "Diameter": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Diameter",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Diameter"
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0
                     },
                     "valid": false,
                     "label": "Diameter",
