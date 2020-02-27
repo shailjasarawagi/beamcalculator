@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Modal from '../../Container/Modal/modal';
 import { Image, Grid, Popup } from "semantic-ui-react";
-import * as crosssectionelements from "../../JSONfiles/crosssection.json";
+// import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 
 class CrossSection extends Component {
 
+
   render() {
+    console.log("props on edit", this.props.modalInput)
     const ElementsArray = [];
-    const crossSection = crosssectionelements.default.Cross_Section;
+    const crossSection = this.props.crossData;
     for (let key in crossSection) {
       ElementsArray.push({
         id: key,
@@ -38,7 +40,10 @@ class CrossSection extends Component {
           modalopen={this.props.modalopen}
           modalclose={this.props.modalclose}
           addFunction={this.props.addFunction}
-          identity={this.props.Identity} />
+          identity={this.props.Identity}
+         editValid={this.props.editValid}
+          formReset={this.props.formReset}
+             />
           : null}
       </div>
     );

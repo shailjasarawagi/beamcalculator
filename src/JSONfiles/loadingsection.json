@@ -15,7 +15,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "valid": false,
                     "label": "Point Load",
@@ -80,7 +83,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "valid": false,
                     "label": "Point Moment",
@@ -96,13 +102,16 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "valid": false,
                     "label": "Distance From A",
                     "touched": false
                 },
-                 "Direction": {
+                "Direction": {
                     "elementType": "radio",
                     "elementConfig": {
                         "type": "radio",
@@ -142,7 +151,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Starting point of UDL from A",
                     "touched": false
@@ -157,7 +169,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Ending point of UDL from A",
                     "touched": false
@@ -172,7 +187,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Starting Load",
                     "touched": false
@@ -188,11 +206,14 @@
                     "value": "",
                     "touched": false,
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Ending Load"
                 },
-              "Direction": {
+                "Direction": {
                     "elementType": "radio",
                     "elementConfig": {
                         "type": "radio",
@@ -233,7 +254,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Starting point of UDL from A"
                 },
@@ -247,7 +271,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Ending point of UDL from A",
                     "touched": false
@@ -262,7 +289,10 @@
                     },
                     "value": "",
                     "validation": {
-                        "required": true
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
                     },
                     "label": "Value of UDL",
                     "touched": false

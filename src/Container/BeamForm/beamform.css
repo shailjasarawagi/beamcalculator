@@ -4,6 +4,7 @@
 .message{
     color:black !important;
     /* white-space: nowrap; */
+    
 }
 .floatright{
     margin-top: -95px;
@@ -13,3 +14,12 @@
     margin-top: -35px;
     float: right;
 }
+.loaddata{
+    max-height: 230px;
+    overflow-y: scroll;
+}
+  .errorMsg{
+    color:#cc0000;
+    margin-bottom: 12px;
+    white-space: wrap;
+  }
