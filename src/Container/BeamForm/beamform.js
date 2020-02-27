@@ -179,28 +179,37 @@ class Beamform extends Component {
     this.setState({ editValid: false })
   }
 
+ 
+  
   solveHandler = () => {
-    console.log(this.state.crossmodalData);
-    // let cross = Object.keys(this.state.crossmodalData).map(ele => {
-    //   Object.keys(this.state.crossmodalData[ele]).map
-    //   return ele = Object.keys(this.state.crossmodalData[ele]).map(ele2 =>
-    //     ele2 = this.state.crossmodalData[ele][ele2].value
-    //   )
+    // let cross = ""
+    // let arr = []
+    // for (let x in this.state.crossmodalData) {
+    //   console.log("dd", x, this.state.crossmodalData[x]);
+    //   for (let y in this.state.crossmodalData[x]) {
+    //     console.log("yy", y, this.state.crossmodalData[x][y].value)
+    //     cross = x;
+    //     arr.push({y: this.state.crossmodalData[x][y].value})
+    //   }
+
     // }
-    // );
-    // console.log(cross);
+    //  var object = Object.create(arr);
+    // console.log("ddd", this.state.crossmodalData, arr, cross,object)
+
 
     Axios({
       method: "post",
       url: "/api/calculator/",
       data: {
         "userinput": {
-          "material_Choice": this.state.formData["Material Choice"].value,
+          "material_choices": this.state.formData["Material Choice"].value,
           "length_of_beam": this.state.formData["Length of beam"].value,
           "support_type": this.state.formData["Support Choice"].value,
-        },
-        "Cross_Section": {
+          "cross_section": {
+            cross: {
 
+            }
+          }
         }
       }
     })
