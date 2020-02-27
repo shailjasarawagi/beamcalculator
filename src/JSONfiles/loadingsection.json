@@ -8,10 +8,7 @@
                 "Point Load": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Point Load",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Point Load"
                     },
                     "value": "",
                     "validation": {
@@ -27,10 +24,7 @@
                 "Distance from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Distance from A",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Distance from A"
                     },
                     "value": "",
                     "validation": {
@@ -76,10 +70,7 @@
                 "Point Moment": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Point Load",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Point Load"
                     },
                     "value": "",
                     "validation": {
@@ -95,10 +86,7 @@
                 "Distance from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Distance from A",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Distance from A"
                     },
                     "value": "",
                     "validation": {
@@ -144,10 +132,7 @@
                 "Starting point of load from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Point Load",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Point Load"
                     },
                     "value": "",
                     "validation": {
@@ -162,10 +147,7 @@
                 "Ending point of load from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Distance from A",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Distance from A"
                     },
                     "value": "",
                     "validation": {
@@ -180,10 +162,7 @@
                 "Starting Load": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the starting load",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the starting load"
                     },
                     "value": "",
                     "validation": {
@@ -198,10 +177,7 @@
                 "Ending Load": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the ending load",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the ending load"
                     },
                     "value": "",
                     "touched": false,
@@ -247,10 +223,7 @@
                 "Starting point of UDL from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Point Load",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Point Load"
                     },
                     "value": "",
                     "validation": {
@@ -264,10 +237,7 @@
                 "Ending point of UDL from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Distance from A",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Distance from A"
                     },
                     "value": "",
                     "validation": {
@@ -282,10 +252,7 @@
                 "Value of UDl": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the value of UDL",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the value of UDL"
                     },
                     "value": "",
                     "validation": {

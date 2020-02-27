@@ -2,18 +2,17 @@ const imageSelect = {
     "Length of beam": {
         "elementType": "input",
         "elementConfig": {
-           
             "placeholder": "Enter Length of beam",
-           
+            "autoFocus": true
         },
         "value": "",
         "validation": {
             "required": true,
-            "isNumeric":true,
-            "minLength":0
+            "isNumeric": true,
+            "minLength": 0
         },
         "valid": false,
-        "message":"",
+        "message": "",
         "label": "Length of beam in meter",
         "touched": false
     },
