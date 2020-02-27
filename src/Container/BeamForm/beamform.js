@@ -43,7 +43,7 @@ class Beamform extends Component {
       ...updatedFormData[data.label]
     };
     updatedFormElement.value = data.value;
-    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedFormData[data.label] = updatedFormElement;
     this.setState({ formData: updatedFormData });
@@ -180,21 +180,15 @@ class Beamform extends Component {
   }
 
   solveHandler = () => {
-    // let cross=[];
-    // let cross1=[];
-    // for (let key in this.state.crossmodalData) {
-    //   cross.push({
-    //     id: key,
-    //     config: this.state.crossmodalData[key]
-    //   });
+    console.log(this.state.crossmodalData);
+    // let cross = Object.keys(this.state.crossmodalData).map(ele => {
+    //   Object.keys(this.state.crossmodalData[ele]).map
+    //   return ele = Object.keys(this.state.crossmodalData[ele]).map(ele2 =>
+    //     ele2 = this.state.crossmodalData[ele][ele2].value
+    //   )
     // }
-    //  for (let key in cross[0].config) {
-    //   cross1.push({
-    //     id: key,
-    //     config: (cross[0].config)[key]
-    //   });
-    // }
-    // console.log("solve", cross[0].id,cross1);
+    // );
+    // console.log(cross);
 
     Axios({
       method: "post",
@@ -221,6 +215,11 @@ class Beamform extends Component {
   }
 
   render() {
+    let formIsValid = true;
+    for (let ele in this.state.formData) {
+      formIsValid = this.state.formData[ele].valid && formIsValid;
+    }
+    let formcheck = formIsValid && (Object.keys(this.state.crossmodalData).length !== 0) && (Object.keys(this.state.loadmodalData).length !== 0);
     const formElementsArray = [];
     for (let key in this.state.formData) {
       formElementsArray.push({
@@ -339,7 +338,7 @@ class Beamform extends Component {
                   {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
                 </div>
               </Message>
-              <Button primary onClick={this.solveHandler}>Solve</Button>
+              <Button primary disabled={!formcheck} onClick={this.solveHandler}>Solve</Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>

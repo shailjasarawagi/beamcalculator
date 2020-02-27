@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Modal, Button } from 'semantic-ui-react';
 import Input from '../../Components/UI/Input/input';
 import './modal.css';
-import { checkValidity } from '../../Functions/index'
 
 class Modal1 extends Component {
 
@@ -10,6 +9,37 @@ class Modal1 extends Component {
     formData: this.props.modalInput.fields,
     formIsValid: false
   }
+
+  checkValidity = (value, rules) => {
+    let isValid = true;
+    let message = [];
+    if (rules.required) {
+      isValid = value.trim() !== "" && isValid;
+      if (isValid === false)
+        message.push("Please enter the value");
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid;
+      if (isValid === false)
+        message.push("Please enter numeric value");
+    }
+
+    if (rules.minLength) {
+      isValid = (value >= rules.minLength) && isValid;
+      if (isValid === false)
+        message.push("Please enter value greater than 0");
+    }
+
+    if (rules.lessthanBeam) {
+      isValid = (parseInt(value) <= parseInt(this.beamLength.value)) && isValid;
+      if (isValid === false)
+        message.push("Please enter value less than length of beam");
+    }
+
+    return [isValid, message[0]];
+  };
 
   modalInputChangeHandler = (event, inputIdentifier) => {
     this.props.formReset();
@@ -21,7 +51,7 @@ class Modal1 extends Component {
     };
     updatedFormElement.value = event.target.value;
     const formElement = {};
-    formElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    formElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.valid = formElement.valid[0];
     updatedFormElement.touched = true;
     updatedFormElement.message = formElement.valid[1];
