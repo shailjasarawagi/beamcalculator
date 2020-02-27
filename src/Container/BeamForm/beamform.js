@@ -184,20 +184,23 @@ class Beamform extends Component {
 
   checkValidity = (value, rules) => {
     let isvalid = true;
-    let message = {}
+    let message = {};
     if (rules.required) {
       isvalid = value.trim() !== "" && isvalid;
-      message = " Please Enter the value of length"
+      message = " Please Enter the positive value of length"
+        // message.push(" Please Enter the value of length");
     }
     if (rules.minLength) {
       isvalid = value >= rules.minLength && isvalid;
       message = "Please enter value greater than 0"
+      //  message.push("Please enter value greater than 0");
     }
 
     if (rules.isNumeric) {
       const pattern = /^\d+$/;
       isvalid = pattern.test(value) && isvalid;
-      message = "Please enter numeric value";
+      message = "Please Enter positive value";
+      //  message.push("Please enter numeric value");
     }
     return [isvalid, message];
   }
@@ -219,6 +222,7 @@ class Beamform extends Component {
     console.log("valid2", updatedFormElement.valid);
     updatedFormElement.touched = true;
     updatedFormElement.message = formElement.valid[1];
+    console.log("valid3",updatedFormElement.message)
     updatedFormData[inputIdentifier] = updatedFormElement;
     this.setState({ formData: updatedFormData }, () => {
       console.log("form", this.state.formData)
@@ -232,9 +236,21 @@ class Beamform extends Component {
   }
 
   formReset = () => {
-    this.setState({ editValid: false})
+    this.setState({ editValid: false })
   }
 
+  validation = () => {
+    if (this.state.formData["Material Choice"].value==='') 
+       {
+      Swal.fire({
+      title: 'Oops...',
+      text: 'Please enter all the data',
+       })
+    }
+    if(this.state.formData["Length of Beam"].value===''){
+
+    }
+  }
   solveHandler = () => {
     // let cross=[];
     // let cross1=[];
@@ -251,7 +267,7 @@ class Beamform extends Component {
     //   });
     // }
     // console.log("solve", cross[0].id,cross1);
-    
+    this.validation();
     Axios({
       method: "post",
       url: "/api/calculator/",
@@ -262,7 +278,7 @@ class Beamform extends Component {
           "support_type": this.state.formData["Support Choice"].value,
         },
         "Cross_Section": {
-            
+
         }
       }
     })

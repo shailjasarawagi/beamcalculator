@@ -2,10 +2,9 @@ const imageSelect = {
     "Length of beam": {
         "elementType": "input",
         "elementConfig": {
-            "type": "number",
+           
             "placeholder": "Enter Length of beam",
-            "pattern": "[^0-9]+",
-            "min": 0
+           
         },
         "value": "",
         "validation": {
