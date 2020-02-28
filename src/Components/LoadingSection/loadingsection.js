@@ -17,7 +17,7 @@ class LoadSection extends Component {
 
         const lElements = ElementsArray.map(lElement => (
             <Grid.Column width={4} key={lElement.config.name}>
-                {console.log("modal input",lElement.config)}
+                {/* {console.log("modal input",lElement.config)} */}
                 <Popup content={lElement.config.name} position='top center'
                     size='tiny' inverted trigger={
                         <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }}

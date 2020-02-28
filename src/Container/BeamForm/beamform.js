@@ -179,24 +179,68 @@ class Beamform extends Component {
     this.setState({ editValid: false })
   }
 
- 
-  
+
+
   solveHandler = () => {
-    // let cross = ""
-    // let arr = []
-    // for (let x in this.state.crossmodalData) {
-    //   console.log("dd", x, this.state.crossmodalData[x]);
-    //   for (let y in this.state.crossmodalData[x]) {
-    //     console.log("yy", y, this.state.crossmodalData[x][y].value)
-    //     cross = x;
-    //     arr.push({y: this.state.crossmodalData[x][y].value})
-    //   }
+    
+    /* cross section*/
+    let arr = [];
+    // let component = "cross_section"
+    let objNew = {};
+    let componentName = null;
+    for (let x in this.state.crossmodalData) {
 
-    // }
-    //  var object = Object.create(arr);
-    // console.log("ddd", this.state.crossmodalData, arr, cross,object)
+      componentName = x;
+      for (let y in this.state.crossmodalData[x]) {
+        let val = this.state.crossmodalData[x][y].value;
+        let newOb = { [y]: val }
+        arr.push(newOb)
+        var result = Object.assign({}, ...arr);
+        console.log("yy", y, this.state.crossmodalData[x][y].value)
+      }
+      console.log("array", arr, result)
+    }
+
+    objNew = {
+      // [component]:
+      // {
+      [componentName]: {
+        ...result
+      }
+      // }
+    }
+
+    console.log("jsonObject", objNew)
 
 
+
+    /**load section  */
+
+    //  let arr1=[];
+     let arr2=[];
+     let element11=[];
+     let xin='';
+     for (let x in this.state.loadmodalData) {
+        
+      let newload = { ...this.state.loadmodalData[x] }
+       delete newload.name;
+       xin= this.state.loadmodalData[x].name
+       console.log("aa",newload)
+      for (let y in newload) {
+         let val = this.state.loadmodalData[x][y].value;
+       
+       arr2.push({[y]:val})
+       var result1 = Object.assign({}, ...arr2,[xin]);
+        console.log("newarray",element11.push(result1))
+        // let number = Object.keys(newload).length
+        //  element11 = arr2.slice(arr2.length - number,)
+       
+       }
+     }
+       
+      console.log("array",element11)
+
+    
     Axios({
       method: "post",
       url: "/api/calculator/",
@@ -205,10 +249,10 @@ class Beamform extends Component {
           "material_choices": this.state.formData["Material Choice"].value,
           "length_of_beam": this.state.formData["Length of beam"].value,
           "support_type": this.state.formData["Support Choice"].value,
-          "cross_section": {
-            cross: {
-
-            }
+          "cross_section": [componentName],
+          ...objNew,
+          "load_section":{
+              ...result1
           }
         }
       }
@@ -295,9 +339,10 @@ class Beamform extends Component {
           config: ele.config[key]
         });
       }
-
+      
       let number_of_elements = Object.keys(loadArray[index].config).length;
-      let element1 = loadArray1.slice(loadArray1.length - number_of_elements)
+      console.log("element",Object.keys(loadArray[index].config))
+      let element1 = loadArray1.slice(loadArray1.length - number_of_elements,)
       const loadArrEle =
         element1.map((ele1) => (
           (ele1.config.value !== undefined ?
