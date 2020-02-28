@@ -219,19 +219,20 @@ class Beamform extends Component {
     //  let arr1=[];
      let arr2=[];
      let element11=[];
-     let xin='';
+     let name1='';
      for (let x in this.state.loadmodalData) {
         
       let newload = { ...this.state.loadmodalData[x] }
        delete newload.name;
-       xin= this.state.loadmodalData[x].name
+       name1= this.state.loadmodalData[x].name;
        console.log("aa",newload)
       for (let y in newload) {
          let val = this.state.loadmodalData[x][y].value;
        
        arr2.push({[y]:val})
-       var result1 = Object.assign({}, ...arr2,[xin]);
-        console.log("newarray",element11.push(result1))
+       console.log('array',arr2)
+       var result1 = Object.assign({}, arr2,name1);
+        console.log("newarray",result1)
         // let number = Object.keys(newload).length
         //  element11 = arr2.slice(arr2.length - number,)
        
