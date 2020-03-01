@@ -188,7 +188,8 @@ class Beamform extends Component {
       componentName = x;
       for (let y in this.state.crossmodalData[x]) {
         let val = this.state.crossmodalData[x][y].value;
-        let newOb = { [y]: val }
+        let yin = y.replace(/ /g,'_').toLowerCase();
+        let newOb = { [yin]: val }
         arr.push(newOb)
         var result = Object.assign({}, ...arr);
       }
@@ -204,18 +205,19 @@ class Beamform extends Component {
     console.log("jsonObject", objNew)
 
     /**load section  */
-    let arr2 = [];
+
     let arr3 = [];
     let name1 = '';
     for (let x in this.state.loadmodalData) {
-
+      let arr2 = [];
       let newload = { ...this.state.loadmodalData[x] }
       delete newload.name;
       name1 = this.state.loadmodalData[x].name;
 
       for (let y in newload) {
         let val = this.state.loadmodalData[x][y].value;
-        arr2.push({ [y]: val })
+        let yin = y.replace(/ /g,'_').toLowerCase();
+        arr2.push({ [yin]: val })
         const obj = {
           name: name1
         }
@@ -223,7 +225,7 @@ class Beamform extends Component {
       }
       arr3.push(result1);
     }
-    console.log("final array", ...arr3);
+    console.log("final array", ...arr3, typeof ([componentName]));
 
     Axios({
       method: "post",
@@ -233,11 +235,11 @@ class Beamform extends Component {
           "material_choices": this.state.formData["Material Choice"].value,
           "length_of_beam": this.state.formData["Length of beam"].value,
           "support_type": this.state.formData["Support Choice"].value,
-          "cross_section": [componentName],
+          "cross_section": componentName,
           ...objNew,
-          "load_section": {
+          "load_section": [
             ...arr3
-          }
+          ]
         }
       }
     })
@@ -308,14 +310,12 @@ class Beamform extends Component {
 
     const loadArray = [];
     const loadArray1 = [];
-
     for (let key in this.state.loadmodalData) {
       loadArray.push({
         id: key,
         config: this.state.loadmodalData[key]
       });
     }
-
     const loadArr = loadArray.map((ele, index) => {
       for (let key in ele.config) {
         loadArray1.push({
