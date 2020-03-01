@@ -81,9 +81,7 @@ class Beamform extends Component {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this.setState({ crossmodalData: {} }, () => {
-          console.log("cross", this.state.crossmodalData)
-        })
+        this.setState({ crossmodalData: {} })
         Swal.fire(
           'Deleted!',
           'Your file has been deleted.',
@@ -179,28 +177,22 @@ class Beamform extends Component {
     this.setState({ editValid: false })
   }
 
-
-
   solveHandler = () => {
-    
+
     /* cross section*/
     let arr = [];
     // let component = "cross_section"
     let objNew = {};
     let componentName = null;
     for (let x in this.state.crossmodalData) {
-
       componentName = x;
       for (let y in this.state.crossmodalData[x]) {
         let val = this.state.crossmodalData[x][y].value;
         let newOb = { [y]: val }
         arr.push(newOb)
         var result = Object.assign({}, ...arr);
-        console.log("yy", y, this.state.crossmodalData[x][y].value)
       }
-      console.log("array", arr, result)
     }
-
     objNew = {
       // [component]:
       // {
@@ -209,39 +201,30 @@ class Beamform extends Component {
       }
       // }
     }
-
     console.log("jsonObject", objNew)
 
-
-
     /**load section  */
+    let arr2 = [];
+    let arr3 = [];
+    let name1 = '';
+    for (let x in this.state.loadmodalData) {
 
-    //  let arr1=[];
-     let arr2=[];
-     let element11=[];
-     let name1='';
-     for (let x in this.state.loadmodalData) {
-        
       let newload = { ...this.state.loadmodalData[x] }
-       delete newload.name;
-       name1= this.state.loadmodalData[x].name;
-       console.log("aa",newload)
-      for (let y in newload) {
-         let val = this.state.loadmodalData[x][y].value;
-       
-       arr2.push({[y]:val})
-       console.log('array',arr2)
-       var result1 = Object.assign({}, arr2,name1);
-        console.log("newarray",result1)
-        // let number = Object.keys(newload).length
-        //  element11 = arr2.slice(arr2.length - number,)
-       
-       }
-     }
-       
-      console.log("array",element11)
+      delete newload.name;
+      name1 = this.state.loadmodalData[x].name;
 
-    
+      for (let y in newload) {
+        let val = this.state.loadmodalData[x][y].value;
+        arr2.push({ [y]: val })
+        const obj = {
+          name: name1
+        }
+        var result1 = Object.assign({}, obj, ...arr2);
+      }
+      arr3.push(result1);
+    }
+    console.log("final array", ...arr3);
+
     Axios({
       method: "post",
       url: "/api/calculator/",
@@ -252,8 +235,8 @@ class Beamform extends Component {
           "support_type": this.state.formData["Support Choice"].value,
           "cross_section": [componentName],
           ...objNew,
-          "load_section":{
-              ...result1
+          "load_section": {
+            ...arr3
           }
         }
       }
@@ -340,10 +323,9 @@ class Beamform extends Component {
           config: ele.config[key]
         });
       }
-      
+
       let number_of_elements = Object.keys(loadArray[index].config).length;
-      console.log("element",Object.keys(loadArray[index].config))
-      let element1 = loadArray1.slice(loadArray1.length - number_of_elements,)
+      let element1 = loadArray1.slice(loadArray1.length - number_of_elements)
       const loadArrEle =
         element1.map((ele1) => (
           (ele1.config.value !== undefined ?
