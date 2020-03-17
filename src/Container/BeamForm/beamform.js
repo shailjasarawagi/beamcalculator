@@ -65,14 +65,14 @@ class Beamform extends Component {
   }
 
   loadAdd = (event, modaldata, name, valid, modalid, id, editV) => {
-    console.log("idsss", id)
+    console.log("hello edit, id:", id,"editTrue:",editV,"modalId:",this.modalId)
     let newId = null;
-    if (id !== null && !editV) {
-      newId = this.modalId
-      this.modalId = this.modalId + 1;
+    if (id !== null && editV) {
+      newId = id
     }
     else {
-      newId = id
+      newId = this.modalId
+      this.modalId = this.modalId + 1;
     }
     const updatedmodalData = {
       ...this.state.loadmodalData,
@@ -113,6 +113,7 @@ class Beamform extends Component {
   }
 
   editCrossModalData = (e, data, identity, id) => {
+    
     console.log("cross", this.state.crossmodalData)
     this.setState(
       prevState => (
@@ -129,6 +130,7 @@ class Beamform extends Component {
   }
 
   editLoadModalData = (e, data, id, ID) => {
+    
     console.log("ssa load", e.target.value, data, id, ID, this.state.loadmodalData);
     let data1 = Object.values(data);
     console.log(data1[0], data1);
@@ -157,7 +159,9 @@ class Beamform extends Component {
   }
 
 
-  deleteLoadModalData = (e, selectedDataid, selectedDatavalue) => {
+  deleteLoadModalData = (e,value, selectedDataid, selectedDatavalue) => {
+    console.log("delete",value,selectedDatavalue)
+
     const deletedmodaldata = {
       ...this.state.loadmodalData
     }
@@ -173,7 +177,7 @@ class Beamform extends Component {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this.setState({ loadmodalData: deletedmodaldata });
+        this.setState({ loadmodalData: deletedmodaldata }, console.log("deleted state",this.state.loadmodalData));
         Swal.fire(
           'Deleted!',
           'Your file has been deleted.',
@@ -368,11 +372,12 @@ class Beamform extends Component {
           (ele1.config.value !== undefined ?
             <div key={ele1.id}>{ele1.id}={ele1.config.value}</div> :
             <div key={ele1.id}>{ele1.id}:<b>{ele1.config}</b></div>)));
-      console.log("ee", ele.id)
+      console.log("ee", index)
       return <Segment key={ele.id} raised>{loadArrEle}
         <span className="floatright1">
           <Icon name='edit' size='large' onClick={(e) => { this.editLoadModalData(e, ele.config, "LoadingSection", ele.id) }} />
-          <Icon name='delete' size='large' onClick={(e) => { this.deleteLoadModalData(e, ele.id, ele.config) }} />
+          {console.log("idea",this.state.loadmodalData, ele)}
+          <Icon name='delete' size='large' onClick={(e) => { this.deleteLoadModalData(e, data,ele.id, ele.config) }} />
         </span>
       </Segment>
     });
@@ -401,6 +406,7 @@ class Beamform extends Component {
               <Message info color="blue" className="message">
                 <Message.Header className="messageheader">Setting Loading Data</Message.Header>
                 <hr />
+                {console.log("hello beamform", this.state.newid)}
                 <LoadingSection modalclose={this.modalclose} addFunction={this.loadAdd}
                   modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}

@@ -7,7 +7,8 @@ class Modal1 extends Component {
 
   state = {
     formData: this.props.modalInput.fields,
-    formIsValid: false
+    formIsValid: false,
+    editTrue:false
   }
 
   checkValidity = (value, rules) => {
@@ -66,6 +67,9 @@ class Modal1 extends Component {
   componentWillUnmount() {
     this.props.formReset();
   }
+  componentDidMount() {
+    this.setState({editTrue:this.props.editValid})
+  }
 
   render() {
     const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
@@ -105,10 +109,12 @@ class Modal1 extends Component {
         </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.modalclose}>Cancel</Button>
+           { console.log("hello ok", this.props.newid,this.props.editValid, this.state.editTrue)
+           }
             <Button style={{ border: "#324561 !important" }}
               primary disabled={!buttonsubmit} onClick={(e) => {
                 this.props.addFunction(e,
-                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.props.editValid)
+                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue)
               }}>Add</Button>
           </Modal.Actions></> :
           <><Modal.Content>

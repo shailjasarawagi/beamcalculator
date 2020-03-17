@@ -33,6 +33,7 @@ class LoadSection extends Component {
                         {lElements}
                     </Grid.Row>
                 </Grid>
+                {console.log("hello loadingsection",this.props.newid, this.props.editValid)}
                 {(this.props.modalopen && (this.props.modalId === "LoadingSection")) ? <Modal
                     modalInput={this.props.modalInput}
                     modalopen={this.props.modalopen}
