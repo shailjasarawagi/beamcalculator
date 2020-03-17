@@ -174,22 +174,7 @@
                     "label": "Starting Load",
                     "touched": false
                 },
-                "Ending Load": {
-                    "elementType": "input",
-                    "elementConfig": {
-                        "placeholder": "Enter the ending load"
-                    },
-                    "value": "",
-                    "touched": false,
-                    "validation": {
-                        "required": true,
-                        "isNumeric": true,
-                        "minLength": 0,
-                        "lessthanBeam": true
-                    },
-                    "label": "Ending Load"
-                },
-                "Direction": {
+                "Starting Load Direction": {
                     "elementType": "radio",
                     "elementConfig": {
                         "type": "radio",
@@ -209,7 +194,45 @@
                         "required": true
                     },
                     "valid": false,
-                    "label": "Direction",
+                    "label": "Starting Load Direction",
+                    "touched": false
+                },
+                "Ending Load": {
+                    "elementType": "input",
+                    "elementConfig": {
+                        "placeholder": "Enter the ending load"
+                    },
+                    "value": "",
+                    "touched": false,
+                    "validation": {
+                        "required": true,
+                        "isNumeric": true,
+                        "minLength": 0,
+                        "lessthanBeam": true
+                    },
+                    "label": "Ending Load"
+                },
+                "Ending Load Direction": {
+                    "elementType": "radio",
+                    "elementConfig": {
+                        "type": "radio",
+                        "options": [
+                            {
+                                "label": "Down",
+                                "value": "Down"
+                            },
+                            {
+                                "label": "Up",
+                                "value": "Up"
+                            }
+                        ]
+                    },
+                    "value": "",
+                    "validation": {
+                        "required": true
+                    },
+                    "valid": false,
+                    "label": "Ending Load Direction",
                     "touched": false
                 }
             }

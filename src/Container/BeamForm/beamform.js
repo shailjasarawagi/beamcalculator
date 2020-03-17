@@ -10,6 +10,7 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 import Swal from "sweetalert2";
 import Axios from '../../hoc/Axios-orders';
 import { checkValidity } from '../../Functions/index'
+import D3Chart from '../../Components/chart/chart';
 
 class Beamform extends Component {
 
@@ -25,7 +26,12 @@ class Beamform extends Component {
     loadData: loadingsectionelements.default.Loading_Section,
     crossData: crosssectionelements.default.Cross_Section,
     editValid: false,
-    result: {}
+    shearforce: {},
+    bendingmoment: {},
+    distance: {},
+    deflection: {},
+    show: false,
+    newid: null
   }
 
   componentDidMount() {
@@ -58,16 +64,31 @@ class Beamform extends Component {
     this.setState({ crossmodalData: updatedmodalData, modalopen: false });
   }
 
-  loadAdd = (event, modaldata, name) => {
+  loadAdd = (event, modaldata, name, valid, modalid, id, editV) => {
+    console.log("idsss", id)
+    let newId = null;
+    if (id !== null && !editV) {
+      newId = this.modalId
+      this.modalId = this.modalId + 1;
+    }
+    else {
+      newId = id
+    }
     const updatedmodalData = {
       ...this.state.loadmodalData,
-      [this.modalId]: {
+
+      [newId]: {
         name,
         ...modaldata
       }
     };
-    this.modalId = this.modalId + 1;
-    this.setState({ loadmodalData: updatedmodalData, modalopen: false });
+    console.log("modal", updatedmodalData)
+
+
+
+    this.setState({ loadmodalData: updatedmodalData, modalopen: false }, () => {
+      console.log("modaldata", this.state.loadmodalData)
+    });
   }
 
   deleteCrossModalData = (e, selectedData) => {
@@ -92,6 +113,7 @@ class Beamform extends Component {
   }
 
   editCrossModalData = (e, data, identity, id) => {
+    console.log("cross", this.state.crossmodalData)
     this.setState(
       prevState => (
         {
@@ -106,16 +128,22 @@ class Beamform extends Component {
       ));
   }
 
-  editLoadModalData = (e, data, id) => {
+  editLoadModalData = (e, data, id, ID) => {
+    console.log("ssa load", e.target.value, data, id, ID, this.state.loadmodalData);
     let data1 = Object.values(data);
+    console.log(data1[0], data1);
     let data2 = { ...data };
     delete data2.name;
+    // console.log("deleted", data);
+    // this.setState({ modalopen: true, modalId: id, modalIdentity: data1[0], modalInput: data });
+    console.log("modal Input error", this.state.modalInput)
     this.setState(
       prevState => (
         {
           ...prevState,
           modalopen: true,
           modalId: id,
+          newid: ID,
           modalIdentity: data1[0],
           editValid: true,
           modalInput:
@@ -124,8 +152,10 @@ class Beamform extends Component {
             fields: data2,
           },
         }
-      ));
+      ),
+      console.log("state modalinput after setstate", this.state.modalInput));
   }
+
 
   deleteLoadModalData = (e, selectedDataid, selectedDatavalue) => {
     const deletedmodaldata = {
@@ -188,7 +218,7 @@ class Beamform extends Component {
       componentName = x;
       for (let y in this.state.crossmodalData[x]) {
         let val = this.state.crossmodalData[x][y].value;
-        let yin = y.replace(/ /g,'_').toLowerCase();
+        let yin = y.replace(/ /g, '_').toLowerCase();
         let newOb = { [yin]: val }
         arr.push(newOb)
         var result = Object.assign({}, ...arr);
@@ -216,7 +246,7 @@ class Beamform extends Component {
 
       for (let y in newload) {
         let val = this.state.loadmodalData[x][y].value;
-        let yin = y.replace(/ /g,'_').toLowerCase();
+        let yin = y.replace(/ /g, '_').toLowerCase();
         arr2.push({ [yin]: val })
         const obj = {
           name: name1
@@ -246,7 +276,12 @@ class Beamform extends Component {
       .then(response => {
 
         console.log(response.data);
-        this.setState({ result: response.data });
+        this.setState({
+          graphResponse: true,
+          show: true,
+          shearforce: response.data.V, bendingmoment: response.data.Mx
+          , distance: response.data.x, deflection: response.data.Yxmm
+        });
       })
       .catch(error => {
         console.log("Error", error);
@@ -286,6 +321,7 @@ class Beamform extends Component {
 
     const crossArray = [];
     const crossArray1 = [];
+    console.log("crossdata", this.state.crossmodalData)
     for (let key in this.state.crossmodalData) {
       crossArray.push({
         id: key,
@@ -310,6 +346,7 @@ class Beamform extends Component {
 
     const loadArray = [];
     const loadArray1 = [];
+    console.log("loaddata", this.state.loadmodalData)
     for (let key in this.state.loadmodalData) {
       loadArray.push({
         id: key,
@@ -331,10 +368,10 @@ class Beamform extends Component {
           (ele1.config.value !== undefined ?
             <div key={ele1.id}>{ele1.id}={ele1.config.value}</div> :
             <div key={ele1.id}>{ele1.id}:<b>{ele1.config}</b></div>)));
-
+      console.log("ee", ele.id)
       return <Segment key={ele.id} raised>{loadArrEle}
         <span className="floatright1">
-          <Icon name='edit' size='large' onClick={(e) => { this.editLoadModalData(e, ele.config, "LoadingSection") }} />
+          <Icon name='edit' size='large' onClick={(e) => { this.editLoadModalData(e, ele.config, "LoadingSection", ele.id) }} />
           <Icon name='delete' size='large' onClick={(e) => { this.deleteLoadModalData(e, ele.id, ele.config) }} />
         </span>
       </Segment>
@@ -368,9 +405,11 @@ class Beamform extends Component {
                   modalopen={this.state.modalopen} onclick={this.onclick} val={this.state.formData}
                   modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
                   modalId={this.state.modalId}
+                  newid={this.state.newid}
                   loadData={this.state.loadData}
                   editValid={this.state.editValid}
                   formReset={this.formReset} />
+                {console.log("ids", this.state.loadmodalData)}
                 <div className="loaddata">
                   {Object.keys(this.state.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
                 </div>
@@ -379,6 +418,24 @@ class Beamform extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+
+        {this.state.graphResponse && (
+          <div>
+            <br></br>
+            <D3Chart x={this.state.distance} y={this.state.shearforce} xName="distance" yName="shearforce" id="sheer" />
+            <br></br>
+            <br></br>
+            <D3Chart x={this.state.distance} y={this.state.deflection} id="deflection"
+              xName="distance" yName="deflection" />
+            <br></br>
+            <br></br>
+            <D3Chart x={this.state.distance} y={this.state.bendingmoment} id="bending"
+              xName="distance" yName="bendingmoment" />
+          </div>
+        )}
+
+
+
       </Container>
     );
   }

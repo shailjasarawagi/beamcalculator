@@ -38,11 +38,12 @@ class LoadSection extends Component {
                     modalopen={this.props.modalopen}
                     modalclose={this.props.modalclose}
                     val={this.props.val}
+                    newid={this.props.newid}
                     addFunction={this.props.addFunction}
                     identity={this.props.Identity}
-                   editValid={this.props.editValid}
-                   formReset={this.props.formReset}
- />
+                    editValid={this.props.editValid}
+                    formReset={this.props.formReset}
+                />
                     : null}
             </div>
         );

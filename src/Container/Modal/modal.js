@@ -105,7 +105,11 @@ class Modal1 extends Component {
         </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.modalclose}>Cancel</Button>
-            <Button style={{ border: "#324561 !important" }} primary disabled={!buttonsubmit} onClick={(e) => { this.props.addFunction(e, this.state.formData, this.props.identity, this.state.formIsValid) }}>Add</Button>
+            <Button style={{ border: "#324561 !important" }}
+              primary disabled={!buttonsubmit} onClick={(e) => {
+                this.props.addFunction(e,
+                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.props.editValid)
+              }}>Add</Button>
           </Modal.Actions></> :
           <><Modal.Content>
             Enter length of beam

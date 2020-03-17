@@ -7,7 +7,6 @@
                 "Diameter": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
                         "placeholder": "Enter the Diameter"
                     },
                     "value": "",
@@ -36,10 +35,8 @@
                 "Outside Diameter": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Outside Diameter",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Outside Diameter"
+        
                     },
                     "value": "",
                     "validation": {
@@ -54,10 +51,8 @@
                 "Thickness": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Thickness",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Thickness"
+                      
                     },
                     "value": "",
                     "validation": {
@@ -92,10 +87,8 @@
                 "Breadth": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Breadth",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Breadth"
+    
                     },
                     "value": "",
                     "validation": {
@@ -110,10 +103,8 @@
                 "Height": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Height",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Height"
+                       
                     },
                     "value": "",
                     "validation": {
@@ -145,10 +136,8 @@
                 "Breadth": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Breadth",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Breadth"
+                      
                     },
                     "value": "",
                     "validation": {
@@ -163,9 +152,8 @@
                     "elementType": "input",
                     "elementConfig": {
                         "type": "number",
-                        "placeholder": "Enter the Height",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Height"
+                    
                     },
                     "value": "",
                     "validation": {
@@ -179,10 +167,8 @@
                 "Thickness": {
                     "elementType": "input",
                     "elementConfig": {
-                        "type": "number",
-                        "placeholder": "Enter the Height",
-                        "pattern": "[^0-9]+",
-                        "min": 0
+                        "placeholder": "Enter the Thickness"
+                        
                     },
                     "value": "",
                     "validation": {
