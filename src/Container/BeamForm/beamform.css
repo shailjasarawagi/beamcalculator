@@ -7,6 +7,18 @@
     
 }
 
+.column {
+  float: left;
+ padding: 15px;
+  width: 50%;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .floatright{
     margin-top: -95px;
     float: right;
@@ -24,3 +36,13 @@
     margin-bottom: 12px;
     white-space: wrap;
   }
+  .para{
+      padding: 5px;
+      font-weight: 500;
+  }
+  @media (max-width: 800px) {
+  .column {
+    width: 100%;
+  }
+
+}

@@ -4,11 +4,10 @@ import Input from '../../Components/UI/Input/input';
 import './modal.css';
 
 class Modal1 extends Component {
-
   state = {
     formData: this.props.modalInput.fields,
     formIsValid: false,
-    editTrue:false
+    editTrue: false
   }
 
   checkValidity = (value, rules) => {
@@ -21,7 +20,9 @@ class Modal1 extends Component {
     }
 
     if (rules.isNumeric) {
-      const pattern = /^\d+$/;
+      // const pattern = /^\d+$/;
+      const pattern = /^(\d*\.)?\d+$/;
+
       isValid = pattern.test(value) && isValid;
       if (isValid === false)
         message.push("Please enter numeric value");
@@ -68,7 +69,7 @@ class Modal1 extends Component {
     this.props.formReset();
   }
   componentDidMount() {
-    this.setState({editTrue:this.props.editValid})
+    this.setState({ editTrue: this.props.editValid })
   }
 
   render() {
@@ -108,11 +109,11 @@ class Modal1 extends Component {
           {modalInput}
         </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.props.modalclose}>Cancel</Button>
-           { console.log("hello ok", this.props.newid,this.props.editValid, this.state.editTrue)
-           }
-            <Button style={{ border: "#324561 !important" }}
-              primary disabled={!buttonsubmit} onClick={(e) => {
+            <Button onClick={this.props.modalclose} color="red">Cancel</Button>
+            {/* {console.log("hello ok", this.props.newid, this.props.editValid, this.state.editTrue) */}
+            {/* } */}
+            <Button style={{ border: "#324561 !important" }} color="green"
+              disabled={!buttonsubmit} onClick={(e) => {
                 this.props.addFunction(e,
                   this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue)
               }}>Add</Button>
@@ -121,7 +122,7 @@ class Modal1 extends Component {
             Enter length of beam
           </Modal.Content>
             <Modal.Actions>
-              <Button onClick={this.props.modalclose}>Cancel</Button>
+              <Button onClick={this.props.modalclose} color="red">Cancel</Button>
             </Modal.Actions></>}
       </Modal>
     );

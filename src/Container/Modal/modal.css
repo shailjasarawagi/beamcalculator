@@ -5,3 +5,7 @@
     pointer-events: all !important;
     cursor: not-allowed !important;
 }
+
+.modal{
+    background-color: cornflowerblue;
+}

@@ -14,11 +14,10 @@
                     "validation": {
                         "required": true,
                         "isNumeric": true,
-                        "minLength": 0,
-                        "lessthanBeam": true
+                        "minLength": 0
                     },
                     "valid": false,
-                    "label": "Point Load",
+                    "label": "Point Load (N)",
                     "touched": false
                 },
                 "Distance from A": {
@@ -34,7 +33,7 @@
                         "lessthanBeam": true
                     },
                     "valid": false,
-                    "label": "Distance From A",
+                    "label": "Distance From A (m)",
                     "touched": false
                 },
                 "Direction": {
@@ -70,17 +69,16 @@
                 "Point Moment": {
                     "elementType": "input",
                     "elementConfig": {
-                        "placeholder": "Enter the Point Load"
+                        "placeholder": "Enter the Moment Load"
                     },
                     "value": "",
                     "validation": {
                         "required": true,
                         "isNumeric": true,
-                        "minLength": 0,
-                        "lessthanBeam": true
+                        "minLength": 0
                     },
                     "valid": false,
-                    "label": "Point Moment",
+                    "label": "Point Moment (N)",
                     "touched": false
                 },
                 "Distance from A": {
@@ -96,7 +94,7 @@
                         "lessthanBeam": true
                     },
                     "valid": false,
-                    "label": "Distance From A",
+                    "label": "Distance From A (m)",
                     "touched": false
                 },
                 "Direction": {
@@ -105,12 +103,12 @@
                         "type": "radio",
                         "options": [
                             {
-                                "label": "Down",
-                                "value": "Down"
+                                "label": "Clockwise",
+                                "value": "Clockwise"
                             },
                             {
-                                "label": "Up",
-                                "value": "Up"
+                                "label": "AntiClockwise",
+                                "value": "AntiClockwise"
                             }
                         ]
                     },
@@ -132,7 +130,7 @@
                 "Starting point of load from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "placeholder": "Enter the Point Load"
+                        "placeholder": "Enter the Trapezoidal Load"
                     },
                     "value": "",
                     "validation": {
@@ -141,7 +139,7 @@
                         "minLength": 0,
                         "lessthanBeam": true
                     },
-                    "label": "Starting point of UDL from A",
+                    "label": "Starting point of UDL from A (m)",
                     "touched": false
                 },
                 "Ending point of load from A": {
@@ -156,7 +154,7 @@
                         "minLength": 0,
                         "lessthanBeam": true
                     },
-                    "label": "Ending point of UDL from A",
+                    "label": "Ending point of UDL from A (m)",
                     "touched": false
                 },
                 "Starting Load": {
@@ -168,10 +166,9 @@
                     "validation": {
                         "required": true,
                         "isNumeric": true,
-                        "minLength": 0,
-                        "lessthanBeam": true
+                        "minLength": 0
                     },
-                    "label": "Starting Load",
+                    "label": "Starting Load (N)",
                     "touched": false
                 },
                 "Starting Load Direction": {
@@ -207,10 +204,9 @@
                     "validation": {
                         "required": true,
                         "isNumeric": true,
-                        "minLength": 0,
-                        "lessthanBeam": true
+                        "minLength": 0
                     },
-                    "label": "Ending Load"
+                    "label": "Ending Load (N)"
                 },
                 "Ending Load Direction": {
                     "elementType": "radio",
@@ -246,7 +242,7 @@
                 "Starting point of UDL from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "placeholder": "Enter the Point Load"
+                        "placeholder": "Enter the Starting Point from A"
                     },
                     "value": "",
                     "validation": {
@@ -255,12 +251,12 @@
                         "minLength": 0,
                         "lessthanBeam": true
                     },
-                    "label": "Starting point of UDL from A"
+                    "label": "Starting point of UDL from A (m)"
                 },
                 "Ending point of UDL from A": {
                     "elementType": "input",
                     "elementConfig": {
-                        "placeholder": "Enter the Distance from A"
+                        "placeholder": "Enter the Ending point from A"
                     },
                     "value": "",
                     "validation": {
@@ -269,7 +265,7 @@
                         "minLength": 0,
                         "lessthanBeam": true
                     },
-                    "label": "Ending point of UDL from A",
+                    "label": "Ending point of UDL from A (m)",
                     "touched": false
                 },
                 "Value of UDl": {
@@ -281,10 +277,9 @@
                     "validation": {
                         "required": true,
                         "isNumeric": true,
-                        "minLength": 0,
-                        "lessthanBeam": true
+                        "minLength": 0
                     },
-                    "label": "Value of UDL",
+                    "label": "Value of UDL (N)",
                     "touched": false
                 },
                 "Direction": {

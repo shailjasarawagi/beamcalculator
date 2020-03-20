@@ -13,7 +13,7 @@ const imageSelect = {
         },
         "valid": false,
         "message": "",
-        "label": "Length of beam in meter",
+        "label": "Length of beam(meter)",
         "touched": false
     },
     "Material Choice": {

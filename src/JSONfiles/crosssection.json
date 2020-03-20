@@ -16,7 +16,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Diameter",
+                    "label": "Diameter(mm)",
                     "touched": false
                 }
             },
@@ -36,7 +36,6 @@
                     "elementType": "input",
                     "elementConfig": {
                         "placeholder": "Enter the Outside Diameter"
-        
                     },
                     "value": "",
                     "validation": {
@@ -45,14 +44,13 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Outside Diameter",
+                    "label": "Outside Diameter(mm)",
                     "touched": false
                 },
                 "Thickness": {
                     "elementType": "input",
                     "elementConfig": {
                         "placeholder": "Enter the Thickness"
-                      
                     },
                     "value": "",
                     "validation": {
@@ -61,7 +59,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Thickness",
+                    "label": "Thickness(mm)",
                     "touched": false
                 }
             },
@@ -88,7 +86,6 @@
                     "elementType": "input",
                     "elementConfig": {
                         "placeholder": "Enter the Breadth"
-    
                     },
                     "value": "",
                     "validation": {
@@ -97,14 +94,13 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Breadth",
+                    "label": "Breadth(mm)",
                     "touched": false
                 },
                 "Height": {
                     "elementType": "input",
                     "elementConfig": {
                         "placeholder": "Enter the Height"
-                       
                     },
                     "value": "",
                     "validation": {
@@ -113,7 +109,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Height",
+                    "label": "Height(mm)",
                     "touched": false
                 }
             },
@@ -137,7 +133,6 @@
                     "elementType": "input",
                     "elementConfig": {
                         "placeholder": "Enter the Breadth"
-                      
                     },
                     "value": "",
                     "validation": {
@@ -145,7 +140,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Breadth",
+                    "label": "Breadth(mm)",
                     "touched": false
                 },
                 "Height": {
@@ -153,7 +148,6 @@
                     "elementConfig": {
                         "type": "number",
                         "placeholder": "Enter the Height"
-                    
                     },
                     "value": "",
                     "validation": {
@@ -161,14 +155,13 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Height",
+                    "label": "Height(mm)",
                     "touched": false
                 },
                 "Thickness": {
                     "elementType": "input",
                     "elementConfig": {
                         "placeholder": "Enter the Thickness"
-                        
                     },
                     "value": "",
                     "validation": {
@@ -176,7 +169,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Thickness",
+                    "label": "Thickness(mm)",
                     "touched": false
                 }
             },

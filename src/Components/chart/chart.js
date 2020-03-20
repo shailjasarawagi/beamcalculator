@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import './chart.css';
 import * as d3 from 'd3';
-// import data from './data'
-// import styles from './App.css'
-
 class d3Chart extends Component {
 
     constructor(props) {
         super(props)
         this.draw = this.draw.bind(this);
     }
-
     componentDidMount() {
         this.draw()
     }
-
     componentDidUpdate() {
+
         this.draw()
     }
-
     draw() {
         var id = this.props.id;
         var data = [];
@@ -35,59 +30,54 @@ class d3Chart extends Component {
             )
         }
 
-        const margin = { top: 20, right: 20, bottom: 30, left: 50 },
-            width = 600 - margin.left - margin.right;
-        const height = 400 - margin.top - margin.bottom;
+        // var data = [
+        //     { x: 2000, y: 1192 },
+        //     { x: 2001, y: 1234 },
+        //     { x: 2002, y: 1463 },
+        //     { x: 2003, y: 1537 },
+        //     { x: 2004, y: 1334 },
 
+        //     { x: 2016, y: 1427 }
+        // ];
+
+        var margin = { top: 30, right: 20, bottom: 30, left: 50 },
+            width,
+            height = 250 - margin.top - margin.bottom;
+
+        // Set the scales ranges
+        var xScale = d3.scaleLinear()
+        var yScale = d3.scaleLinear().range([height, 0]);
+
+        // Define the axes
+        var xAxis = d3.axisBottom().scale(xScale);
+        var yAxis = d3.axisLeft().scale(yScale);
+
+        // create a line
+        var line = d3.line();
+
+        // Add the svg canvas
         d3.select(`#${id}`).select("svg").remove();
         var svg = d3.select(`#${id}`).append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom),
-            g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-        var xScale = d3.scaleLinear().rangeRound([0, width])
-        var yScale = d3.scaleLinear().rangeRound([height, 0])
-
-        const make_x_grid_lines = () => {
-            return d3.axisBottom(xScale)
-                .ticks(10)
-        }
-        //
-        const make_y_gridlines = () => {
-            return d3.axisLeft(yScale)
-                .ticks(10)
-        }
-
-        const lineCount = d3.line()
-            .x(function (d) { return xScale(d.x); })
-            .y(function (d) { return yScale(d.y); });
-
+            .attr("height", height + margin.top + margin.bottom);
+        var g = svg.append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         var maxHeight = d3.max(data, function (d) { return Math.abs(d.y) });
         // var minHeight = d3.min(data, function (d) { return Math.abs(d.y) });
         xScale.domain(d3.extent(data, function (d) { return d.x; }));
         yScale.domain([-maxHeight, maxHeight])
 
-        // // add the X gridlines
-        g.append("g")
-            .attr("class", `grid`)
-            .attr("transform", "translate(0," + height / 2 + ")")
-            .call(make_x_grid_lines()
-                .tickSize(-height)
-                .tickFormat(""))
-        // add the Y gridlines
-        g.append("g")
-            .attr("class", `grid`)
-            .call(make_y_gridlines()
-                .tickSize(-width)
-                .tickFormat(""))
+        // draw the line created above
+        var path = g.append("path").data([data])
+            .style('fill', 'none')
+            .style('stroke', 'darkblue')
+            .style('stroke-width', '2px');
 
-        //plot the x axis
-        g.append("g")
-            .append("g")
-            .attr('transform', 'translate(0,' + height / 2 + ')')   // This controls the vertical position of the Axis
-            .call(d3.axisBottom(xScale));
+        // Add the X Axis
+        var xAxisEl = g.append("g")
+            .attr("transform", "translate(0," + height / 2 + ")");
 
+        g.append("g")
+            .call(yAxis);
 
         g.append("g")
             .attr("class", 'axis axis--y')
@@ -101,37 +91,36 @@ class d3Chart extends Component {
             .style("text-anchor", "end")
             .style('font-size', '12')
             .text(ylabel);
-
-
-
         //plot the x axis legend
+
         svg.append("text")
             // .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 40) + ")")
             .style("text-anchor", "middle")
-            .attr("x", width / 2)
+            .attr("x", (parseInt(d3.select(`#${id}`).style('width'), 10) - margin.left - margin.right) / 2)
             .attr("y", height + 50)
             .style("text-anchor", "middle")
             .text(xlabel);
 
-        g.append("path")
-            .datum(data)
-            .attr("class", `lineUsers`)
-            .attr("d", lineCount)
+        function drawChart() {
+            // console.log(d3.select(`#${id}`).style('width'), 10)
+            width = parseInt(d3.select(`#${id}`).style('width'), 10) - margin.left - margin.right;
+            svg.attr("width", width + margin.left + margin.right);
+            xScale.range([0, width]);
+            // xAxis.scale(xScale);
+            xAxisEl.call(xAxis);
+            line.x(function (d) { return xScale(d.x); })
+                .y(function (d) { return yScale(d.y); });
 
-
+            path.attr('d', line);
+        }
+        drawChart();
+        window.addEventListener('resize', drawChart);
     }
-
-
     render() {
-
         return (
-
             <div className="chart" id={this.props.id} >
-
                 {/* <svg width="960" height="500" style={{ border: 'solid 1px #eee', borderBottom: 'solid 1px #ccc' }} /> */}
-
             </div>
-
         )
     }
 }
