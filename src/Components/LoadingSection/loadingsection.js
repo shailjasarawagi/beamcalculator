@@ -45,7 +45,7 @@ class LoadSection extends Component {
             const loadArrEle =
                 element1.map((ele1) => (
                     (ele1.config.value !== undefined ?
-                        <div key={ele1.id}>{ele1.id}={ele1.config.value}</div> :
+                        <div key={ele1.id}>{ele1.config.label}={ele1.config.value}</div> :
                         <div key={ele1.id}>{ele1.id}:<b>{ele1.config}</b></div>)));
 
             return <Segment key={ele.id} raised>{loadArrEle}

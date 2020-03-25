@@ -10,10 +10,9 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 import Swal from "sweetalert2";
 import Axios from '../../hoc/Axios-orders';
 import { checkValidity } from '../../Functions/index'
-import Image from '../../Components/chart/image';
+// import Image from '../../Components/chart/image';
 import Graph from '../../Container/Graph/Graph';
 class Beamform extends Component {
-
   state = {
     formData: data.default,
     modalopen: false,
@@ -36,7 +35,6 @@ class Beamform extends Component {
   modalclose = () => {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
-
   selectChanger = (e, data) => {
     const updatedFormData = {
       ...this.state.formData
@@ -178,7 +176,6 @@ class Beamform extends Component {
   formReset = () => {
     this.setState({ editValid: false })
   }
-
   solveHandler = () => {
     let arr = [], objNew = {}, componentName = null;
     for (let x in this.state.crossmodalData) {
@@ -196,7 +193,6 @@ class Beamform extends Component {
         ...result
       }
     }
-
     /**load section  */
     let arr3 = [], name1 = '';
     for (let x in this.state.loadmodalData) {
@@ -214,6 +210,7 @@ class Beamform extends Component {
       }
       arr3.push(result1);
     }
+    // if (this.state.formData["Length of beam"].value >=)
     Axios({
       method: "post",
       url: "/api/calculator/",
@@ -230,7 +227,7 @@ class Beamform extends Component {
         }
       }
     }).then(response => {
-      console.log(response.data.Yxmm.max());
+      console.log(response.data);
       this.setState({ graphResponse: true, response: response.data });
     }).catch(error => {
       console.log("Error", error);
@@ -238,7 +235,6 @@ class Beamform extends Component {
   }
 
   render() {
-
     let formIsValid = true;
     for (let ele in this.state.formData) {
       formIsValid = this.state.formData[ele].valid && formIsValid;
@@ -262,10 +258,9 @@ class Beamform extends Component {
           message={formElement.config.message} />
       </div>
     });
-
     return (
       <Container>
-        <Image />
+        {/* <Image /> */}
         <Grid stackable>
           <Grid.Row>
             <Grid.Column width={8}>
@@ -296,8 +291,8 @@ class Beamform extends Component {
           </Grid.Row>
         </Grid>
         {/* {this.state.graphResponse && */}
-        (<Graph response={this.state.response} />
-        {/* )} */}
+        <Graph response={this.state.response} />
+        {/* } */}
       </Container >
     );
   }

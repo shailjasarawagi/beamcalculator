@@ -4,6 +4,20 @@ import { Message } from 'semantic-ui-react';
 import '../BeamForm/beamform.css'
 const graph = (props) => {
 
+    var y = [2, 3, 4, 6, 6, 7, 9]
+    // var y = props.response.Yxmm
+    var yB = [2, 67, 89, 8, 9, 1, 3, 4.5];
+    // var yB = props.response.Mx
+    // var x = props.response.x
+    var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+    var ymax = Math.max(...y);
+    var yBmax = Math.max(...yB)
+
+    let i = y.indexOf(Math.max(...y));
+    let j = yB.indexOf(yBmax)
+    // console.log(i, j)
+    var yxmax = x[i], yBxmax = x[j];
+    // console.log("yyy", x[i], x[j])
 
     return (
         <div style={{ backgroundColor: '#d3d3d3', padding: "10px" }}>
@@ -16,7 +30,8 @@ const graph = (props) => {
                         <div className="para">Reaction at B:{props.response.Rb}</div>
                         <div className="para">Moment at A:{props.response.Ma}</div>
                         <div className="para">Moment at B:{props.response.Mb}</div>
-                        <div className="para">Maximum deflection:</div>
+                        <div className="para">Maximum deflection:{ymax} at {yxmax}</div>
+                        <div className="para">Maximum bendingmoment:{yBmax} at {yBxmax}</div>
                     </Message>
                 </div >
                 <div className="column">

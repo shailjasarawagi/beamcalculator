@@ -11,7 +11,7 @@ const input = (props) => {
 
     let validationError = null;
     if (props.invalid && props.touched) {
-       
+
         validationError = <p className={classes.ValidationError}>{props.message}</p>;
     }
 
@@ -57,14 +57,14 @@ const input = (props) => {
 
         case ('radio'):
             inputElement = props.elementConfig.options.map(ele => {
-                
+
                 return <label key={ele.label}>{ele.label} <input type="radio"
                     label={ele.label}
                     value={ele.value}
                     key={ele.label}
                     checked={props.value === ele.value}
                     onChange={props.changed}
-                   
+
                 /></label>
             });
 
@@ -77,8 +77,8 @@ const input = (props) => {
                 {...props.elementConfig}
                 value={props.value}
                 onChange={props.changed} />
-    } 
-    
+    }
+
 
     return (
         <div>

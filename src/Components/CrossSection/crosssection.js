@@ -42,8 +42,7 @@ class CrossSection extends Component {
           config: ele.config[key]
         });
       }
-
-      const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.id}={ele1.config.value}</div>));
+      const crossArrayEle = crossArray1.map(ele1 => (<div key={ele1.id}>{ele1.config.label}={ele1.config.value}</div>));
       return <Segment key={ele.id} raised><b>{ele.id}</b>{crossArrayEle}
         <span className="floatright1">
           <Popup content="Edit" position='top center'

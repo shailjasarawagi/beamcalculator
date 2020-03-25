@@ -10,14 +10,18 @@ class d3Chart extends Component {
     }
 
     componentDidUpdate() {
-        this.updateimage()
+        this.draw()
     }
 
     draw() {
+
+        var margin = { top: 30, right: 20, bottom: 30, left: 50 },
+            width,
+            height = 250 - margin.top - margin.bottom;
+
         var svg = d3.select("#D3line")
             .append("svg:svg")
-            .attr("width", 700)
-            .attr("height", 200);
+            .attr("height", height + margin.top + margin.bottom)
 
 
         svg.append("svg:line")
@@ -64,8 +68,6 @@ class d3Chart extends Component {
         svg.append("path")
             .attr("marker-end", "url(#triangle)")
             .attr("d", "M 150 25 A  30  30 0 1 1 150 75")
-            //               "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
-            //   });
             .attr("stroke", "grey")
             .attr("stroke-width", "1.5")
             .attr("fill", "transparent")
@@ -80,32 +82,18 @@ class d3Chart extends Component {
             .attr("fill", "transparent")
             .attr("class", "edges");
 
+        function drawChart() {
+            // console.log(d3.select(`#${id}`).style('width'), 10)
+            width = parseInt(d3.select("#D3line").style('width'), 10) - margin.left - margin.right;
+            svg.attr("width", width + margin.left + margin.right);
 
 
-
-        //UDL
-
-        // var lineData = [{ "x": 1, "y": 10 }, { "x": 10, "y": 10 },
-        // { "x": 40, "y": 10 }, { "x": 60, "y": 40 },
-        // { "x": 80, "y": 5 }, { "x": 100, "y": 60 }];
-
-        // var lineFunction = d3.line()
-        //     .x(function (d) { return d.x; })
-        //     .y(function (d) { return d.y; })
-
-
-        // svg.append("path")
-        //     .attr("d", lineFunction(lineData))
-        //     .attr("stroke", "blue")
-        //     .attr("stroke-width", 2)
-        //     .attr("fill", "none");
-
-
+        }
+        drawChart();
+        window.addEventListener('resize', drawChart);
 
     }
-    updateimage = () => {
 
-    }
 
     render() {
 
