@@ -10,7 +10,7 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 import Swal from "sweetalert2";
 import Axios from '../../hoc/Axios-orders';
 import { checkValidity } from '../../Functions/index'
-// import Image from '../../Components/chart/image';
+import Scene from '../../Components/chart/scene';
 import Graph from '../../Container/Graph/Graph';
 class Beamform extends Component {
   state = {
@@ -260,7 +260,7 @@ class Beamform extends Component {
     });
     return (
       <Container>
-        {/* <Image /> */}
+        <Scene value={this.state.formData} loadValue={this.state.loadmodalData} />
         <Grid stackable>
           <Grid.Row>
             <Grid.Column width={8}>
@@ -290,9 +290,9 @@ class Beamform extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        {/* {this.state.graphResponse && */}
-        <Graph response={this.state.response} />
-        {/* } */}
+        {this.state.graphResponse &&
+          <Graph response={this.state.response} />
+        }
       </Container >
     );
   }

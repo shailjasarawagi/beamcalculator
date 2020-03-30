@@ -53,8 +53,8 @@ class CrossSection extends Component {
         </span></Segment>
     });
     return (
-      <div >
-        <Message color="blue" className="message">
+      <div>
+        <Message color="blue" className="message" style={{ backgroundColor: "#90c1d7" }}>
           <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
           <hr style={{ border: '1px solid ' }} />
           <Grid>

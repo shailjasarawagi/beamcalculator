@@ -9,6 +9,9 @@
     display: block;
     margin-bottom: 8px;
 }
+.radio{
+margin: 5px !important;
+}
 
 .InputElement {
     outline: none;
