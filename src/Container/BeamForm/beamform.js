@@ -209,6 +209,7 @@ class Beamform extends Component {
         var result1 = Object.assign({}, obj, ...arr2);
       }
       arr3.push(result1);
+      console.log(arr3)
     }
     // if (this.state.formData["Length of beam"].value >=)
     Axios({
