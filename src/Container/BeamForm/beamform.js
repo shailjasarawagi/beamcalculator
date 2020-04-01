@@ -10,7 +10,7 @@ import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 import Swal from "sweetalert2";
 import Axios from '../../hoc/Axios-orders';
 import { checkValidity } from '../../Functions/index'
-import Scene from '../../Components/chart/scene';
+import Scene from '../../Components/Scene/scene';
 import Graph from '../../Container/Graph/Graph';
 class Beamform extends Component {
   state = {

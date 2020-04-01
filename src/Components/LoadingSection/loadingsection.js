@@ -31,7 +31,6 @@ class LoadSection extends Component {
                 id: key,
                 config: this.props.loadmodalData[key]
             });
-            console.log(loadArray)
         }
         const loadArr = loadArray.map((ele, index) => {
             for (let key in ele.config) {
@@ -40,11 +39,9 @@ class LoadSection extends Component {
                     config: ele.config[key]
                 });
             }
-            console.log(loadArray1)
+
             let number_of_elements = Object.keys(loadArray[index].config).length;
-            console.log(number_of_elements, loadArray1.length);
             let element1 = loadArray1.slice(loadArray1.length - number_of_elements)
-            console.log(element1)
             const loadArrEle =
                 element1.map((ele1) => (
                     (ele1.config.value !== undefined ?
