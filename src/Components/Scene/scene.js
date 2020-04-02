@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import '../../App.css';
-import { point_down, point_up } from '../Scene/loadingScene.js/pointLoad';
-import { UDL_down, UDL_up } from '../Scene/loadingScene.js/uniformDL';
-import { cantilever } from '../Scene/supportScene.js/cantilever';
-import { fixed } from '../Scene/supportScene.js/fixed';
-import { simplySupported } from '../Scene/supportScene.js/simplySupported';
+import { point_down, point_up } from '../Scene/loadingScene/pointLoad';
+import { UDL_down, UDL_up } from '../Scene/loadingScene/uniformDL';
+import { cantilever } from './supportScene/cantilever';
+import { fixed } from './supportScene/fixed';
+import { simplySupported } from './supportScene/simplySupported';
+import { moment_anti } from '../Scene/loadingScene/moment'
 
 class Scene extends Component {
     constructor(props) {
@@ -36,8 +37,7 @@ class Scene extends Component {
         }
     }
 
-    loadChoice = (svg, starting_position_x, starting_position_y, height_veritcal_line, length) => {
-
+    loadChoice = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, chartDiv) => {
         let arr3 = [], name1 = '';
         for (let x in this.props.loadValue) {
             let arr2 = [], newload = { ...this.props.loadValue[x] }
@@ -54,10 +54,15 @@ class Scene extends Component {
             }
             arr3.push(result1);
             // console.log(arr3)
+            // d3.select(chartDiv).select("svg").remove();
             for (let y in arr3) {
-                let n = arr3[y].name, m = arr3[y].distance_from_a, p = arr3[y].direction, q = arr3[y].point_load, r = arr3[y].point_moment;
-                let a = arr3[y].starting_point_of_udl_from_a, b = arr3[y].ending_point_of_udl_from_a, c = arr3[y].value_of_udl;
-                console.log(r)
+                let n = arr3[y].name, m = arr3[y].distance_from_a,
+                    p = arr3[y].direction,
+                    q = arr3[y].point_load,
+                    r = arr3[y].point_moment;
+                let a = arr3[y].starting_point_of_udl_from_a,
+                    b = arr3[y].ending_point_of_udl_from_a,
+                    c = arr3[y].value_of_udl;
                 //PointLoading 
                 if (n === 'Point Loading' && p === 'Down') {
                     let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
@@ -70,7 +75,8 @@ class Scene extends Component {
                 }
                 //MomentLoading
                 if (n === 'Moment Loading' && p === 'AntiClockwise') {
-                    // let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
+                    let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
+                    moment_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
                 }
                 if (n === 'Moment Loading' && p === 'Clockwise') {
                 }
@@ -189,7 +195,7 @@ class Scene extends Component {
             .style("stroke", "#808080")
             .text('(m)');
         this.supportchoice(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y);
-        this.loadChoice(svg, starting_position_x, starting_position_y, height_veritcal_line, length);
+        this.loadChoice(svg, starting_position_x, starting_position_y, height_veritcal_line, length, chartDiv);
         // Redraw based on the new size whenever the browser window is resized.
         window.addEventListener("resize", this.draw)
     }
