@@ -6,7 +6,8 @@ import { UDL_down, UDL_up } from '../Scene/loadingScene/uniformDL';
 import { cantilever } from './supportScene/cantilever';
 import { fixed } from './supportScene/fixed';
 import { simplySupported } from './supportScene/simplySupported';
-import { moment_anti } from '../Scene/loadingScene/moment'
+import { moment_anti, moment_clock } from '../Scene/loadingScene/moment'
+import { greyline } from '../Scene/secondScene';
 
 class Scene extends Component {
     constructor(props) {
@@ -20,7 +21,9 @@ class Scene extends Component {
     componentDidUpdate() {
         this.draw()
     }
-
+    componentWillUnmount() {
+        this.draw()
+    }
     supportchoice = (svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y) => {
 
         if (this.supportChoice.value !== '') {
@@ -38,9 +41,9 @@ class Scene extends Component {
     }
 
     loadChoice = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, chartDiv) => {
-        let arr3 = [], name1 = '';
+        let name1 = '';
         for (let x in this.props.loadValue) {
-            let arr2 = [], newload = { ...this.props.loadValue[x] }
+            let arr2 = [], arr3 = [], newload = { ...this.props.loadValue[x] }
             delete newload.name;
             name1 = this.props.loadValue[x].name;
             for (let y in newload) {
@@ -54,7 +57,6 @@ class Scene extends Component {
             }
             arr3.push(result1);
             // console.log(arr3)
-            // d3.select(chartDiv).select("svg").remove();
             for (let y in arr3) {
                 let n = arr3[y].name, m = arr3[y].distance_from_a,
                     p = arr3[y].direction,
@@ -79,6 +81,8 @@ class Scene extends Component {
                     moment_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
                 }
                 if (n === 'Moment Loading' && p === 'Clockwise') {
+                    let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
+                    moment_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
                 }
                 //Udl
                 if (n === 'Uniform Distributed Load' && p === 'Up') {
@@ -118,6 +122,7 @@ class Scene extends Component {
         // var length = end_length - start_length;
         var length = width;
         d3.select(chartDiv).select("svg").remove();
+
         var svg = d3.select(chartDiv)
             .append("svg:svg")
             .attr("height", height + margin.top + margin.bottom)
@@ -136,66 +141,20 @@ class Scene extends Component {
             .attr("y", starting_position_y)
             .style("text-anchor", "start")
             .style("stroke", "#808080")
-            .attr("transform", function (d) { return "translate(" + -15 + "," + -5 + ")"; })
+            .attr("transform", function (d) { return "translate(" + -15 + "," + -15 + ")"; })
             .text('A');
         svg.append("text")
             .attr("x", starting_position_x + length)
             .attr("y", starting_position_y)
             .style("text-anchor", "start")
             .style("stroke", "#808080")
-            .attr("transform", function (d) { return "translate(" + 5 + "," + -5 + ")"; })
+            .attr("transform", function (d) { return "translate(" + 5 + "," + -15 + ")"; })
             .text('B');
         //main grey line
-        svg.append("svg:line")
-            .attr("x1", starting_position_x)
-            .attr("y1", starting_position_y * 3)
-            .attr("x2", starting_position_x + length)
-            .attr("y2", starting_position_y * 3)
-            .style("stroke", "#808080")
-        //slint line
-        svg.append("svg:line")
-            .attr("x1", starting_position_x + 5.5)
-            .attr("y1", starting_position_y * 3 - 5.5)
-            .attr("x2", starting_position_x - 5.5)
-            .attr("y2", starting_position_y * 3 + 5)
-            .style("stroke", "#808080")
-        svg.append("svg:line")
-            .attr("x1", starting_position_x + length + 5.5)
-            .attr("y1", starting_position_y * 3 - 5.5)
-            .attr("x2", starting_position_x + length - 5.5)
-            .attr("y2", starting_position_y * 3 + 5)
-            .style("stroke", "#808080")
-        //straight line
-        svg.append("svg:line")
-            .attr("x1", starting_position_x + length)
-            .attr("y1", starting_position_y * 3 - 10)
-            .attr("x2", starting_position_x + length)
-            .attr("y2", starting_position_y * 3 + 10)
-            .style("stroke", "#808080")
-        svg.append("svg:line")
-            .attr("x1", starting_position_x)
-            .attr("y1", starting_position_y * 3 - 10)
-            .attr("x2", starting_position_x)
-            .attr("y2", starting_position_y * 3 + 10)
-            .style("stroke", "#808080")
+        greyline(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y, this.beamLength)
 
-        //text on grey line
-        svg.append("text")
-            .style("text-anchor", "middle")
-            .attr("x", starting_position_x + length / 2)
-            .attr("y", starting_position_y * 3.6)
-            .style("text-anchor", "middle")
-            .style("stroke", "#808080")
-            .text(this.beamLength.value);
-        svg.append("text")
-            .style("text-anchor", "middle")
-            .attr("x", starting_position_x + length / 2 + 15)
-            .attr("y", starting_position_y * 3.6)
-            .style("text-anchor", "middle")
-            .style("stroke", "#808080")
-            .text('(m)');
         this.supportchoice(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y);
-        this.loadChoice(svg, starting_position_x, starting_position_y, height_veritcal_line, length, chartDiv);
+        this.loadChoice(svg, starting_position_x, starting_position_y, height_veritcal_line, length);
         // Redraw based on the new size whenever the browser window is resized.
         window.addEventListener("resize", this.draw)
     }

@@ -35,7 +35,7 @@ class Modal1 extends Component {
     }
 
     if (rules.lessthanBeam) {
-      isValid = (parseInt(value) <= parseInt(this.beamLength.value)) && isValid;
+      isValid = (parseFloat(value) <= parseFloat(this.beamLength.value)) && isValid;
       if (isValid === false)
         message.push("Please enter value less than length of beam");
     }

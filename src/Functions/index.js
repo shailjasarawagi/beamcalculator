@@ -25,7 +25,7 @@ export const checkValidity = (value, rules) => {
 
     if (rules.lessthanBeam) {
         // console.log(typeof (value), typeof (this.beamLength.value), isValid)
-        isValid = (parseInt(value) <= parseInt(this.beamLength.value)) && isValid;
+        isValid = (parseFloat(value) <= parseFloat(this.beamLength.value)) && isValid;
         if (isValid === false)
             message.push("Please enter value less than length of beam");
     }

@@ -29,13 +29,13 @@ export const point_up = (svg, starting_position_x, starting_position_y, height_v
         .style("stroke", "black");
     draw_point_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
     svg.append("text")
-        .attr("x", starting_position_x + 5)
+        .attr("x", starting_position_x - 45)
         .attr("y", starting_position_y * 2.5)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('P=');
     svg.append("text")
-        .attr("x", starting_position_x + 30)
+        .attr("x", starting_position_x - 10)
         .attr("y", starting_position_y * 2.5)
         .style("text-anchor", "start")
         .style("stroke", "#808080")

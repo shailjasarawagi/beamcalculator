@@ -1,11 +1,10 @@
 import * as d3 from 'd3';
-export const moment_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, q) => {
+export const moment_clock = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, r) => {
     svg.append("svg:line")
-        // .attr("d", d3.line().curve(d3.curveCardinal))
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)
         .attr("x2", starting_position_x)
-        .attr("y2", starting_position_y - 5)
+        .attr("y2", starting_position_y + 20)
         .style("stroke", "black")
 
     const xScale = d3.scaleLinear(), yScale = d3.scaleLinear()
@@ -17,30 +16,106 @@ export const moment_anti = (svg, starting_position_x, starting_position_y, heigh
     d3.select('svg')
         .append('path')
         .datum([
+            { x: starting_position_x, y: starting_position_y + 20 },
+            { x: starting_position_x - 10, y: starting_position_y + 20 },
+            { x: starting_position_x - 20, y: starting_position_y + 20 },
+            { x: starting_position_x - 30, y: starting_position_y + 20 },
+            { x: starting_position_x - 30, y: starting_position_y - 10 },
+            { x: starting_position_x - 20, y: starting_position_y - 10 },
+            { x: starting_position_x - 10, y: starting_position_y - 10 },
+            { x: starting_position_x, y: starting_position_y - 7 },
             { x: starting_position_x, y: starting_position_y - 5 },
-            { x: starting_position_x + 10, y: starting_position_y - 15 },
-            { x: starting_position_x + 20, y: starting_position_y - 20 },
-            { x: starting_position_x + 30, y: starting_position_y - 20 },
-            { x: starting_position_x + 30, y: starting_position_y + 20 },
-            { x: starting_position_x + 20, y: starting_position_y + 20 },
-            { x: starting_position_x + 10, y: starting_position_y + 15 },
         ])
         .attr('d', line)
-    draw_moment_arrow_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
+        .style("stroke", "black")
+        .attr('fill', 'none');
+    draw_moment_arrow_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
+    svg.append("text")
+        .attr("x", starting_position_x - 20)
+        .attr("y", starting_position_y - 30)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('M=');
+    svg.append("text")
+        .attr("x", starting_position_x)
+        .attr("y", starting_position_y - 30)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text(r);
 }
-const draw_moment_arrow_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length) => {
+const draw_moment_arrow_clock = (svg, starting_position_x, starting_position_y, height_veritcal_line, length) => {
     svg.append("svg:line")
-        .attr("x1", starting_position_x + 10)
-        .attr("y1", starting_position_y + 10)
-        .attr("x2", starting_position_x + 3.5 + 10)
-        .attr("y2", starting_position_y + 7 + 10)
+        .attr("x1", starting_position_x)
+        .attr("y1", starting_position_y - 5)
+        .attr("x2", starting_position_x - 10)
+        .attr("y2", starting_position_y - 15)
         .style("stroke", "black");
 
     svg.append("svg:line")
-        .attr("x1", starting_position_x + 10)
+        .attr("x1", starting_position_x)
+        .attr("y1", starting_position_y - 5)
+        .attr("x2", starting_position_x - 10)
+        .attr("y2", starting_position_y - 5)
+        .style("stroke", "black");
+}
+
+export const moment_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, r) => {
+    svg.append("svg:line")
+        .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)
-        .attr("x2", starting_position_x - 3.5 + 10)
-        .attr("y2", starting_position_y + 7 + 10)
+        .attr("x2", starting_position_x)
+        .attr("y2", starting_position_y + 15)
+        .style("stroke", "black")
+
+    const xScale = d3.scaleLinear(), yScale = d3.scaleLinear()
+    const line = d3.line()
+        .x(d => xScale(d.x))
+        .y(d => yScale(d.y))
+        .curve(d3.curveCatmullRom)
+
+    d3.select('svg')
+        .append('path')
+        .datum([
+            { x: starting_position_x, y: starting_position_y + 15 },
+            { x: starting_position_x, y: starting_position_y + 17 },
+            { x: starting_position_x + 10, y: starting_position_y + 20 },
+            { x: starting_position_x + 20, y: starting_position_y + 20 },
+            { x: starting_position_x + 30, y: starting_position_y + 20 },
+            { x: starting_position_x + 30, y: starting_position_y - 10 },
+            { x: starting_position_x + 20, y: starting_position_y - 10 },
+            { x: starting_position_x + 10, y: starting_position_y - 10 },
+            { x: starting_position_x, y: starting_position_y - 10 },
+        ])
+        .attr('d', line)
+        .style("stroke", "black")
+        .attr('fill', 'none');
+    draw_moment_arrow_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
+    svg.append("text")
+        .attr("x", starting_position_x - 20)
+        .attr("y", starting_position_y - 30)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('M=');
+    svg.append("text")
+        .attr("x", starting_position_x)
+        .attr("y", starting_position_y - 30)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text(r);
+}
+const draw_moment_arrow_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length) => {
+    svg.append("svg:line")
+        .attr("x1", starting_position_x)
+        .attr("y1", starting_position_y - 10)
+        .attr("x2", starting_position_x + 10)
+        .attr("y2", starting_position_y - 15)
+        .style("stroke", "black");
+
+    svg.append("svg:line")
+        .attr("x1", starting_position_x)
+        .attr("y1", starting_position_y - 10)
+        .attr("x2", starting_position_x + 10)
+        .attr("y2", starting_position_y - 5)
         .style("stroke", "black");
 }
 
