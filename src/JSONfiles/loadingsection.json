@@ -263,7 +263,8 @@
                         "required": true,
                         "isNumeric": true,
                         "minLength": 0,
-                        "lessthanBeam": true
+                        "lessthanBeam": true,
+                        "greaterthanStarting": true
                     },
                     "label": "Ending point of UDL from A (m)",
                     "touched": false

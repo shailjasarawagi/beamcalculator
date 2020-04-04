@@ -7,7 +7,8 @@ import { cantilever } from './supportScene/cantilever';
 import { fixed } from './supportScene/fixed';
 import { simplySupported } from './supportScene/simplySupported';
 import { moment_anti, moment_clock } from '../Scene/loadingScene/moment'
-import { greyline } from '../Scene/secondScene';
+import { greyline, divideGreyLine } from '../Scene/secondScene';
+
 
 class Scene extends Component {
     constructor(props) {
@@ -21,9 +22,9 @@ class Scene extends Component {
     componentDidUpdate() {
         this.draw()
     }
-    componentWillUnmount() {
-        this.draw()
-    }
+    // componentWillUnmount() {
+    //     this.draw()
+    // }
     supportchoice = (svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y) => {
 
         if (this.supportChoice.value !== '') {
@@ -98,6 +99,9 @@ class Scene extends Component {
                     UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
 
                 }
+                if (m !== '' || a !== '') {
+                    divideGreyLine(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n)
+                }
             }
         }
     }
@@ -163,7 +167,7 @@ class Scene extends Component {
         this.supportChoice = this.props.value["Support Choice"]
         return (
             <div className="chart" id="D3line" >
-                {/* <svg width="960" height="500" style={{ border: 'solid 1px #eee', borderBottom: 'solid 1px #ccc' }} /> */}
+                {/* <svg width="700" style={{ border: 'solid 1px #eee', borderBottom: 'solid 1px #ccc' }} /> */}
             </div>
         )
     }

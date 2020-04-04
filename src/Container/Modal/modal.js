@@ -39,7 +39,11 @@ class Modal1 extends Component {
       if (isValid === false)
         message.push("Please enter value less than length of beam");
     }
-
+    // if (rules.greaterthanStarting) {
+    //   isValid = (parseFloat(value) > parseFloat()) && isValid;
+    //   if (isValid === false)
+    //     message.push("Please enter value greater than starting loadlength");
+    // }
     return [isValid, message[0]];
   };
 
