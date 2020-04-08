@@ -139,7 +139,7 @@
                         "minLength": 0,
                         "lessthanBeam": true
                     },
-                    "label": "Starting point of UDL from A (m)",
+                    "label": "Starting point of load from A (m)",
                     "touched": false
                 },
                 "Ending point of load from A": {
@@ -154,7 +154,7 @@
                         "minLength": 0,
                         "lessthanBeam": true
                     },
-                    "label": "Ending point of UDL from A (m)",
+                    "label": "Ending point of load from A (m)",
                     "touched": false
                 },
                 "Starting Load": {
@@ -264,7 +264,7 @@
                         "isNumeric": true,
                         "minLength": 0,
                         "lessthanBeam": true,
-                        "greaterthanStarting": true
+                        "greaterorequalthanStarting": true
                     },
                     "label": "Ending point of UDL from A (m)",
                     "touched": false

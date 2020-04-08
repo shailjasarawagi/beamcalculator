@@ -4,7 +4,7 @@ export const moment_clock = (svg, starting_position_x, starting_position_y, heig
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)
         .attr("x2", starting_position_x)
-        .attr("y2", starting_position_y + 20)
+        .attr("y2", starting_position_y + 30)
         .style("stroke", "black")
 
     const xScale = d3.scaleLinear(), yScale = d3.scaleLinear()
@@ -16,14 +16,15 @@ export const moment_clock = (svg, starting_position_x, starting_position_y, heig
     d3.select('svg')
         .append('path')
         .datum([
-            { x: starting_position_x, y: starting_position_y + 20 },
-            { x: starting_position_x - 10, y: starting_position_y + 20 },
-            { x: starting_position_x - 20, y: starting_position_y + 20 },
-            { x: starting_position_x - 30, y: starting_position_y + 20 },
-            { x: starting_position_x - 30, y: starting_position_y - 10 },
-            { x: starting_position_x - 20, y: starting_position_y - 10 },
-            { x: starting_position_x - 10, y: starting_position_y - 10 },
-            { x: starting_position_x, y: starting_position_y - 7 },
+            { x: starting_position_x, y: starting_position_y + 30 },
+            { x: starting_position_x, y: starting_position_y + 30 },
+            { x: starting_position_x - 10, y: starting_position_y + 27 },
+            { x: starting_position_x - 20, y: starting_position_y + 21 },
+            { x: starting_position_x - 20, y: starting_position_y + 21 },
+            { x: starting_position_x - 25, y: starting_position_y - 8 },
+            { x: starting_position_x - 20, y: starting_position_y - 15 },
+            { x: starting_position_x - 15, y: starting_position_y - 18 },
+            { x: starting_position_x, y: starting_position_y - 8 },
             { x: starting_position_x, y: starting_position_y - 5 },
         ])
         .attr('d', line)
@@ -47,16 +48,18 @@ const draw_moment_arrow_clock = (svg, starting_position_x, starting_position_y, 
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y - 5)
-        .attr("x2", starting_position_x - 10)
-        .attr("y2", starting_position_y - 15)
+        .attr("x2", starting_position_x - 5)
+        .attr("y2", starting_position_y - 18)
+        .attr('stroke-width', '2px')
         .style("stroke", "black");
 
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y - 5)
         .attr("x2", starting_position_x - 10)
-        .attr("y2", starting_position_y - 5)
-        .style("stroke", "black");
+        .attr("y2", starting_position_y - 7)
+        .style("stroke", "black")
+        .attr('stroke-width', '2px')
 }
 
 export const moment_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, r) => {
@@ -64,7 +67,7 @@ export const moment_anti = (svg, starting_position_x, starting_position_y, heigh
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)
         .attr("x2", starting_position_x)
-        .attr("y2", starting_position_y + 15)
+        .attr("y2", starting_position_y + 30)
         .style("stroke", "black")
 
     const xScale = d3.scaleLinear(), yScale = d3.scaleLinear()
@@ -76,15 +79,16 @@ export const moment_anti = (svg, starting_position_x, starting_position_y, heigh
     d3.select('svg')
         .append('path')
         .datum([
-            { x: starting_position_x, y: starting_position_y + 15 },
-            { x: starting_position_x, y: starting_position_y + 17 },
-            { x: starting_position_x + 10, y: starting_position_y + 20 },
-            { x: starting_position_x + 20, y: starting_position_y + 20 },
-            { x: starting_position_x + 30, y: starting_position_y + 20 },
-            { x: starting_position_x + 30, y: starting_position_y - 10 },
-            { x: starting_position_x + 20, y: starting_position_y - 10 },
-            { x: starting_position_x + 10, y: starting_position_y - 10 },
-            { x: starting_position_x, y: starting_position_y - 10 },
+            { x: starting_position_x, y: starting_position_y + 30 },
+            { x: starting_position_x, y: starting_position_y + 30 },
+            { x: starting_position_x + 10, y: starting_position_y + 27 },
+            { x: starting_position_x + 20, y: starting_position_y + 21 },
+            { x: starting_position_x + 20, y: starting_position_y + 21 },
+            { x: starting_position_x + 25, y: starting_position_y - 8 },
+            { x: starting_position_x + 20, y: starting_position_y - 15 },
+            { x: starting_position_x + 15, y: starting_position_y - 18 },
+            { x: starting_position_x, y: starting_position_y - 8 },
+            { x: starting_position_x, y: starting_position_y - 5 },
         ])
         .attr('d', line)
         .style("stroke", "black")
@@ -106,16 +110,18 @@ export const moment_anti = (svg, starting_position_x, starting_position_y, heigh
 const draw_moment_arrow_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length) => {
     svg.append("svg:line")
         .attr("x1", starting_position_x)
-        .attr("y1", starting_position_y - 10)
-        .attr("x2", starting_position_x + 10)
-        .attr("y2", starting_position_y - 15)
+        .attr("y1", starting_position_y - 5)
+        .attr("x2", starting_position_x)
+        .attr("y2", starting_position_y - 18)
+        .attr('stroke-width', '2px')
         .style("stroke", "black");
 
     svg.append("svg:line")
         .attr("x1", starting_position_x)
-        .attr("y1", starting_position_y - 10)
+        .attr("y1", starting_position_y - 5)
         .attr("x2", starting_position_x + 10)
-        .attr("y2", starting_position_y - 5)
+        .attr("y2", starting_position_y - 8)
+        .attr('stroke-width', '2px')
         .style("stroke", "black");
 }
 

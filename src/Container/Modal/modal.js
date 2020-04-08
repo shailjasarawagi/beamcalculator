@@ -39,10 +39,10 @@ class Modal1 extends Component {
       if (isValid === false)
         message.push("Please enter value less than length of beam");
     }
-    // if (rules.greaterthanStarting) {
-    //   isValid = (parseFloat(value) > parseFloat()) && isValid;
+    // if (rules.greaterorequalthanStarting) {
+    //   isValid = (parseFloat(value) >= parseFloat()) && isValid;
     //   if (isValid === false)
-    //     message.push("Please enter value greater than starting loadlength");
+    //     message.push("Please enter value greater than or equal to starting load distance");
     // }
     return [isValid, message[0]];
   };
@@ -109,7 +109,7 @@ class Modal1 extends Component {
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header>{this.props.identity}</Modal.Header>
-        {this.beamLength.valid ? <><Modal.Content>
+        {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <><Modal.Content>
           {modalInput}
         </Modal.Content>
           <Modal.Actions>

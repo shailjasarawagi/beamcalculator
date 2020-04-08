@@ -211,28 +211,45 @@ class Beamform extends Component {
       arr3.push(result1);
       console.log(arr3)
     }
-    // if (this.state.formData["Length of beam"].value >=)
-    Axios({
-      method: "post",
-      url: "/api/calculator/",
-      data: {
-        "userinput": {
-          "material_choices": this.state.formData["Material Choice"].value,
-          "length_of_beam": this.state.formData["Length of beam"].value,
-          "support_type": this.state.formData["Support Choice"].value,
-          "cross_section": componentName,
-          ...objNew,
-          "load_section": [
-            ...arr3
-          ]
-        }
+
+    for (let y in arr3) {
+      let
+        m = arr3[y].distance_from_a,
+        a = arr3[y].starting_point_of_udl_from_a,
+        b = arr3[y].ending_point_of_udl_from_a
+      if ((this.state.formData["Length of beam"].value < m) || (this.state.formData["Length of beam"].value < a) || (this.state.formData["Length of beam"].value < b)) {
+        // console.log(alert('error'))
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Length of beam is less than component distance from point A'
+
+        })
       }
-    }).then(response => {
-      console.log(response.data);
-      this.setState({ graphResponse: true, response: response.data });
-    }).catch(error => {
-      console.log("Error", error);
-    });
+      else {
+        Axios({
+          method: "post",
+          url: "/api/calculator/",
+          data: {
+            "userinput": {
+              "material_choices": this.state.formData["Material Choice"].value,
+              "length_of_beam": this.state.formData["Length of beam"].value,
+              "support_type": this.state.formData["Support Choice"].value,
+              "cross_section": componentName,
+              ...objNew,
+              "load_section": [
+                ...arr3
+              ]
+            }
+          }
+        }).then(response => {
+          console.log(response.data);
+          this.setState({ graphResponse: true, response: response.data });
+        }).catch(error => {
+          console.log("Error", error);
+        });
+      }
+    }
   }
 
   render() {

@@ -6,6 +6,7 @@ import { Image, Grid, Popup, Segment, Icon, Message } from "semantic-ui-react";
 class LoadSection extends Component {
 
     render() {
+        // console.log(this.props.loadData)
         const ElementsArray = [];
         const loadSection = this.props.loadData;
         for (let key in loadSection) {
