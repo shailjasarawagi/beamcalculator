@@ -181,7 +181,7 @@ class Scene extends Component {
         var margin = { top: 30, right: 20, bottom: 30, left: 50 },
             height = 190 - margin.top - margin.bottom,
             width = scene_size.width - margin.left - margin.right;
-        // width = chartDiv.clientWidth;
+        // console.log(window.innerWidth, scene_size.width);
         var starting_position_x = 30;
         var starting_position_y = 40;
         var height_veritcal_line = 20;
@@ -194,6 +194,7 @@ class Scene extends Component {
             .append("svg:svg")
             .attr("height", height + margin.top + margin.bottom)
             .attr("width", width + margin.left + margin.right)
+        // .attr("transform", "translate( " + [width / 4] + "," + [height] + ")")
 
         //main black line
         svg.append("svg:line")

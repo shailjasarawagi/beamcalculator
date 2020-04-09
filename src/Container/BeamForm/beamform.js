@@ -216,8 +216,12 @@ class Beamform extends Component {
       let
         m = arr3[y].distance_from_a,
         a = arr3[y].starting_point_of_udl_from_a,
-        b = arr3[y].ending_point_of_udl_from_a
-      if ((this.state.formData["Length of beam"].value < m) || (this.state.formData["Length of beam"].value < a) || (this.state.formData["Length of beam"].value < b)) {
+        b = arr3[y].ending_point_of_udl_from_a,
+        i = arr3[y].starting_point_of_load_from_a,
+        j = arr3[y].ending_point_of_load_from_a
+      if ((this.state.formData["Length of beam"].value < m) || (this.state.formData["Length of beam"].value < a)
+        || (this.state.formData["Length of beam"].value < b) ||
+        (this.state.formData["Length of beam"].value < i || (this.state.formData["Length of beam"].value < j))) {
         // console.log(alert('error'))
         Swal.fire({
           type: 'error',

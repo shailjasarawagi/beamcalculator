@@ -30,6 +30,7 @@ export const moment_clock = (svg, starting_position_x, starting_position_y, heig
         .attr('d', line)
         .style("stroke", "black")
         .attr('fill', 'none');
+
     draw_moment_arrow_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
     svg.append("text")
         .attr("x", starting_position_x - 20)

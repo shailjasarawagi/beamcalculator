@@ -152,7 +152,8 @@
                         "required": true,
                         "isNumeric": true,
                         "minLength": 0,
-                        "lessthanBeam": true
+                        "lessthanBeam": true,
+                        "greaterorequalthanStarting": true
                     },
                     "label": "Ending point of load from A (m)",
                     "touched": false

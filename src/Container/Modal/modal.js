@@ -10,7 +10,7 @@ class Modal1 extends Component {
     editTrue: false
   }
 
-  checkValidity = (value, rules) => {
+  checkValidity = (value, rules, updatedFormData) => {
     let isValid = true;
     let message = [];
     if (rules.required) {
@@ -39,11 +39,14 @@ class Modal1 extends Component {
       if (isValid === false)
         message.push("Please enter value less than length of beam");
     }
-    // if (rules.greaterorequalthanStarting) {
-    //   isValid = (parseFloat(value) >= parseFloat()) && isValid;
-    //   if (isValid === false)
-    //     message.push("Please enter value greater than or equal to starting load distance");
-    // }
+    // console.log(Object.keys(updatedFormData)[0])
+    var v = Object.values(updatedFormData)[0]
+    // console.log(Object.values(v)[2])
+    if (rules.greaterorequalthanStarting) {
+      isValid = (parseFloat(value) >= parseFloat(Object.values(v)[2])) && isValid;
+      if (isValid === false)
+        message.push("Please enter value greater than or equal to starting load distance");
+    }
     return [isValid, message[0]];
   };
 
@@ -57,7 +60,7 @@ class Modal1 extends Component {
     };
     updatedFormElement.value = event.target.value;
     const formElement = {};
-    formElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+    formElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation, updatedFormData);
     updatedFormElement.valid = formElement.valid[0];
     updatedFormElement.touched = true;
     updatedFormElement.message = formElement.valid[1];

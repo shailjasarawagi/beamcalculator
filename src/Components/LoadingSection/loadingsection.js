@@ -21,7 +21,7 @@ class LoadSection extends Component {
                 <Popup content={lElement.config.name} position='top center'
                     size='tiny' inverted trigger={
                         <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }}
-                            size="medium" src={require(`../../assets/${lElement.config.Location}`)} alt={lElement.config.name} />
+                            size="medium" src={require(`../../assets/${lElement.config.Location}`)} draggable="false" alt={lElement.config.name} />
                     } />
             </Grid.Column>
         ));

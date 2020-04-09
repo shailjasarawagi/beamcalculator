@@ -4,22 +4,12 @@ import { trap_down_down } from './trapdowndown';
 import { trap_down_up } from './trapdownup'
 
 export const trapezoidal = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference) => {
-    var height1 = 0, height2 = 0;
-    if ((l >= k && (l - k) < 10)) {
-        height1 = 10
-        height2 = 20
-    }
-    if (l > k && (l - k) < 15) {
-        height1 = 20
-        height2 = 40
-    }
-    if (l > k && (l - k) > 15) {
-
-        height1 = 40
-        height2 = 60
-    }
+    var height1, height2;
+    k = parseFloat(k);
+    l = parseFloat(l);
 
     if (x === 'Up' && z === 'Up') {
+
         trap_up_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2)
     }
     if (x === 'Down' && z === 'Down') {
