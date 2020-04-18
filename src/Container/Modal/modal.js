@@ -40,16 +40,19 @@ class Modal1 extends Component {
         message.push("Please enter value less than length of beam");
     }
 
-    var v1 = Object.values(updatedFormData)[1]
-    if (Object.values(v1)[2] !== '') {
-      if (rules.lessorequaltoEnding) {
+
+
+    if (rules.lessorequaltoEnding) {
+      var v1 = Object.values(updatedFormData)[1]
+      if (Object.values(v1)[2] !== '') {
         isValid = (parseFloat(value) <= parseFloat(Object.values(v1)[2])) && isValid;
         if (isValid === false)
           message.push("Please enter value less than or equal to ending load distance");
       }
     }
-    var v = Object.values(updatedFormData)[0]
+
     if (rules.greaterorequaltoStarting) {
+      var v = Object.values(updatedFormData)[0]
       isValid = (parseFloat(value) >= parseFloat(Object.values(v)[2])) && isValid;
       if (isValid === false)
         message.push("Please enter value greater than or equal to starting load distance");

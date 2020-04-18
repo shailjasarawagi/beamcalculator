@@ -1,7 +1,7 @@
-import { trap_up_down } from './trapupdown';
+import { trap_up_down } from './trapupdown/trapupdown';
 import { trap_up_up } from './trapupup';
 import { trap_down_down } from './trapdowndown';
-import { trap_down_up } from './trapdownup'
+import { trap_down_up } from './trapdownup/trapdownup'
 
 export const trapezoidal = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference) => {
     var height1, height2;
