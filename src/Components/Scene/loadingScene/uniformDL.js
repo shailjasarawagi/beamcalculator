@@ -18,7 +18,7 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
         .style("stroke", "#808080")
         .text(c);
     draw_end_start_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference);
-    for (var i = 10; i < difference; i = i + 10) {
+    for (var i = 15; i < difference; i = i + 15) {
 
         draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, i, difference);
     }
@@ -114,7 +114,7 @@ export const UDL_down = (svg, starting_position_x, starting_position_y, height_v
         .style("stroke", "#808080")
         .text(c);
     draw_end_start_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference);
-    for (var z = 10; z < difference; z = z + 10) {
+    for (var z = 15; z < difference; z = z + 15) {
         draw_arrow_down(svg, starting_position_x, starting_position_y, height_veritcal_line, z, difference);
     }
 }

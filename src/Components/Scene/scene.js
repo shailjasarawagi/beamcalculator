@@ -166,7 +166,7 @@ class Scene extends Component {
                 }
                 if (m !== '' || a !== '' || i !== '') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
-                        divideGreyLine(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n, i, j)
+                        divideGreyLine(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n, i, j, arr3, this.props.loadValue)
                     }
                 }
             }
@@ -202,6 +202,7 @@ class Scene extends Component {
             .attr("y1", starting_position_y + 10)
             .attr("x2", starting_position_x + length)
             .attr("y2", starting_position_y + 10)
+            .attr("stroke-width", "2")
             .style("stroke", "black");
         //append A and B
         svg.append("text")

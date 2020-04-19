@@ -40,10 +40,18 @@ export const greyline = (svg, starting_position_x, starting_position_y, length, 
         .style("text-anchor", "middle")
         .style("stroke", "#808080")
         .text(beamLength.value);
+    svg.append("text")
+        .attr("x", starting_position_x + length / 2 + 20)
+        .attr("y", starting_position_y * 3.6)
+        .style("text-anchor", "middle")
+        .style("stroke", "#808080")
+        .text('(m)');
 
 }
 
-export const divideGreyLine = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, beamLength, m, a, b, n, i, j) => {
+export const divideGreyLine = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, beamLength, m, a, b, n, i, j, array, loadValue) => {
+    console.log(array, loadValue);
+
     if (n === 'Moment Loading' || n === 'Point Loading') {
 
         starting_position_x = parseFloat(m) / beamLength.value * (30 + length);
@@ -61,6 +69,7 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
             .attr("x2", starting_position_x)
             .attr("y2", starting_position_y * 3 + 10)
             .style("stroke", "#808080")
+
     }
 
     if (n === 'Uniform Distributed Load') {
@@ -95,6 +104,13 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
             .attr("x2", starting_position_x + difference)
             .attr("y2", starting_position_y * 3 + 10)
             .style("stroke", "#808080")
+        svg.append("text")
+            .attr("x", starting_position_x + difference / 2)
+            .attr("y", starting_position_y * 3 - 5)
+            .style("text-anchor", "start")
+            .style("stroke", "#808080")
+            .text((parseFloat(b) - parseFloat(a)).toFixed(2));
+
     }
     // console.log(starting_position_x)
     if (n === 'Trapezoidal Loading') {
@@ -129,6 +145,13 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
             .attr("x2", starting_position_x + difference)
             .attr("y2", starting_position_y * 3 + 10)
             .style("stroke", "#808080")
+
+        svg.append("text")
+            .attr("x", starting_position_x + difference / 2)
+            .attr("y", starting_position_y * 3 - 5)
+            .style("text-anchor", "start")
+            .style("stroke", "#808080")
+            .text((parseFloat(j) - parseFloat(i)).toFixed(2));
     }
 
 }

@@ -61,6 +61,18 @@ export const trap_down_up = (svg, starting_position_x, starting_position_y, heig
         .attr("x2", starting_position_x + difference)
         .attr("y2", starting_position_y + height2)
         .style("stroke", "black");
+    svg.append("text")
+        .attr("x", starting_position_x)
+        .attr("y", starting_position_y - height1)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text(k);
+    svg.append("text")
+        .attr("x", starting_position_x + difference)
+        .attr("y", starting_position_y + height2 + 10)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text(l);
     //arrow
     if (k === l) {
         // console.log(height1, height2)
