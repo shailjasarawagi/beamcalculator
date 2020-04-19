@@ -1,5 +1,5 @@
 import { trap_up_down } from './trapupdown/trapupdown';
-import { trap_up_up } from './trapupup';
+import { trap_up_up } from './trapupup/trapupup';
 import { trap_down_down } from './trapdowndown';
 import { trap_down_up } from './trapdownup/trapdownup'
 
