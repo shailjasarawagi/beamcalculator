@@ -108,7 +108,7 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
             .style("stroke", "black");
 
         if (l > k) {
-            console.log(difference)
+            // console.log(difference)
             if (difference >= 700) {
                 for (var i0 = 10, r0 = starting_position_y - height1; i0 < difference && r0 >= starting_position_y - height2; i0 = i0 + 30, r0 = r0 - 0.4) {
                     draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i0, r0)
@@ -153,7 +153,7 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
             }
         }
         else {
-            console.log(difference)
+            // console.log(difference)
             if (difference >= 700) {
                 for (var i7 = 10, r7 = starting_position_y - height1; i7 < difference && r7 <= starting_position_y - height2; i7 = i7 + 30, r7 = r7 + 0.6) {
                     // console.log('hello')
@@ -274,7 +274,7 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
             .attr("x2", starting_position_x + 3.5)
             .attr("y2", starting_position_y)
             .style("stroke", "black");
-        console.log(difference)
+        // console.log(difference)
         // for (var i41 = 10, r41 = starting_position_y - height1; i41 < difference && r41 <= starting_position_y - height2; i41 = i41 + 30, r41 = r41 + 3) {
         //     draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i41, r41)
         // }

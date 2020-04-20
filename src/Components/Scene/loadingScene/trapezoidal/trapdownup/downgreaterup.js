@@ -1,5 +1,5 @@
 export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2) => {
-    console.log(difference)
+    // console.log(difference)
     if (difference >= 700) {
         for (var x1 = 10, ra = starting_position_y + 10; x1 < difference / 2 && ra <= starting_position_y + height2; x1 = x1 + 30, ra = ra + 3) {
             let e = difference / 1.4

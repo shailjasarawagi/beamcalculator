@@ -93,7 +93,7 @@ export const draw_arrow_same = (svg, starting_position_x, starting_position_y, h
         }
     }
     if (difference < 300 && difference > 100) {
-        for (var x11 = 10, raa = starting_position_y + height1; x11 < difference / 3 && raa >= starting_position_y - height2; x11 = x11 + 30, raa = raa - 6) {
+        for (var x11 = 10, raa = starting_position_y + height1; x11 < difference / 3 && raa >= starting_position_y - height2; x11 = x11 + 30, raa = raa - 8) {
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x11)
                 .attr("y1", starting_position_y + 10)
@@ -114,7 +114,7 @@ export const draw_arrow_same = (svg, starting_position_x, starting_position_y, h
                 .attr("y2", raa)
                 .style("stroke", "black");
         }
-        for (var x5 = 10, r5 = starting_position_y + 10; x5 < difference / 3 && r5 >= starting_position_y - height2; x5 = x5 + 30, r5 = r5 - 9) {
+        for (var x5 = 10, r5 = starting_position_y + 10; x5 < difference / 3 && r5 >= starting_position_y - height2; x5 = x5 + 30, r5 = r5 - 12) {
             let e = difference / 1.5
             svg.append("svg:line")
                 .attr("x1", starting_position_x + e + x5)
