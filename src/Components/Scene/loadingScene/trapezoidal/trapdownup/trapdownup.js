@@ -66,13 +66,13 @@ export const trap_down_up = (svg, starting_position_x, starting_position_y, heig
         .attr("y", starting_position_y - height1)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
-        .text(k);
+        .text(k + 'N/m');
     svg.append("text")
         .attr("x", starting_position_x + difference)
         .attr("y", starting_position_y + height2 + 10)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
-        .text(l);
+        .text(l + 'N/m');
     //arrow
     if (k === l) {
         // console.log(height1, height2)
@@ -212,6 +212,7 @@ export const trap_down_up = (svg, starting_position_x, starting_position_y, heig
         }
     }
     if (l === 0 && k !== l) {
+        console.log(difference)
         svg.append("svg:line")
             .attr("x1", starting_position_x)
             .attr("y1", starting_position_y + 10)
@@ -225,43 +226,60 @@ export const trap_down_up = (svg, starting_position_x, starting_position_y, heig
             .attr("x2", starting_position_x + 3.5)
             .attr("y2", starting_position_y)
             .style("stroke", "black");
-
-        if (difference >= 600) {
-            for (var i4 = 10, r4 = starting_position_y - height1; i4 < difference && r4 <= starting_position_y + height2; i4 = i4 + 30, r4 = r4 + 1.4) {
+        if (difference >= 700) {
+            for (var i0 = 10, r0 = starting_position_y - height1; i0 < difference && r0 <= starting_position_y + height2; i0 = i0 + 30, r0 = r0 + 1.6) {
+                // console.log("hello", height1, height2, i4, r4)
+                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i0, r0)
+            }
+        }
+        if (difference >= 600 && difference < 700) {
+            for (var i4 = 10, r4 = starting_position_y - height1; i4 < difference && r4 <= starting_position_y + height2; i4 = i4 + 30, r4 = r4 + 1.8) {
                 // console.log("hello", height1, height2, i4, r4)
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i4, r4)
             }
         }
-        if (difference < 600 && difference > 450) {
-            for (var i45 = 10, r45 = starting_position_y - height1; i45 < difference && r45 <= starting_position_y + height2; i45 = i45 + 30, r45 = r45 + 2) {
+        if (difference < 600 && difference >= 500) {
+            for (var i45 = 10, r45 = starting_position_y - height1; i45 < difference && r45 <= starting_position_y + height2; i45 = i45 + 30, r45 = r45 + 1.9) {
                 // console.log("hello", height1, height2, i4, r4)
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i45, r45)
             }
         }
+        if (difference < 500 && difference >= 450) {
+            for (var i46 = 10, r46 = starting_position_y - height1; i46 < difference && r46 <= starting_position_y + height2; i46 = i46 + 30, r46 = r46 + 2.4) {
+                // console.log("hello", height1, height2, i4, r4)
+                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i46, r46)
+            }
+        }
         if (difference < 450 && difference >= 350) {
-            for (var i41 = 10, r41 = starting_position_y - height1; i41 < difference && r41 <= starting_position_y + height2; i41 = i41 + 30, r41 = r41 + 2.5) {
+            for (var i41 = 10, r41 = starting_position_y - height1; i41 < difference && r41 <= starting_position_y + height2; i41 = i41 + 30, r41 = r41 + 3) {
                 // console.log("hello", height1, height2, i4, r4)
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i41, r41)
             }
         }
-        if (difference < 350 && difference >= 200) {
+        if (difference < 350 && difference >= 300) {
             for (var i42 = 10, r42 = starting_position_y - height1; i42 < difference && r42 <= starting_position_y + height2; i42 = i42 + 30, r42 = r42 + 4.5) {
                 // console.log("hello", height1, height2, i4, r4)
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i42, r42)
             }
         }
-        if (difference < 200 && difference >= 100) {
+        if (difference < 300 && difference >= 200) {
+            for (var i40 = 10, r40 = starting_position_y - height1; i40 < difference && r40 <= starting_position_y + height2; i40 = i40 + 30, r40 = r40 + 6) {
+                // console.log("hello", height1, height2, i4, r4)
+                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i40, r40)
+            }
+        }
+        if (difference < 200 && difference >= 150) {
             for (var i43 = 10, r43 = starting_position_y - height1; i43 < difference && r43 <= starting_position_y + height2; i43 = i43 + 30, r43 = r43 + 8) {
                 // console.log("hello", height1, height2, i4, r4)
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i43, r43)
             }
         }
-        if (difference < 100 && difference >= 50) {
-            for (var i44 = 10, r44 = starting_position_y - height1; i44 < difference && r44 <= starting_position_y + height2; i44 = i44 + 30, r44 = r44 + 12) {
-                // console.log("hello", height1, height2, i4, r4)
-                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i44, r44)
-            }
-        }
+        // if (difference < 100 && difference >= 50) {
+        //     for (var i44 = 10, r44 = starting_position_y - height1; i44 < difference && r44 <= starting_position_y + height2; i44 = i44 + 30, r44 = r44 + 12) {
+        //         // console.log("hello", height1, height2, i4, r4)
+        //         draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i44, r44)
+        //     }
+        // }
     }
 }
 

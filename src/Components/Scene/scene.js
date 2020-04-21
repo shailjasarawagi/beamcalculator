@@ -74,57 +74,60 @@ class Scene extends Component {
 
                 //PointLoading 
                 if (n === 'Point Loading' && p === 'Down') {
-                    console.log(this.beamLength.value)
-                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
+                    // console.log(this.beamLength.value)
+                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
-                        point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q)
+                        point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
                     else {
                         let starting_position_x = 30
-                        point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q)
+                        point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
 
 
                 }
                 if (n === 'Point Loading' && p === 'Up') {
-                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
+                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
-                        point_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q)
+                        point_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
                     else {
+
                         let starting_position_x = 30
-                        point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q)
+                        point_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
 
                 }
                 //MomentLoading
                 if (n === 'Moment Loading' && p === 'AntiClockwise') {
-                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
+                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
-                        moment_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
+                        moment_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r, m)
                     }
                     else {
                         let starting_position_x = 30
-                        moment_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
+                        moment_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r, m)
                     }
                 }
                 if (n === 'Moment Loading' && p === 'Clockwise') {
-                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
+                    if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
-                        moment_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
+                        moment_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r, m)
                     }
                     else {
                         let starting_position_x = 30
-                        moment_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r)
+                        moment_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length, r, m)
                     }
                 }
 
                 //Udl
                 if (n === 'Uniform Distributed Load' && p === 'Up') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
-                        let starting_position_x = parseFloat(a) / this.beamLength.value * (30 + length);
-                        let difference = ((parseFloat(b) - parseFloat(a)) / this.beamLength.value) * (30 + length);
+                        starting_position_x = parseFloat(a) / (this.beamLength.value) * (30 + length);
+                        let difference = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
+                        console.log(starting_position_x, difference)
                         UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
+
 
                     }
                     else {
@@ -137,6 +140,7 @@ class Scene extends Component {
                 }
                 if (n === 'Uniform Distributed Load' && p === 'Down') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
+
                         let starting_position_x = parseFloat(a) / this.beamLength.value * (30 + length);
                         let difference = ((parseFloat(b) - parseFloat(a)) / this.beamLength.value) * (30 + length);
                         UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
@@ -164,10 +168,13 @@ class Scene extends Component {
 
                     }
                 }
-                if (m !== '' || a !== '' || i !== '') {
+                if ((m !== '' || a !== '' || i !== '')) {
+
+                    // console.log(m, a, i)
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
                         divideGreyLine(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n, i, j, arr3, this.props.loadValue)
                     }
+
                 }
             }
         }

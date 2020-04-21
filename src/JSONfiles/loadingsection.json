@@ -78,7 +78,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Point Moment (N)",
+                    "label": "Point Moment (Nm)",
                     "touched": false
                 },
                 "Distance from A": {
@@ -170,7 +170,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Starting Load (N)",
+                    "label": "Starting Load (N/m)",
                     "touched": false
                 },
                 "Starting Load Direction": {
@@ -208,7 +208,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Ending Load (N)"
+                    "label": "Ending Load (N/m)"
                 },
                 "Ending Load Direction": {
                     "elementType": "radio",
@@ -283,7 +283,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Value of UDL (N)",
+                    "label": "Value of UDL (N/m)",
                     "touched": false
                 },
                 "Direction": {
