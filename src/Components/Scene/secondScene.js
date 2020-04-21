@@ -44,7 +44,7 @@ export const greyline = (svg, starting_position_x, starting_position_y, length, 
 }
 
 export const divideGreyLine = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, beamLength, m, a, b, n, i, j, array, loadValue) => {
-    console.log(starting_position_x);
+
     if ((parseFloat(m) !== 0)) {
         if (n === 'Moment Loading' || n === 'Point Loading') {
 
@@ -68,9 +68,15 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
     }
     if (n === 'Uniform Distributed Load') {
 
-        starting_position_x = parseFloat(a) / beamLength.value * (30 + length);
-        let difference = ((parseFloat(b) - parseFloat(a)) / beamLength.value) * (30 + length);
-
+        let difference;
+        if (parseFloat(a) !== 0) {
+            starting_position_x = parseFloat(a) / (beamLength.value) * (30 + length);
+            difference = ((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * (30 + length);
+        }
+        else {
+            starting_position_x = 30
+            difference = (((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * (30 + length)) - 30;
+        }
         //slint line
         svg.append("svg:line")
             .attr("x1", starting_position_x + 5.5)
@@ -107,11 +113,17 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
             .text((parseFloat(b) - parseFloat(a)).toFixed(2) + 'm');
 
     }
-    // console.log(starting_position_x)
-    if (n === 'Trapezoidal Loading') {
 
-        let starting_position_x = parseFloat(i) / beamLength.value * (30 + length);
-        let difference = ((parseFloat(j) - parseFloat(i)) / beamLength.value) * (30 + length);
+    if (n === 'Trapezoidal Loading') {
+        let difference;
+        if (parseFloat(i) !== 0) {
+            starting_position_x = parseFloat(i) / (beamLength.value) * (30 + length);
+            difference = ((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (30 + length);
+        }
+        else {
+            starting_position_x = 30
+            difference = (((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (30 + length)) - 30;
+        }
         //slint line
         svg.append("svg:line")
             .attr("x1", starting_position_x + 5.5)

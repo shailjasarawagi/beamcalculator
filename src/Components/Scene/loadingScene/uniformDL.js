@@ -1,4 +1,5 @@
 export const UDL_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c) => {
+    // console.log(difference, starting_position_x)
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 30)
@@ -19,12 +20,13 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
         .text(c + 'N/m');
     draw_end_start_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference);
     for (var i = 20; i < difference; i = i + 20) {
-
+        console.log(i, difference)
         draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, i, difference);
     }
 }
 const draw_end_start_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference) => {
     // Start arrow
+    // console.log(starting_position_x)
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)

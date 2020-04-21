@@ -42,7 +42,7 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
             height2 = 30
         }
     }
-    // console.log(height1, height2, starting_position_x, starting_position_y)
+
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)
@@ -66,7 +66,7 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
         .attr("y", starting_position_y + height1 + 10)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
-        .text(k = 'N/m');
+        .text(k + 'N/m');
     svg.append("text")
         .attr("x", starting_position_x + difference)
         .attr("y", starting_position_y - height2)
@@ -75,7 +75,7 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
         .text(l + 'N/m');
     //arrow
     if (l === k) {
-        // console.log(height1, height2)
+
         svg.append("svg:line")
             .attr("x1", starting_position_x)
             .attr("y1", starting_position_y + 10)
@@ -102,11 +102,11 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
             .attr("x2", starting_position_x + 3.5 + difference)
             .attr("y2", starting_position_y)
             .style("stroke", "black");
-        // console.log(difference)
+
         draw_arrow_same(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2)
     }
     if (k !== 0 && l !== 0 && k !== l) {
-        // console.log(height1, height2)
+
         svg.append("svg:line")
             .attr("x1", starting_position_x)
             .attr("y1", starting_position_y + 10)
@@ -142,7 +142,7 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
     }
 
     if (k === 0 && k !== l) {
-        // console.log(height1, height2)
+
         svg.append("svg:line")
             .attr("x1", starting_position_x + difference)
             .attr("y1", starting_position_y + 10)
@@ -156,66 +156,66 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
             .attr("x2", starting_position_x + 3.5 + difference)
             .attr("y2", starting_position_y)
             .style("stroke", "black");
-        // console.log(difference)
+
         if (difference >= 700) {
             for (var i2 = 10, r1 = starting_position_y + height1; i2 < difference && r1 >= starting_position_y - height2; i2 = i2 + 30, r1 = r1 - 1.4) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i2, r1)
 
             }
         }
         if (difference < 700 && difference >= 500) {
             for (var i21 = 10, r11 = starting_position_y + height1; i21 < difference && r11 >= starting_position_y - height2; i21 = i21 + 30, r11 = r11 - 1.8) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i21, r11)
 
             }
         }
         if (difference < 500 && difference >= 400) {
             for (var i22 = 10, r12 = starting_position_y + height1; i22 < difference && r12 >= starting_position_y - height2; i22 = i22 + 30, r12 = r12 - 2.5) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i22, r12)
 
             }
         }
         if (difference < 400 && difference >= 300) {
             for (var i23 = 10, r13 = starting_position_y + height1; i23 < difference && r13 >= starting_position_y - height2; i23 = i23 + 30, r13 = r13 - 3.1) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i23, r13)
 
             }
         }
         if (difference < 300 && difference >= 200) {
             for (var i24 = 10, r14 = starting_position_y + height1; i24 < difference && r14 >= starting_position_y - height2; i24 = i24 + 30, r14 = r14 - 4.5) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i24, r14)
 
             }
         }
         if (difference < 200 && difference >= 150) {
             for (var i25 = 10, r15 = starting_position_y + height1; i25 < difference && r15 >= starting_position_y - height2; i25 = i25 + 30, r15 = r15 - 6) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i25, r15)
 
             }
         }
         if (difference < 150 && difference >= 100) {
             for (var i26 = 10, r16 = starting_position_y + height1; i26 < difference && r16 >= starting_position_y - height2; i26 = i26 + 30, r16 = r16 - 8) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i26, r16)
 
             }
         }
         if (difference < 100 && difference >= 50) {
             for (var i27 = 10, r17 = starting_position_y + height1; i27 < difference && r17 >= starting_position_y - height2; i27 = i27 + 30, r17 = r17 - 13) {
-                // console.log('hello')
+
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i27, r17)
 
             }
         }
     }
     if (l === 0 && k !== l) {
-        // console.log(height1, height2)
+
         svg.append("svg:line")
             .attr("x1", starting_position_x)
             .attr("y1", starting_position_y + 10)
@@ -229,34 +229,34 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
             .attr("x2", starting_position_x - 2.5)
             .attr("y2", starting_position_y + 10 + 6)
             .style("stroke", "black");
-        // console.log(difference)
+
         if (difference >= 450) {
             for (var i4 = 10, r4 = starting_position_y + height1; i4 < difference && r4 >= starting_position_y - height2; i4 = i4 + 30, r4 = r4 - 1.5) {
-                // console.log("hello", height1, height2, i4, r4)
+
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i4, r4)
             }
         }
         if (difference < 450 && difference >= 350) {
             for (var i41 = 10, r41 = starting_position_y + height1; i41 < difference && r41 >= starting_position_y - height2; i41 = i41 + 30, r41 = r41 - 2) {
-                // console.log("hello", height1, height2, i4, r4)
+
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i41, r41)
             }
         }
         if (difference < 350 && difference >= 200) {
             for (var i42 = 10, r42 = starting_position_y + height1; i42 < difference && r42 >= starting_position_y - height2; i42 = i42 + 30, r42 = r42 - 3) {
-                // console.log("hello", height1, height2, i4, r4)
+
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i42, r42)
             }
         }
         if (difference < 200 && difference >= 100) {
             for (var i43 = 10, r43 = starting_position_y + height1; i43 < difference && r43 >= starting_position_y - height2; i43 = i43 + 30, r43 = r43 - 5) {
-                // console.log("hello", height1, height2, i4, r4)
+
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i43, r43)
             }
         }
         if (difference < 100 && difference >= 50) {
             for (var i44 = 10, r44 = starting_position_y + height1; i44 < difference && r44 >= starting_position_y - height2; i44 = i44 + 30, r44 = r44 - 8) {
-                // console.log("hello", height1, height2, i4, r4)
+
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i44, r44)
             }
         }
@@ -308,5 +308,3 @@ const draw_arrow = (svg, starting_position_x, starting_position_y, height_veritc
         .style("stroke", "black");
 
 }
-
-

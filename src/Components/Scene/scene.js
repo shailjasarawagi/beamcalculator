@@ -74,7 +74,6 @@ class Scene extends Component {
 
                 //PointLoading 
                 if (n === 'Point Loading' && p === 'Down') {
-                    // console.log(this.beamLength.value)
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
                         point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
@@ -123,9 +122,16 @@ class Scene extends Component {
                 //Udl
                 if (n === 'Uniform Distributed Load' && p === 'Up') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
-                        starting_position_x = parseFloat(a) / (this.beamLength.value) * (30 + length);
-                        let difference = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
-                        console.log(starting_position_x, difference)
+                        let difference;
+                        if (parseFloat(a) !== 0) {
+                            starting_position_x = parseFloat(a) / (this.beamLength.value) * (30 + length);
+                            difference = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
+                        }
+                        else {
+                            starting_position_x = 30
+                            difference = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length)) - 30;
+                        }
+
                         UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
 
 
@@ -141,8 +147,17 @@ class Scene extends Component {
                 if (n === 'Uniform Distributed Load' && p === 'Down') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
 
-                        let starting_position_x = parseFloat(a) / this.beamLength.value * (30 + length);
-                        let difference = ((parseFloat(b) - parseFloat(a)) / this.beamLength.value) * (30 + length);
+                        // let starting_position_x = parseFloat(a) / this.beamLength.value * (30 + length);
+                        // let difference = ((parseFloat(b) - parseFloat(a)) / this.beamLength.value) * (30 + length);
+                        let difference;
+                        if (parseFloat(a) !== 0) {
+                            starting_position_x = parseFloat(a) / (this.beamLength.value) * (30 + length);
+                            difference = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
+                        }
+                        else {
+                            starting_position_x = 30
+                            difference = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length)) - 30;
+                        }
                         UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
 
                     }
@@ -157,8 +172,16 @@ class Scene extends Component {
                 //trapezoidal
                 if (n === 'Trapezoidal Loading') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
-                        let starting_position_x = parseFloat(i) / this.beamLength.value * (30 + length);
-                        let difference = ((parseFloat(j) - parseFloat(i)) / this.beamLength.value) * (30 + length);
+                        let difference;
+                        if (parseFloat(i) !== 0) {
+                            starting_position_x = parseFloat(i) / (this.beamLength.value) * (30 + length);
+                            difference = ((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (30 + length);
+                        }
+                        else {
+                            starting_position_x = 30
+                            difference = (((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (30 + length)) - 30;
+                        }
+
                         trapezoidal(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference)
                     }
                     else {
@@ -169,8 +192,6 @@ class Scene extends Component {
                     }
                 }
                 if ((m !== '' || a !== '' || i !== '')) {
-
-                    // console.log(m, a, i)
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
                         divideGreyLine(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n, i, j, arr3, this.props.loadValue)
                     }
