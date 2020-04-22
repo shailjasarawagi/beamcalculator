@@ -21,11 +21,12 @@ export const moment_clock = (svg, starting_position_x, starting_position_y, heig
             { x: starting_position_x - 10, y: starting_position_y + 27 },
             { x: starting_position_x - 20, y: starting_position_y + 21 },
             { x: starting_position_x - 20, y: starting_position_y + 21 },
-            { x: starting_position_x - 25, y: starting_position_y - 8 },
+            { x: starting_position_x - 22, y: starting_position_y - 8 },
             { x: starting_position_x - 20, y: starting_position_y - 15 },
             { x: starting_position_x - 15, y: starting_position_y - 18 },
             { x: starting_position_x, y: starting_position_y - 8 },
             { x: starting_position_x, y: starting_position_y - 5 },
+
         ])
         .attr('d', line)
         .style("stroke", "black")
@@ -34,25 +35,25 @@ export const moment_clock = (svg, starting_position_x, starting_position_y, heig
     draw_moment_arrow_clock(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
     svg.append("text")
         .attr("x", starting_position_x - 20)
-        .attr("y", starting_position_y - 31)
+        .attr("y", starting_position_y - 30)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('M=');
     svg.append("text")
         .attr("x", starting_position_x)
-        .attr("y", starting_position_y - 31)
+        .attr("y", starting_position_y - 30)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(r + 'Nm');
     svg.append("text")
         .attr("x", starting_position_x - 20)
-        .attr("y", starting_position_y - 20)
+        .attr("y", starting_position_y + 40)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('d=');
     svg.append("text")
         .attr("x", starting_position_x)
-        .attr("y", starting_position_y - 20)
+        .attr("y", starting_position_y + 40)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(m + 'm');
@@ -109,25 +110,25 @@ export const moment_anti = (svg, starting_position_x, starting_position_y, heigh
     draw_moment_arrow_anti(svg, starting_position_x, starting_position_y, height_veritcal_line, length)
     svg.append("text")
         .attr("x", starting_position_x - 20)
-        .attr("y", starting_position_y - 31)
+        .attr("y", starting_position_y - 30)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('M=');
     svg.append("text")
         .attr("x", starting_position_x)
-        .attr("y", starting_position_y - 31)
+        .attr("y", starting_position_y - 30)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(r + ' Nm');
     svg.append("text")
         .attr("x", starting_position_x - 20)
-        .attr("y", starting_position_y - 20)
+        .attr("y", starting_position_y + 40)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('d=');
     svg.append("text")
         .attr("x", starting_position_x)
-        .attr("y", starting_position_y - 20)
+        .attr("y", starting_position_y + 40)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(m + ' m');
