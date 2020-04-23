@@ -9,6 +9,7 @@ import { simplySupported } from './supportScene/simplySupported';
 import { moment_anti, moment_clock } from '../Scene/loadingScene/moment'
 import { greyline, divideGreyLine } from '../Scene/secondScene';
 import { trapezoidal } from './loadingScene/trapezoidal/trapezoidal';
+import { datagreyline } from '../Scene/dataSecondScene';
 class Scene extends Component {
     constructor(props) {
         super(props)
@@ -180,6 +181,7 @@ class Scene extends Component {
                 if ((m !== '' || a !== '' || i !== '')) {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0) {
                         divideGreyLine(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n, i, j, arr3, this.props.loadValue)
+                        datagreyline(svg, starting_position_x, starting_position_y, height_veritcal_line, length, this.beamLength, m, a, b, n, i, j, arr3, this.props.loadValue)
                     }
                 }
             }
