@@ -142,7 +142,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
 
     }
     if (difference < 450 && difference >= 350) {
-        for (var x11bb = 10, raabb = starting_position_y + height1; x11bb < difference / 3 && raabb >= starting_position_y - height2; x11bb = x11bb + 30, raabb = raabb - 4.5) {
+        for (var x11bb = 10, raabb = starting_position_y + height1; x11bb < difference / 3 && raabb >= starting_position_y - height2; x11bb = x11bb + 30, raabb = raabb - 5) {
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x11bb)
                 .attr("y1", starting_position_y + 10)
@@ -163,7 +163,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
                 .attr("y2", raabb)
                 .style("stroke", "black");
         }
-        for (var x1bb = 10, rabb = starting_position_y + 10; x1bb < difference / 2 && rabb >= starting_position_y - height2; x1bb = x1bb + 30, rabb = rabb - 6) {
+        for (var x1bb = 10, rabb = starting_position_y + 10; x1bb < difference / 2 && rabb >= starting_position_y - height2; x1bb = x1bb + 30, rabb = rabb - 7) {
             let e = difference / 2
             svg.append("svg:line")
                 .attr("x1", starting_position_x + e + x1bb)
@@ -189,7 +189,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
 
     }
     if (difference < 350 && difference >= 250) {
-        for (var xb = 10, rb = starting_position_y + height1; xb < difference / 3 && rb >= starting_position_y - height2; xb = xb + 30, rb = rb - 5.5) {
+        for (var xb = 10, rb = starting_position_y + height1; xb < difference / 3 && rb >= starting_position_y - height2; xb = xb + 30, rb = rb - 6) {
             svg.append("svg:line")
                 .attr("x1", starting_position_x + xb)
                 .attr("y1", starting_position_y + 10)
@@ -210,7 +210,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
                 .attr("y2", rb)
                 .style("stroke", "black");
         }
-        for (var xbb = 10, rbb = starting_position_y + 10; xbb < difference / 2 && rbb >= starting_position_y - height2; xbb = xbb + 30, rbb = rbb - 10) {
+        for (var xbb = 10, rbb = starting_position_y + 10; xbb < difference / 2 && rbb >= starting_position_y - height2; xbb = xbb + 30, rbb = rbb - 9) {
             let e = difference / 2
             svg.append("svg:line")
                 .attr("x1", starting_position_x + e + xbb)
@@ -236,7 +236,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
 
     }
     if (difference < 250 && difference >= 200) {
-        for (var xc = 10, rc = starting_position_y + height1; xc < difference / 3 && rc >= starting_position_y - height2; xc = xc + 30, rc = rc - 7) {
+        for (var xc = 10, rc = starting_position_y + height1; xc < difference / 3 && rc >= starting_position_y - height2; xc = xc + 30, rc = rc - 8) {
             svg.append("svg:line")
                 .attr("x1", starting_position_x + xc)
                 .attr("y1", starting_position_y + 10)
@@ -259,7 +259,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
         }
 
 
-        for (var xbc = 10, rbc = starting_position_y + 10; xbc < difference / 2 && rbc >= starting_position_y - height2; xbc = xbc + 30, rbc = rbc - 13) {
+        for (var xbc = 10, rbc = starting_position_y + 10; xbc < difference / 2 && rbc >= starting_position_y - height2; xbc = xbc + 30, rbc = rbc - 12) {
             let e = difference / 2
             svg.append("svg:line")
                 .attr("x1", starting_position_x + e + xbc)
@@ -285,7 +285,7 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
 
     }
     if (difference < 200 && difference >= 150) {
-        for (var xcd = 10, rcd = starting_position_y + height1; xcd < difference / 3 && rcd >= starting_position_y - height2; xcd = xcd + 30, rcd = rcd - 7) {
+        for (var xcd = 10, rcd = starting_position_y + height1; xcd < difference / 3 && rcd >= starting_position_y - height2; xcd = xcd + 30, rcd = rcd - 10) {
             svg.append("svg:line")
                 .attr("x1", starting_position_x + xcd)
                 .attr("y1", starting_position_y + 10)
@@ -333,53 +333,53 @@ export const draw_arrow_down_up1 = (svg, starting_position_x, starting_position_
         }
 
     }
-    if (difference < 150 && difference >= 100) {
-        for (var xd = 10, rd = starting_position_y + height1; xd < difference / 3 && rd >= starting_position_y - height2; xd = xd + 30, rd = rd - 12) {
-            svg.append("svg:line")
-                .attr("x1", starting_position_x + xd)
-                .attr("y1", starting_position_y + 10)
-                .attr("x2", starting_position_x + xd + 2.5)
-                .attr("y2", starting_position_y + 10 + 6)
-                .style("stroke", "black");
+    // if (difference < 150 && difference >= 100) {
+    //     for (var xd = 10, rd = starting_position_y + height1; xd < difference / 3 && rd >= starting_position_y - height2; xd = xd + 30, rd = rd - 12) {
+    //         svg.append("svg:line")
+    //             .attr("x1", starting_position_x + xd)
+    //             .attr("y1", starting_position_y + 10)
+    //             .attr("x2", starting_position_x + xd + 2.5)
+    //             .attr("y2", starting_position_y + 10 + 6)
+    //             .style("stroke", "black");
 
-            svg.append("svg:line")
-                .attr("x1", starting_position_x + xd)
-                .attr("y1", starting_position_y + 10)
-                .attr("x2", starting_position_x + xd - 2.5)
-                .attr("y2", starting_position_y + 10 + 6)
-                .style("stroke", "black");
-            svg.append("svg:line")
-                .attr("x1", starting_position_x + xd)
-                .attr("y1", starting_position_y + 10)
-                .attr("x2", starting_position_x + xd)
-                .attr("y2", rd)
-                .style("stroke", "black");
-        }
+    //         svg.append("svg:line")
+    //             .attr("x1", starting_position_x + xd)
+    //             .attr("y1", starting_position_y + 10)
+    //             .attr("x2", starting_position_x + xd - 2.5)
+    //             .attr("y2", starting_position_y + 10 + 6)
+    //             .style("stroke", "black");
+    //         svg.append("svg:line")
+    //             .attr("x1", starting_position_x + xd)
+    //             .attr("y1", starting_position_y + 10)
+    //             .attr("x2", starting_position_x + xd)
+    //             .attr("y2", rd)
+    //             .style("stroke", "black");
+    //     }
 
 
-        for (var xdd = 10, rdd = starting_position_y + 10; xdd < difference / 2 && rdd >= starting_position_y - height2; xdd = xdd + 30, rdd = rdd - 18) {
-            let e = difference / 2
-            svg.append("svg:line")
-                .attr("x1", starting_position_x + e + xdd)
-                .attr("y1", starting_position_y + 10)
-                .attr("x2", starting_position_x + xdd + e + 3.5)
-                .attr("y2", starting_position_y)
-                .style("stroke", "black");
+    //     for (var xdd = 10, rdd = starting_position_y + 10; xdd < difference / 2 && rdd >= starting_position_y - height2; xdd = xdd + 30, rdd = rdd - 18) {
+    //         let e = difference / 2
+    //         svg.append("svg:line")
+    //             .attr("x1", starting_position_x + e + xdd)
+    //             .attr("y1", starting_position_y + 10)
+    //             .attr("x2", starting_position_x + xdd + e + 3.5)
+    //             .attr("y2", starting_position_y)
+    //             .style("stroke", "black");
 
-            svg.append("svg:line")
-                .attr("x1", starting_position_x + xdd + e)
-                .attr("y1", starting_position_y + 10)
-                .attr("x2", starting_position_x + xdd + e - 3.5)
-                .attr("y2", starting_position_y)
-                .style("stroke", "black");
+    //         svg.append("svg:line")
+    //             .attr("x1", starting_position_x + xdd + e)
+    //             .attr("y1", starting_position_y + 10)
+    //             .attr("x2", starting_position_x + xdd + e - 3.5)
+    //             .attr("y2", starting_position_y)
+    //             .style("stroke", "black");
 
-            svg.append("svg:line")
-                .attr("x1", starting_position_x + xdd + e)
-                .attr("y1", starting_position_y + 10)
-                .attr("x2", starting_position_x + xdd + e)
-                .attr("y2", rdd)
-                .style("stroke", "black");
-        }
+    //         svg.append("svg:line")
+    //             .attr("x1", starting_position_x + xdd + e)
+    //             .attr("y1", starting_position_y + 10)
+    //             .attr("x2", starting_position_x + xdd + e)
+    //             .attr("y2", rdd)
+    //             .style("stroke", "black");
+    //     }
 
-    }
+    // }
 }

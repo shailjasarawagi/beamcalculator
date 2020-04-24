@@ -1,6 +1,6 @@
 import { draw, draw_arrow } from '../trapdowndown/trapDown';
 export const trap_down_down = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2) => {
-
+    console.log(difference)
     k = parseFloat(k);
     l = parseFloat(l);
     if (k === 0) {
@@ -169,14 +169,14 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
                 }
             }
             if (difference >= 300 && difference < 500) {
-                for (var i9 = 10, r9 = starting_position_y - height1; i9 < difference && r9 <= starting_position_y - height2; i9 = i9 + 30, r9 = r9 + 1.2) {
+                for (var i9 = 10, r9 = starting_position_y - height1; i9 < difference && r9 <= starting_position_y - height2; i9 = i9 + 30, r9 = r9 + 1.4) {
 
                     draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i9, r9)
 
                 }
             }
             if (difference >= 200 && difference < 300) {
-                for (var i10 = 10, r10 = starting_position_y - height1; i10 < difference && r10 <= starting_position_y - height2; i10 = i10 + 30, r10 = r10 + 1.7) {
+                for (var i10 = 10, r10 = starting_position_y - height1; i10 < difference && r10 <= starting_position_y - height2; i10 = i10 + 30, r10 = r10 + 1.9) {
 
                     draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i10, r10)
 
@@ -220,9 +220,7 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
             .attr("x2", starting_position_x + 3.5 + difference)
             .attr("y2", starting_position_y)
             .style("stroke", "black");
-
-
-        if (difference >= 500) {
+        if (difference >= 700) {
 
             for (var i21 = 10, r1 = starting_position_y - height1; i21 < difference && r1 >= starting_position_y - height2; i21 = i21 + 30, r1 = r1 - 1.6) {
 
@@ -230,15 +228,31 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
 
             }
         }
-        if (difference >= 300 && difference < 500) {
-            for (var i22 = 10, r22 = starting_position_y - height1; i22 <= difference && r22 >= starting_position_y - height2; i22 = i22 + 30, r22 = r22 - 2.7) {
+
+        if (difference >= 500 && difference < 700) {
+
+            for (var i20 = 10, r40 = starting_position_y - height1; i20 < difference && r40 >= starting_position_y - height2; i20 = i20 + 30, r40 = r40 - 1.8) {
+
+                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i20, r40)
+
+            }
+        }
+        if (difference >= 400 && difference < 500) {
+            for (var i26 = 10, r26 = starting_position_y - height1; i26 <= difference && r26 >= starting_position_y - height2; i26 = i26 + 30, r26 = r26 - 2.7) {
+
+                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i26, r26)
+
+            }
+        }
+        if (difference >= 300 && difference < 400) {
+            for (var i22 = 10, r22 = starting_position_y - height1; i22 <= difference && r22 >= starting_position_y - height2; i22 = i22 + 30, r22 = r22 - 3.3) {
 
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i22, r22)
 
             }
         }
         if (difference >= 200 && difference < 300) {
-            for (var i23 = 10, r33 = starting_position_y - height1; i23 < difference && r33 >= starting_position_y - height2; i23 = i23 + 30, r33 = r33 - 5) {
+            for (var i23 = 10, r33 = starting_position_y - height1; i23 < difference && r33 >= starting_position_y - height2; i23 = i23 + 30, r33 = r33 - 4.5) {
 
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i23, r33)
 
@@ -251,8 +265,8 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
 
             }
         }
-        if (difference >= 120 && difference < 150) {
-            for (var i25 = 10, r15 = starting_position_y - height1; i25 < difference && r15 >= starting_position_y - height2; i25 = i25 + 30, r15 = r15 - 10) {
+        if (difference >= 145 && difference < 150) {
+            for (var i25 = 10, r15 = starting_position_y - height1; i25 < difference && r15 >= starting_position_y - height2; i25 = i25 + 30, r15 = r15 - 9) {
 
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i25, r15)
 
@@ -278,11 +292,17 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
         // for (var i41 = 10, r41 = starting_position_y - height1; i41 < difference && r41 <= starting_position_y - height2; i41 = i41 + 30, r41 = r41 + 3) {
         //     draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i41, r41)
         // }
-
-        if (difference >= 500) {
+        if (difference >= 600) {
 
             for (var i30 = 10, r20 = starting_position_y - height1; i30 < difference && r20 <= starting_position_y - height2; i30 = i30 + 30, r20 = r20 + 1.7) {
                 draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i30, r20)
+
+            }
+        }
+        if (difference >= 500 && difference < 600) {
+
+            for (var is = 10, rs = starting_position_y - height1; is < difference && rs <= starting_position_y - height2; is = is + 30, rs = rs + 2.3) {
+                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, is, rs)
 
             }
         }
@@ -340,7 +360,7 @@ export const trap_down_down = (svg, starting_position_x, starting_position_y, he
             .attr("y2", starting_position_y)
             .style("stroke", "black");
 
-        for (var i55 = 10; i55 < difference; i55 = i55 + 30) {
+        for (var i55 = 15; i55 < difference; i55 = i55 + 30) {
 
             draw(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i55)
         }

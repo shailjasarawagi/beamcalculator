@@ -20,7 +20,7 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
         .text(c + 'N/m');
     draw_end_start_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference);
     for (var i = 20; i < difference; i = i + 20) {
-        console.log(i, difference)
+        // console.log(i, difference)
         draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, i, difference);
     }
 }

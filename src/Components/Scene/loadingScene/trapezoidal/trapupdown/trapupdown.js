@@ -2,6 +2,7 @@ import { draw_arrow_same } from './updownsame';
 import { draw_arrow_down_up1 } from './trapupsmallerdown';
 import { draw_arrow_down_up2 } from './trapupgreaterdown';
 export const trap_up_down = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2) => {
+    console.log(difference)
     if (k === 0 && k !== l) {
         height1 = 10
         height2 = 30
@@ -206,13 +207,13 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
 
             }
         }
-        if (difference < 100 && difference >= 50) {
-            for (var i27 = 10, r17 = starting_position_y + height1; i27 < difference && r17 >= starting_position_y - height2; i27 = i27 + 30, r17 = r17 - 13) {
+        // if (difference < 100 && difference >= 50) {
+        //     for (var i27 = 10, r17 = starting_position_y + height1; i27 < difference && r17 >= starting_position_y - height2; i27 = i27 + 30, r17 = r17 - 13) {
 
-                draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i27, r17)
+        //         draw_arrow(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i27, r17)
 
-            }
-        }
+        //     }
+        // }
     }
     if (l === 0 && k !== l) {
 
@@ -230,36 +231,42 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
             .attr("y2", starting_position_y + 10 + 6)
             .style("stroke", "black");
 
-        if (difference >= 450) {
+        if (difference >= 500) {
             for (var i4 = 10, r4 = starting_position_y + height1; i4 < difference && r4 >= starting_position_y - height2; i4 = i4 + 30, r4 = r4 - 1.5) {
 
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i4, r4)
             }
         }
+        if (difference >= 450 && difference < 500) {
+            for (var i40 = 10, r40 = starting_position_y + height1; i40 < difference && r40 >= starting_position_y - height2; i40 = i40 + 30, r40 = r40 - 1.9) {
+
+                draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i40, r40)
+            }
+        }
         if (difference < 450 && difference >= 350) {
-            for (var i41 = 10, r41 = starting_position_y + height1; i41 < difference && r41 >= starting_position_y - height2; i41 = i41 + 30, r41 = r41 - 2) {
+            for (var i41 = 10, r41 = starting_position_y + height1; i41 < difference && r41 >= starting_position_y - height2; i41 = i41 + 30, r41 = r41 - 2.2) {
 
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i41, r41)
             }
         }
         if (difference < 350 && difference >= 200) {
-            for (var i42 = 10, r42 = starting_position_y + height1; i42 < difference && r42 >= starting_position_y - height2; i42 = i42 + 30, r42 = r42 - 3) {
+            for (var i42 = 10, r42 = starting_position_y + height1; i42 < difference && r42 >= starting_position_y - height2; i42 = i42 + 30, r42 = r42 - 3.2) {
 
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i42, r42)
             }
         }
-        if (difference < 200 && difference >= 100) {
+        if (difference < 200 && difference >= 170) {
             for (var i43 = 10, r43 = starting_position_y + height1; i43 < difference && r43 >= starting_position_y - height2; i43 = i43 + 30, r43 = r43 - 5) {
 
                 draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i43, r43)
             }
         }
-        if (difference < 100 && difference >= 50) {
-            for (var i44 = 10, r44 = starting_position_y + height1; i44 < difference && r44 >= starting_position_y - height2; i44 = i44 + 30, r44 = r44 - 8) {
+        // if (difference < 100 && difference >= 50) {
+        //     for (var i44 = 10, r44 = starting_position_y + height1; i44 < difference && r44 >= starting_position_y - height2; i44 = i44 + 30, r44 = r44 - 8) {
 
-                draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i44, r44)
-            }
-        }
+        //         draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i44, r44)
+        //     }
+        // }
     }
 }
 const draw_arrow_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, j1, r) => {

@@ -1,6 +1,6 @@
 import { draw_arrow_up, draw, draw_start_zero } from './trapUp';
 export const trap_up_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2) => {
-
+    // console.log(difference)
     k = parseFloat(k);
     l = parseFloat(l);
     if (k === 0) {
@@ -35,11 +35,11 @@ export const trap_up_up = (svg, starting_position_x, starting_position_y, height
             height1 = 30
             height2 = 20
         }
-        if ((k - l) > 5 && (k - l) <= 10) {
-            height1 = 50
-            height2 = 30
-        }
-        if ((k - l) > 10) {
+        // if ((k - l) > 5 && (k - l) <= 10) {
+        //     height1 = 50
+        //     height2 = 30
+        // }
+        if ((k - l) > 5) {
             height1 = 65
             height2 = 50
         }
@@ -162,14 +162,20 @@ export const trap_up_up = (svg, starting_position_x, starting_position_y, height
 
                 }
             }
-            if (difference >= 300 && difference < 500) {
-                for (var i9 = 10, r9 = starting_position_y + height1; i9 < difference && r9 >= starting_position_y + height2; i9 = i9 + 30, r9 = r9 - 0.65) {
+            if (difference >= 400 && difference < 500) {
+                for (var i9 = 10, r9 = starting_position_y + height1; i9 < difference && r9 >= starting_position_y + height2; i9 = i9 + 30, r9 = r9 - 0.8) {
                     draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i9, r9)
 
                 }
             }
+            if (difference >= 300 && difference < 400) {
+                for (var i91 = 10, r91 = starting_position_y + height1; i91 < difference && r91 >= starting_position_y + height2; i91 = i91 + 30, r91 = r91 - 0.95) {
+                    draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i91, r91)
+
+                }
+            }
             if (difference >= 200 && difference < 300) {
-                for (var i10 = 10, r10 = starting_position_y + height1; i10 < difference && r10 >= starting_position_y + height2; i10 = i10 + 30, r10 = r10 - 0.7) {
+                for (var i10 = 10, r10 = starting_position_y + height1; i10 < difference && r10 >= starting_position_y + height2; i10 = i10 + 30, r10 = r10 - 1.5) {
                     draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i10, r10)
 
                 }
@@ -180,18 +186,18 @@ export const trap_up_up = (svg, starting_position_x, starting_position_y, height
 
                 }
             }
-            if (difference >= 90 && difference < 150) {
+            if (difference >= 100 && difference < 150) {
                 for (var i12 = 10, r12 = starting_position_y + height1; i12 < difference && r12 >= starting_position_y + height2; i12 = i12 + 30, r12 = r12 - 3) {
                     draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i12, r12)
 
                 }
             }
-            if (difference < 90) {
-                for (var i13 = 10, r13 = starting_position_y + height1; i13 < difference && r13 >= starting_position_y + height2; i13 = i13 + 30, r13 = r13 - 5) {
-                    draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i13, r13)
+            // if (difference < 90) {
+            //     for (var i13 = 10, r13 = starting_position_y + height1; i13 < difference && r13 >= starting_position_y + height2; i13 = i13 + 30, r13 = r13 - 5) {
+            //         draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i13, r13)
 
-                }
-            }
+            //     }
+            // }
 
         }
     }
@@ -303,7 +309,7 @@ export const trap_up_up = (svg, starting_position_x, starting_position_y, height
             .attr("y2", starting_position_y + 10 + 6)
             .style("stroke", "black");
 
-        for (var i51 = 10; i51 < difference; i51 = i51 + 30) {
+        for (var i51 = 15; i51 < difference; i51 = i51 + 30) {
             draw(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2, i51)
         }
     }

@@ -48,7 +48,13 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
     if ((parseFloat(m) !== 0)) {
         if (n === 'Moment Loading' || n === 'Point Loading') {
 
-            starting_position_x = parseFloat(m) / beamLength.value * (30 + length);
+            let starting_position = parseFloat(m) / beamLength.value * (30 + length);
+            if (starting_position < 30) {
+                starting_position_x = 30
+            }
+            else {
+                starting_position_x = starting_position
+            }
             //slint line
             svg.append("svg:line")
                 .attr("x1", starting_position_x + 5.5)
@@ -70,8 +76,18 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
 
         let difference;
         if (parseFloat(a) !== 0) {
-            starting_position_x = parseFloat(a) / (beamLength.value) * (30 + length);
-            difference = ((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * (30 + length);
+            // starting_position_x = parseFloat(a) / (beamLength.value) * (30 + length);
+            // difference = ((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * (30 + length);
+            let starting_position = parseFloat(a) / (beamLength.value) * (30 + length);
+            let diff = ((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * (30 + length);
+            if (starting_position < 30) {
+                starting_position_x = 30;
+                difference = diff - 30
+            }
+            else {
+                starting_position_x = starting_position
+                difference = diff
+            }
         }
         else {
             starting_position_x = 30
@@ -117,8 +133,18 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
     if (n === 'Trapezoidal Loading') {
         let difference;
         if (parseFloat(i) !== 0) {
-            starting_position_x = parseFloat(i) / (beamLength.value) * (30 + length);
-            difference = ((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (30 + length);
+            // starting_position_x = parseFloat(i) / (beamLength.value) * (30 + length);
+            // difference = ((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (30 + length);
+            let starting_position = parseFloat(i) / (beamLength.value) * (30 + length);
+            let diff = ((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (30 + length);
+            if (starting_position < 30) {
+                starting_position_x = 30;
+                difference = diff - 30
+            }
+            else {
+                starting_position_x = starting_position
+                difference = diff
+            }
         }
         else {
             starting_position_x = 30

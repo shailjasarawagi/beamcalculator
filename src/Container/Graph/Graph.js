@@ -26,10 +26,10 @@ const graph = (props) => {
                 <div className="column">
 
                     <Message style={{ marginTop: '10px' }}>
-                        <div className="para">Reaction at A:{props.response.Ra}</div>
-                        <div className="para">Reaction at B:{props.response.Rb}</div>
-                        <div className="para">Moment at A:{props.response.Ma}</div>
-                        <div className="para">Moment at B:{props.response.Mb}</div>
+                        <div className="para">Reaction at A:  {props.response.Ra}</div>
+                        <div className="para">Reaction at B:  {props.response.Rb}</div>
+                        <div className="para">Moment at A: {props.response.Ma}</div>
+                        <div className="para">Moment at B: {props.response.Mb}</div>
                         <div className="para">Maximum deflection:{ymax} at {yxmax}</div>
                         <div className="para">Maximum bendingmoment:{yBmax} at {yBxmax}</div>
                     </Message>
