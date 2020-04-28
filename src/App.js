@@ -3,6 +3,7 @@ import BeamForm from '../src/Container/BeamForm/beamform';
 import './App.css';
 import Ribbon from '../src/Components/UI/Ribbon/ribbon';
 import Footer from '../src/Components/UI/Footer/footer';
+// import Oidc from '../src/Container/oidc/Oidc';
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         <BeamForm />
       </div>
       <Footer />
+      {/* <div>
+        <Oidc />
+      </div> */}
     </div>
   );
 }

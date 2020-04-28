@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './chart.css';
 import * as d3 from 'd3';
+
 class d3Chart extends Component {
 
     constructor(props) {
@@ -29,16 +30,31 @@ class d3Chart extends Component {
                 }
             )
         }
+        // console.log(data.x);
 
         // var data = [
-        //     { x: 2000, y: 1192 },
-        //     { x: 2001, y: 1234 },
-        //     { x: 2002, y: 1463 },
-        //     { x: 2003, y: 1537 },
-        //     { x: 2004, y: 1334 },
-
-        //     { x: 2016, y: 1427 }
+        //     { x: 1, y: 0.04 },
+        //     { x: 2, y: 0.06 },
+        //     { x: 3, y: 0.09 },
+        //     { x: 4, y: 0.13 },
+        //     { x: 5, y: 0.18 },
+        //     { x: 6, y: 0.25 },
+        //     { x: 7, y: 0.33 },
+        //     { x: 8, y: 0.45 },
+        //     { x: 9, y: 0.59 },
+        //     { x: 10, y: 0.76 },
+        //     { x: 11, y: 0.97 },
+        //     { x: 12, y: 1.22 },
+        //     { x: 13, y: 1.52 },
+        //     { x: 14, y: 1.85 },
+        //     { x: 15, y: 2.24 },
+        //     { x: 16, y: 2.66 },
+        //     { x: 17, y: 3.13 },
+        //     { x: 18, y: 3.63 },
+        //     { x: 19, y: 4.16 },
         // ];
+
+
 
         var margin = { top: 30, right: 20, bottom: 30, left: 50 },
             width,
@@ -53,7 +69,14 @@ class d3Chart extends Component {
         var yAxis = d3.axisLeft().scale(yScale);
 
         // create a line
-        var line = d3.line();
+        var line = d3.line()
+            .curve(d3.curveBasis)
+            .x(function (d) {
+                return xScale(d.x);
+            })
+            .y(function (d) {
+                return yScale(d.y);
+            });
 
         // Add the svg canvas
         d3.select(`#${id}`).select("svg").remove();
@@ -66,11 +89,7 @@ class d3Chart extends Component {
         xScale.domain(d3.extent(data, function (d) { return d.x; }));
         yScale.domain([-maxHeight, maxHeight])
 
-        // draw the line created above
-        var path = g.append("path").data([data])
-            .style('fill', 'none')
-            .style('stroke', 'darkblue')
-            .style('stroke-width', '2px');
+
 
         // Add the X Axis
         var xAxisEl = g.append("g")
@@ -101,6 +120,74 @@ class d3Chart extends Component {
             .style("text-anchor", "middle")
             .text(xlabel);
 
+
+
+        //draw line
+        var path = g.append("path").data([data])
+            .style('fill', 'none')
+            .style('stroke', 'darkblue')
+            .style('stroke-width', '2px');
+
+
+        var bisect = d3.bisector(function (d) { return d.x; }).right
+
+
+        // Create the circle that travels along the curve of chart
+        var focus = svg
+            .append('g')
+            .append('circle')
+            .style("fill", "none")
+            .attr("stroke", "black")
+            .attr('r', 8.5)
+            .style("opacity", 0)
+
+        // Create the text that travels along the curve of chart
+        var focusText = svg
+            .append('g')
+            .append('text')
+            .style("opacity", 0)
+            .attr("text-anchor", "left")
+            .attr("alignment-baseline", "middle")
+
+
+
+        // Create a rect on top of the svg area: this rectangle recovers mouse position
+
+        svg
+            .append('rect')
+            .style("fill", "none")
+            .style("pointer-events", "all")
+            .attr('height', height)
+
+        // What happens when the mouse move -> show the annotations at the right positions.
+        function mouseover() {
+            focus.style("opacity", 1)
+            focusText.style("opacity", 1)
+        }
+
+        function mousemove() {
+            // recover coordinate we need
+            var x0 = xScale.invert(d3.mouse(this)[0]);
+            var i = bisect(data, x0, 1);
+            var d0 = data[i - 1],
+                d1 = data[i],
+                selectedData = x0 - d0.x > d1.x - x0 ? d1 : d0;
+            // focus
+            //     .attr("cx", xScale(d0.x))
+            //     .attr("cy", yScale(d0.y))
+            var displayText = 'x: ' + selectedData.x + ', y: ' + selectedData.y.toFixed(5);
+
+            focusText
+                .text(displayText)
+                .attr("x", xScale(selectedData.x) + 15)
+                .attr("y", yScale(selectedData.y) + 15)
+            // focus.attr("transform", "translate(" + xScale(selectedData.x) + "," + yScale(selectedData.y) + ")");
+
+        }
+        function mouseout() {
+            focus.style("opacity", 0)
+            focusText.style("opacity", 0)
+        }
         function drawChart() {
             // console.log(d3.select(`#${id}`).style('width'), 10)
             width = parseInt(d3.select(`#${id}`).style('width'), 10) - margin.left - margin.right;
@@ -111,14 +198,18 @@ class d3Chart extends Component {
             line.x(function (d) { return xScale(d.x); })
                 .y(function (d) { return yScale(d.y); });
 
-            path.attr('d', line);
+            path.attr('d', line)
+                .on('mouseover', mouseover)
+                .on('mousemove', mousemove)
+                .on('mouseout', mouseout)
         }
         drawChart();
         window.addEventListener('resize', drawChart);
     }
     render() {
+
         return (
-            <div className="chart" id={this.props.id} >
+            <div id={this.props.id} >
                 {/* <svg width="960" height="500" style={{ border: 'solid 1px #eee', borderBottom: 'solid 1px #ccc' }} /> */}
             </div>
         )
@@ -126,3 +217,15 @@ class d3Chart extends Component {
 }
 
 export default d3Chart;
+
+
+
+
+
+
+
+
+
+
+
+

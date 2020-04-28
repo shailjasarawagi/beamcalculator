@@ -1,5 +1,4 @@
 export const draw = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j1, k, l, x, z, difference, height1, height2, j) => {
-    // console.log('hello')
     svg.append("svg:line")
         .attr("x1", starting_position_x + j)
         .attr("y1", starting_position_y + 10)

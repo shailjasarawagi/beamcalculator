@@ -146,7 +146,7 @@ class Beamform extends Component {
         this.setState({ loadmodalData: deletedmodaldata });
         Swal.fire(
           'Deleted!',
-          'Your file has been deleted.',
+          'Your component has been deleted.',
           'success'
         )
       }
@@ -193,6 +193,7 @@ class Beamform extends Component {
         ...result
       }
     }
+    console.log(objNew)
     /**load section  */
     let arr3 = [], name1 = '';
     for (let x in this.state.loadmodalData) {
