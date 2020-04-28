@@ -30,7 +30,6 @@ class d3Chart extends Component {
                 }
             )
         }
-        // console.log(data.x);
 
         // var data = [
         //     { x: 1, y: 0.04 },
@@ -40,18 +39,6 @@ class d3Chart extends Component {
         //     { x: 5, y: 0.18 },
         //     { x: 6, y: 0.25 },
         //     { x: 7, y: 0.33 },
-        //     { x: 8, y: 0.45 },
-        //     { x: 9, y: 0.59 },
-        //     { x: 10, y: 0.76 },
-        //     { x: 11, y: 0.97 },
-        //     { x: 12, y: 1.22 },
-        //     { x: 13, y: 1.52 },
-        //     { x: 14, y: 1.85 },
-        //     { x: 15, y: 2.24 },
-        //     { x: 16, y: 2.66 },
-        //     { x: 17, y: 3.13 },
-        //     { x: 18, y: 3.63 },
-        //     { x: 19, y: 4.16 },
         // ];
 
 
@@ -90,7 +77,6 @@ class d3Chart extends Component {
         yScale.domain([-maxHeight, maxHeight])
 
 
-
         // Add the X Axis
         var xAxisEl = g.append("g")
             .attr("transform", "translate(0," + height / 2 + ")");
@@ -120,17 +106,13 @@ class d3Chart extends Component {
             .style("text-anchor", "middle")
             .text(xlabel);
 
-
-
         //draw line
         var path = g.append("path").data([data])
             .style('fill', 'none')
             .style('stroke', 'darkblue')
             .style('stroke-width', '2px');
 
-
         var bisect = d3.bisector(function (d) { return d.x; }).right
-
 
         // Create the circle that travels along the curve of chart
         var focus = svg
@@ -149,10 +131,7 @@ class d3Chart extends Component {
             .attr("text-anchor", "left")
             .attr("alignment-baseline", "middle")
 
-
-
         // Create a rect on top of the svg area: this rectangle recovers mouse position
-
         svg
             .append('rect')
             .style("fill", "none")
