@@ -11,3 +11,18 @@ export const getToken = () => {
   };
   return headers;
 }
+export const getBackendDomain=()=>{
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+   return ( {
+      // baseURL:process.env.REACT_APP_BACKEND_URL;
+      
+      baseURL: 'http://aaab2381.ngrok.io/'
+    })
+} else {
+  return ( {
+    // baseURL:process.env.REACT_APP_BACKEND_URL;
+    
+    baseURL: 'https://beamback.calcgen.com'
+  })
+}
+}
