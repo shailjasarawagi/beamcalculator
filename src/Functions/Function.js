@@ -22,7 +22,9 @@ export const getBackendDomain=()=>{
   return ( {
     // baseURL:process.env.REACT_APP_BACKEND_URL;
     
-    baseURL: 'https://beamback.calcgen.com'
+    baseURL: 'https://beamback.calcgen.com/'
   })
 }
 }
+
+export const REACT_APP_CALCGEN_URL = "https://calcgen.com/"
