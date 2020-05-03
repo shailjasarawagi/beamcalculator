@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import classes from './App2.css';
 //import axios from '../../hoc/axios-orders';
+import * as functions from '../../Functions/Function';
 import { withRouter } from 'react-router-dom';
 
 /**send_request() is called when user is not authenticated and a new window is opened */
@@ -37,7 +38,9 @@ class App2 extends Component {
     //     console.log("error", error);
     //   });
 
-        const url=process.env.REACT_APP_BACKEND_URL;
+        // const url=process.env.REACT_APP_BACKEND_URL;
+        const url=functions.getBackendDomain();
+
       window.open(url+"/oidc/auth/request/", "_self");
   }
 
