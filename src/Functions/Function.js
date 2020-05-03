@@ -16,13 +16,13 @@ export const getBackendDomain=()=>{
    return ( {
       // baseURL:process.env.REACT_APP_BACKEND_URL;
       
-      baseURL: 'http://aaab2381.ngrok.io/'
+      baseURL: 'http://aaab2381.ngrok.io'
     })
 } else {
   return ( {
     // baseURL:process.env.REACT_APP_BACKEND_URL;
     
-    baseURL: 'https://beamback.calcgen.com/'
+    baseURL: 'https://beamback.calcgen.com'
   })
 }
 }

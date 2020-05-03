@@ -39,7 +39,7 @@ class App2 extends Component {
     //   });
 
         // const url=process.env.REACT_APP_BACKEND_URL;
-        const url=functions.getBackendDomain();
+        const url=functions.getBackendDomain().baseURL;
 
       window.open(url+"/oidc/auth/request/", "_self");
   }
