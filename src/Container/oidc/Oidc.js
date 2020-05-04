@@ -25,9 +25,9 @@ class Oidc extends Component {
       <Redirect to="/" />
     </Switch>);
     let displayer = (<Switch>
-      <Route exact path="/pdb" component={Beam} />
+      <Route exact path="/beam" component={Beam} />
       <Route exact path="/" component={Beam} />
-      <Redirect to="/pdb" />
+      <Redirect to="/beam" />
     </Switch>);
 
     /**token[2] contains token  which expires after 10 min */
