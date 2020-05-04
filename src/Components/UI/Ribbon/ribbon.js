@@ -7,7 +7,7 @@ import './ribbon.css';
 import Logo from '../Logo/logo';
 import Logo4 from '../Logo/logo4';
 import { Dropdown, Menu, Icon, Search } from 'semantic-ui-react';
-
+import * as functions from '../../../Functions/Function'
 import image from '../../../assets/shifu1.jpeg';
 
 
@@ -48,7 +48,7 @@ class Ribbons extends Component {
         if (data.value === "logout") {
             this.onLogOut();
         } else {
-            const calcgen = process.env.REACT_APP_CALCGEN_URL;
+            const calcgen = functions.REACT_APP_CALCGEN_URL;
             // console.log("hello", data.value);
             const url = `${calcgen}${data.value}`;
             // console.log(url);
@@ -87,7 +87,7 @@ class Ribbons extends Component {
                 src={image}
             />
         );
-        const calcgenurl = process.env.REACT_APP_CALCGEN_URL;
+        const calcgenurl = functions.REACT_APP_CALCGEN_URL;
         if (this.state.redirect && this.state.url !== null) {
             // console.log(this.state,"hello");
             window.location = this.state.url;

@@ -1,8 +1,7 @@
 import axios from 'axios';
+import * as functions from '../Functions/Function';
 
-const instance = axios.create({
-  // baseURL:process.env.REACT_APP_BACKEND_URL;
-  baseURL: 'http://aaab2381.ngrok.io/'
-});
+const data = functions.getBackendDomain();
+const instance = axios.create(data);
 
 export default instance;

@@ -18,7 +18,7 @@ class Oidc extends Component {
   componentDidMount() {
     let str = window.location.pathname;
     let token = str.split("/")
-    const url = "auth/token-verify";
+    const url = "/auth/token-verify";
     let display1 = (<Switch>
 
       <Route exact path="/" component={() => <App2 />} />
@@ -65,7 +65,7 @@ class Oidc extends Component {
 
   /**again token is refeshed after expire */
   refresh_token = () => {
-    let refresh_url = "oidc/refresh-token/";
+    let refresh_url = "/oidc/refresh-token/";
     let header2 = functions.getToken();
     // console.log("currently valid token", header2)
     axios.get(refresh_url, { headers: header2 }).then((response) => {
