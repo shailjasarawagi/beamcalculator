@@ -49,16 +49,16 @@ class Beamform extends Component {
     this.setState({ formData: updatedFormData });
   }
 
-  crossAdd = (event, modaldata, name) => {
+  crossAdd = (event, modaldata, Name) => {
     const updatedmodalData = {
-      [name]: {
+      [Name]: {
         ...modaldata
       }
     };
     this.setState({ crossmodalData: updatedmodalData, modalopen: false });
   }
 
-  loadAdd = (event, modaldata, name, valid, modalid, id, editV) => {
+  loadAdd = (event, modaldata, Name, valid, modalid, id, editV) => {
     let newId = null;
     if (id !== null && editV) {
       newId = id
@@ -70,7 +70,7 @@ class Beamform extends Component {
     const updatedmodalData = {
       ...this.state.loadmodalData,
       [newId]: {
-        name,
+        Name,
         ...modaldata
       }
     };
@@ -114,7 +114,7 @@ class Beamform extends Component {
 
   editLoadModalData = (e, data, id, ID) => {
     let data1 = Object.values(data), data2 = { ...data };
-    delete data2.name;
+    delete data2.Name;
     this.setState(
       prevState => (
         {
@@ -195,17 +195,17 @@ class Beamform extends Component {
     }
     console.log(objNew)
     /**load section  */
-    let arr3 = [], name1 = '';
+    let arr3 = [], Name1 = '';
     for (let x in this.state.loadmodalData) {
       let arr2 = [], newload = { ...this.state.loadmodalData[x] }
-      delete newload.name;
-      name1 = this.state.loadmodalData[x].name;
+      delete newload.Name;
+      Name1 = this.state.loadmodalData[x].Name;
       for (let y in newload) {
         let val = this.state.loadmodalData[x][y].value;
         let yin = y.replace(/ /g, '_').toLowerCase();
         arr2.push({ [yin]: val })
         const obj = {
-          name: name1
+          Name: Name1
         }
         var result1 = Object.assign({}, obj, ...arr2);
       }

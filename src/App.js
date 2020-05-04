@@ -8,16 +8,16 @@ import Oidc from '../src/Container/oidc/Oidc';
 class App extends Component {
   render() {
     return (
-      // <div className="App">
-      /* <Ribbon />
-      <div style={{ paddingTop: "100px" }}>
-        <BeamForm />
+      <div className="App">
+        {/* <Ribbon />
+        <div style={{ paddingTop: "100px" }}>
+          <BeamForm />
+        </div>
+        <Footer /> */}
+        < div >
+          <Oidc />
+        </div >
       </div>
-      <Footer /> */
-      < div >
-        <Oidc />
-      </div >
-      // </div>
     );
   }
 }

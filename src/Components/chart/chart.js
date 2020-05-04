@@ -32,13 +32,13 @@ class d3Chart extends Component {
         }
 
         // var data = [
-        //     { x: 1, y: 0.04 },
-        //     { x: 2, y: 0.06 },
-        //     { x: 3, y: 0.09 },
-        //     { x: 4, y: 0.13 },
-        //     { x: 5, y: 0.18 },
-        //     { x: 6, y: 0.25 },
-        //     { x: 7, y: 0.33 },
+        //     { x: 1, y: 0.0456 },
+        //     { x: 2, y: 0.06666 },
+        //     { x: 3, y: 0.0966 },
+        //     { x: 4, y: 0.1366 },
+        //     { x: 5, y: 0.1866 },
+        //     { x: 6, y: 1.2566 },
+        //     { x: 7, y: 0.336786 },
         // ];
 
 
@@ -81,6 +81,7 @@ class d3Chart extends Component {
         var xAxisEl = g.append("g")
             .attr("transform", "translate(0," + height / 2 + ")");
 
+
         g.append("g")
             .call(yAxis);
 
@@ -89,12 +90,16 @@ class d3Chart extends Component {
             .call(d3.axisLeft(yScale))
             //plot the color legend
             .append("text")
-            .attr("fill", "#000")
+            .attr("fill", "red")
+            // .attr("y", -25)
+            // .attr("dy", "0.71em")
+            // .style('font-size', '25')
+            .style("font", "14px times")
             .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", "0.71em")
-            .style("text-anchor", "end")
-            .style('font-size', '12')
+            .attr("y", 0 - margin.left)
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
             .text(ylabel);
         //plot the x axis legend
 
@@ -103,6 +108,7 @@ class d3Chart extends Component {
             .style("text-anchor", "middle")
             .attr("x", (parseInt(d3.select(`#${id}`).style('width'), 10) - margin.left - margin.right) / 2)
             .attr("y", height + 50)
+            .attr("fill", "red")
             .style("text-anchor", "middle")
             .text(xlabel);
 

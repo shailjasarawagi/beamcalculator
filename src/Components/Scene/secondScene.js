@@ -39,7 +39,8 @@ export const greyline = (svg, starting_position_x, starting_position_y, length, 
         .attr("y", starting_position_y * 3.6)
         .style("text-anchor", "middle")
         .style("stroke", "#808080")
-        .text(beamLength.value + '(m)');
+        .attr("stroke-width", "1.2")
+        .text(beamLength.value + 'm');
 
 }
 

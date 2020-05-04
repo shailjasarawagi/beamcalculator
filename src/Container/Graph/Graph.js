@@ -11,14 +11,17 @@ const graph = (props) => {
     var x = props.response.x
     // var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
     var ymax = (Math.max(...y)).toFixed(5);
-    var yBmax = Math.max(...yB)
+    var yBmax = Math.max(...yB).toFixed(5)
 
     let i = y.indexOf(Math.max(...y));
     let j = yB.indexOf(yBmax)
     // console.log(i, j)
     var yxmax = x[i], yBxmax = x[j];
     // console.log("yyy", x[i], x[j])
-
+    var Ma = (props.response.Ma).toFixed(5);
+    var Mb = (props.response.Mb).toFixed(5);
+    // var Ma = 3;
+    // var Mb = 6;
     return (
         <div style={{ backgroundColor: '#d3d3d3', padding: "10px" }}>
             <div style={{ fontWeight: '700', color: 'red', textAlign: 'center', padding: "15px" }}>RESULT OF CALCULATION</div>
@@ -26,30 +29,30 @@ const graph = (props) => {
                 <div className="column">
 
                     <Message style={{ marginTop: '10px' }}>
-                        <div className="para">Reaction at A:  {props.response.Ra}</div>
-                        <div className="para">Reaction at B:  {props.response.Rb}</div>
-                        <div className="para">Moment at A: {props.response.Ma}</div>
-                        <div className="para">Moment at B: {props.response.Mb}</div>
-                        <div className="para">Maximum deflection:{ymax} at {yxmax}</div>
-                        <div className="para">Maximum bendingmoment:{yBmax} at {yBxmax}</div>
+                        <div className="para">Reaction at A:  {props.response.Ra} N</div>
+                        <div className="para">Reaction at B:  {props.response.Rb} N</div>
+                        <div className="para">Moment at A:{Ma} Nm</div>
+                        <div className="para">Moment at B:{Mb} Nm</div>
+                        <div className="para">Maximum deflection:{ymax} mm at {yxmax}</div>
+                        <div className="para">Maximum bendingmoment:{yBmax} Nm at {yBxmax}</div>
                     </Message>
                 </div >
                 <div className="column">
-                    <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Shearforce vs distance</div>
-                    <D3Chart x={props.response.x} y={props.response.V} xName="distance(mm)" yName="shearforce" id="sheer" />
+                    <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Shear Force vs Distance</div>
+                    <D3Chart x={props.response.x} y={props.response.V} xName="Distance (mm)" yName="Shearforce (N)" id="sheer" />
                 </div>
             </div >
             <br></br>
             <div className="row">
                 <div className="column">
-                    <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Bendingmoment vs distance</div>
+                    <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Bending Moment vs Distance</div>
                     <D3Chart x={props.response.x} y={props.response.Mx} id="bending"
-                        xName="distance(mm)" yName="bendingmoment" />
+                        xName="Distance (mm)" yName="bendingmoment (Nm)" />
                 </div>
                 <div className="column">
-                    <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Deflection vs distance</div>
+                    <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Deflection vs Distance</div>
                     <D3Chart x={props.response.x} y={props.response.Yxmm} id="deflection"
-                        xName="distance(mm)" yName="deflection" />
+                        xName="Distance (mm)" yName="Deflection (mm)" />
                 </div>
             </div>
         </div >)

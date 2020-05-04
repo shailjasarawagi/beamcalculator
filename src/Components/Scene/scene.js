@@ -38,24 +38,24 @@ class Scene extends Component {
     }
 
     loadChoice = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, chartDiv) => {
-        let name1 = '';
+        let Name1 = '';
         for (let x in this.props.loadValue) {
             let arr2 = [], arr3 = [], newload = { ...this.props.loadValue[x] }
-            delete newload.name;
-            name1 = this.props.loadValue[x].name;
+            delete newload.Name;
+            Name1 = this.props.loadValue[x].Name;
             for (let y in newload) {
                 let val = this.props.loadValue[x][y].value;
                 let yin = y.replace(/ /g, '_').toLowerCase();
                 arr2.push({ [yin]: val })
                 const obj = {
-                    name: name1
+                    Name: Name1
                 }
                 var result1 = Object.assign({}, obj, ...arr2);
             }
             arr3.push(result1);
             // console.log(arr3)
             for (let y in arr3) {
-                let n = arr3[y].name, m = arr3[y].distance_from_a,
+                let n = arr3[y].Name, m = arr3[y].distance_from_a,
                     p = arr3[y].direction,
                     q = arr3[y].point_load,
                     r = arr3[y].point_moment;

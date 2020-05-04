@@ -50,5 +50,10 @@
   .column {
     width: 100%;
   }
-
+.ui.dropdown .menu > .item > .image, .ui.dropdown .menu > .item > img {
+  
+    width: 70px;
+    max-height: 4em;
+  }
+ 
 }

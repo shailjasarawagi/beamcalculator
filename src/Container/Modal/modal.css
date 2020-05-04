@@ -9,3 +9,10 @@
 .modal{
     background-color: cornflowerblue;
 }
+
+@media (max-width: 800px) {
+
+  .ui.modal {
+    width: 80%;
+  }
+}
