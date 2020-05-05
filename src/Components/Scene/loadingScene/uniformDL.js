@@ -19,9 +19,11 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
         .style("stroke", "#808080")
         .text(c + 'N/m');
     draw_end_start_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference);
-    for (var i = 20; i < difference; i = i + 20) {
-        // console.log(i, difference)
-        draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, i, difference);
+    if (difference > 80) {
+        for (var i = 25; i < difference; i = i + 25) {
+            // console.log(i, difference)
+            draw_arrow_up(svg, starting_position_x, starting_position_y, height_veritcal_line, i, difference);
+        }
     }
 }
 const draw_end_start_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference) => {
@@ -116,8 +118,10 @@ export const UDL_down = (svg, starting_position_x, starting_position_y, height_v
         .style("stroke", "#808080")
         .text(c + 'N/m');
     draw_end_start_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference);
-    for (var z = 20; z < difference; z = z + 20) {
-        draw_arrow_down(svg, starting_position_x, starting_position_y, height_veritcal_line, z, difference);
+    if (difference > 80) {
+        for (var z = 25; z < difference; z = z + 25) {
+            draw_arrow_down(svg, starting_position_x, starting_position_y, height_veritcal_line, z, difference);
+        }
     }
 }
 const draw_end_start_down = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference) => {

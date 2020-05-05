@@ -10,6 +10,7 @@ import { moment_anti, moment_clock } from '../Scene/loadingScene/moment'
 import { greyline, divideGreyLine } from '../Scene/secondScene';
 import { trapezoidal } from './loadingScene/trapezoidal/trapezoidal';
 import { datagreyline } from '../Scene/dataSecondScene';
+
 class Scene extends Component {
     constructor(props) {
         super(props)
@@ -35,9 +36,10 @@ class Scene extends Component {
                 fixed(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y)
             }
         }
+
     }
 
-    loadChoice = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, chartDiv) => {
+    loadChoice = (svg, starting_position_x, starting_position_y, height_veritcal_line, length) => {
         let Name1 = '';
         for (let x in this.props.loadValue) {
             let arr2 = [], arr3 = [], newload = { ...this.props.loadValue[x] }
@@ -75,6 +77,7 @@ class Scene extends Component {
                         // let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
 
                         let starting_position = parseFloat(m) / (this.beamLength.value) * (30 + length);
+
                         let starting_position_x
                         if (starting_position < 30) {
                             starting_position_x = 30;
@@ -82,6 +85,7 @@ class Scene extends Component {
                         else {
                             starting_position_x = starting_position;
                         }
+                        console.log(starting_position_x, length)
                         point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
                     else {
@@ -255,16 +259,18 @@ class Scene extends Component {
                 }
             }
         }
+
     }
 
     draw() {
         let scene_size = document.getElementById("D3line").getBoundingClientRect();
+        // document.querySelector("#graph").clientWidth
         var chartDiv = document.getElementById("D3line");
         // Extract the width and height that was computed by CSS.
         var margin = { top: 30, right: 20, bottom: 30, left: 50 },
             height = 190 - margin.top - margin.bottom,
             width = scene_size.width - margin.left - margin.right;
-        // console.log(window.innerWidth, scene_size.width);
+        // console.log(scene_size.width, chartDiv.clientWidth);
         var starting_position_x = 30;
         var starting_position_y = 40;
         var height_veritcal_line = 20;
@@ -304,12 +310,13 @@ class Scene extends Component {
             .attr("stroke-width", "1")
             .attr("transform", function (d) { return "translate(" + 5 + "," + -15 + ")"; })
             .text('B');
+        window.addEventListener('resize', this.draw);
         //main grey line
         greyline(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y, this.beamLength)
         this.supportchoice(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y);
         this.loadChoice(svg, starting_position_x, starting_position_y, height_veritcal_line, length);
         // Redraw based on the new size whenever the browser window is resized.
-        window.addEventListener("resize", this.draw)
+
     }
     render() {
         this.beamLength = this.props.value["Length of beam"];

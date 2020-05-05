@@ -10,18 +10,61 @@ const graph = (props) => {
     var yB = props.response.Mx
     var x = props.response.x
     // var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
-    var ymax = (Math.max(...y)).toFixed(5);
-    var yBmax = Math.max(...yB).toFixed(5)
+    var ymax = (Math.max(...y)).toFixed(4);
+    var yBmax = Math.max(...yB).toFixed(4);
 
-    let i = y.indexOf(Math.max(...y));
-    let j = yB.indexOf(yBmax)
+    var ymin = (Math.min(...y)).toFixed(4);
+    var yBmin = (Math.min(...yB)).toFixed(4);
+
+    var absoluteYmax = Math.abs(ymax);
+    var absoluteYmin = Math.abs(ymin);
+    let maxDeflection, i;
+    if (absoluteYmax > absoluteYmin) {
+        maxDeflection = ymax;
+        i = y.indexOf(Math.max(...y));
+    }
+    else {
+        maxDeflection = ymin;
+        i = y.indexOf(Math.min(...y));
+    }
+
+    var absoluteYBmax = Math.abs(yBmax);
+    var absoluteYBmin = Math.abs(yBmin);
+    let maxMoment, j;
+    if (absoluteYBmax > absoluteYBmin) {
+        maxMoment = yBmax;
+        j = yB.indexOf(Math.max(...yB))
+    }
+    else {
+        maxMoment = yBmin;
+        j = yB.indexOf(Math.min(...yB))
+    }
     // console.log(i, j)
     var yxmax = x[i], yBxmax = x[j];
     // console.log("yyy", x[i], x[j])
-    var Ma = (props.response.Ma).toFixed(5);
-    var Mb = (props.response.Mb).toFixed(5);
+    var Ma = (props.response.Ma).toFixed(4);
+    var Mb = (props.response.Mb).toFixed(4);
     // var Ma = 3;
     // var Mb = 6;
+
+
+    var Ra = props.response.Ra;
+    var directionA;
+    if (Ra < 0) {
+        directionA = '(Upward)'
+    }
+    else {
+        directionA = '(Downward)'
+    }
+
+    var Rb = props.response.Rb;
+    var directionB;
+    if (Ra < 0) {
+        directionB = '(Upward)'
+    }
+    else {
+        directionB = '(Downward)'
+    }
     return (
         <div style={{ backgroundColor: '#d3d3d3', padding: "10px" }}>
             <div style={{ fontWeight: '700', color: 'red', textAlign: 'center', padding: "15px" }}>RESULT OF CALCULATION</div>
@@ -29,12 +72,12 @@ const graph = (props) => {
                 <div className="column">
 
                     <Message style={{ marginTop: '10px' }}>
-                        <div className="para">Reaction at A:  {props.response.Ra} N</div>
-                        <div className="para">Reaction at B:  {props.response.Rb} N</div>
+                        <div className="para">Reaction at A: {Math.abs(Ra)} N  {directionA}</div>
+                        <div className="para">Reaction at B:   {Math.abs(Rb)} N  {directionB}</div>
                         <div className="para">Moment at A:{Ma} Nm</div>
                         <div className="para">Moment at B:{Mb} Nm</div>
-                        <div className="para">Maximum deflection:{ymax} mm at {yxmax}</div>
-                        <div className="para">Maximum bendingmoment:{yBmax} Nm at {yBxmax}</div>
+                        <div className="para">Maximum deflection:{maxDeflection} mm at {yxmax}</div>
+                        <div className="para">Maximum bendingmoment:{maxMoment} Nm at {yBxmax}</div>
                     </Message>
                 </div >
                 <div className="column">
@@ -47,7 +90,7 @@ const graph = (props) => {
                 <div className="column">
                     <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Bending Moment vs Distance</div>
                     <D3Chart x={props.response.x} y={props.response.Mx} id="bending"
-                        xName="Distance (mm)" yName="bendingmoment (Nm)" />
+                        xName="Distance (mm)" yName="Bendingmoment (Nm)" />
                 </div>
                 <div className="column">
                     <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Deflection vs Distance</div>

@@ -32,13 +32,13 @@ class d3Chart extends Component {
         }
 
         // var data = [
-        //     { x: 1, y: 0.0456 },
-        //     { x: 2, y: 0.06666 },
-        //     { x: 3, y: 0.0966 },
-        //     { x: 4, y: 0.1366 },
-        //     { x: 5, y: 0.1866 },
-        //     { x: 6, y: 1.2566 },
-        //     { x: 7, y: 0.336786 },
+        //     { x: 0, y: 0.0456 },
+        //     { x: 0.002, y: 0.06666 },
+        //     { x: 0.004, y: 0.0966 },
+        //     { x: 0.008, y: 0.1366 },
+        //     { x: 0.0012, y: 0.1866 },
+        //     { x: 0.0016, y: 1.2566 },
+        //     { x: 0.0020, y: 5.336786 },
         // ];
 
 
@@ -50,9 +50,9 @@ class d3Chart extends Component {
         // Set the scales ranges
         var xScale = d3.scaleLinear()
         var yScale = d3.scaleLinear().range([height, 0]);
-
         // Define the axes
-        var xAxis = d3.axisBottom().scale(xScale);
+        var xAxis = d3.axisBottom().scale(xScale).tickPadding(15)
+        // .tickSize(-divWidthLessMargins);;
         var yAxis = d3.axisLeft().scale(yScale);
 
         // create a line
@@ -94,13 +94,14 @@ class d3Chart extends Component {
             // .attr("y", -25)
             // .attr("dy", "0.71em")
             // .style('font-size', '25')
-            .style("font", "14px times")
+            .style("font", "12px times")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
             .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
             .text(ylabel);
+
         //plot the x axis legend
 
         svg.append("text")
@@ -111,6 +112,8 @@ class d3Chart extends Component {
             .attr("fill", "red")
             .style("text-anchor", "middle")
             .text(xlabel);
+
+
 
         //draw line
         var path = g.append("path").data([data])
@@ -160,7 +163,7 @@ class d3Chart extends Component {
             // focus
             //     .attr("cx", xScale(d0.x))
             //     .attr("cy", yScale(d0.y))
-            var displayText = 'x: ' + selectedData.x + ', y: ' + selectedData.y.toFixed(5);
+            var displayText = 'x: ' + selectedData.x + ', y: ' + selectedData.y.toFixed(4);
 
             focusText
                 .text(displayText)
@@ -179,7 +182,20 @@ class d3Chart extends Component {
             svg.attr("width", width + margin.left + margin.right);
             xScale.range([0, width]);
             // xAxis.scale(xScale);
-            xAxisEl.call(xAxis);
+            // xAxis.ticks(width / 80, 2)
+
+            xAxisEl.call(xAxis)
+                // .selectAll("text")
+                // .attr("y", 0)
+                // .attr("x", 9)
+                // .attr("dy", ".35em")
+                // .attr("transform", "rotate(45)")
+                .selectAll("text")
+                .style("text-anchor", "middle")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", "rotate(-65)");
+
             line.x(function (d) { return xScale(d.x); })
                 .y(function (d) { return yScale(d.y); });
 
