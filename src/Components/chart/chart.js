@@ -54,7 +54,7 @@ class d3Chart extends Component {
         var xAxis = d3.axisBottom().scale(xScale).tickPadding(15)
         // .tickSize(-divWidthLessMargins);;
         var yAxis = d3.axisLeft().scale(yScale);
-
+        // var yAxiss = d3.axisRight().scale(yScale);
         // create a line
         var line = d3.line()
             .curve(d3.curveBasis)
@@ -81,6 +81,7 @@ class d3Chart extends Component {
         var xAxisEl = g.append("g")
             .attr("transform", "translate(0," + height / 2 + ")");
 
+        var yAxisEl = g.append("g")
 
         g.append("g")
             .call(yAxis);
@@ -157,18 +158,18 @@ class d3Chart extends Component {
             // recover coordinate we need
             var x0 = xScale.invert(d3.mouse(this)[0]);
             var i = bisect(data, x0, 1);
-            var d0 = data[i - 1],
-                d1 = data[i],
-                selectedData = x0 - d0.x > d1.x - x0 ? d1 : d0;
+            var d0 = data[i - 1];
+            // d1 = data[i],
+            // selectedData = x0 - d0.x > d1.x - x0 ? d1 : d0;
             // focus
             //     .attr("cx", xScale(d0.x))
             //     .attr("cy", yScale(d0.y))
-            var displayText = 'x: ' + selectedData.x + ', y: ' + selectedData.y.toFixed(4);
+            var displayText = 'x: ' + d0.x + ', y: ' + d0.y.toFixed(4);
 
             focusText
                 .text(displayText)
-                .attr("x", xScale(selectedData.x) + 15)
-                .attr("y", yScale(selectedData.y) + 15)
+                .attr("x", xScale(d0.x) + 15)
+                .attr("y", yScale(d0.y) + 15)
             // focus.attr("transform", "translate(" + xScale(selectedData.x) + "," + yScale(selectedData.y) + ")");
 
         }
@@ -185,16 +186,20 @@ class d3Chart extends Component {
             // xAxis.ticks(width / 80, 2)
 
             xAxisEl.call(xAxis)
-                // .selectAll("text")
-                // .attr("y", 0)
-                // .attr("x", 9)
-                // .attr("dy", ".35em")
-                // .attr("transform", "rotate(45)")
                 .selectAll("text")
-                .style("text-anchor", "middle")
-                .attr("dx", "-.8em")
-                .attr("dy", ".15em")
-                .attr("transform", "rotate(-65)");
+                .attr("y", 0)
+                .attr("x", -20)
+                .attr("dy", ".35em")
+                .attr("transform", "rotate(-65)")
+            // .selectAll("text")
+            // .style("text-anchor", "middle")
+            // .attr("dx", "-2em")
+            // .attr("dy", ".15em")
+            // .attr("transform", "rotate(-65)");
+
+
+            yAxisEl.call(yAxis)
+                .attr("transform", "translate(" + width + " ,0)")
 
             line.x(function (d) { return xScale(d.x); })
                 .y(function (d) { return yScale(d.y); });

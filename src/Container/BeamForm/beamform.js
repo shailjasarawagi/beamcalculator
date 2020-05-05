@@ -49,13 +49,14 @@ class Beamform extends Component {
     this.setState({ formData: updatedFormData });
   }
 
-  crossAdd = (event, modaldata, Name) => {
+  crossAdd = (event, modaldata, Name, image) => {
     const updatedmodalData = {
       [Name]: {
         ...modaldata
       }
     };
-    this.setState({ crossmodalData: updatedmodalData, modalopen: false });
+
+    this.setState({ crossmodalData: updatedmodalData, modalopen: false, modalImage: image });
   }
 
   loadAdd = (event, modaldata, Name, valid, modalid, id, editV) => {
@@ -297,7 +298,8 @@ class Beamform extends Component {
                 modalId={this.state.modalId} formReset={this.formReset}
                 crossData={this.state.crossData} editValid={this.state.editValid}
                 crossmodalData={this.state.crossmodalData} editCrossModalData={this.editCrossModalData}
-                deleteCrossModalData={this.deleteCrossModalData} />
+                deleteCrossModalData={this.deleteCrossModalData}
+              />
             </Grid.Column>
             <Grid.Column width={8}>
               <LoadingSection modalclose={this.modalclose} addFunction={this.loadAdd}

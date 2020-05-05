@@ -4,12 +4,12 @@ import { Message } from 'semantic-ui-react';
 import '../BeamForm/beamform.css'
 const graph = (props) => {
 
-    // var y = [2, 3, 4, 6, 6, 7, 9]
-    var y = props.response.Yxmm
-    // var yB = [2, 67, 89, 8, 9, 1, 3, 4.5];
-    var yB = props.response.Mx
-    var x = props.response.x
-    // var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+    var y = [2, 3, 4, 6, 6, 7, 9]
+    // var y = props.response.Yxmm
+    var yB = [2, 67, 89, 8, 9, 1, 3, 4.5];
+    // var yB = props.response.Mx
+    // var x = props.response.x
+    var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
     var ymax = (Math.max(...y)).toFixed(4);
     var yBmax = Math.max(...yB).toFixed(4);
 
@@ -42,10 +42,10 @@ const graph = (props) => {
     // console.log(i, j)
     var yxmax = x[i], yBxmax = x[j];
     // console.log("yyy", x[i], x[j])
-    var Ma = (props.response.Ma).toFixed(4);
-    var Mb = (props.response.Mb).toFixed(4);
-    // var Ma = 3;
-    // var Mb = 6;
+    // var Ma = (props.response.Ma).toFixed(4);
+    // var Mb = (props.response.Mb).toFixed(4);
+    var Ma = 3;
+    var Mb = 6;
 
 
     var Ra = props.response.Ra;

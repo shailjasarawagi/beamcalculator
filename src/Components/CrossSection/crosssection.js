@@ -73,7 +73,8 @@ class CrossSection extends Component {
           addFunction={this.props.addFunction}
           identity={this.props.Identity}
           editValid={this.props.editValid}
-          formReset={this.props.formReset} />
+          formReset={this.props.formReset}
+          modalId={this.props.modalId} />
           : null}
       </div>
     );

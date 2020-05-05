@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button } from 'semantic-ui-react';
+import { Modal, Button, Image } from 'semantic-ui-react';
 import Input from '../../Components/UI/Input/input';
 import './modal.css';
 
@@ -7,7 +7,8 @@ class Modal1 extends Component {
   state = {
     formData: this.props.modalInput.fields,
     formIsValid: false,
-    editTrue: false
+    editTrue: false,
+    formImage: this.props.modalInput.Location
   }
 
   checkValidity = (value, rules, updatedFormData) => {
@@ -65,6 +66,7 @@ class Modal1 extends Component {
     const updatedFormData = {
       ...this.state.formData
     };
+
     const updatedFormElement = {
       ...updatedFormData[inputIdentifier]
     };
@@ -90,6 +92,7 @@ class Modal1 extends Component {
   }
 
   render() {
+    console.log(this.props.modalId)
     const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
       && (!this.state.formIsValid !== !this.props.editValid));
     this.beamLength = this.props.val["Length of beam"];
@@ -123,8 +126,15 @@ class Modal1 extends Component {
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header>{this.props.identity}</Modal.Header>
         {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <><Modal.Content>
+          {((this.props.modalId === 'CrossSection')) ?
+            <Image key={this.props.identity}
+              size="small" src={require(`../../assets/${this.state.formImage}`)} alt={this.props.identity}
+              draggable="false" /> : <></>}
           {modalInput}
         </Modal.Content>
+          {/* <Modal.Description>
+            {modalInput}
+          </Modal.Description> */}
           <Modal.Actions>
             <Button onClick={this.props.modalclose} color="red">Cancel</Button>
             {/* {console.log("hello ok", this.props.newid, this.props.editValid, this.state.editTrue) */}
@@ -132,7 +142,7 @@ class Modal1 extends Component {
             <Button style={{ border: "#324561 !important" }} color="green"
               disabled={!buttonsubmit} onClick={(e) => {
                 this.props.addFunction(e,
-                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue)
+                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue, this.state.formImage)
               }}>Add</Button>
           </Modal.Actions></> :
           <><Modal.Content>
