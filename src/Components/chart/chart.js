@@ -91,7 +91,7 @@ class d3Chart extends Component {
             .call(d3.axisLeft(yScale))
             //plot the color legend
             .append("text")
-            .attr("fill", "red")
+            .attr("fill", "#1a3260")
             // .attr("y", -25)
             // .attr("dy", "0.71em")
             // .style('font-size', '25')
@@ -110,7 +110,7 @@ class d3Chart extends Component {
             .style("text-anchor", "middle")
             .attr("x", (parseInt(d3.select(`#${id}`).style('width'), 10) - margin.left - margin.right) / 2)
             .attr("y", height + 50)
-            .attr("fill", "red")
+            .attr("fill", "#1a3260")
             .attr("transform", "translate(" + 10 + " ,0)")
             .style("text-anchor", "middle")
             .text(xlabel);

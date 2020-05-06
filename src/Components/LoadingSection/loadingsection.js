@@ -62,7 +62,7 @@ class LoadSection extends Component {
         return (
             <div >
                 <Message info color="blue" className="message" style={{ backgroundColor: "#90c1d7" }}>
-                    <Message.Header className="messageheader">Setting Loading Data <span style={{ color: 'red' }}>(*You can add multiple loads.)</span></Message.Header>
+                    <Message.Header className="messageheader">Setting Loading Data <span style={{ color: '#1a3260' }}>(*You can add multiple loads.)</span></Message.Header>
                     <hr />
                     <Grid>
                         <Grid.Row>

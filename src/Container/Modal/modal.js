@@ -121,17 +121,25 @@ class Modal1 extends Component {
         style={{ marginTop: '-200px' }}
         centered={false}
         open={this.props.modalopen}
-        closeIcon onClose={this.props.modalclose} >
+        closeIcon onClose={this.props.modalclose}
+        className="modal">
         <Modal.Header>{this.props.identity}</Modal.Header>
-        {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <><Modal.Content image>
+        {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <>
           {((this.props.modalId === 'CrossSection')) ?
-            <Image key={this.props.identity}
-              size="small" src={require(`../../assets/modalImages/${this.props.identity}.JPG`)} alt={this.props.identity}
-              draggable="false" /> : <></>}
-          <Modal.Description>
-            {modalInput}
-          </Modal.Description>
-        </Modal.Content>
+            <Modal.Content image>
+              <Image key={this.props.identity}
+                size="medium" src={require(`../../assets/modalImages/${this.props.identity}.JPG`)} alt={this.props.identity}
+                draggable="false" />
+
+              <Modal.Description className="description">
+                {modalInput}
+              </Modal.Description>
+
+            </Modal.Content>
+            : <Modal.Content>
+              {modalInput}
+            </Modal.Content>}
+
 
           <Modal.Actions>
             <Button onClick={this.props.modalclose} color="red">Cancel</Button>

@@ -10,9 +10,12 @@
     background-color: cornflowerblue;
 }
 
+.description{
+  width: 400px !important;
+}
 @media (max-width: 800px) {
 
-  .ui.modal {
-    width: 80%;
+  .modal {
+    width: 80% !important;
   }
 }

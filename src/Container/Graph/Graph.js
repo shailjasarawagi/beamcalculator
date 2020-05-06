@@ -48,7 +48,7 @@ const graph = (props) => {
     // var Mb = 6;
 
 
-    var Ra = props.response.Ra;
+    var Ra = (props.response.Ra).toFixed(4);
     var directionA;
     if (Ra < 0) {
         directionA = '(Upward)'
@@ -57,7 +57,7 @@ const graph = (props) => {
         directionA = '(Downward)'
     }
 
-    var Rb = props.response.Rb;
+    var Rb = (props.response.Rb).toFixed(4);;
     var directionB;
     if (Rb < 0) {
         directionB = '(Upward)'

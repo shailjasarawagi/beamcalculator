@@ -20,13 +20,13 @@ export const point_down = (svg, starting_position_x, starting_position_y, height
         .text(q + 'N');
     svg.append("text")
         .attr("x", starting_position_x + 5)
-        .attr("y", starting_position_y - 20)
+        .attr("y", starting_position_y - 15)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('d=');
     svg.append("text")
         .attr("x", starting_position_x + 30)
-        .attr("y", starting_position_y - 20)
+        .attr("y", starting_position_y - 15)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(m + 'm');
@@ -55,13 +55,13 @@ export const point_up = (svg, starting_position_x, starting_position_y, height_v
 
     svg.append("text")
         .attr("x", starting_position_x - 30)
-        .attr("y", starting_position_y * 2.5)
+        .attr("y", starting_position_y * 2.6)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text('d=');
     svg.append("text")
         .attr("x", starting_position_x - 5)
-        .attr("y", starting_position_y * 2.5)
+        .attr("y", starting_position_y * 2.6)
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(m + 'm');
