@@ -5,7 +5,6 @@ import { Image, Grid, Popup, Message, Segment, Icon } from "semantic-ui-react";
 
 class CrossSection extends Component {
 
-
   render() {
 
     const ElementsArray = [];

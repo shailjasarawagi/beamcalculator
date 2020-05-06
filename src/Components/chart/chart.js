@@ -32,18 +32,18 @@ class d3Chart extends Component {
         }
 
         // var data = [
-        //     { x: 0, y: 0.0456 },
-        //     { x: 0.002, y: 0.06666 },
-        //     { x: 0.004, y: 0.0966 },
-        //     { x: 0.008, y: 0.1366 },
-        //     { x: 0.0012, y: 0.1866 },
-        //     { x: 0.0016, y: 1.2566 },
-        //     { x: 0.0020, y: 5.336786 },
+        //     { x: 0, y: 0.00456 },
+        //     { x: 0.002, y: 0.006666 },
+        //     { x: 0.004, y: 0.00966 },
+        //     { x: 0.008, y: 0.10366 },
+        //     { x: 0.0012, y: 0.10866 },
+        //     { x: 0.0016, y: 0.20566 },
+        //     { x: 0.0020, y: 0.3036786 },
         // ];
 
 
 
-        var margin = { top: 30, right: 20, bottom: 30, left: 50 },
+        var margin = { top: 30, right: 55, bottom: 30, left: 75 },
             width,
             height = 250 - margin.top - margin.bottom;
 
@@ -54,7 +54,7 @@ class d3Chart extends Component {
         var xAxis = d3.axisBottom().scale(xScale).tickPadding(15)
         // .tickSize(-divWidthLessMargins);;
         var yAxis = d3.axisLeft().scale(yScale);
-        // var yAxiss = d3.axisRight().scale(yScale);
+        var yAxiss = d3.axisRight().scale(yScale);
         // create a line
         var line = d3.line()
             .curve(d3.curveBasis)
@@ -95,7 +95,7 @@ class d3Chart extends Component {
             // .attr("y", -25)
             // .attr("dy", "0.71em")
             // .style('font-size', '25')
-            .style("font", "12px times")
+            .style("font", "14px times")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
             .attr("x", 0 - (height / 2))
@@ -111,6 +111,7 @@ class d3Chart extends Component {
             .attr("x", (parseInt(d3.select(`#${id}`).style('width'), 10) - margin.left - margin.right) / 2)
             .attr("y", height + 50)
             .attr("fill", "red")
+            .attr("transform", "translate(" + 10 + " ,0)")
             .style("text-anchor", "middle")
             .text(xlabel);
 
@@ -198,7 +199,7 @@ class d3Chart extends Component {
             // .attr("transform", "rotate(-65)");
 
 
-            yAxisEl.call(yAxis)
+            yAxisEl.call(yAxiss)
                 .attr("transform", "translate(" + width + " ,0)")
 
             line.x(function (d) { return xScale(d.x); })

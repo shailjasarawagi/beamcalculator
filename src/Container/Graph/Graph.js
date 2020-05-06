@@ -4,12 +4,12 @@ import { Message } from 'semantic-ui-react';
 import '../BeamForm/beamform.css'
 const graph = (props) => {
 
-    var y = [2, 3, 4, 6, 6, 7, 9]
-    // var y = props.response.Yxmm
-    var yB = [2, 67, 89, 8, 9, 1, 3, 4.5];
-    // var yB = props.response.Mx
-    // var x = props.response.x
-    var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
+    // var y = [2, 3, 4, 6, 6, 7, 9]
+    var y = props.response.Yxmm
+    // var yB = [2, 67, 89, 8, 9, 1, 3, 4.5];
+    var yB = props.response.Mx
+    var x = props.response.x
+    // var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]
     var ymax = (Math.max(...y)).toFixed(4);
     var yBmax = Math.max(...yB).toFixed(4);
 
@@ -42,10 +42,10 @@ const graph = (props) => {
     // console.log(i, j)
     var yxmax = x[i], yBxmax = x[j];
     // console.log("yyy", x[i], x[j])
-    // var Ma = (props.response.Ma).toFixed(4);
-    // var Mb = (props.response.Mb).toFixed(4);
-    var Ma = 3;
-    var Mb = 6;
+    var Ma = (props.response.Ma).toFixed(4);
+    var Mb = (props.response.Mb).toFixed(4);
+    // var Ma = 3;
+    // var Mb = 6;
 
 
     var Ra = props.response.Ra;
@@ -59,12 +59,30 @@ const graph = (props) => {
 
     var Rb = props.response.Rb;
     var directionB;
-    if (Ra < 0) {
+    if (Rb < 0) {
         directionB = '(Upward)'
     }
     else {
         directionB = '(Downward)'
     }
+
+
+    var directionM;
+    if (Ma < 0) {
+        directionM = '(Clockwise)'
+    }
+    else {
+        directionM = '(Anticlockwise)'
+    }
+
+    var directionN;
+    if (Mb < 0) {
+        directionN = '(Clockwise)'
+    }
+    else {
+        directionN = '(Anticlockwise)'
+    }
+
     return (
         <div style={{ backgroundColor: '#d3d3d3', padding: "10px" }}>
             <div style={{ fontWeight: '700', color: 'red', textAlign: 'center', padding: "15px" }}>RESULT OF CALCULATION</div>
@@ -74,8 +92,8 @@ const graph = (props) => {
                     <Message style={{ marginTop: '10px' }}>
                         <div className="para">Reaction at A: {Math.abs(Ra)} N  {directionA}</div>
                         <div className="para">Reaction at B:   {Math.abs(Rb)} N  {directionB}</div>
-                        <div className="para">Moment at A:{Ma} Nm</div>
-                        <div className="para">Moment at B:{Mb} Nm</div>
+                        <div className="para">Moment at A:{Math.abs(Ma)} Nm {directionM}</div>
+                        <div className="para">Moment at B:{Math.abs(Mb)} Nm {directionN}</div>
                         <div className="para">Maximum deflection:{maxDeflection} mm at {yxmax}</div>
                         <div className="para">Maximum bendingmoment:{maxMoment} Nm at {yBxmax}</div>
                     </Message>

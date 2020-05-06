@@ -8,7 +8,6 @@ class Modal1 extends Component {
     formData: this.props.modalInput.fields,
     formIsValid: false,
     editTrue: false,
-    formImage: this.props.modalInput.Location
   }
 
   checkValidity = (value, rules, updatedFormData) => {
@@ -92,7 +91,6 @@ class Modal1 extends Component {
   }
 
   render() {
-    console.log(this.props.identity)
     const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
       && (!this.state.formIsValid !== !this.props.editValid));
     this.beamLength = this.props.val["Length of beam"];
@@ -125,16 +123,16 @@ class Modal1 extends Component {
         open={this.props.modalopen}
         closeIcon onClose={this.props.modalclose} >
         <Modal.Header>{this.props.identity}</Modal.Header>
-        {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <><Modal.Content>
+        {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <><Modal.Content image>
           {((this.props.modalId === 'CrossSection')) ?
             <Image key={this.props.identity}
               size="small" src={require(`../../assets/modalImages/${this.props.identity}.JPG`)} alt={this.props.identity}
               draggable="false" /> : <></>}
-          {modalInput}
-        </Modal.Content>
-          {/* <Modal.Description>
+          <Modal.Description>
             {modalInput}
-          </Modal.Description> */}
+          </Modal.Description>
+        </Modal.Content>
+
           <Modal.Actions>
             <Button onClick={this.props.modalclose} color="red">Cancel</Button>
             {/* {console.log("hello ok", this.props.newid, this.props.editValid, this.state.editTrue) */}

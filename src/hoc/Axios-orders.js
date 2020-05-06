@@ -5,6 +5,6 @@ const data = functions.getBackendDomain();
 const instance = axios.create(data);
 // const instance = axios.create({
 
-//     baseURL: 'http://274b90ab.ngrok.io/'
+//     baseURL: 'http://c4262566.ngrok.io/'
 // });
 export default instance;

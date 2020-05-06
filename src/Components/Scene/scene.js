@@ -76,7 +76,7 @@ class Scene extends Component {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         // let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
 
-                        let starting_position = parseFloat(m) / (this.beamLength.value) * (30 + length);
+                        let starting_position = ((parseFloat(m) / (this.beamLength.value)) * (length)) + 30;
 
                         let starting_position_x
                         if (starting_position < 30) {
@@ -85,11 +85,13 @@ class Scene extends Component {
                         else {
                             starting_position_x = starting_position;
                         }
-                        console.log(starting_position_x, length)
+                        console.log(length, starting_position_x)
                         point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
                     else {
+
                         let starting_position_x = 30
+                        console.log(length, starting_position_x)
                         point_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, q, m)
                     }
 
@@ -98,7 +100,7 @@ class Scene extends Component {
                 if (n === 'Point Loading' && p === 'Up') {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
 
-                        let starting_position = parseFloat(m) / (this.beamLength.value) * (30 + length);
+                        let starting_position = ((parseFloat(m) / (this.beamLength.value)) * (length)) + 30;
                         let starting_position_x
                         if (starting_position < 30) {
                             starting_position_x = 30;
@@ -120,7 +122,7 @@ class Scene extends Component {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         // let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
 
-                        let starting_position = parseFloat(m) / (this.beamLength.value) * (30 + length);
+                        let starting_position = ((parseFloat(m) / (this.beamLength.value)) * (length)) + 30;
                         let starting_position_x
                         if (starting_position < 30) {
                             starting_position_x = 30;
@@ -139,7 +141,7 @@ class Scene extends Component {
                     if (this.beamLength.value !== '' && parseFloat(this.beamLength.value) !== 0 && parseFloat(m) !== 0) {
                         // let starting_position_x = parseFloat(m) / this.beamLength.value * (30 + length);
 
-                        let starting_position = parseFloat(m) / (this.beamLength.value) * (30 + length);
+                        let starting_position = ((parseFloat(m) / (this.beamLength.value)) * (length)) + 30;
                         let starting_position_x
                         if (starting_position < 30) {
                             starting_position_x = 30;
@@ -161,11 +163,11 @@ class Scene extends Component {
                         let difference;
                         // console.log()
                         if (parseFloat(a) !== 0) {
-                            let starting_position = parseFloat(a) / (this.beamLength.value) * (30 + length);
-                            let diff = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
+                            let starting_position = ((parseFloat(a) / (this.beamLength.value)) * (length)) + 30;
+                            let diff = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (length));
                             if (starting_position < 30) {
                                 starting_position_x = 30;
-                                difference = diff - 30
+                                difference = diff
                             }
                             else {
                                 starting_position_x = starting_position
@@ -174,7 +176,7 @@ class Scene extends Component {
                         }
                         else {
                             starting_position_x = 30
-                            difference = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length)) - 30;
+                            difference = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (length));
                         }
 
                         UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
@@ -195,11 +197,11 @@ class Scene extends Component {
                         //     difference = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
                         // }
                         if (parseFloat(a) !== 0) {
-                            let starting_position = parseFloat(a) / (this.beamLength.value) * (30 + length);
-                            let diff = ((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length);
+                            let starting_position = ((parseFloat(a) / (this.beamLength.value)) * (length)) + 30;
+                            let diff = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (length));
                             if (starting_position < 30) {
                                 starting_position_x = 30;
-                                difference = diff - 30
+                                difference = diff
                             }
                             else {
                                 starting_position_x = starting_position
@@ -208,7 +210,7 @@ class Scene extends Component {
                         }
                         else {
                             starting_position_x = 30
-                            difference = (((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (30 + length)) - 30;
+                            difference = ((((parseFloat(b) - parseFloat(a)) / (this.beamLength.value)) * (length)))
                         }
                         UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
 
@@ -228,11 +230,11 @@ class Scene extends Component {
                         //     difference = ((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (30 + length);
                         // }
                         if (parseFloat(i) !== 0) {
-                            let starting_position = parseFloat(i) / (this.beamLength.value) * (30 + length);
-                            let diff = ((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (30 + length);
+                            let starting_position = ((parseFloat(i) / (this.beamLength.value)) * (length)) + 30;
+                            let diff = (((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (length));
                             if (starting_position < 30) {
                                 starting_position_x = 30;
-                                difference = diff - 30
+                                difference = diff
                             }
                             else {
                                 starting_position_x = starting_position
@@ -241,7 +243,7 @@ class Scene extends Component {
                         }
                         else {
                             starting_position_x = 30
-                            difference = (((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (30 + length)) - 30;
+                            difference = ((((parseFloat(j) - parseFloat(i)) / (this.beamLength.value)) * (length)));
                         }
                         trapezoidal(svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference)
                     }
@@ -310,13 +312,13 @@ class Scene extends Component {
             .attr("stroke-width", "1")
             .attr("transform", function (d) { return "translate(" + 5 + "," + -15 + ")"; })
             .text('B');
-        window.addEventListener('resize', this.draw);
+
         //main grey line
         greyline(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y, this.beamLength)
         this.supportchoice(svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y);
         this.loadChoice(svg, starting_position_x, starting_position_y, height_veritcal_line, length);
         // Redraw based on the new size whenever the browser window is resized.
-
+        window.addEventListener('resize', this.draw);
     }
     render() {
         this.beamLength = this.props.value["Length of beam"];

@@ -49,14 +49,14 @@ class Beamform extends Component {
     this.setState({ formData: updatedFormData });
   }
 
-  crossAdd = (event, modaldata, Name, image) => {
+  crossAdd = (event, modaldata, Name) => {
     const updatedmodalData = {
       [Name]: {
         ...modaldata
       }
     };
 
-    this.setState({ crossmodalData: updatedmodalData, modalopen: false, modalImage: image });
+    this.setState({ crossmodalData: updatedmodalData, modalopen: false });
   }
 
   loadAdd = (event, modaldata, Name, valid, modalid, id, editV) => {
@@ -206,7 +206,7 @@ class Beamform extends Component {
         let yin = y.replace(/ /g, '_').toLowerCase();
         arr2.push({ [yin]: val })
         const obj = {
-          Name: Name1
+          name: Name1
         }
         var result1 = Object.assign({}, obj, ...arr2);
       }
