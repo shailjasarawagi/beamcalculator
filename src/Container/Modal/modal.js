@@ -92,7 +92,7 @@ class Modal1 extends Component {
   }
 
   render() {
-    console.log(this.props.modalId)
+    console.log(this.props.identity)
     const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
       && (!this.state.formIsValid !== !this.props.editValid));
     this.beamLength = this.props.val["Length of beam"];
@@ -128,7 +128,7 @@ class Modal1 extends Component {
         {(this.beamLength.valid && parseFloat(this.beamLength.value) !== 0) ? <><Modal.Content>
           {((this.props.modalId === 'CrossSection')) ?
             <Image key={this.props.identity}
-              size="small" src={require(`../../assets/${this.state.formImage}`)} alt={this.props.identity}
+              size="small" src={require(`../../assets/modalImages/${this.props.identity}.JPG`)} alt={this.props.identity}
               draggable="false" /> : <></>}
           {modalInput}
         </Modal.Content>
