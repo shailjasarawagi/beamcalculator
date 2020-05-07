@@ -4,6 +4,7 @@ import CrossSection from '../../Components/CrossSection/crosssection';
 import LoadingSection from '../../Components/LoadingSection/loadingsection';
 import Input from '../../Components/UI/Input/input';
 import { Message, Grid, Container, Button } from 'semantic-ui-react';
+import Checkbox from '../../Components/UI/Checkbox/Checkbox';
 import './beamform.css';
 import * as loadingsectionelements from "../../JSONfiles/loadingsection.json";
 import * as crosssectionelements from "../../JSONfiles/crosssection.json";
@@ -26,7 +27,8 @@ class Beamform extends Component {
     crossData: crosssectionelements.default.Cross_Section,
     editValid: false,
     newid: null,
-    response: {}
+    response: {},
+    weightdata: ''
   }
 
   componentDidMount() {
@@ -177,6 +179,13 @@ class Beamform extends Component {
   formReset = () => {
     this.setState({ editValid: false })
   }
+
+  checkboxChangeHandler = (event) => {
+    // console.log(id)
+    this.setState({
+      weightdata: event.target.value
+    });
+  }
   solveHandler = () => {
     let arr = [], objNew = {}, componentName = null;
     for (let x in this.state.crossmodalData) {
@@ -229,7 +238,7 @@ class Beamform extends Component {
         Swal.fire({
           type: 'error',
           title: 'Oops...',
-          text: 'Length of beam is less than component distance from point A'
+          text: 'Length of beam is less than Component Distance from point A'
 
         })
       }
@@ -246,7 +255,8 @@ class Beamform extends Component {
               ...objNew,
               "load_section": [
                 ...arr3
-              ]
+              ],
+              "selfWeight": this.state.weightdata
             }
           }
         }).then(response => {
@@ -260,11 +270,22 @@ class Beamform extends Component {
   }
 
   render() {
+    const checkbox = <div>
+      <Checkbox changed={this.checkboxChangeHandler}
+        id="1" isSelected={this.state.weightdata === "Yes"}
+        label="Yes" value="Yes"
+      />
+      <Checkbox changed={this.checkboxChangeHandler}
+        id="2" isSelected={this.state.weightdata === "No"}
+        label="No" value="No"
+      />
+    </div>
+
     let formIsValid = true;
     for (let ele in this.state.formData) {
       formIsValid = this.state.formData[ele].valid && formIsValid;
     }
-    let formcheck = formIsValid && (Object.keys(this.state.crossmodalData).length !== 0) && (Object.keys(this.state.loadmodalData).length !== 0);
+    let formcheck = formIsValid && (Object.keys(this.state.crossmodalData).length !== 0) && (Object.keys(this.state.loadmodalData).length !== 0 && this.state.weightdata !== '');
     const formElementsArray = [];
     for (let key in this.state.formData) {
       formElementsArray.push({
@@ -310,6 +331,9 @@ class Beamform extends Component {
                 loadData={this.state.loadData} editValid={this.state.editValid}
                 formReset={this.formReset} loadmodalData={this.state.loadmodalData}
                 editLoadModalData={this.editLoadModalData} deleteLoadModalData={this.deleteLoadModalData} />
+              <Message info className="message" style={{ fontWeight: 'bold' }}>Do you want to include selfweight??
+            {checkbox}
+              </Message>
               <div style={{ padding: '5px' }}>
                 <Button color="green" disabled={!formcheck} onClick={this.solveHandler}>Solve</Button>
               </div>

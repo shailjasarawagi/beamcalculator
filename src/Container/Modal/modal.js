@@ -60,6 +60,19 @@ class Modal1 extends Component {
     return [isValid, message[0]];
   };
 
+  keyPressed = (event) => {
+    console.log("press")
+    if (event.key === "Enter") {
+      const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
+        && (!this.state.formIsValid !== !this.props.editValid));
+      console.log(buttonsubmit)
+      if (buttonsubmit === true) {
+        this.props.addFunction(event,
+          this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue)
+      }
+    }
+  }
+
   modalInputChangeHandler = (event, inputIdentifier) => {
     this.props.formReset();
     const updatedFormData = {
@@ -81,6 +94,7 @@ class Modal1 extends Component {
       formIsValid = updatedFormData[ele].valid && formIsValid;
     }
     this.setState({ formData: updatedFormData, formIsValid: formIsValid });
+
   }
 
   componentWillUnmount() {
@@ -93,6 +107,7 @@ class Modal1 extends Component {
   render() {
     const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
       && (!this.state.formIsValid !== !this.props.editValid));
+
     this.beamLength = this.props.val["Length of beam"];
     const modalArray = [];
     for (let key in this.state.formData) {
@@ -111,6 +126,7 @@ class Modal1 extends Component {
         invalid={!modalElement.config.valid}
         shouldValidate={modalElement.config.validation}
         touched={modalElement.config.touched}
+        keypress={this.keyPressed}
         changed={(e) => this.modalInputChangeHandler(e, modalElement.id)}
         message={modalElement.config.message}
       />
@@ -148,7 +164,7 @@ class Modal1 extends Component {
             <Button style={{ border: "#324561 !important" }} color="green"
               disabled={!buttonsubmit} onClick={(e) => {
                 this.props.addFunction(e,
-                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue, this.state.formImage)
+                  this.state.formData, this.props.identity, this.state.formIsValid, this.props.modalID, this.props.newid, this.state.editTrue)
               }}>Add</Button>
           </Modal.Actions></> :
           <><Modal.Content>

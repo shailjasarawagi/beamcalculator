@@ -1,5 +1,6 @@
 export const greyline = (svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y, beamLength) => {
     //main grey line
+
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y * 3)
@@ -40,7 +41,7 @@ export const greyline = (svg, starting_position_x, starting_position_y, length, 
         .style("text-anchor", "middle")
         .style("stroke", "#808080")
         .attr("stroke-width", "1.2")
-        .text(beamLength.value + 'm');
+        .text((beamLength.value) + 'm');
 
 }
 
@@ -49,7 +50,8 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
     if ((parseFloat(m) !== 0)) {
         if (n === 'Moment Loading' || n === 'Point Loading') {
 
-            let starting_position = ((parseFloat(m) / beamLength.value) * (length)) + 30;
+            let starting_position = ((parseFloat(m) / parseFloat(beamLength.value)) * (length)) + 30;
+
             if (starting_position < 30) {
                 starting_position_x = 30
             }
@@ -79,8 +81,8 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
         if (parseFloat(a) !== 0) {
             // starting_position_x = parseFloat(a) / (beamLength.value) * (30 + length);
             // difference = ((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * (30 + length);
-            let starting_position = ((parseFloat(a) / (beamLength.value)) * (length)) + 30;
-            let diff = (((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * length);
+            let starting_position = ((parseFloat(a) / parseFloat(beamLength.value)) * (length)) + 30;
+            let diff = (((parseFloat(b) - parseFloat(a)) / parseFloat(beamLength.value)) * length);
             if (starting_position < 30) {
                 starting_position_x = 30;
                 difference = diff
@@ -92,7 +94,7 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
         }
         else {
             starting_position_x = 30
-            difference = ((((parseFloat(b) - parseFloat(a)) / (beamLength.value)) * length))
+            difference = ((((parseFloat(b) - parseFloat(a)) / parseFloat(beamLength.value)) * length))
         }
         //slint line
         svg.append("svg:line")
@@ -134,8 +136,8 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
     if (n === 'Trapezoidal Loading') {
         let difference;
         if (parseFloat(i) !== 0) {
-            let starting_position = (parseFloat(i) / (beamLength.value) * (length)) + 30;
-            let diff = (((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (length));
+            let starting_position = ((parseFloat(i) / parseFloat(beamLength.value)) * length) + 30;
+            let diff = (((parseFloat(j) - parseFloat(i)) / parseFloat(beamLength.value)) * (length));
             if (starting_position < 30) {
                 starting_position_x = 30;
                 difference = diff
@@ -147,7 +149,7 @@ export const divideGreyLine = (svg, starting_position_x, starting_position_y, he
         }
         else {
             starting_position_x = 30
-            difference = (((parseFloat(j) - parseFloat(i)) / (beamLength.value)) * (length))
+            difference = (((parseFloat(j) - parseFloat(i)) / parseFloat(beamLength.value)) * (length))
         }
         //slint line
         svg.append("svg:line")

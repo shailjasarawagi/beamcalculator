@@ -29,7 +29,7 @@
     float: right;
 }
 .loaddata{
-    max-height: 230px;
+    max-height: 200px;
     overflow-y: scroll;
 }
   .errorMsg{

@@ -64,7 +64,7 @@ const input = (props) => {
                     key={ele.label}
                     checked={props.value === ele.value}
                     onChange={props.changed}
-
+                    onKeyPress={props.keypress}
                 /></label>
             });
 
@@ -76,7 +76,8 @@ const input = (props) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />
+                onChange={props.changed}
+                onKeyPress={props.keypress} />
     }
     return (
         <div>

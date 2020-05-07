@@ -1,0 +1,10 @@
+.button{
+    padding : 5px;;
+}
+.ui-checkbox{
+    display: inline-block;
+}
+.label{
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
