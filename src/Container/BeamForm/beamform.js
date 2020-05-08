@@ -332,7 +332,7 @@ class Beamform extends Component {
                 formReset={this.formReset} loadmodalData={this.state.loadmodalData}
                 editLoadModalData={this.editLoadModalData} deleteLoadModalData={this.deleteLoadModalData} />
               <Message info className="message" style={{ fontWeight: 'bold' }}>Do you want to include selfweight??
-            {checkbox}
+            <div style={{ padding: '5px' }}>{checkbox}</div>
               </Message>
               <div style={{ padding: '5px' }}>
                 <Button color="green" disabled={!formcheck} onClick={this.solveHandler}>Solve</Button>

@@ -11,6 +11,8 @@ import { greyline, divideGreyLine } from '../Scene/secondScene';
 import { trapezoidal } from './loadingScene/trapezoidal/trapezoidal';
 import { datagreyline } from '../Scene/dataSecondScene';
 
+
+
 class Scene extends Component {
     constructor(props) {
         super(props)
@@ -51,19 +53,62 @@ class Scene extends Component {
                 let yin = y.replace(/ /g, '_').toLowerCase();
                 arr2.push({ [yin]: val })
                 const obj = {
-                    Name: Name1
+                    name: Name1
                 }
                 var result1 = Object.assign({}, obj, ...arr2);
             }
             arr3.push(result1);
             arr4.push(result1);
-            // console.log(arr4)
-            // let componentName= arr4.map(a => a.Name);
-            // let distance=arr4.map(a=>a.distance_from_a);
 
-            // console.log(result)
+            let value = arr4.map(a => a.value_of_udl);
+            // const indices = [...arr4.keys()].filter(i => arr4[i].name === 'Uniform Distributed Load')
+            // console.log(indices)
+
+            const indices1 = [...arr4.keys()].filter(i => (arr4[i].name === 'Uniform Distributed Load' && arr4[i].direction === 'Up'))
+            const indices2 = [...arr4.keys()].filter(i => (arr4[i].name === 'Uniform Distributed Load' && arr4[i].direction === 'Down'))
+            // console.log(indices1)
+            // console.log(indices2)
+            let array = [];
+            for (x in indices1) {
+                let e = indices1[x]
+                array.push(value[e])
+
+            }
+            // console.log(array)
+            let array1 = [];
+            for (x in indices2) {
+                let e = indices2[x]
+                array1.push(value[e])
+
+            }
+            // console.log(array1)
+
+            var height1 = 10; var height2 = 30;
+            for (var i = 0; i < array.length; i++) {
+                for (var j = i + 1; j < array.length; j++) {
+                    if (array[i] > array[j]) {
+                        height2 = height2 - 5
+                    }
+                    else {
+                        height2 = height2 + 5
+                    }
+                }
+            }
+
+            for (var i1 = 0; i1 < array1.length; i1++) {
+                for (var j1 = i1 + 1; j1 < array1.length; j1++) {
+                    if (array1[i1] > array1[j1]) {
+                        height1 = height1 - 7
+                    }
+                    else {
+                        height1 = height1 + 7
+                    }
+                }
+            }
+            // console.log(height1)
+            // console.log(height2)
             for (let y in arr3) {
-                let n = arr3[y].Name, m = arr3[y].distance_from_a,
+                let n = arr3[y].name, m = arr3[y].distance_from_a,
                     p = arr3[y].direction,
                     q = arr3[y].point_load,
                     r = arr3[y].point_moment;
@@ -185,14 +230,14 @@ class Scene extends Component {
                             difference = (((parseFloat(b) - parseFloat(a)) / parseFloat(this.beamLength.value)) * (length));
                         }
 
-                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
+                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2)
 
 
                     }
                     else {
                         let starting_position_x = 30
                         let difference = 0
-                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
+                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2)
                     }
                 }
                 if (n === 'Uniform Distributed Load' && p === 'Down') {
@@ -218,13 +263,13 @@ class Scene extends Component {
                             starting_position_x = 30
                             difference = ((((parseFloat(b) - parseFloat(a)) / parseFloat(this.beamLength.value)) * (length)))
                         }
-                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
+                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1)
 
                     }
                     else {
                         let starting_position_x = 30
                         let difference = 0
-                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c)
+                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1)
                     }
                 }
                 //trapezoidal
