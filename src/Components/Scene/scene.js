@@ -13,6 +13,7 @@ import { datagreyline } from '../Scene/dataSecondScene';
 
 
 
+
 class Scene extends Component {
     constructor(props) {
         super(props)
@@ -71,14 +72,16 @@ class Scene extends Component {
             let array = [];
             for (x in indices1) {
                 let e = indices1[x]
-                array.push(value[e])
+
+                array.push(parseFloat(value[e]))
 
             }
             // console.log(array)
             let array1 = [];
             for (x in indices2) {
                 let e = indices2[x]
-                array1.push(value[e])
+                console.log(parseFloat(value[e]))
+                array1.push(parseFloat(value[e]))
 
             }
             // console.log(array1)
@@ -87,25 +90,27 @@ class Scene extends Component {
             for (var i = 0; i < array.length; i++) {
                 for (var j = i + 1; j < array.length; j++) {
                     if (array[i] > array[j]) {
-                        height2 = height2 - 5
+                        height2 = height2 - 2
                     }
                     else {
                         height2 = height2 + 5
                     }
                 }
             }
-
+            // console.log(height1, height2)
             for (var i1 = 0; i1 < array1.length; i1++) {
                 for (var j1 = i1 + 1; j1 < array1.length; j1++) {
                     if (array1[i1] > array1[j1]) {
-                        height1 = height1 - 7
+
+                        height1 = height1 - 2
                     }
                     else {
-                        height1 = height1 + 7
+                        height1 = 10
+                        height1 = height1 + 3
                     }
                 }
             }
-            // console.log(height1)
+            console.log(height1)
             // console.log(height2)
             for (let y in arr3) {
                 let n = arr3[y].name, m = arr3[y].distance_from_a,
