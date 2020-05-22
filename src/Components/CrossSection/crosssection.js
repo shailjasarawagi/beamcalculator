@@ -4,9 +4,7 @@ import { Image, Grid, Popup, Message, Segment, Icon } from "semantic-ui-react";
 // import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 
 class CrossSection extends Component {
-
   render() {
-
     const ElementsArray = [];
     const crossSection = this.props.crossData;
     for (let key in crossSection) {
@@ -26,7 +24,6 @@ class CrossSection extends Component {
           } />
       </Grid.Column>
     ));
-
 
     const crossArray = [], crossArray1 = [];
     for (let key in this.props.crossmodalData) {

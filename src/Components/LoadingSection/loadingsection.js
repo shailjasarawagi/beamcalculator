@@ -15,7 +15,6 @@ class LoadSection extends Component {
                 config: loadSection[key]
             });
         };
-
         const lElements = ElementsArray.map(lElement => (
             <Grid.Column width={4} key={lElement.config.name}>
                 <Popup content={lElement.config.name} position='top center'
@@ -25,7 +24,6 @@ class LoadSection extends Component {
                     } />
             </Grid.Column>
         ));
-
         const loadArray = [], loadArray1 = [];
         for (let key in this.props.loadmodalData) {
             loadArray.push({
@@ -73,7 +71,6 @@ class LoadSection extends Component {
                         {Object.keys(this.props.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
                     </div>
                 </Message>
-
                 {(this.props.modalopen && (this.props.modalId === "LoadingSection")) ? <Modal
                     modalInput={this.props.modalInput}
                     modalopen={this.props.modalopen}

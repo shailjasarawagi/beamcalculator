@@ -1,17 +1,10 @@
 export const UDL_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2) => {
-    // console.log(difference, starting_position_x)
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + height2)
         .attr("x2", starting_position_x + difference)
         .attr("y2", starting_position_y + height2)
         .style("stroke", "black");
-    // svg.append("text")
-    //     .attr("x", starting_position_x + difference / 2.5)
-    //     .attr("y", starting_position_y * 2.1)
-    //     .style("text-anchor", "start")
-    //     .style("stroke", "#808080")
-    //     .text('U=');
     svg.append("text")
         .attr("x", starting_position_x + difference / 2)
         .attr("y", starting_position_y)
@@ -28,7 +21,6 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
 }
 const draw_end_start_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, height2) => {
     // Start arrow
-    // console.log(starting_position_x)
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + 10)
@@ -50,7 +42,6 @@ const draw_end_start_up = (svg, starting_position_x, starting_position_y, height
         .attr("y2", starting_position_y + 10)
         .style("stroke", "black");
     // Start arrow end
-
     // End arrow 
     svg.append("svg:line")
         .attr("x1", starting_position_x + difference)
@@ -74,7 +65,6 @@ const draw_end_start_up = (svg, starting_position_x, starting_position_y, height
         .style("stroke", "black");
     // End arrow end
 }
-
 const draw_arrow_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, i, difference, height2) => {
     svg.append("svg:line")
         .attr("x1", starting_position_x + i)
@@ -105,12 +95,6 @@ export const UDL_down = (svg, starting_position_x, starting_position_y, height_v
         .attr("x2", starting_position_x + difference)
         .attr("y2", starting_position_y - height1)
         .style("stroke", "black");
-    // svg.append("text")
-    //     .attr("x", starting_position_x + difference / 2.5)
-    //     .attr("y", starting_position_y - 20)
-    //     .style("text-anchor", "start")
-    //     .style("stroke", "#808080")
-    //     .text('U =');
     svg.append("text")
         .attr("x", starting_position_x + difference / 2)
         .attr("y", starting_position_y * 1.7)

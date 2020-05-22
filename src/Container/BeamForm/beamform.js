@@ -57,7 +57,6 @@ class Beamform extends Component {
         ...modaldata
       }
     };
-
     this.setState({ crossmodalData: updatedmodalData, modalopen: false });
   }
 
@@ -231,10 +230,8 @@ class Beamform extends Component {
         i = arr3[y].starting_point_of_load_from_a,
         j = arr3[y].ending_point_of_load_from_a,
         length = this.state.formData["Length of beam"].value
-      m = parseFloat(m); a = parseFloat(a); b = parseFloat(b); i = parseFloat(i); j = parseFloat(j)
-      length = parseFloat(length)
+      m = parseFloat(m); a = parseFloat(a); b = parseFloat(b); i = parseFloat(i); j = parseFloat(j); length = parseFloat(length)
       if ((length < m) || (length < a) || (length < b) || (length < i || (length < j))) {
-        // console.log(alert('error'))
         Swal.fire({
           type: 'error',
           title: 'Oops...',
@@ -317,8 +314,7 @@ class Beamform extends Component {
                 addFunction={this.crossAdd} val={this.state.formData}
                 modalopen={this.state.modalopen} onclick={this.onclick}
                 modalInput={this.state.modalInput} Identity={this.state.modalIdentity}
-                modalId={this.state.modalId} formReset={this.formReset}
-                crossData={this.state.crossData} editValid={this.state.editValid}
+                modalId={this.state.modalId} formReset={this.formReset} crossData={this.state.crossData} editValid={this.state.editValid}
                 crossmodalData={this.state.crossmodalData} editCrossModalData={this.editCrossModalData}
                 deleteCrossModalData={this.deleteCrossModalData}
               />

@@ -1,5 +1,4 @@
 export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, i, j, k, l, x, z, difference, height1, height2) => {
-    console.log(difference)
     if (difference >= 700) {
         for (var x11 = 10, raa = starting_position_y + height1; x11 < difference / 2 && raa >= starting_position_y - height2; x11 = x11 + 30, raa = raa - 4) {
             svg.append("svg:line")
@@ -8,7 +7,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x11 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x11)
                 .attr("y1", starting_position_y + 10)
@@ -30,14 +28,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x1 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x1 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x1 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x1 + e)
                 .attr("y1", starting_position_y + 10)
@@ -45,7 +41,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("y2", ra)
                 .style("stroke", "black");
         }
-
     }
     if (difference < 700 && difference >= 600) {
         for (var x2 = 10, r2 = starting_position_y + height1; x2 < difference / 2 && r2 >= starting_position_y - height2; x2 = x2 + 30, r2 = r2 - 5) {
@@ -55,7 +50,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x2 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x2)
                 .attr("y1", starting_position_y + 10)
@@ -77,14 +71,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x22 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x22 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x22 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x22 + e)
                 .attr("y1", starting_position_y + 10)
@@ -101,7 +93,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x3 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x3)
                 .attr("y1", starting_position_y + 10)
@@ -123,14 +114,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x33 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x33 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x33 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x33 + e)
                 .attr("y1", starting_position_y + 10)
@@ -147,7 +136,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x4 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x4)
                 .attr("y1", starting_position_y + 10)
@@ -169,14 +157,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x44 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x44 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x44 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x44 + e)
                 .attr("y1", starting_position_y + 10)
@@ -193,7 +179,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x5 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x5)
                 .attr("y1", starting_position_y + 10)
@@ -215,14 +200,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x55 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x55 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x55 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x55 + e)
                 .attr("y1", starting_position_y + 10)
@@ -239,7 +222,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x6 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x6)
                 .attr("y1", starting_position_y + 10)
@@ -261,14 +243,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x66 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x66 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x66 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x66 + e)
                 .attr("y1", starting_position_y + 10)
@@ -285,7 +265,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x7 + 2.5)
                 .attr("y2", starting_position_y + 10 + 6)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x7)
                 .attr("y1", starting_position_y + 10)
@@ -307,14 +286,12 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .attr("x2", starting_position_x + x77 + e + 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x77 + e)
                 .attr("y1", starting_position_y + 10)
                 .attr("x2", starting_position_x + x77 + e - 3.5)
                 .attr("y2", starting_position_y)
                 .style("stroke", "black");
-
             svg.append("svg:line")
                 .attr("x1", starting_position_x + x77 + e)
                 .attr("y1", starting_position_y + 10)
@@ -323,52 +300,6 @@ export const draw_arrow_down_up2 = (svg, starting_position_x, starting_position_
                 .style("stroke", "black");
         }
     }
-    // if (difference < 150 && difference >= 100) {
-    //     for (var x8 = 10, r8 = starting_position_y + height1; x8 < difference / 2 && r8 >= starting_position_y - height2; x8 = x8 + 30, r8 = r8 - 23) {
-    //         svg.append("svg:line")
-    //             .attr("x1", starting_position_x + x8)
-    //             .attr("y1", starting_position_y + 10)
-    //             .attr("x2", starting_position_x + x8 + 2.5)
-    //             .attr("y2", starting_position_y + 10 + 6)
-    //             .style("stroke", "black");
-
-    //         svg.append("svg:line")
-    //             .attr("x1", starting_position_x + x8)
-    //             .attr("y1", starting_position_y + 10)
-    //             .attr("x2", starting_position_x + x8 - 2.5)
-    //             .attr("y2", starting_position_y + 10 + 6)
-    //             .style("stroke", "black");
-    //         svg.append("svg:line")
-    //             .attr("x1", starting_position_x + x8)
-    //             .attr("y1", starting_position_y + 10)
-    //             .attr("x2", starting_position_x + x8)
-    //             .attr("y2", r8)
-    //             .style("stroke", "black");
-    //     }
-    //     for (var x88 = 10, r88 = starting_position_y + 10; x88 < difference / 3 && r88 >= starting_position_y - height2; x88 = x88 + 30, r88 = r88 - 30) {
-    //         let e = difference / 1.5
-    //         svg.append("svg:line")
-    //             .attr("x1", starting_position_x + e + x88)
-    //             .attr("y1", starting_position_y + 10)
-    //             .attr("x2", starting_position_x + x88 + e + 3.5)
-    //             .attr("y2", starting_position_y)
-    //             .style("stroke", "black");
-
-    //         svg.append("svg:line")
-    //             .attr("x1", starting_position_x + x88 + e)
-    //             .attr("y1", starting_position_y + 10)
-    //             .attr("x2", starting_position_x + x88 + e - 3.5)
-    //             .attr("y2", starting_position_y)
-    //             .style("stroke", "black");
-
-    //         svg.append("svg:line")
-    //             .attr("x1", starting_position_x + x88 + e)
-    //             .attr("y1", starting_position_y + 10)
-    //             .attr("x2", starting_position_x + x88 + e)
-    //             .attr("y2", r88)
-    //             .style("stroke", "black");
-    //     }
-    // }
 }
 
 

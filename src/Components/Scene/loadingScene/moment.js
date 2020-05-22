@@ -75,7 +75,6 @@ const draw_moment_arrow_clock = (svg, starting_position_x, starting_position_y, 
         .style("stroke", "black")
         .attr('stroke-width', '2px')
 }
-
 export const moment_anti = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, r, m) => {
     svg.append("svg:line")
         .attr("x1", starting_position_x)
@@ -89,7 +88,6 @@ export const moment_anti = (svg, starting_position_x, starting_position_y, heigh
         .x(d => xScale(d.x))
         .y(d => yScale(d.y))
         .curve(d3.curveCatmullRom)
-
     d3.select('svg')
         .append('path')
         .datum([

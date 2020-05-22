@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-
 export const simplySupported = (svg, starting_position_x, starting_position_y, length, height_veritcal_line, radius_of_circle, center_of_circle_y) => {
     svg.append('circle')
         .attr('cx', starting_position_x + length)

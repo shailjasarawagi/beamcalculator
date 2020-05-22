@@ -14,7 +14,7 @@ import image from '../../../assets/shifu1.jpeg';
 /** Options for the mobileview for platform menu */
 const mobileoptions = [
     { key: '1', value: 'myapps', text: 'My Apps' },
-    { key: '2', value: 'forum/forum/pipingdb-2', text: 'Forum' },
+    { key: '2', value: 'forum/forum/beam', text: 'Forum' },
     { key: '3', value: 'support', text: 'Support' },
     { key: '4', value: 'profile', text: 'My Dashboard' },
     { key: '5', value: 'logout', text: 'Logout' }
@@ -56,7 +56,6 @@ class Ribbons extends Component {
         }
 
     }
-
     /**Logout from website */
     onLogOut = () => {
         // try {
@@ -96,7 +95,6 @@ class Ribbons extends Component {
             <div style={{ position: "fixed", width: "100%", zIndex: "50" }}>
                 <div className="desktopmenu">
                     <Menu attached='top' borderless style={this.state.topmenudisplay ? show : hide} className="toplevelmenu">
-
                         <Menu.Menu position="left">
                             <Menu.Item><div className="logo" draggable="false"
                                 style={{ userSelect: "none" }}>
@@ -113,7 +111,7 @@ class Ribbons extends Component {
                                 placeholder='Search...' /> */}
                             </Menu.Item>
                             <Menu.Item href={calcgenurl + "myapps"}>My Apps</Menu.Item>
-                            <Menu.Item href={calcgenurl + "forum/forum/pipingdb-2"}>Forum</Menu.Item>
+                            <Menu.Item href={calcgenurl + "forum/forum/beam"}>Forum</Menu.Item>
                             <Menu.Item href={calcgenurl + "support"}>Support</Menu.Item>
                             <Menu.Item>
                                 <Dropdown icon={image1} selectOnBlur={false}
@@ -121,7 +119,6 @@ class Ribbons extends Component {
                                     color="white" size="large"
                                     onChange={this.redirector}
                                     options={desktopoptions} text=" " item
-
                                 />
                             </Menu.Item>
                         </Menu.Menu>
@@ -135,7 +132,6 @@ class Ribbons extends Component {
                                     style={{ userSelect: "none" }}><Logo4 /></a>
                             </div>
                         </Menu.Menu>
-
                         <Menu.Menu position="right">
                             <Menu.Menu position="right">
                                 {/* <Form.Input icon='search' 
@@ -158,7 +154,6 @@ class Ribbons extends Component {
                     </Menu>
                 </div>
                 <div>
-
                     <Menu attached='bottom' borderless className="bottomlevelmenu" >
                         <Menu.Menu position="left" >
 
@@ -168,12 +163,9 @@ class Ribbons extends Component {
                                 {/* <img src={pipingdblogo} href="/" 
                                 alt="PipingDB Logo" className="imagess" /> */}
                             </a>
-
                             <div className="DesktopOnly">
                                 {/* <Menus clicked={this.props.closed} key={this.props.submenu} setMenu={this.props.setMenu} submenu={this.props.submenu} setHoveredMenu={this.props.setHoveredMenu} clickHandler={this.props.clickHandler} closed={this.props.sideDrawerClosedHandler} /> */}
                             </div>
-
-
                         </Menu.Menu>
                         <Menu.Menu>
                             <Menu.Item position="right" onClick={this.collapse}  >
@@ -183,11 +175,7 @@ class Ribbons extends Component {
                     </Menu>
                 </div>
             </div>
-
-
         );
     }
 }
-
-
 export default Ribbons;

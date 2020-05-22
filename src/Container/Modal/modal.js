@@ -18,30 +18,23 @@ class Modal1 extends Component {
       if (isValid === false)
         message.push("Please enter the value");
     }
-
     if (rules.isNumeric) {
       // const pattern = /^\d+$/;
       const pattern = /^(\d*\.)?\d+$/;
-
       isValid = pattern.test(value) && isValid;
       if (isValid === false)
         message.push("Please enter numeric value");
     }
-
     if (rules.minLength) {
       isValid = (value >= rules.minLength) && isValid;
       if (isValid === false)
         message.push("Please enter value greater than 0");
     }
-
     if (rules.lessthanBeam) {
       isValid = (parseFloat(value) <= parseFloat(this.beamLength.value)) && isValid;
       if (isValid === false)
         message.push("Please enter value less than length of beam");
     }
-
-
-
     if (rules.lessorequaltoEnding) {
       var v1 = Object.values(updatedFormData)[1]
       if (Object.values(v1)[2] !== '') {
@@ -155,8 +148,6 @@ class Modal1 extends Component {
             : <Modal.Content>
               {modalInput}
             </Modal.Content>}
-
-
           <Modal.Actions>
             <Button onClick={this.props.modalclose} color="red">Cancel</Button>
             {/* {console.log("hello ok", this.props.newid, this.props.editValid, this.state.editTrue) */}

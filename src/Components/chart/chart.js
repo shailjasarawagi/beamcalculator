@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './chart.css';
 import * as d3 from 'd3';
-
 class d3Chart extends Component {
-
     constructor(props) {
         super(props)
         this.draw = this.draw.bind(this);
@@ -12,7 +10,6 @@ class d3Chart extends Component {
         this.draw()
     }
     componentDidUpdate() {
-
         this.draw()
     }
     draw() {
@@ -26,23 +23,15 @@ class d3Chart extends Component {
                 {
                     "x": this.props.x[i],
                     "y": this.props.y[i],
-
                 }
             )
         }
-
         // var data = [
         //     { x: 0, y: 0.00456 },
         //     { x: 0.002, y: 0.006666 },
         //     { x: 0.004, y: 0.00966 },
-        //     { x: 0.008, y: 0.10366 },
-        //     { x: 0.0012, y: 0.10866 },
-        //     { x: 0.0016, y: 0.20566 },
-        //     { x: 0.0020, y: 0.3036786 },
+        //     { x: 0.008, y: 0.10366 },   
         // ];
-
-
-
         var margin = { top: 30, right: 55, bottom: 30, left: 75 },
             width,
             height = 250 - margin.top - margin.bottom;
@@ -75,8 +64,6 @@ class d3Chart extends Component {
         // var minHeight = d3.min(data, function (d) { return Math.abs(d.y) });
         xScale.domain(d3.extent(data, function (d) { return d.x; }));
         yScale.domain([-maxHeight, maxHeight])
-
-
         // Add the X Axis
         var xAxisEl = g.append("g")
             .attr("transform", "translate(0," + height / 2 + ")");
@@ -92,9 +79,6 @@ class d3Chart extends Component {
             //plot the color legend
             .append("text")
             .attr("fill", "#1a3260")
-            // .attr("y", -25)
-            // .attr("dy", "0.71em")
-            // .style('font-size', '25')
             .style("font", "14px times")
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - margin.left)
@@ -115,8 +99,6 @@ class d3Chart extends Component {
             .style("text-anchor", "middle")
             .text(xlabel);
 
-
-
         //draw line
         var path = g.append("path").data([data])
             .style('fill', 'none')
@@ -124,7 +106,6 @@ class d3Chart extends Component {
             .style('stroke-width', '2px');
 
         var bisect = d3.bisector(function (d) { return d.x; }).right
-
         // Create the circle that travels along the curve of chart
         var focus = svg
             .append('g')
@@ -172,7 +153,6 @@ class d3Chart extends Component {
                 .attr("x", xScale(d0.x) + 15)
                 .attr("y", yScale(d0.y) + 15)
             // focus.attr("transform", "translate(" + xScale(selectedData.x) + "," + yScale(selectedData.y) + ")");
-
         }
         function mouseout() {
             focus.style("opacity", 0)
@@ -185,20 +165,12 @@ class d3Chart extends Component {
             xScale.range([0, width]);
             // xAxis.scale(xScale);
             // xAxis.ticks(width / 80, 2)
-
             xAxisEl.call(xAxis)
                 .selectAll("text")
                 .attr("y", 0)
                 .attr("x", -20)
                 .attr("dy", ".35em")
                 .attr("transform", "rotate(-65)")
-            // .selectAll("text")
-            // .style("text-anchor", "middle")
-            // .attr("dx", "-2em")
-            // .attr("dy", ".15em")
-            // .attr("transform", "rotate(-65)");
-
-
             yAxisEl.call(yAxiss)
                 .attr("transform", "translate(" + width + " ,0)")
 
@@ -214,7 +186,6 @@ class d3Chart extends Component {
         window.addEventListener('resize', drawChart);
     }
     render() {
-
         return (
             <div id={this.props.id} >
                 {/* <svg width="960" height="500" style={{ border: 'solid 1px #eee', borderBottom: 'solid 1px #ccc' }} /> */}
@@ -222,7 +193,6 @@ class d3Chart extends Component {
         )
     }
 }
-
 export default d3Chart;
 
 
