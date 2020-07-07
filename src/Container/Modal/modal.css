@@ -12,6 +12,7 @@
 
 .description{
   width: 400px !important;
+  margin-top: 50px;
 }
 @media (max-width: 800px) {
 

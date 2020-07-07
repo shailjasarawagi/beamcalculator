@@ -16,7 +16,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Diameter(mm)",
+                    "label": "Diameter(Dia)-in mm",
                     "touched": false
                 }
             },
@@ -44,7 +44,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Outside Diameter(mm)",
+                    "label": "Outside Diameter(Dia)- in mm",
                     "touched": false
                 },
                 "Thickness": {
@@ -59,7 +59,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Thickness(mm)",
+                    "label": "Thickness(Tc)- in mm",
                     "touched": false
                 }
             },
@@ -94,7 +94,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Breadth(mm)",
+                    "label": "Breadth(Bre)-in mm",
                     "touched": false
                 },
                 "Height": {
@@ -109,7 +109,7 @@
                         "minLength": 0
                     },
                     "valid": false,
-                    "label": "Height(mm)",
+                    "label": "Height(Hei)- in mm",
                     "touched": false
                 }
             },
@@ -140,7 +140,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Breadth(mm)",
+                    "label": "Breadth(Bre)- in mm",
                     "touched": false
                 },
                 "Height": {
@@ -155,7 +155,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Height(mm)",
+                    "label": "Height(Hei)- in mm",
                     "touched": false
                 },
                 "Thickness": {
@@ -169,7 +169,7 @@
                         "isNumeric": true,
                         "minLength": 0
                     },
-                    "label": "Thickness(mm)",
+                    "label": "Thickness(Tc)- in mm",
                     "touched": false
                 }
             },

@@ -54,7 +54,7 @@ class Modal1 extends Component {
   };
 
   keyPressed = (event) => {
-    console.log("press")
+    // console.log("press")
     if (event.key === "Enter") {
       const buttonsubmit = ((!this.state.formIsValid || !this.props.editValid)
         && (!this.state.formIsValid !== !this.props.editValid));
