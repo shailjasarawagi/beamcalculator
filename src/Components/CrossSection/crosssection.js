@@ -16,7 +16,7 @@ class CrossSection extends Component {
 
     const cElements = ElementsArray.map(cElement => (
       <Grid.Column width={4} key={cElement.config.name}>
-        <Popup content={cElement.config.name} position='top center'
+        <Popup content={cElement.config.name} position='top center' style={{ zIndex: 999 }}
           size='tiny' inverted trigger={
             <Image key={cElement.config.name} onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
               size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name}

@@ -17,7 +17,7 @@ class LoadSection extends Component {
         };
         const lElements = ElementsArray.map(lElement => (
             <Grid.Column width={4} key={lElement.config.name}>
-                <Popup content={lElement.config.name} position='top center'
+                <Popup content={lElement.config.name} position='top center' style={{ zIndex: 999 }}
                     size='tiny' inverted trigger={
                         <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }}
                             size="medium" src={require(`../../assets/${lElement.config.Location}`)} draggable="false" alt={lElement.config.name} />
