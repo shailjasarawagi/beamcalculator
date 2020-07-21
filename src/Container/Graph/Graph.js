@@ -100,7 +100,7 @@ const graph = (props) => {
                 </div >
                 <div className="column">
                     <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Shear Force vs Distance</div>
-                    <D3Chart x={props.response.x} y={props.response.V} xName="Distance (mm)" yName="Shearforce (N)" id="sheer" />
+                    <D3Chart x={props.response.x} y={props.response.V} xName="Distance (m)" yName="Shearforce (N)" id="sheer" />
                 </div>
             </div >
             <br></br>
@@ -108,12 +108,12 @@ const graph = (props) => {
                 <div className="column">
                     <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Bending Moment vs Distance</div>
                     <D3Chart x={props.response.x} y={props.response.Mx} id="bending"
-                        xName="Distance (mm)" yName="Bendingmoment (Nm)" />
+                        xName="Distance (m)" yName="Bendingmoment (Nm)" />
                 </div>
                 <div className="column">
                     <div style={{ fontWeight: '600', textAlign: 'center' }}>Graph of Deflection vs Distance</div>
                     <D3Chart x={props.response.x} y={props.response.Yxmm} id="deflection"
-                        xName="Distance (mm)" yName="Deflection (mm)" />
+                        xName="Distance (m)" yName="Deflection (mm)" />
                 </div>
             </div>
         </div >)

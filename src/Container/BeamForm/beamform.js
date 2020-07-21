@@ -13,6 +13,7 @@ import Axios from '../../hoc/Axios-orders';
 import { checkValidity } from '../../Functions/index'
 import Scene from '../../Components/Scene/scene';
 import Graph from '../../Container/Graph/Graph';
+import Spinner from '../../Components/UI/Spinner/spinner';
 class Beamform extends Component {
   state = {
     formData: data.default,
@@ -28,7 +29,8 @@ class Beamform extends Component {
     editValid: false,
     newid: null,
     response: {},
-    weightdata: ''
+    weightdata: '',
+    loading:false
   }
 
   componentDidMount() {
@@ -240,6 +242,7 @@ class Beamform extends Component {
         })
       }
       else {
+      this.setState({loading:true})
         Axios({
           method: "post",
           url: "/api/calculator/",
@@ -258,9 +261,17 @@ class Beamform extends Component {
           }
         }).then(response => {
           console.log(response.data);
-          this.setState({ graphResponse: true, response: response.data });
+          this.setState({ graphResponse: true, response: response.data,loading:false });
         }).catch(error => {
           console.log("Error", error);
+          this.setState({ loading:false });
+          Swal.fire({
+          type: 'error',
+          title: 'Error..',
+          text: 'There is some error in calculation...'
+
+        })
+        this.setState({graphResponse:false})
         });
       }
     }
@@ -336,9 +347,9 @@ class Beamform extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+         {this.state.loading && <Spinner/>}
         {this.state.graphResponse &&
-          <Graph response={this.state.response} />
-        }
+          <Graph response={this.state.response} />}
       </Container >
     );
   }
