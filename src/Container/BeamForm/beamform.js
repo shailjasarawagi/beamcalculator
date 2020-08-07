@@ -30,7 +30,7 @@ class Beamform extends Component {
     newid: null,
     response: {},
     weightdata: '',
-    loading:false
+    loading: false
   }
 
   componentDidMount() {
@@ -242,7 +242,7 @@ class Beamform extends Component {
         })
       }
       else {
-      this.setState({loading:true})
+        this.setState({ loading: true })
         Axios({
           method: "post",
           url: "/api/calculator/",
@@ -261,17 +261,24 @@ class Beamform extends Component {
           }
         }).then(response => {
           console.log(response.data);
-          this.setState({ graphResponse: true, response: response.data,loading:false });
+          this.setState({ graphResponse: true, response: response.data, loading: false });
+        //   var delay = 1000 * 6;//1*6 seconds
+        //   setTimeout(function () {
+         let Height = window.innerHeight;
+        //  console.log(Height)
+            window.scrollTo(0,Height*1.2);//scrolls to specific location
+            //location.hash = "#elmentid"; //scrolls to element with given id
+          // }, delay);
         }).catch(error => {
           console.log("Error", error);
-          this.setState({ loading:false });
+          this.setState({ loading: false });
           Swal.fire({
-          type: 'error',
-          title: 'Error..',
-          text: 'There is some error in calculation...'
+            type: 'error',
+            title: 'Error..',
+            text: 'There is some error in calculation...'
 
-        })
-        this.setState({graphResponse:false})
+          })
+          this.setState({ graphResponse: false })
         });
       }
     }
@@ -347,7 +354,7 @@ class Beamform extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-         {this.state.loading && <Spinner/>}
+        {this.state.loading && <Spinner />}
         {this.state.graphResponse &&
           <Graph response={this.state.response} />}
       </Container >

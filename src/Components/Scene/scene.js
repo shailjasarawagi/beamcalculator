@@ -197,12 +197,12 @@ class Scene extends Component {
                             starting_position_x = 30
                             difference = (((parseFloat(b) - parseFloat(a)) / parseFloat(this.beamLength.value)) * (length));
                         }
-                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2)
+                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2,a,b)
                     }
                     else {
                         let starting_position_x = 30
                         let difference = 0
-                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2)
+                        UDL_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2,a,b)
                     }
                 }
                 if (n === 'Uniform Distributed Load' && p === 'Down') {
@@ -224,12 +224,12 @@ class Scene extends Component {
                             starting_position_x = 30
                             difference = ((((parseFloat(b) - parseFloat(a)) / parseFloat(this.beamLength.value)) * (length)))
                         }
-                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1)
+                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1,a,b)
                     }
                     else {
                         let starting_position_x = 30
                         let difference = 0
-                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1)
+                        UDL_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1,a,b)
                     }
                 }
                 //trapezoidal

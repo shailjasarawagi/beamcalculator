@@ -72,6 +72,18 @@ export const trap_up_down = (svg, starting_position_x, starting_position_y, heig
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(l + 'N/m');
+        svg.append("text")
+        .attr("x", starting_position_x )
+        .attr("y", starting_position_y )
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d=' + i + 'm');
+    svg.append("text")
+        .attr("x", starting_position_x + difference)
+        .attr("y", starting_position_y )
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d='+ j + 'm');
     //arrow
     if (l === k) {
         svg.append("svg:line")

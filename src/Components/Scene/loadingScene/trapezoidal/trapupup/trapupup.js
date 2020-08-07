@@ -68,6 +68,18 @@ export const trap_up_up = (svg, starting_position_x, starting_position_y, height
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(l + 'N/m');
+         svg.append("text")
+        .attr("x", starting_position_x)
+        .attr("y", starting_position_y )
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d='+i + 'm');
+    svg.append("text")
+        .attr("x", starting_position_x + difference)
+        .attr("y", starting_position_y )
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d='+j + 'm');
     if (k !== 0 && l !== 0 && k !== l) {
         svg.append("svg:line")
             .attr("x1", starting_position_x)

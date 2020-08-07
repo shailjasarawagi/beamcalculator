@@ -1,4 +1,4 @@
-export const UDL_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2) => {
+export const UDL_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height2, a, b) => {
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y + height2)
@@ -11,6 +11,18 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(c + 'N/m');
+    svg.append("text")
+        .attr("x", starting_position_x)
+        .attr("y", starting_position_y)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d =' + a + 'm');
+    svg.append("text")
+        .attr("x", starting_position_x + difference)
+        .attr("y", starting_position_y)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d =' + b + 'm');
     draw_end_start_up(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, height2);
     if (difference > 80) {
         for (var i = 25; i < difference; i = i + 25) {
@@ -19,7 +31,7 @@ export const UDL_up = (svg, starting_position_x, starting_position_y, height_ver
         }
     }
 }
-const draw_end_start_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, height2) => {
+const draw_end_start_up = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, height2,) => {
     // Start arrow
     svg.append("svg:line")
         .attr("x1", starting_position_x)
@@ -88,7 +100,7 @@ const draw_arrow_up = (svg, starting_position_x, starting_position_y, height_ver
         .style("stroke", "black");
 }
 
-export const UDL_down = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1) => {
+export const UDL_down = (svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, c, height1, a, b) => {
     svg.append("svg:line")
         .attr("x1", starting_position_x)
         .attr("y1", starting_position_y - height1)
@@ -101,6 +113,18 @@ export const UDL_down = (svg, starting_position_x, starting_position_y, height_v
         .style("text-anchor", "start")
         .style("stroke", "#808080")
         .text(c + 'N/m');
+    svg.append("text")
+        .attr("x", starting_position_x)
+        .attr("y", starting_position_y * 1.7)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d =' + a + 'm');
+    svg.append("text")
+        .attr("x", starting_position_x + difference)
+        .attr("y", starting_position_y * 1.7)
+        .style("text-anchor", "start")
+        .style("stroke", "#808080")
+        .text('d =' + b + 'm');
     draw_end_start_down(svg, starting_position_x, starting_position_y, height_veritcal_line, length, difference, height1);
     if (difference > 80) {
         for (var z = 25; z < difference; z = z + 25) {
