@@ -41,6 +41,25 @@
       padding: 5px;
       font-weight: 500;
   }
+  .images{
+    box-shadow: 10px 10px 5px #ccc;
+    -moz-box-shadow: 10px 10px 5px #ccc;
+    -webkit-box-shadow: 10px 10px 5px #ccc;
+    -khtml-box-shadow: 10px 10px 5px #ccc;
+    box-shadow: 0 14px 8px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 0.19);
+    /* -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out; */
+    transition: all 400ms ease-out;
+  }
+  .images:hover {
+    transform: scale(1.09); 
+    
+    /* opacity:0.9 */
+    /* display: inline; */
+
+}
   .ui.dropdown .menu > .item > .image, .ui.dropdown .menu > .item > img {
   
     width: 127px;

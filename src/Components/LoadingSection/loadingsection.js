@@ -17,9 +17,10 @@ class LoadSection extends Component {
         };
         const lElements = ElementsArray.map(lElement => (
             <Grid.Column width={4} key={lElement.config.name}>
-                <Popup content={lElement.config.name} position='top center' style={{ zIndex: 999 }}
+                <Popup content={lElement.config.name} position='top center' style={{ zIndex: 999 }} mouseEnterDelay={250}
+                    //    mouseLeaveDelay={250} 
                     size='tiny' inverted trigger={
-                        <Image key={lElement.config.name} onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }}
+                        <Image key={lElement.config.name} className="images" onClick={(e) => { this.props.onclick(e, lElement.config, lElement.config.name, "LoadingSection") }}
                             size="medium" src={require(`../../assets/${lElement.config.Location}`)} draggable="false" alt={lElement.config.name} />
                     } />
             </Grid.Column>
@@ -60,7 +61,7 @@ class LoadSection extends Component {
         return (
             <div >
                 <Message info color="blue" className="message" style={{ backgroundColor: "#90c1d7" }}>
-                    <Message.Header className="messageheader">Setting Loading Data <span style={{ color: '#1a3260' }}>(*You can add multiple loads.)</span></Message.Header>
+                    <Message.Header className="messageheader">Select Loading Data <span style={{ color: '#1a3260' }}>(*You can add multiple loads.)</span></Message.Header>
                     <hr />
                     <Grid>
                         <Grid.Row>
@@ -68,7 +69,7 @@ class LoadSection extends Component {
                         </Grid.Row>
                     </Grid>
                     <div className="loaddata">
-                        {Object.keys(this.props.loadmodalData).length === 0 ? <p>Load is not defined.</p> : <div>{loadArr}</div>}
+                        {Object.keys(this.props.loadmodalData).length === 0 ? <p style={{ color: 'red' }}>Load is not defined.</p> : <div>{loadArr}</div>}
                     </div>
                 </Message>
                 {(this.props.modalopen && (this.props.modalId === "LoadingSection")) ? <Modal

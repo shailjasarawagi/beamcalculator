@@ -16,9 +16,10 @@ class CrossSection extends Component {
 
     const cElements = ElementsArray.map(cElement => (
       <Grid.Column width={4} key={cElement.config.name}>
-        <Popup content={cElement.config.name} position='top center' style={{ zIndex: 999 }}
+        <Popup content={cElement.config.name} position='top center' style={{ zIndex: 999 }} mouseEnterDelay={250}
+                  // mouseLeaveDelay={250}
           size='tiny' inverted trigger={
-            <Image key={cElement.config.name} onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
+            <Image key={cElement.config.name} className="images" onClick={(e) => { this.props.onclick(e, cElement.config, cElement.config.name, "CrossSection") }}
               size="medium" src={require(`../../assets/${cElement.config.Location}`)} alt={cElement.config.name}
               draggable="false" />
           } />
@@ -52,14 +53,14 @@ class CrossSection extends Component {
     return (
       <div>
         <Message color="blue" className="message" style={{ backgroundColor: "#90c1d7" }}>
-          <Message.Header className="messageheader">Setting CrossSection Data</Message.Header>
+          <Message.Header className="messageheader">Select CrossSection Data</Message.Header>
           <hr style={{ border: '1px solid ' }} />
           <Grid>
             <Grid.Row>
               {cElements}
             </Grid.Row>
           </Grid>
-          {Object.keys(this.props.crossmodalData).length === 0 ? <p>CrossSection is not defined.</p> : <div>{arr}</div>}
+          {Object.keys(this.props.crossmodalData).length === 0 ? <p  style={{ color: 'red' }}>CrossSection is not defined.</p> : <div>{arr}</div>}
         </Message>
         {(this.props.modalopen && (this.props.modalId === "CrossSection")) ? <Modal
           val={this.props.val}
