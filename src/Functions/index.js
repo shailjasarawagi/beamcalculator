@@ -32,3 +32,17 @@ export const checkValidity = (value, rules) => {
 
     return [isValid, message[0]];
 };
+
+
+export const valueOfE = (data) => {
+    let value;
+    // console.log(data)
+   if(data === 'Aluminium'){
+   value = '199.947'
+   }
+   else if(data === 'Steel'){
+       value= '69'
+   }
+    return value;
+  }
+  

@@ -10,7 +10,7 @@ import * as loadingsectionelements from "../../JSONfiles/loadingsection.json";
 import * as crosssectionelements from "../../JSONfiles/crosssection.json";
 import Swal from "sweetalert2";
 import Axios from '../../hoc/Axios-orders';
-import { checkValidity } from '../../Functions/index'
+import { checkValidity ,valueOfE} from '../../Functions/index'
 import Scene from '../../Components/Scene/scene';
 import Graph from '../../Container/Graph/Graph';
 import Spinner from '../../Components/UI/Spinner/spinner';
@@ -36,10 +36,14 @@ class Beamform extends Component {
   componentDidMount() {
     this.modalId = 0;
   }
+
+
   modalclose = () => {
     this.setState({ modalopen: false, modalIdentity: "" });
   }
+
   selectChanger = (e, data) => {
+    // console.log("user",data,e)
     const updatedFormData = {
       ...this.state.formData
     };
@@ -50,7 +54,32 @@ class Beamform extends Component {
     updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedFormData[data.label] = updatedFormElement;
-    this.setState({ formData: updatedFormData });
+    if(data.value === 'User Choice'){
+      const updatedform = {
+        ...updatedFormData["Value of E"]
+      };
+      updatedform.elementConfig.readOnly = false
+      updatedform.touched= false 
+      updatedform.value= ""
+      updatedform.valid = false
+      // console.log(updatedform)
+      updatedFormData["Value of E"] = updatedform;
+    }
+    else if(data.value === 'Steel' || data.value === 'Aluminium'){
+      const updatedform = {
+        ...updatedFormData["Value of E"]
+      };
+      updatedform.elementConfig.readOnly =true
+      updatedFormData["Value of E"] = updatedform;
+      updatedform.value= valueOfE(data.value)
+      updatedform.valid = true
+      updatedform.touched= true      
+    }
+   
+    
+    this.setState({ formData: updatedFormData },()=>{
+      // console.log("final",this.state.formData)
+    });
   }
 
   crossAdd = (event, modaldata, Name) => {
@@ -170,7 +199,9 @@ class Beamform extends Component {
     updatedFormElement.touched = true;
     updatedFormElement.message = valid[1];
     updatedFormData[inputIdentifier] = updatedFormElement;
-    this.setState({ formData: updatedFormData });
+    this.setState({ formData: updatedFormData }
+      // ,()=>{ console.log("value of E",this.state.formData)}
+      );
   }
 
   onclick = (event, modalContent, Identity, id) => {
@@ -188,6 +219,7 @@ class Beamform extends Component {
     });
   }
   solveHandler = () => {
+    // console.log(this.state.formData["Value of E"].value)
     let arr = [], objNew = {}, componentName = null;
     for (let x in this.state.crossmodalData) {
       componentName = x;
@@ -204,7 +236,7 @@ class Beamform extends Component {
         ...result
       }
     }
-    console.log(objNew)
+    // console.log(objNew)
     /**load section  */
     let arr3 = [], Name1 = '';
     for (let x in this.state.loadmodalData) {
@@ -221,7 +253,7 @@ class Beamform extends Component {
         var result1 = Object.assign({}, obj, ...arr2);
       }
       arr3.push(result1);
-      console.log(arr3)
+      // console.log(arr3)
     }
 
     for (let y in arr3) {
@@ -249,6 +281,7 @@ class Beamform extends Component {
           data: {
             "userinput": {
               "material_choices": this.state.formData["Material Choice"].value,
+              "Value_of_E": this.state.formData["Value of E"].value,
               "length_of_beam": this.state.formData["Length of beam"].value,
               "support_type": this.state.formData["Support Choice"].value,
               "cross_section": componentName,
@@ -261,14 +294,17 @@ class Beamform extends Component {
           }
         }).then(response => {
           console.log(response.data);
-          this.setState({ graphResponse: true, response: response.data, loading: false });
+          this.setState({ graphResponse: true, response: response.data, loading: false }, () => {
+            this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+        });
         //   var delay = 1000 * 6;//1*6 seconds
         //   setTimeout(function () {
-         let Height = window.innerHeight;
+        //  let Height = window.innerHeight;
         //  console.log(Height)
-            window.scrollTo(0,Height*1.2);//scrolls to specific location
+            // window.scrollTo(0,Height*1.2);//scrolls to specific location
             //location.hash = "#elmentid"; //scrolls to element with given id
           // }, delay);
+        
         }).catch(error => {
           console.log("Error", error);
           this.setState({ loading: false });
@@ -355,8 +391,9 @@ class Beamform extends Component {
           </Grid.Row>
         </Grid>
         {this.state.loading && <Spinner />}
-        {this.state.graphResponse &&
-          <Graph response={this.state.response} />}
+        {this.state.graphResponse && <div ref={(el) => { this.messagesEnd = el; }}> <Graph response={this.state.response} /></div>}
+        {/* {this.state.graphResponse &&
+          <Graph response={this.state.response} />} */}
       </Container >
     );
   }

@@ -51,9 +51,9 @@ class LoadSection extends Component {
             return <Segment key={ele.id} raised>{loadArrEle}
                 <span className="floatright1">
                     <Popup content="Edit" position='top center'
-                        size='tiny' inverted trigger={<Icon name='edit' size='large' onClick={(e) => { this.props.editLoadModalData(e, ele.config, "LoadingSection", ele.id) }} />} />
+                        size='tiny' inverted trigger={<Icon name='edit' size='large' circular={true} onClick={(e) => { this.props.editLoadModalData(e, ele.config, "LoadingSection", ele.id) }} />} />
                     <Popup content="Delete" position='top center'
-                        size='tiny' inverted trigger={<Icon name='delete' color="red" size='large' onClick={(e) => { this.props.deleteLoadModalData(e, ele.id, ele.config) }} />} />
+                        size='tiny' inverted trigger={<Icon name='delete' color="red" circular={true} size='large' onClick={(e) => { this.props.deleteLoadModalData(e, ele.id, ele.config) }} />} />
                 </span>
             </Segment>
         });

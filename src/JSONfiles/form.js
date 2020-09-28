@@ -32,6 +32,11 @@ const imageSelect = {
                     "key": "Aluminium",
                     "text": "Aluminium",
                     "value": "Aluminium",
+                },
+                {
+                    "key": "User Choice",
+                    "text": "User Choice",
+                    "value": "User Choice",
                 }
             ]
         },
@@ -40,6 +45,23 @@ const imageSelect = {
         },
         "valid": false,
         "label": "Material Choice",
+        "touched": false
+    },
+    "Value of E": {
+        "elementType": "input",
+        "elementConfig": {
+            "placeholder": "Enter value of Young Modulus (e)",
+            "readOnly":true
+        },
+        "value": "",
+        "validation": {
+            "required": true,
+            "isNumeric": true,
+            "minLength": 0
+        },
+        "valid": false,
+        "message": "",
+        "label": "Value of Young Modulus - in GPa ",
         "touched": false
     },
     "Support Choice": {
