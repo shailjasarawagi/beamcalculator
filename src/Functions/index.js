@@ -38,10 +38,10 @@ export const valueOfE = (data) => {
     let value;
     // console.log(data)
    if(data === 'Aluminium'){
-   value = '199.947'
+   value = '69'
    }
    else if(data === 'Steel'){
-       value= '69'
+       value= '199.947'
    }
     return value;
   }
